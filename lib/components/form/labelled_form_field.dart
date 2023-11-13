@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 
 import '../../source.dart';
-import 'form_label.dart';
 
 class TemboLabelledFormField extends StatelessWidget {
   final String label;
