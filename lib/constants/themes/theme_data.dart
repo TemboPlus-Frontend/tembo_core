@@ -8,11 +8,11 @@ import '../constants.dart';
 
 part 'styles.dart';
 
-const _kFontFamily = "TT-Hoves";
-
 /// For styling custom package components
 class TemboThemeData {
   final String fontFamily;
+
+  final TemboThemeMode themeMode;
 
   final TemboColorScheme colorScheme;
 
@@ -37,7 +37,28 @@ class TemboThemeData {
   /// Applies to the labelled form fields in the data verification before submission page
   final TemboLabelledFormFieldDecoration labelledFormFieldDecoration;
 
-  const TemboThemeData({
+  const TemboThemeData._({
+    required this.colorScheme,
+    required this.bottomNavBarButtonStyle,
+    required this.datePickerDecoration,
+    required this.fontFamily,
+    required this.labelledFormFieldDecoration,
+    required this.pageTitleStyle,
+    required this.selectedOptionButtonStyle,
+    required this.textFieldDecoration,
+    required this.themeMode,
+    required this.unselectedOptionButtonStyle,
+  });
+
+  factory TemboThemeData.from(TemboThemeMode themeMode) {
+    if (themeMode == TemboThemeMode.dark) {
+      return TemboThemeData.dark();
+    }
+
+    return const TemboThemeData.light();
+  }
+
+  const TemboThemeData.light({
     this.colorScheme = const TemboColorScheme.light(),
     this.pageTitleStyle = _pageTitleStyle,
     this.selectedOptionButtonStyle = _selectedOptionButtonStyle,
@@ -46,13 +67,16 @@ class TemboThemeData {
     this.datePickerDecoration = _datePickerStyle,
     this.textFieldDecoration = _textFieldDecoration,
     this.labelledFormFieldDecoration = _labelledFormFieldDecoration,
-  }) : fontFamily = _kFontFamily;
+  })  : fontFamily = kFontFamily,
+        themeMode = TemboThemeMode.light;
 
-  /// Define [TemboThemeData] from [TemboColorScheme]. Only changes scheme in [TemboThemeData] styles.
-  /// Other style properties e.g border-radius remain the same(with default configuration).
-  factory TemboThemeData.from(TemboColorScheme scheme) {
-    return TemboThemeData(
+  factory TemboThemeData.dark() {
+    const scheme = TemboColorScheme.dark();
+
+    return TemboThemeData._(
       colorScheme: scheme,
+      fontFamily: kFontFamily,
+      themeMode: TemboThemeMode.dark,
       pageTitleStyle: _pageTitleStyle.copyWith(color: scheme.title),
       selectedOptionButtonStyle: _selectedOptionButtonStyle.copyWith(
         backgroundColor: scheme.surfaceContainer,
@@ -99,52 +123,6 @@ class TemboThemeData {
           color: scheme.surfaceContainer,
         ),
       ),
-    );
-  }
-
-  /// Define [TemboThemeData] from [TemboColorScheme]. Only changes scheme in [TemboThemeData] styles.
-  /// Other style properties e.g border-radius remain the same(with default configuration).
-  factory TemboThemeData.fromThemeMode(TemboThemeMode mode) {
-    if (mode == TemboThemeMode.dark) {
-      return TemboThemeData.from(const TemboColorScheme.dark());
-    }
-    return TemboThemeData.from(const TemboColorScheme.light());
-  }
-
-  TemboButtonStyle get defaultButtonStyle {
-    return TemboButtonStyle.outline(
-      borderRadius: 30,
-      borderWidth: 2,
-      padding: kHorPadding,
-      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-      borderColor: colorScheme.border,
-      foregroundColor: colorScheme.onBackground,
-    );
-  }
-
-  TemboThemeData copyWith({
-    TemboColorScheme? colorScheme,
-    TextStyle? pageTitleStyle,
-    TemboButtonStyle? selectedOptionButtonStyle,
-    TemboButtonStyle? unselectedOptionButtonStyle,
-    TemboButtonStyle? bottomNavBarButtonStyle,
-    TemboDatePickerDecoration? datePickerDecoration,
-    TemboTextFieldDecoration? textFieldDecoration,
-    TemboLabelledFormFieldDecoration? labelledFormFieldDecoration,
-  }) {
-    return TemboThemeData(
-      colorScheme: colorScheme ?? this.colorScheme,
-      pageTitleStyle: pageTitleStyle ?? this.pageTitleStyle,
-      selectedOptionButtonStyle:
-          selectedOptionButtonStyle ?? this.selectedOptionButtonStyle,
-      unselectedOptionButtonStyle:
-          unselectedOptionButtonStyle ?? this.unselectedOptionButtonStyle,
-      bottomNavBarButtonStyle:
-          bottomNavBarButtonStyle ?? this.bottomNavBarButtonStyle,
-      datePickerDecoration: datePickerDecoration ?? this.datePickerDecoration,
-      textFieldDecoration: textFieldDecoration ?? this.textFieldDecoration,
-      labelledFormFieldDecoration:
-          labelledFormFieldDecoration ?? this.labelledFormFieldDecoration,
     );
   }
 }

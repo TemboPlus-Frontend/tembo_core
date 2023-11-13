@@ -1,5 +1,7 @@
 import 'package:intl/intl.dart';
 
+import '../constants/locale.dart';
+
 extension StringExt on String {
   DateTime parseWith(String pattern) {
     return DateFormat(pattern).parse(pattern);
@@ -21,4 +23,7 @@ extension DateTimeExt on DateTime {
   int get timestamp {
     return toUtc().millisecondsSinceEpoch;
   }
+
+  String localizedFormat(TemboLocale l, [String pattern = "dd/MM/yyyy"]) =>
+      DateFormat(pattern, l.locale.languageCode).format(this);
 }

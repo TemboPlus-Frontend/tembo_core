@@ -36,47 +36,11 @@ abstract class AppLocalizations {
 
   TOC get toc;
 
-  /// No description provided for @home
+  /// Used in forms when a certain required field is not filled
   ///
   /// In en it is translated to:
-  /// **Home**
-  String get home;
-
-  /// No description provided for @show
-  ///
-  /// In en it is translated to:
-  /// **Show**
-  String get show;
-
-  /// No description provided for @from
-  ///
-  /// In en it is translated to:
-  /// **From**
-  String get from;
-
-  /// No description provided for @phone
-  ///
-  /// In en it is translated to:
-  /// **Phone**
-  String get phone;
-
-  /// No description provided for @sendLink
-  ///
-  /// In en it is translated to:
-  /// **Send link to the customer**
-  String get sendLink;
-
-  /// No description provided for @next
-  ///
-  /// In en it is translated to:
-  /// **Next**
-  String get next;
-
-  /// No description provided for @transactions
-  ///
-  /// In en it is translated to:
-  /// **Transactions**
-  String get transactions;
+  /// **{name} is required**
+  String isRequired(String name);
 
   /// No description provided for @account
   ///
@@ -84,95 +48,17 @@ abstract class AppLocalizations {
   /// **Account**
   String get account;
 
-  /// No description provided for @done
+  /// No description provided for @transactions
   ///
   /// In en it is translated to:
-  /// **Done**
-  String get done;
+  /// **Transactions**
+  String get transactions;
 
-  /// No description provided for @close
+  /// No description provided for @seeAll
   ///
   /// In en it is translated to:
-  /// **Close**
-  String get close;
-
-  /// Used in forms when a certain required field is not filled
-  ///
-  /// In en it is translated to:
-  /// **{name} is required**
-  String isRequired(String name);
-
-  /// No description provided for @send
-  ///
-  /// In en it is translated to:
-  /// **Send**
-  String get send;
-
-  /// No description provided for @comingSoon
-  ///
-  /// In en it is translated to:
-  /// **Coming Soon!**
-  String get comingSoon;
-
-  /// No description provided for @beCareful
-  ///
-  /// In en it is translated to:
-  /// **Be careful!**
-  String get beCareful;
-
-  /// No description provided for @confirm
-  ///
-  /// In en it is translated to:
-  /// **Confirm**
-  String get confirm;
-
-  /// No description provided for @cancel
-  ///
-  /// In en it is translated to:
-  /// **Cancel**
-  String get cancel;
-
-  /// No description provided for @amount
-  ///
-  /// In en it is translated to:
-  /// **Amount**
-  String get amount;
-
-  /// No description provided for @preview
-  ///
-  /// In en it is translated to:
-  /// **Preview**
-  String get preview;
-
-  /// No description provided for @no
-  ///
-  /// In en it is translated to:
-  /// **No**
-  String get no;
-
-  /// No description provided for @hide
-  ///
-  /// In en it is translated to:
-  /// **Hide**
-  String get hide;
-
-  /// No description provided for @refresh
-  ///
-  /// In en it is translated to:
-  /// **Refresh**
-  String get refresh;
-
-  /// No description provided for @to
-  ///
-  /// In en it is translated to:
-  /// **To**
-  String get to;
-
-  /// No description provided for @validationError
-  ///
-  /// In en it is translated to:
-  /// **Please check your information carefully**
-  String get validationError;
+  /// **See All**
+  String get seeAll;
 
   /// No description provided for @unknownError
   ///
@@ -186,11 +72,83 @@ abstract class AppLocalizations {
   /// **Try Again**
   String get tryAgain;
 
+  /// No description provided for @to
+  ///
+  /// In en it is translated to:
+  /// **To**
+  String get to;
+
+  /// No description provided for @no
+  ///
+  /// In en it is translated to:
+  /// **No**
+  String get no;
+
+  /// No description provided for @done
+  ///
+  /// In en it is translated to:
+  /// **Done**
+  String get done;
+
+  /// No description provided for @next
+  ///
+  /// In en it is translated to:
+  /// **Next**
+  String get next;
+
+  /// No description provided for @refresh
+  ///
+  /// In en it is translated to:
+  /// **Refresh**
+  String get refresh;
+
+  /// No description provided for @send
+  ///
+  /// In en it is translated to:
+  /// **Send**
+  String get send;
+
+  /// No description provided for @validationError
+  ///
+  /// In en it is translated to:
+  /// **Please check your information carefully**
+  String get validationError;
+
+  /// No description provided for @amount
+  ///
+  /// In en it is translated to:
+  /// **Amount**
+  String get amount;
+
+  /// No description provided for @sendLink
+  ///
+  /// In en it is translated to:
+  /// **Send link to the customer**
+  String get sendLink;
+
+  /// No description provided for @beCareful
+  ///
+  /// In en it is translated to:
+  /// **Be careful!**
+  String get beCareful;
+
   /// No description provided for @remove
   ///
   /// In en it is translated to:
   /// **Remove**
   String get remove;
+
+  /// No description provided for @cancel
+  ///
+  /// In en it is translated to:
+  /// **Cancel**
+  String get cancel;
+
+  /// No description provided for @show
+  ///
+  /// In en it is translated to:
+  /// **Show**
+  String get show;
 
   /// No description provided for @yes
   ///
@@ -198,11 +156,53 @@ abstract class AppLocalizations {
   /// **Yes**
   String get yes;
 
-  /// No description provided for @seeAll
+  /// No description provided for @hide
   ///
   /// In en it is translated to:
-  /// **See All**
-  String get seeAll;
+  /// **Hide**
+  String get hide;
+
+  /// No description provided for @phone
+  ///
+  /// In en it is translated to:
+  /// **Phone**
+  String get phone;
+
+  /// No description provided for @preview
+  ///
+  /// In en it is translated to:
+  /// **Preview**
+  String get preview;
+
+  /// No description provided for @close
+  ///
+  /// In en it is translated to:
+  /// **Close**
+  String get close;
+
+  /// No description provided for @comingSoon
+  ///
+  /// In en it is translated to:
+  /// **Coming Soon!**
+  String get comingSoon;
+
+  /// No description provided for @home
+  ///
+  /// In en it is translated to:
+  /// **Home**
+  String get home;
+
+  /// No description provided for @from
+  ///
+  /// In en it is translated to:
+  /// **From**
+  String get from;
+
+  /// No description provided for @confirm
+  ///
+  /// In en it is translated to:
+  /// **Confirm**
+  String get confirm;
 }
 
 class _AppLocalizationsDelegate
@@ -239,21 +239,27 @@ class _AppLocalizationsDelegate
 }
 
 abstract class TOC {
-  /// No description provided for @readAlready
-  ///
-  /// In en it is translated to:
-  /// **I have read and agreed to your Terms & Conditions**
-  String get readAlready;
-
   /// No description provided for @desc
   ///
   /// In en it is translated to:
   /// **You need to agree to our Terms and Conditions to proceed with the onboarding process**
   String get desc;
 
+  /// No description provided for @title
+  ///
+  /// In en it is translated to:
+  /// **Terms & Conditions**
+  String get title;
+
   /// No description provided for @readTerms
   ///
   /// In en it is translated to:
   /// **Read Our Terms & Conditions**
   String get readTerms;
+
+  /// No description provided for @readAlready
+  ///
+  /// In en it is translated to:
+  /// **I have read and agreed to your Terms & Conditions**
+  String get readAlready;
 }

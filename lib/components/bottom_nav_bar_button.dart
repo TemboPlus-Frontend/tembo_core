@@ -5,10 +5,10 @@ import '../widgets/theme_data_wrapper.dart';
 import 'text.dart';
 import 'text_button.dart';
 
-class BottomNavBarButton extends StatelessWidget {
+class TemboBottomButton extends StatelessWidget {
   final VoidCallback callback;
   final String? text;
-  const BottomNavBarButton({
+  const TemboBottomButton({
     super.key,
     required this.callback,
     this.text,

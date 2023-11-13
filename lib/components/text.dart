@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../widgets/theme_data_wrapper.dart';
+import '../source.dart';
 
 class TemboText extends StatelessWidget {
   const TemboText(
@@ -10,7 +8,54 @@ class TemboText extends StatelessWidget {
     this.textAlign,
     this.overflow,
     this.maxLines,
-  });
+  }) : _weight = null;
+
+  final FontWeight? _weight;
+
+  const TemboText.center(
+    this.data, {
+    super.key,
+    this.style,
+    this.overflow,
+    this.maxLines,
+  })  : textAlign = TextAlign.center,
+        _weight = null;
+
+  const TemboText.bold(
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.style,
+    this.overflow,
+    this.maxLines,
+  }) : _weight = FontWeight.bold;
+
+  const TemboText.w300(
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.style,
+    this.overflow,
+    this.maxLines,
+  }) : _weight = FontWeight.w300;
+
+  const TemboText.w400(
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.style,
+    this.overflow,
+    this.maxLines,
+  }) : _weight = FontWeight.w400;
+
+  const TemboText.w500(
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.style,
+    this.overflow,
+    this.maxLines,
+  }) : _weight = FontWeight.w500;
 
   final String data;
 
@@ -24,18 +69,17 @@ class TemboText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ThemeDataWrapper(builder: (context, theme) {
-      return Text(
-        data,
-        style: style ??
-            DefaultTextStyle.of(context).style.copyWith(
-                  fontFamily: theme.fontFamily,
-                ),
-        textAlign: textAlign,
-        overflow: overflow,
-        maxLines: maxLines,
-        textScaleFactor: 1.0,
-      );
-    });
+    final textstyle = style ?? DefaultTextStyle.of(context).style;
+
+    return Text(
+      data,
+      style: textstyle.copyWith(fontFamily: kFontFamily, fontWeight: _weight),
+      textAlign: textAlign,
+      overflow: maxLines != null && maxLines != 0 && overflow == null
+          ? TextOverflow.ellipsis
+          : overflow,
+      maxLines: maxLines,
+      textScaleFactor: 1.0,
+    );
   }
 }

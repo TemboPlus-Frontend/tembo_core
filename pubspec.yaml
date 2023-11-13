@@ -24,26 +24,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
-    - assets/fonts/TT-Hoves/
-
-  fonts:
-    - family: Kollektif
-      fonts:
-        - asset: assets/fonts/Kollektif/Kollektif.ttf
-          weight: 400
-        - asset: assets/fonts/Kollektif/Kollektif-Bold.ttf
-          weight: 500
-
-    - family: TT-Hoves
-      fonts:
-        - asset: assets/fonts/TT-Hoves/Light.ttf
-          weight: 300
-        - asset: assets/fonts/TT-Hoves/Regular.ttf
-          weight: 400
-        - asset: assets/fonts/TT-Hoves/Medium.ttf
-          weight: 500
-        - asset: assets/fonts/TT-Hoves/Bold.ttf
-          weight: 600
-        - asset: assets/fonts/TT-Hoves/Black.ttf
-          weight: 700
+    - assets/

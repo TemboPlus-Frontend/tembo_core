@@ -1,11 +1,15 @@
+import 'package:tembo_ui/tembo_ui.dart';
+
 import 'source.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 /// Prompts the user to agree to TemboPlus's Terms & Conditions
 class TOCPage extends StatefulWidget {
+  final VoidCallback onAgreed;
+  const TOCPage(this.onAgreed, {super.key});
+
   static const routeName = "toc_page";
-  const TOCPage({super.key});
 
   @override
   State<TOCPage> createState() => _TOCPageState();
@@ -17,7 +21,14 @@ class _TOCPageState extends State<TOCPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: TemboAppBar(
+        label: context.l.toc.title,
+        leading: BackButton(
+          onPressed: () {
+            navigatorManager.value.pop();
+          },
+        ),
+      ),
       extendBodyBehindAppBar: true,
       body: Container(
         constraints: const BoxConstraints.expand(),
@@ -32,8 +43,7 @@ class _TOCPageState extends State<TOCPage> {
                     children: [
                       const SizedBox(height: 20),
                       Image.asset(
-                        "assets/images/ic_launcher_round.png",
-                        package: "tembo_client_sdk",
+                        "packages/tembo_ui/assets/images/logo_round.png",
                         height: 150,
                       ),
                       const SizedBox(height: 20),
@@ -51,7 +61,7 @@ class _TOCPageState extends State<TOCPage> {
                       const SizedBox(height: 10),
                       TemboTextButton(
                         onPressed: showTOC,
-                        style: theme.defaultButtonStyle,
+                        style: const TemboButtonStyle.outline(),
                         child: TemboText(context.l.toc.readTerms),
                       ),
                     ],
@@ -86,8 +96,9 @@ class _TOCPageState extends State<TOCPage> {
           );
         }),
       ),
-      bottomNavigationBar:
-          agreedToTOC ? BottomNavBarButton(callback: agree) : const _Button(),
+      bottomNavigationBar: agreedToTOC
+          ? TemboBottomButton(callback: widget.onAgreed)
+          : const _Button(),
     );
   }
 
@@ -95,8 +106,6 @@ class _TOCPageState extends State<TOCPage> {
     if (value == null) return;
     setState(() => agreedToTOC = value);
   }
-
-  void agree() {}
 
   void showTOC() async {
     try {

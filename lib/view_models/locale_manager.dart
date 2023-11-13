@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
+import 'manager.dart';
 
 import '../constants/locale.dart';
 
-class LocaleManager extends ValueNotifier<TemboLocale> {
+class LocaleManager extends Manager<TemboLocale> {
   LocaleManager(super.data);
 
-  void updateLocale(TemboLocale locale) {
-    value = locale;
-    notifyListeners();
-  }
+  void updateLocale(TemboLocale locale) => update(locale);
 }

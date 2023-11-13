@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tembo_ui/extensions/source.dart';
+import 'package:tembo_ui/source.dart';
 
-import '../../tembo_ui.dart';
-import '../../widgets/theme_data_wrapper.dart';
+import '../../ui_manager.dart';
 import 'text_form_field.dart';
-import '../text.dart';
 
 class TemboTextField extends StatefulWidget {
   final TextEditingController? controller;

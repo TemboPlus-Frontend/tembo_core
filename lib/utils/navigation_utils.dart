@@ -3,35 +3,33 @@ import 'package:flutter/material.dart';
 import '../components/loading_indicator.dart';
 import '../components/snack_bar.dart';
 
-final rootNavigator = GlobalKey<NavigatorState>();
-
 final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
-Future push(
+Future<T?> push<T>(
   BuildContext context, {
   required Widget page,
   required String routeName,
 }) async {
-  final navigatorState = _getNavigatorInstance(context);
-  return await navigatorState?.push(MaterialPageRoute(
+  final navigatorState = Navigator.of(context);
+  return await navigatorState.push(MaterialPageRoute(
     builder: (_) => page,
     settings: RouteSettings(name: routeName),
   ));
 }
 
 void pop(context, [result]) {
-  final navigatorState = _getNavigatorInstance(context);
-  navigatorState?.pop(result);
+  final navigatorState = Navigator.of(context);
+  navigatorState.pop(result);
 }
 
 void popUntil(BuildContext context, {required String routeName}) {
-  final navigatorState = _getNavigatorInstance(context);
-  navigatorState?.popUntil((route) => route.settings.name == routeName);
+  final navigatorState = Navigator.of(context);
+  navigatorState.popUntil((route) => route.settings.name == routeName);
 }
 
 void pushAndRemoveUntil(BuildContext context, {required Widget page}) {
-  final navigatorState = _getNavigatorInstance(context);
-  navigatorState?.pushAndRemoveUntil(
+  final navigatorState = Navigator.of(context);
+  navigatorState.pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => page), (route) => false);
 }
 
@@ -43,17 +41,6 @@ void showLoadingMaterialBanner([String? message]) {
       actions: const [TemboLoadingIndicator(), SizedBox(width: 10)],
     ),
   );
-}
-
-NavigatorState? _getNavigatorInstance(BuildContext context,
-    [bool useRootNavigator = false]) {
-  late NavigatorState? navigatorState;
-  if (!useRootNavigator) {
-    navigatorState = Navigator.of(context);
-  } else {
-    navigatorState = rootNavigator.currentState!;
-  }
-  return navigatorState;
 }
 
 showSnackbar(

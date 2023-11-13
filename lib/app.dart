@@ -1,33 +1,27 @@
-import 'package:flutter/material.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:tembo_ui/source.dart';
+import 'package:tembo_ui/tembo_ui.dart';
 
-import '../tembo_ui.dart';
-
-/// Exposes the most recent [TemboThemeData] instance
-class ThemeDataWrapper extends StatelessWidget {
-  final Widget Function(BuildContext context, TemboThemeData themeData) builder;
-  const ThemeDataWrapper({super.key, required this.builder});
-
-  @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder<TemboThemeData>(
-      valueListenable: themeManager,
-      builder: (context, themeData, child) {
-        final theme = themeData.themeMode.isLight ? _lightTheme : _darkTheme;
-        return Theme(
-          data: theme,
-          child: Builder(
-            builder: (context) {
-              return builder(
-                context,
-                themeData,
+Future<T?> pushApp<T>(BuildContext context, Widget page) async {
+  return await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+    return ValueListenableBuilder(
+      valueListenable: localeManager,
+      builder: (context, temboLocale, _) {
+        return ValueListenableBuilder(
+            valueListenable: themeManager,
+            builder: (context, theme, _) {
+              return MaterialApp(
+                home: page,
+                navigatorKey: rootNavKey,
+                theme: theme.themeMode.isLight ? _lightTheme : _darkTheme,
+                locale: temboLocale.locale,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
               );
-            }
-          ),
-        );
+            });
       },
     );
-  }
+  }));
 }
 
 final _lightTheme = _colorScheme.toTheme;
@@ -35,12 +29,15 @@ final _darkTheme = _darkColorScheme.toTheme;
 
 final _colorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
+  appBarBackground: LightTemboColors.background,
   primary: LightTemboColors.primary,
   onPrimary: LightTemboColors.onPrimary,
   error: LightTemboColors.error,
   onError: LightTemboColors.onError,
   background: LightTemboColors.background,
   scaffoldBackground: LightTemboColors.background,
+  surface: LightTemboColors.surface,
+  onSurface: LightTemboColors.onSurface,
   onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
@@ -55,10 +52,13 @@ final _darkColorScheme = FlexColorScheme.dark(
   fontFamily: kFontFamily,
   primary: DarkTemboColors.primary,
   onPrimary: DarkTemboColors.onPrimary,
+  appBarBackground: DarkTemboColors.background,
   error: DarkTemboColors.error,
   onError: DarkTemboColors.onError,
   background: DarkTemboColors.background,
   scaffoldBackground: DarkTemboColors.background,
+  surface: DarkTemboColors.surface,
+  onSurface: DarkTemboColors.onSurface,
   onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,

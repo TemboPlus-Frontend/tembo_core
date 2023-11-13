@@ -5,6 +5,12 @@ enum TemboThemeMode {
   dark,
 }
 
+extension TemboThemeModeExt on TemboThemeMode {
+  bool get isLight {
+    return this == TemboThemeMode.light;
+  }
+}
+
 class LightTemboColors {
   static const primary = Color(0xff04448B);
   static const onPrimary = Colors.white;
@@ -17,8 +23,11 @@ class LightTemboColors {
   static const background = Colors.white;
   static const onBackground = Colors.black87;
 
-  static const surfaceContainer = Color(0xffF0F8FF);
+  static const surfaceContainer = Color(0xffE9F4FD);
   static const onSurfaceContainer = Colors.black54;
+
+  static const surface = Color.fromARGB(255, 237, 236, 236);
+  static const onSurface = Color.fromARGB(255, 93, 93, 93);
 
   static const error = Color(0xff841617);
   static const onError = Colors.white;
@@ -39,6 +48,9 @@ class DarkTemboColors {
 
   static const surfaceContainer = Color(0xff3D3D3D);
   static const onSurfaceContainer = Colors.white;
+
+  static const surface = Color.fromARGB(255, 237, 236, 236);
+  static const onSurface = Color.fromARGB(255, 93, 93, 93);
 
   static const error = Colors.red;
   static const onError = Colors.white;
