@@ -1,0 +1,4 @@
+enum TemboLocale {
+  sw,
+  en,
+}
