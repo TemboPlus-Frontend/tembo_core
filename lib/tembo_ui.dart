@@ -1,12 +1,8 @@
 library tembo_ui;
 
-import 'package:flutter/material.dart';
+export 'exports.dart';
 
-import 'constants/source.dart';
-
-import 'view_models/source.dart';
-export 'constants/source.dart';
-export 'styles/source.dart';
+import 'source.dart';
 
 late final ThemeManager themeManager;
 late final LocaleManager localeManager;

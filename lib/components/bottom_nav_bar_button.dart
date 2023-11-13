@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_ui/extensions/source.dart';
 
 import '../widgets/theme_data_wrapper.dart';
 import 'text.dart';
@@ -6,11 +7,11 @@ import 'text_button.dart';
 
 class BottomNavBarButton extends StatelessWidget {
   final VoidCallback callback;
-  final String text;
+  final String? text;
   const BottomNavBarButton({
     super.key,
     required this.callback,
-    required this.text,
+    this.text,
   });
 
   @override
@@ -20,7 +21,7 @@ class BottomNavBarButton extends StatelessWidget {
         return TemboTextButton(
           onPressed: callback,
           style: theme.bottomNavBarButtonStyle,
-          child: TemboText(text),
+          child: TemboText(text ?? context.l.next),
         );
       }),
     );

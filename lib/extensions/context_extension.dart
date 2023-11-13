@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_ui/localizations/app_localizations.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -12,4 +13,6 @@ extension BuildContextExtension on BuildContext {
   double get maxHeight => MediaQuery.of(this).size.height;
 
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
+
+  AppLocalizations get l => AppLocalizations.of(this)!;
 }
