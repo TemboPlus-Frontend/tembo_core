@@ -13,8 +13,9 @@ Future<T?> pushApp<T>(BuildContext context, Widget page) async {
               return MaterialApp(
                 home: page,
                 navigatorKey: rootNavKey,
-                theme: theme.themeMode.isLight ? _lightTheme : _darkTheme,
                 locale: temboLocale.locale,
+                theme: theme.themeMode.isLight ? _lightTheme : _darkTheme,
+                scaffoldMessengerKey: rootScaffoldMessengerKey,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
               );

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../components/loading_indicator.dart';
 import '../components/snack_bar.dart';
 
+final rootNavKey = GlobalKey<NavigatorState>();
+
 final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 Future<T?> push<T>(

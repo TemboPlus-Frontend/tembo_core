@@ -1,5 +1,3 @@
-import 'package:tembo_ui/tembo_ui.dart';
-
 import 'source.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -24,9 +22,7 @@ class _TOCPageState extends State<TOCPage> {
       appBar: TemboAppBar(
         label: context.l.toc.title,
         leading: BackButton(
-          onPressed: () {
-            navigatorManager.value.pop();
-          },
+          onPressed: () => rootNavKey.pop(),
         ),
       ),
       extendBodyBehindAppBar: true,

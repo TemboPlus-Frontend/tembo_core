@@ -21,8 +21,6 @@ extension TextStyleExtension on TextStyle? {
 
   TextStyle withColor(Color? color) => this!.copyWith(color: color);
 
-  TextStyle withHexColor(int color) => this!.copyWith(color: Color(color));
-
   TextStyle withColorConditional(Color? color, bool canApply) => this!.copyWith(
         color: canApply ? color : null,
       );
