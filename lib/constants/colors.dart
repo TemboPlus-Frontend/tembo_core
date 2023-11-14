@@ -9,6 +9,10 @@ extension TemboThemeModeExt on TemboThemeMode {
   bool get isLight {
     return this == TemboThemeMode.light;
   }
+
+  bool get isDark {
+    return this == TemboThemeMode.dark;
+  }
 }
 
 class LightTemboColors {

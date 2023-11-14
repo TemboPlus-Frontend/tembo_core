@@ -12,7 +12,7 @@ part 'styles.dart';
 class TemboThemeData {
   final String fontFamily;
 
-  final TemboThemeMode themeMode;
+  final TemboThemeMode mode;
 
   final TemboColorScheme colorScheme;
 
@@ -46,7 +46,7 @@ class TemboThemeData {
     required this.pageTitleStyle,
     required this.selectedOptionButtonStyle,
     required this.textFieldDecoration,
-    required this.themeMode,
+    required this.mode,
     required this.unselectedOptionButtonStyle,
   });
 
@@ -68,7 +68,7 @@ class TemboThemeData {
     this.textFieldDecoration = _textFieldDecoration,
     this.labelledFormFieldDecoration = _labelledFormFieldDecoration,
   })  : fontFamily = kFontFamily,
-        themeMode = TemboThemeMode.light;
+        mode = TemboThemeMode.light;
 
   factory TemboThemeData.dark() {
     const scheme = TemboColorScheme.dark();
@@ -76,7 +76,7 @@ class TemboThemeData {
     return TemboThemeData._(
       colorScheme: scheme,
       fontFamily: kFontFamily,
-      themeMode: TemboThemeMode.dark,
+      mode: TemboThemeMode.dark,
       pageTitleStyle: _pageTitleStyle.copyWith(color: scheme.title),
       selectedOptionButtonStyle: _selectedOptionButtonStyle.copyWith(
         backgroundColor: scheme.surfaceContainer,

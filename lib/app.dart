@@ -2,27 +2,31 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:tembo_ui/source.dart';
 import 'package:tembo_ui/tembo_ui.dart';
 
-Future<T?> pushApp<T>(BuildContext context, Widget page) async {
-  return await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-    return ValueListenableBuilder(
-      valueListenable: localeManager,
-      builder: (context, temboLocale, _) {
-        return ValueListenableBuilder(
-            valueListenable: themeManager,
-            builder: (context, theme, _) {
-              return MaterialApp(
-                home: page,
-                navigatorKey: rootNavKey,
-                locale: temboLocale.locale,
-                theme: theme.themeMode.isLight ? _lightTheme : _darkTheme,
-                scaffoldMessengerKey: rootScaffoldMessengerKey,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-              );
-            });
-      },
-    );
-  }));
+Future<T?> pushApp<T>(BuildContext context, TemboPage page) async {
+  return await Navigator.of(context).push(MaterialPageRoute(
+    settings: RouteSettings(name: page.name),
+    builder: (context) {
+      return ValueListenableBuilder(
+        valueListenable: localeManager,
+        builder: (context, temboLocale, _) {
+          return ValueListenableBuilder(
+              valueListenable: themeManager,
+              builder: (context, theme, _) {
+                return MaterialApp(
+                  home: page,
+                  navigatorKey: rootNavKey,
+                  locale: temboLocale.locale,
+                  theme: theme.mode.isLight ? _lightTheme : _darkTheme,
+                  scaffoldMessengerKey: rootScaffoldMessengerKey,
+                  localizationsDelegates:
+                      AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                );
+              });
+        },
+      );
+    },
+  ));
 }
 
 final _lightTheme = _colorScheme.toTheme;
