@@ -3,11 +3,12 @@ import 'source.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Prompts the user to agree to TemboPlus's Terms & Conditions
-class TOCPage extends StatefulWidget {
+class TOCPage extends TemboPage {
   final VoidCallback onAgreed;
   const TOCPage(this.onAgreed, {super.key});
 
-  static const routeName = "toc_page";
+  @override
+  String get name => "toc";
 
   @override
   State<TOCPage> createState() => _TOCPageState();
