@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 mixin AfterLayoutMixin<T extends StatefulWidget> on State<T> {
   @override
@@ -24,8 +25,26 @@ abstract class TemboState<T extends StatefulWidget> extends State<T>
   FutureOr<void> afterFirstLayout(BuildContext context);
 }
 
-abstract class TemboPage extends StatefulWidget {
+abstract class TemboConsumerState<T extends ConsumerStatefulWidget> extends ConsumerState<T>
+    with AfterLayoutMixin {
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context);
+}
+
+abstract class TemboPage extends StatelessWidget {
   const TemboPage({super.key});
+
+  String get name;
+}
+
+abstract class TemboStatefulPage extends StatefulWidget {
+  const TemboStatefulPage({super.key});
+
+  String get name;
+}
+
+abstract class TemboConsumerPage extends ConsumerStatefulWidget {
+  const TemboConsumerPage({super.key});
 
   String get name;
 }

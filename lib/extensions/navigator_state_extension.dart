@@ -3,7 +3,15 @@ import 'package:tembo_ui/extensions/stateful_widget_extension.dart';
 
 extension NavigatorExtension on GlobalKey<NavigatorState> {
   Future push(TemboPage page) async {
-    return await currentState!.push(_createRouteFor(page));
+    return await currentState!.push(_createRouteFor(page.name, page));
+  }
+
+  Future push2(TemboStatefulPage page) async {
+    return await currentState!.push(_createRouteFor(page.name, page));
+  }
+
+  Future push3(TemboConsumerPage page) async {
+    return await currentState!.push(_createRouteFor(page.name, page));
   }
 
   dynamic pop([result]) {
@@ -17,18 +25,26 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
 
 extension NavigatorStateExtension on NavigatorState {
   Future<T?> to<T>(TemboPage page) async {
-    return await push<T>(_createRouteFor(page));
+    return await push<T>(_createRouteFor(page.name, page));
+  }
+
+  Future<T?> to2<T>(TemboStatefulPage page) async {
+    return await push<T>(_createRouteFor(page.name, page));
+  }
+
+  Future<T?> to3<T>(TemboConsumerPage page) async {
+    return await push<T>(_createRouteFor(page.name, page));
   }
 }
 
-PageRouteBuilder<T> _createRouteFor<T>(TemboPage page) {
-  return _SlideRightRoute<T>(page: page);
+PageRouteBuilder<T> _createRouteFor<T>(String name, Widget page) {
+  return _SlideRightRoute<T>(page: page, name: name);
 }
 
 class _SlideRightRoute<T> extends PageRouteBuilder<T> {
-  _SlideRightRoute({required TemboPage page})
+  _SlideRightRoute({required Widget page, required String name})
       : super(
-          settings: RouteSettings(name: page.name),
+          settings: RouteSettings(name: name),
           pageBuilder: (_, __, ___) {
             return page;
           },

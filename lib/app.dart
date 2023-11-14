@@ -2,9 +2,9 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:tembo_ui/source.dart';
 import 'package:tembo_ui/tembo_ui.dart';
 
-Future<T?> pushApp<T>(BuildContext context, TemboPage page) async {
+Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
   return await Navigator.of(context).push(MaterialPageRoute(
-    settings: RouteSettings(name: page.name),
+    settings: RouteSettings(name: name),
     builder: (context) {
       return ValueListenableBuilder(
         valueListenable: localeManager,

@@ -1,9 +1,11 @@
+import 'package:tembo_ui/tembo_ui.dart';
+
 import 'source.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 /// Prompts the user to agree to TemboPlus's Terms & Conditions
-class TOCPage extends TemboPage {
+class TOCPage extends TemboStatefulPage {
   final VoidCallback onAgreed;
   const TOCPage(this.onAgreed, {super.key});
 
@@ -22,9 +24,7 @@ class _TOCPageState extends State<TOCPage> {
     return Scaffold(
       appBar: TemboAppBar(
         label: context.l.toc.title,
-        leading: BackButton(
-          onPressed: () => rootNavKey.pop(),
-        ),
+        leading: BackButton(onPressed: lastNavManager.value.pop),
       ),
       extendBodyBehindAppBar: true,
       body: Container(
@@ -108,7 +108,7 @@ class _TOCPageState extends State<TOCPage> {
     try {
       launchUrl(Uri.parse("https://www.temboplus.com/app/privacy.html"));
     } catch (e) {
-      showErrorSnackbar(context, "$e");
+      showErrorSnackbar("$e");
     }
   }
 }

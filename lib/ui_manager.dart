@@ -2,6 +2,7 @@ import 'source.dart';
 
 late final ThemeManager themeManager;
 late final LocaleManager localeManager;
+late final NavigatorManager lastNavManager;
 
 void initializeUISDK(
   BuildContext context, {
@@ -14,9 +15,9 @@ void initializeUISDK(
   /// If themeMode is null, PlatformBrightness will be used. It will be checked by using MediaQuery.platformBrightnessOf(context)
   TemboThemeMode? themeMode = TemboThemeMode.light,
 }) {
-  final themeData = _initThemeData(context, themeMode);
-  _initThemeManager(themeData);
+  _initThemeManager(_initThemeData(context, themeMode));
   _initLocaleManager(locale);
+  _initNavigatorManager(context);
 }
 
 TemboThemeData _initThemeData(
@@ -49,3 +50,12 @@ void _initThemeManager(TemboThemeData themeData) {
   }
 }
 
+void _initNavigatorManager(BuildContext context) {
+  final state = Navigator.of(context);
+  try {
+    lastNavManager = NavigatorManager(state);
+  } catch (_) {
+    // handling LateInitializationError issues
+    lastNavManager.update(state);
+  }
+}
