@@ -23,3 +23,9 @@ abstract class TemboState<T extends StatefulWidget> extends State<T>
   @override
   FutureOr<void> afterFirstLayout(BuildContext context);
 }
+
+abstract class TemboPage extends StatefulWidget {
+  const TemboPage({super.key});
+
+  String get name;
+}

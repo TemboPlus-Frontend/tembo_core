@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_ui/extensions/stateful_widget_extension.dart';
 
 extension NavigatorExtension on GlobalKey<NavigatorState> {
-  Future push(String name, Widget page) async {
-    return await currentState!.push(_createRouteFor(name, page));
+  Future push(TemboPage page) async {
+    return await currentState!.push(_createRouteFor(page));
   }
 
   dynamic pop([result]) {
@@ -15,21 +16,19 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
 }
 
 extension NavigatorStateExtension on NavigatorState {
-  Future<T?> pushPage<T>(String name, Widget page) async {
-    return await push<T>(_createRouteFor(name, page));
+  Future<T?> to<T>(TemboPage page) async {
+    return await push<T>(_createRouteFor(page));
   }
-
-  Future<T?> to<T>(String name, Widget page) async => pushPage(name, page);
 }
 
-PageRouteBuilder<T> _createRouteFor<T>(String name, Widget page) {
-  return _SlideRightRoute<T>(name: name, page: page);
+PageRouteBuilder<T> _createRouteFor<T>(TemboPage page) {
+  return _SlideRightRoute<T>(page: page);
 }
 
 class _SlideRightRoute<T> extends PageRouteBuilder<T> {
-  _SlideRightRoute({required Widget page, required String name})
+  _SlideRightRoute({required TemboPage page})
       : super(
-          settings: RouteSettings(name: name),
+          settings: RouteSettings(name: page.name),
           pageBuilder: (_, __, ___) {
             return page;
           },
