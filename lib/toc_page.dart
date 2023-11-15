@@ -24,7 +24,7 @@ class _TOCPageState extends State<TOCPage> {
     return Scaffold(
       appBar: TemboAppBar(
         label: context.l.toc.title,
-        leading: BackButton(onPressed: lastNavManager.value.pop),
+        onBackPress: lastNavManager.value.pop,
       ),
       extendBodyBehindAppBar: true,
       body: Container(

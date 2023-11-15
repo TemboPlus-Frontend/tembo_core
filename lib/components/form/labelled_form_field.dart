@@ -64,7 +64,7 @@ class TemboLabelledFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TemboFormLabel(label, bottomSpacing: space),
+        TemboFormLabel(label, bottomSpacing: space, style: labelStyle),
         TemboTextField(
           hint: hint,
           controller: controller,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kFontFamily = "TT-Hoves";
+const kFontFamily = "kollektif";
 
 const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
 

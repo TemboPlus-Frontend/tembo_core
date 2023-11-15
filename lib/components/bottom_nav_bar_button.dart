@@ -16,14 +16,17 @@ class TemboBottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ThemeDataWrapper(builder: (context, theme) {
-        return TemboTextButton(
-          onPressed: callback,
-          style: theme.bottomNavBarButtonStyle,
-          child: TemboText(text ?? context.l.next),
-        );
-      }),
+    return Container(
+      color: context.colorScheme.primary,
+      child: SafeArea(
+        child: ThemeDataWrapper(builder: (context, theme) {
+          return TemboTextButton(
+            onPressed: callback,
+            style: theme.bottomNavBarButtonStyle,
+            child: TemboText(text ?? context.l.next),
+          );
+        }),
+      ),
     );
   }
 }
