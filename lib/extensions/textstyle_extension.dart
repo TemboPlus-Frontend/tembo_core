@@ -13,6 +13,9 @@ extension TextStyleExtension on TextStyle? {
   TextStyle get withFW400 => this!.copyWith(fontWeight: FontWeight.w400);
   TextStyle get withFW500 => this!.copyWith(fontWeight: FontWeight.w500);
   TextStyle get withFW600 => this!.copyWith(fontWeight: FontWeight.w600);
+
+  TextStyle get bold => this!.copyWith(fontWeight: FontWeight.bold);
+
   TextStyle get withFW700 => this!.copyWith(fontWeight: FontWeight.w700);
 
   TextStyle? withSize(num size) => this?.copyWith(

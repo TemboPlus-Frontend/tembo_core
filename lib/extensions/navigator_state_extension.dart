@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:tembo_ui/extensions/stateful_widget_extension.dart';
 
 extension NavigatorExtension on GlobalKey<NavigatorState> {
-  Future push(TemboPage page) async {
-    return await currentState!.push(_createRouteFor(page.name, page));
+  Future<T?> push<T>(TemboPage page) async {
+    return await currentState!.push<T>(_createRouteFor(page.name, page));
   }
 
-  Future push2(TemboStatefulPage page) async {
-    return await currentState!.push(_createRouteFor(page.name, page));
+  Future<T?> push2<T>(TemboStatefulPage page) async {
+    return await currentState!.push<T>(_createRouteFor(page.name, page));
   }
 
-  Future push3(TemboConsumerPage page) async {
-    return await currentState!.push(_createRouteFor(page.name, page));
+  Future<T?> push3<T>(TemboConsumerPage page) async {
+    return await currentState!.push<T>(_createRouteFor(page.name, page));
   }
 
   dynamic pop([result]) {

@@ -40,7 +40,7 @@ class _TOCPageState extends State<TOCPage> {
                     children: [
                       const SizedBox(height: 20),
                       Image.asset(
-                        "packages/tembo_ui/assets/images/logo_round.png",
+                        "packages/tembo_ui/assets/logo_round.png",
                         height: 150,
                       ),
                       const SizedBox(height: 20),

@@ -23,6 +23,7 @@ Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
                     home: page,
                     navigatorKey: rootNavKey,
                     locale: temboLocale.locale,
+                    debugShowCheckedModeBanner: false,
                     theme: theme.mode.isLight ? _lightTheme : _darkTheme,
                     scaffoldMessengerKey: rootScaffoldMessengerKey,
                     localizationsDelegates:
