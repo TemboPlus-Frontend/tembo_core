@@ -20,7 +20,7 @@ class TemboTextFieldDecoration {
   final Widget? suffixIcon;
   final TemboBorderStyle? borderStyle;
   final EdgeInsets? padding;
-  final bool useDefinedStylesForDisabledBorder;
+  // final bool useDefinedStylesForDisabledBorder;
 
   const TemboTextFieldDecoration({
     this.fillColor,
@@ -42,7 +42,7 @@ class TemboTextFieldDecoration {
     this.suffixIcon,
     this.borderStyle = TemboBorderStyle.outline,
     this.padding,
-    this.useDefinedStylesForDisabledBorder = false,
+   // this.useDefinedStylesForDisabledBorder = false,
   });
 
   TemboTextFieldDecoration copyWith({
@@ -79,7 +79,7 @@ class TemboTextFieldDecoration {
     );
   }
 
-  InputBorder get disabledBorder {
+/*   InputBorder get disabledBorder {
     if (useDefinedStylesForDisabledBorder) {
       return OutlineInputBorder(
         borderSide: BorderSide(
@@ -94,7 +94,7 @@ class TemboTextFieldDecoration {
         width: 2,
       ),
     );
-  }
+  } */
 
   InputBorder get border {
     return hasBorder
@@ -115,7 +115,7 @@ class TemboTextFieldDecoration {
                   width: borderWidth ?? 1.0,
                 ),
               )
-        : disabledBorder;
+        : InputBorder.none;
   }
 
   InputDecoration get getInputDecoration {
@@ -130,7 +130,7 @@ class TemboTextFieldDecoration {
           width: border.borderSide.width,
         ),
       ),
-      disabledBorder: disabledBorder,
+      disabledBorder: border,
       filled: fillColor != null,
       fillColor: fillColor,
       contentPadding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),

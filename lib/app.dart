@@ -1,6 +1,12 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tembo_ui/source.dart';
 import 'package:tembo_ui/tembo_ui.dart';
+
+void popBackToPrevApp() {
+  rootNavKey.popToFirstPage();
+  lastNavManager.value.pop();
+}
 
 Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
   return await Navigator.of(context).push(MaterialPageRoute(
@@ -12,15 +18,17 @@ Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
           return ValueListenableBuilder(
               valueListenable: themeManager,
               builder: (context, theme, _) {
-                return MaterialApp(
-                  home: page,
-                  navigatorKey: rootNavKey,
-                  locale: temboLocale.locale,
-                  theme: theme.mode.isLight ? _lightTheme : _darkTheme,
-                  scaffoldMessengerKey: rootScaffoldMessengerKey,
-                  localizationsDelegates:
-                      AppLocalizations.localizationsDelegates,
-                  supportedLocales: AppLocalizations.supportedLocales,
+                return ProviderScope(
+                  child: MaterialApp(
+                    home: page,
+                    navigatorKey: rootNavKey,
+                    locale: temboLocale.locale,
+                    theme: theme.mode.isLight ? _lightTheme : _darkTheme,
+                    scaffoldMessengerKey: rootScaffoldMessengerKey,
+                    localizationsDelegates:
+                        AppLocalizations.localizationsDelegates,
+                    supportedLocales: AppLocalizations.supportedLocales,
+                  ),
                 );
               });
         },

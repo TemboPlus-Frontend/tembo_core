@@ -7,10 +7,11 @@ class OnlyIntegerFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     if (newValue.text.isEmpty) return newValue;
-    if (int.tryParse(newValue.text) == null) {
-      return oldValue;
-    } else {
+    final numeric = RegExp(r'^[0-9]+$');
+    if (numeric.hasMatch(newValue.text)) {
       return newValue;
+    } else {
+      return oldValue;
     }
   }
 }

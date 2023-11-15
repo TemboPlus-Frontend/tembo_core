@@ -16,7 +16,7 @@ class TemboSnackbar extends SnackBar {
     this.durationInSeconds,
   }) : super(
           key: key,
-          content: _Content(message, false),
+          content: _Content(message, isError),
         );
 
   TemboSnackbar.error(this.message, {Key? key, this.durationInSeconds})
@@ -28,7 +28,7 @@ class TemboSnackbar extends SnackBar {
 
   @override
   Color? get backgroundColor =>
-      isError ? LightTemboColors.error : LightTemboColors.onBackground;
+      isError ? LightTemboColors.error : LightTemboColors.primary;
 
   @override
   SnackBarBehavior? get behavior => SnackBarBehavior.floating;
@@ -55,7 +55,7 @@ class _Content extends StatelessWidget {
       message,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: isError ? LightTemboColors.onError : LightTemboColors.primary,
+        color: isError ? LightTemboColors.onError : LightTemboColors.onPrimary,
         fontSize: 14,
       ),
     );

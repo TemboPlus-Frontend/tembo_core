@@ -57,13 +57,7 @@ showSnackbar(
   ));
 }
 
-showErrorSnackbar(String message, [int? duration]) {
-  showSnackbar(
-    message,
-    isError: true,
-    duration: duration,
-  );
-}
+showErrorSnackbar(String message, [int? duration]) => showSnackbar(message, duration: duration);
 
 showInfoSnackbar(String message) => showSnackbar(
       message,

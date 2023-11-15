@@ -15,6 +15,7 @@ class TemboTextField extends StatefulWidget {
   final List<TextInputFormatter>? formatters;
   final TextAlign? textAlign;
   final String? hint;
+  final TemboTextFieldDecoration? decoration;
 
   final bool canBeUnobscured;
 
@@ -31,6 +32,7 @@ class TemboTextField extends StatefulWidget {
     this.hint,
     Key? key,
     this.textAlign,
+    this.decoration,
   })  : canBeUnobscured = false,
         super(key: key);
 
@@ -62,9 +64,10 @@ class _TemboTextFieldState extends State<TemboTextField> {
       return ValueListenableBuilder(
           valueListenable: localeManager,
           builder: (context, _, __) {
-            final decoration = theme.textFieldDecoration
-                .copyFontFamily(theme.fontFamily)
-                .copyWith(hint: widget.hint);
+            final decoration = widget.decoration ??
+                theme.textFieldDecoration
+                    .copyFontFamily(theme.fontFamily)
+                    .copyWith(hint: widget.hint);
             final bool canExpand = decoration.size != null;
 
             return Column(

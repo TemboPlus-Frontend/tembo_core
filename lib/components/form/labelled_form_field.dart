@@ -77,7 +77,7 @@ class TemboLabelledFormField extends StatelessWidget {
           textInputType: textInputType,
           textAlign: textAlign,
           formatters: formatters,
-       /*    decoration: decoration ??
+          decoration: decoration ??
               TemboTextFieldDecoration(
                 fillColor: context.colorScheme.surface,
                 borderColor: Colors.black54,
@@ -86,7 +86,7 @@ class TemboLabelledFormField extends StatelessWidget {
                 valueStyle: context.textTheme.headlineSmall.withColor(
                   context.colorScheme.onBackground,
                 ),
-              ), */
+              ),
         ),
       ],
     );
