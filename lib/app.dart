@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tembo_ui/source.dart';
 import 'package:tembo_ui/tembo_ui.dart';
 
-void popBackToPrevApp() {
+void popBackToPrevApp<T>([T? result]) {
   rootNavKey.popToFirstPage();
-  lastNavManager.value.pop();
+  lastNavManager.value.pop(result);
 }
 
 Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
