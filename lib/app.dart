@@ -5,11 +5,11 @@ import 'package:tembo_ui/tembo_ui.dart';
 
 void popBackToPrevApp<T>([T? result]) {
   rootNavKey.popToFirstPage();
-  lastNavManager.value.pop(result);
+  lastNavManager.state.pop(result);
 }
 
 Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
-  return await Navigator.of(context).push(MaterialPageRoute(
+  return await lastNavManager.state.push(MaterialPageRoute(
     settings: RouteSettings(name: name),
     builder: (context) {
       return ValueListenableBuilder(
@@ -25,7 +25,7 @@ Future<T?> pushApp<T>(BuildContext context, String name, Widget page) async {
                     locale: temboLocale.locale,
                     debugShowCheckedModeBanner: false,
                     theme: theme.mode.isLight ? _lightTheme : _darkTheme,
-                    scaffoldMessengerKey: rootScaffoldMessengerKey,
+                    scaffoldMessengerKey: rootMessengerKey,
                     localizationsDelegates:
                         AppLocalizations.localizationsDelegates,
                     supportedLocales: AppLocalizations.supportedLocales,

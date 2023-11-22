@@ -72,6 +72,6 @@ class AppException {
   String toString() => "Code: $code, Message: $message";
 }
 
-AppException handleError(e, StackTrace trace) {
-  return AppException.from(e, trace);
+AppException handleException(e, [StackTrace? trace]) {
+  return AppException.from(e, trace ?? StackTrace.current);
 }

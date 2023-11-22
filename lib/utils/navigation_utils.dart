@@ -5,7 +5,7 @@ import '../components/snack_bar.dart';
 
 final rootNavKey = GlobalKey<NavigatorState>();
 
-final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+final rootMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 Future<T?> push<T>(
   BuildContext context, {
@@ -36,8 +36,8 @@ void pushAndRemoveUntil(BuildContext context, {required Widget page}) {
 }
 
 void showLoadingMaterialBanner([String? message]) {
-  rootScaffoldMessengerKey.currentState!.clearMaterialBanners();
-  rootScaffoldMessengerKey.currentState!.showMaterialBanner(
+  rootMessengerKey.currentState!.clearMaterialBanners();
+  rootMessengerKey.currentState!.showMaterialBanner(
     MaterialBanner(
       content: Text(message ?? "Loading..."),
       actions: const [TemboLoadingIndicator(), SizedBox(width: 10)],
@@ -50,14 +50,15 @@ showSnackbar(
   bool isError = true,
   int? duration,
 }) {
-  rootScaffoldMessengerKey.currentState?.showSnackBar(TemboSnackbar(
+  rootMessengerKey.currentState?.showSnackBar(TemboSnackbar(
     message,
     isError: isError,
     durationInSeconds: duration,
   ));
 }
 
-showErrorSnackbar(String message, [int? duration]) => showSnackbar(message, duration: duration);
+showErrorSnackbar(String message, [int? duration]) =>
+    showSnackbar(message, duration: duration);
 
 showInfoSnackbar(String message) => showSnackbar(
       message,

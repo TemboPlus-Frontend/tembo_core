@@ -4,4 +4,6 @@ import 'manager.dart';
 
 class NavigatorManager extends Manager<NavigatorState> {
   NavigatorManager(super.data);
+
+  NavigatorState get state => value;
 }

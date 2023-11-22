@@ -24,7 +24,7 @@ class _FutureTracker {
       final result = await future.timeout(_timeOutLimit);
       if (onDone != null) onDone(result);
     } catch (e, trace) {
-      final error = handleError(e, trace);
+      final error = handleException(e, trace);
       if (onError == null) showErrorSnackbar(error.message);
       if (onError != null) onError(error);
     }
@@ -44,7 +44,7 @@ class _FutureTracker {
       ref.read(appStateProvider.notifier).showSuccess(successMessage);
       if (onDone != null) onDone(result);
     } catch (e, trace) {
-      final error = handleError(e, trace);
+      final error = handleException(e, trace);
       ref.read(appStateProvider.notifier).showFailure(error);
       if (onError != null) onError(error);
     }
@@ -66,7 +66,7 @@ class _FutureTracker {
       notifier.showSuccess(result);
       if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
-      final error = handleError(e, trace);
+      final error = handleException(e, trace);
       notifier.showFailure(error);
       if (onError != null) onError(error);
       if (onError == null && showErrorWithSnackbar) {
