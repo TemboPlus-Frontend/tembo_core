@@ -15,7 +15,7 @@ class TemboTextField extends StatefulWidget {
   final String? hint;
   final TemboTextFieldDecoration? decoration;
 
-  final bool canBeUnobscured;
+  final String? label;
 
   const TemboTextField({
     this.controller,
@@ -31,7 +31,25 @@ class TemboTextField extends StatefulWidget {
     Key? key,
     this.textAlign,
     this.decoration,
-  })  : canBeUnobscured = false,
+  })  : label = null,
+        super(key: key);
+
+  const TemboTextField.labelled(
+    String lbl, {
+    this.controller,
+    this.obscureText,
+    this.validator,
+    this.focusNode,
+    this.enabled,
+    this.textCapitalization,
+    this.onChanged,
+    this.textInputType,
+    this.formatters,
+    this.hint,
+    Key? key,
+    this.textAlign,
+    this.decoration,
+  })  : label = lbl,
         super(key: key);
 
   @override
@@ -65,6 +83,12 @@ class _TemboTextFieldState extends State<TemboTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (widget.label != null)
+          TemboText(
+            widget.label!,
+            style: decoration.labelStyle,
+          ),
+        if (widget.label != null) vSpace(12),
         SizedBox(
           width: decoration.size?.width,
           height: decoration.size?.height,

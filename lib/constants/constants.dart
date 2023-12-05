@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const kFontFamily = "kollektif";
-
 const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
 
 const kPagePadding = EdgeInsets.only(top: 20, left: 15, right: 15);

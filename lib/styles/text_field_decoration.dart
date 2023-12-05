@@ -29,10 +29,18 @@ class TemboTextFieldDecoration {
       fontWeight: FontWeight.w400,
       fontSize: 15,
     ),
-    this.valueStyle,
+    this.valueStyle = const TextStyle(
+      color: TemboColors.onBackground,
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+    ),
     this.hint,
     this.label,
-    this.labelStyle,
+    this.labelStyle = const TextStyle(
+      color: TemboColors.onSurface,
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+    ),
     this.borderWidth,
     this.borderRadius,
     this.borderColor,
@@ -42,7 +50,7 @@ class TemboTextFieldDecoration {
     this.suffixIcon,
     this.borderStyle = TemboBorderStyle.outline,
     this.padding,
-   // this.useDefinedStylesForDisabledBorder = false,
+    // this.useDefinedStylesForDisabledBorder = false,
   });
 
   TemboTextFieldDecoration copyWith({

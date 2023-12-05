@@ -73,7 +73,7 @@ class TemboText extends StatelessWidget {
 
     return Text(
       data,
-      style: textstyle.copyWith(fontFamily: kFontFamily, fontWeight: _weight),
+      style: textstyle.copyWith(fontWeight: _weight),
       textAlign: textAlign,
       overflow: maxLines != null && maxLines != 0 && overflow == null
           ? TextOverflow.ellipsis
