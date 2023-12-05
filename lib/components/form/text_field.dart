@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:tembo_ui/source.dart';
 
-import '../../ui_manager.dart';
-
 class TemboTextField extends StatefulWidget {
   final TextEditingController? controller;
   final bool? obscureText;
@@ -60,60 +58,51 @@ class _TemboTextFieldState extends State<TemboTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return ThemeDataWrapper(builder: (context, theme) {
-      return ValueListenableBuilder(
-          valueListenable: localeManager,
-          builder: (context, _, __) {
-            final decoration = widget.decoration ??
-                theme.textFieldDecoration
-                    .copyFontFamily(theme.fontFamily)
-                    .copyWith(hint: widget.hint);
-            final bool canExpand = decoration.size != null;
+    final decoration = (widget.decoration ?? const TemboTextFieldDecoration())
+        .copyWith(hint: widget.hint);
+    final bool canExpand = decoration.size != null;
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: decoration.size?.width,
-                  height: decoration.size?.height,
-                  child: ValueListenableBuilder<String?>(
-                      valueListenable: errorNotifier,
-                      builder: (context, error, snapshot) {
-                        final hasError = error != null;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: decoration.size?.width,
+          height: decoration.size?.height,
+          child: ValueListenableBuilder<String?>(
+              valueListenable: errorNotifier,
+              builder: (context, error, snapshot) {
+                final hasError = error != null;
 
-                        return TemboTextFormField(
-                          style: decoration.valueStyle,
-                          controller: widget.controller,
-                          focusNode: widget.focusNode,
-                          decoration: hasError
-                              ? decoration
-                                  .copyWith(borderColor: LightTemboColors.error)
-                                  .getInputDecoration
-                              : decoration.getInputDecoration.copyWith(
-                                  errorStyle:
-                                      context.textTheme.bodySmall.withSize(0),
-                                ),
-                          inputFormatters: widget.formatters,
-                          validator: validate,
-                          textAlign: widget.textAlign ?? TextAlign.start,
-                          onTap: () => errorNotifier.value = null,
-                          textCapitalization: widget.textCapitalization ??
-                              TextCapitalization.none,
-                          textInputAction: TextInputAction.done,
-                          keyboardType: widget.textInputType,
-                          onChanged: widget.onChanged,
-                          enabled: widget.enabled ?? true,
-                          expands: canExpand,
-                          maxLines: canExpand ? null : 1,
-                          minLines: canExpand ? null : null,
-                        );
-                      }),
-                ),
-                buildError(),
-              ],
-            );
-          });
-    });
+                return TemboTextFormField(
+                  style: decoration.valueStyle,
+                  controller: widget.controller,
+                  focusNode: widget.focusNode,
+                  decoration: hasError
+                      ? decoration
+                          .copyWith(borderColor: TemboColors.error)
+                          .getInputDecoration
+                      : decoration.getInputDecoration.copyWith(
+                          errorStyle: context.textTheme.bodySmall.withSize(0),
+                        ),
+                  inputFormatters: widget.formatters,
+                  validator: validate,
+                  textAlign: widget.textAlign ?? TextAlign.start,
+                  onTap: () => errorNotifier.value = null,
+                  textCapitalization:
+                      widget.textCapitalization ?? TextCapitalization.none,
+                  textInputAction: TextInputAction.done,
+                  keyboardType: widget.textInputType,
+                  onChanged: widget.onChanged,
+                  enabled: widget.enabled ?? true,
+                  expands: canExpand,
+                  maxLines: canExpand ? null : 1,
+                  minLines: canExpand ? null : null,
+                );
+              }),
+        ),
+        buildError(),
+      ],
+    );
   }
 
   String? validate(String? value) {
@@ -133,7 +122,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
           child: TemboText(
             error,
             style: context.textTheme.bodyMedium.withColor(
-              LightTemboColors.error,
+              TemboColors.error,
             ),
           ),
         );

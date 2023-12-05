@@ -29,8 +29,8 @@ class TemboButtonStyle {
       );
 
   const TemboButtonStyle.filled({
-    this.backgroundColor = LightTemboColors.primary,
-    this.foregroundColor = LightTemboColors.onPrimary,
+    this.backgroundColor = TemboColors.primary,
+    this.foregroundColor = TemboColors.onPrimary,
     this.borderRadius,
     this.elevation,
     this.width,

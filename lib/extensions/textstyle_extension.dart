@@ -4,10 +4,10 @@ import '../constants/colors.dart';
 
 extension TextStyleExtension on TextStyle? {
   TextStyle get withPrimaryColor =>
-      this!.copyWith(color: LightTemboColors.primary);
+      this!.copyWith(color: TemboColors.primary);
 
   TextStyle get withOnPrimaryColor =>
-      this!.copyWith(color: LightTemboColors.onPrimary);
+      this!.copyWith(color: TemboColors.onPrimary);
 
   TextStyle get withFW300 => this!.copyWith(fontWeight: FontWeight.w300);
   TextStyle get withFW400 => this!.copyWith(fontWeight: FontWeight.w400);
@@ -29,6 +29,6 @@ extension TextStyleExtension on TextStyle? {
       );
 
   TextStyle withPrimaryColorIf(bool canApply) => this!.copyWith(
-        color: canApply ? LightTemboColors.primary : null,
+        color: canApply ? TemboColors.primary : null,
       );
 }

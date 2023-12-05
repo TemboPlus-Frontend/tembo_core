@@ -28,7 +28,7 @@ class TemboSnackbar extends SnackBar {
 
   @override
   Color? get backgroundColor =>
-      isError ? LightTemboColors.error : LightTemboColors.primary;
+      isError ? TemboColors.error : TemboColors.primary;
 
   @override
   SnackBarBehavior? get behavior => SnackBarBehavior.floating;
@@ -55,7 +55,7 @@ class _Content extends StatelessWidget {
       message,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: isError ? LightTemboColors.onError : LightTemboColors.onPrimary,
+        color: isError ? TemboColors.onError : TemboColors.onPrimary,
         fontSize: 14,
       ),
     );

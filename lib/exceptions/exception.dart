@@ -1,77 +1,17 @@
-import 'dart:async';
-import 'dart:io';
+import 'package:tembo_ui/constants/locale.dart';
 
-import 'package:flutter/material.dart';
+export 'handle_exception.dart';
 
-import 'api_exception.dart';
+part 'exception_message.dart';
 
-const _defaultMessage = "An error happened";
-const _defaultCode = "unknown";
+class TemboException implements Exception {
+  final ExceptionMessage message;
+  const TemboException(this.message);
 
-class AppException {
-  final String code;
-  final String message;
-  const AppException(this.code, this.message);
+  factory TemboException.unknown() => const TemboException(_unknownMessage);
 
-  const AppException.unknown()
-      : message = _defaultMessage,
-        code = "unknown";
+  factory TemboException.timeout() => const TemboException(_timeoutMessage);
 
-  factory AppException.from(
-    var e,
-    StackTrace? trace, [
-    String code = _defaultCode,
-  ]) {
-    debugPrint(e.runtimeType.toString());
-    debugPrint(e.toString());
-    debugPrint(trace.toString());
-    var message = _defaultMessage;
-    var code = _defaultCode;
-
-    void updateMessage(String c, String m) {
-      code = c;
-      message = m;
-    }
-
-    switch (e.runtimeType) {
-      case AppException:
-        final err = e as AppException;
-        updateMessage(err.code, err.message);
-      case APIException:
-        final err = e as APIException;
-        updateMessage(err.code, err.message);
-      case String:
-        updateMessage(code, e);
-        break;
-      case SocketException:
-        updateMessage(
-          "socket_exception",
-          "Tafadhali angalia internet yako",
-        );
-        break;
-      case TimeoutException:
-        updateMessage(
-          "timeout_exception",
-          "Jaribu Tena. Kuna tatizo lilitokea",
-        );
-        break;
-      case ArgumentError:
-        final exception = e as ArgumentError;
-        updateMessage("unknown", exception.message);
-        break;
-      default:
-        return AppException(code, message);
-    }
-
-    return AppException(code, message);
-  }
-
-  bool get isDefaultMessage => message == _defaultMessage;
-
-  @override
-  String toString() => "Code: $code, Message: $message";
-}
-
-AppException handleException(e, [StackTrace? trace]) {
-  return AppException.from(e, trace ?? StackTrace.current);
+  String fromLocale(TemboLocale locale) =>
+      locale.isEN ? message.enMessage : message.swMessage;
 }

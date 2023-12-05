@@ -17,7 +17,7 @@ class _AppStateNotifier extends StateNotifier<AppState> {
     state = AppState.success(message);
   }
 
-  void showFailure([AppException? error]) {
-    state = AppState.error(error ?? const AppException.unknown());
+  void showFailure([TemboException? exc]) {
+    state = AppState.error(exc ?? TemboException.unknown());
   }
 }

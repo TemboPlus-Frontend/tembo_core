@@ -25,35 +25,8 @@ class ModelStateNotifier<T> extends StateNotifier<ModelState<T>> {
     state = ModelState.success(data);
   }
 
-  void showFailure(AppException error) {
+  void showFailure(TemboException error) {
     state = ModelState.error(error);
-  }
-}
-
-StateNotifierProvider<ModelActionStateNotifier<S, T>, ModelActionState<S, T>>
-    createModelActionStateNotifier<S, T>() {
-  final provider = StateNotifierProvider<ModelActionStateNotifier<S, T>,
-      ModelActionState<S, T>>((ref) {
-    return ModelActionStateNotifier();
-  });
-
-  return provider;
-}
-
-class ModelActionStateNotifier<S, T>
-    extends StateNotifier<ModelActionState<S, T>> {
-  ModelActionStateNotifier() : super(const ModelActionState.initial());
-
-  void showLoading(S message) {
-    state = ModelActionState.loading(message);
-  }
-
-  void showSuccess(T data) {
-    state = ModelActionState.success(data);
-  }
-
-  void showFailure(AppException error) {
-    state = ModelActionState.error(error);
   }
 }
 

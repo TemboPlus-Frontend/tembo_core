@@ -14,7 +14,7 @@ class ModelState<T> with _$ModelState<T> {
 
   const factory ModelState.success(T data) = _Success;
 
-  const factory ModelState.error(AppException error) = _Error;
+  const factory ModelState.error(TemboException exc) = _Error;
 
   T? get data {
     return maybeWhen(
@@ -24,17 +24,6 @@ class ModelState<T> with _$ModelState<T> {
   }
 
   bool get isLoading => maybeWhen(orElse: () => false, loading: () => true);
-}
 
-@freezed
-class ModelActionState<S, T> with _$ModelActionState<S, T> {
-  const ModelActionState._();
-
-  const factory ModelActionState.initial() = __Initial;
-
-  const factory ModelActionState.loading(S action) = __Loading;
-
-  const factory ModelActionState.success(T data) = __Success;
-
-  const factory ModelActionState.error(AppException error) = __Error;
+  TemboException? get exception => maybeWhen(orElse: ()=>null, error: (e) => e);
 }

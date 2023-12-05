@@ -45,7 +45,7 @@ void showLoadingMaterialBanner([String? message]) {
   );
 }
 
-showSnackbar(
+void showSnackbar(
   String message, {
   bool isError = true,
   int? duration,
@@ -57,10 +57,7 @@ showSnackbar(
   ));
 }
 
-showErrorSnackbar(String message, [int? duration]) =>
-    showSnackbar(message, duration: duration);
-
-showInfoSnackbar(String message) => showSnackbar(
+void showInfoSnackbar(String message) => showSnackbar(
       message,
       isError: false,
     );

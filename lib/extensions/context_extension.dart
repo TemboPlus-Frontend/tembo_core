@@ -19,18 +19,10 @@ extension BuildContextExtension on BuildContext {
 
 extension ColorSchemeExt on ColorScheme {
   Color get surfaceContainer {
-    return brightness.isLight
-        ? LightTemboColors.surfaceContainer
-        : DarkTemboColors.surfaceContainer;
+    return TemboColors.surfaceContainer;
   }
 
   Color get onSurfaceContainer {
-    return brightness.isLight
-        ? LightTemboColors.onSurfaceContainer
-        : DarkTemboColors.onSurfaceContainer;
+    return TemboColors.onSurfaceContainer;
   }
-}
-
-extension on Brightness {
-  bool get isLight => this == Brightness.light;
 }

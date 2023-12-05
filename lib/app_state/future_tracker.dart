@@ -1,7 +1,5 @@
 import '../../../source.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../exceptions/exception.dart';
 import 'app_state_notifier.dart';
 import 'model_state_notifier.dart';
 
@@ -17,7 +15,7 @@ class _FutureTracker {
     required Future<T> future,
     void Function()? onLoading,
     void Function(T data)? onDone,
-    void Function(AppException error)? onError,
+    void Function(TemboException exc)? onError,
   }) async {
     if (onLoading != null) onLoading();
     try {
@@ -25,7 +23,7 @@ class _FutureTracker {
       if (onDone != null) onDone(result);
     } catch (e, trace) {
       final error = handleException(e, trace);
-      if (onError == null) showErrorSnackbar(error.message);
+      if (onError == null) _showErrorSnackbar(ref, error);
       if (onError != null) onError(error);
     }
   }
@@ -33,7 +31,7 @@ class _FutureTracker {
   Future<void> trackAppState<T>({
     required Future<T> future,
     void Function(T data)? onDone,
-    void Function(AppException error)? onError,
+    void Function(TemboException exc)? onError,
     String? loadingMessage,
     String? successMessage,
   }) async {
@@ -56,7 +54,7 @@ class _FutureTracker {
     bool showErrorWithSnackbar = true,
     void Function(T)? onSuccess,
     void Function()? onLoading,
-    void Function(AppException)? onError,
+    void Function(TemboException exc)? onError,
   }) async {
     notifier.showLoading();
     if (onLoading != null) onLoading();
@@ -70,8 +68,13 @@ class _FutureTracker {
       notifier.showFailure(error);
       if (onError != null) onError(error);
       if (onError == null && showErrorWithSnackbar) {
-        showErrorSnackbar(error.message);
+        _showErrorSnackbar(ref, error);
       }
     }
   }
+}
+
+void _showErrorSnackbar(ProviderRef ref, TemboException exc, [int? duration]) {
+  final locale = ref.read(localesManagerProvider);
+  return showSnackbar(exc.fromLocale(locale), duration: duration);
 }

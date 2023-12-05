@@ -21,10 +21,10 @@ class TemboOptionButton<T> extends StatelessWidget {
   TemboButtonStyle get unselectedStyle {
     return const TemboButtonStyle(
       backgroundColor: Colors.white,
-      foregroundColor: LightTemboColors.onBackground,
+      foregroundColor: TemboColors.onBackground,
       width: 250,
       height: 60,
-      borderColor: LightTemboColors.border,
+      borderColor: TemboColors.border,
       padding: EdgeInsets.symmetric(horizontal: 30),
     );
   }
@@ -32,7 +32,7 @@ class TemboOptionButton<T> extends StatelessWidget {
   TemboButtonStyle get selectedStyle {
     return unselectedStyle.copyWith(
       borderWidth: 1.5,
-      borderColor: LightTemboColors.primary,
+      borderColor: TemboColors.primary,
     );
   }
 

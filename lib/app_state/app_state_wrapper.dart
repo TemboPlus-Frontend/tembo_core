@@ -1,5 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../../source.dart';
 import 'app_state_notifier.dart';
 
@@ -33,7 +31,7 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
         },
         error: (failure) {
           closeLoadingOverlay();
-          showErrorSnackbar(failure.message);
+          _showErrorSnackbar(ref, failure);
         },
         orElse: () {},
       );
@@ -85,4 +83,9 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
       debugPrint(_.toString());
     }
   }
+}
+
+void _showErrorSnackbar(WidgetRef ref, TemboException exc, [int? duration]) {
+  final locale = ref.read(localesManagerProvider);
+  return showSnackbar(exc.fromLocale(locale), duration: duration);
 }

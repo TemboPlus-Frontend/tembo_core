@@ -44,9 +44,9 @@ enum TemboLocale {
 }
 
 extension TemboLocaleExt on TemboLocale {
-  bool get isSwahili => this == TemboLocale.sw;
+  bool get isSW => this == TemboLocale.sw;
 
-  bool get isEnglish => this == TemboLocale.en;
+  bool get isEN => this == TemboLocale.en;
 
   String formatDate(DateTime date, [String pattern = "dd/MM/yyyy hh:mm:ss aa"]) {
     return date.localizedFormat(this, pattern);

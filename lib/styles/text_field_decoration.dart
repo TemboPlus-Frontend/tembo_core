@@ -25,7 +25,7 @@ class TemboTextFieldDecoration {
   const TemboTextFieldDecoration({
     this.fillColor,
     this.hintStyle = const TextStyle(
-      color: LightTemboColors.hint,
+      color: TemboColors.hint,
       fontWeight: FontWeight.w400,
       fontSize: 15,
     ),
@@ -103,7 +103,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? kBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? LightTemboColors.border,
+                  color: borderColor ?? TemboColors.border,
                   width: borderWidth ?? 1.5,
                 ),
               )
@@ -111,7 +111,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? kBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? LightTemboColors.background,
+                  color: borderColor ?? TemboColors.background,
                   width: borderWidth ?? 1.0,
                 ),
               )
@@ -126,7 +126,7 @@ class TemboTextFieldDecoration {
       focusedBorder: border,
       errorBorder: border.copyWith(
         borderSide: BorderSide(
-          color: LightTemboColors.error,
+          color: TemboColors.error,
           width: border.borderSide.width,
         ),
       ),

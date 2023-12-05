@@ -21,7 +21,7 @@ mixin _$AppState {
     required TResult Function() initial,
     required TResult Function(String? message) loading,
     required TResult Function(String? message) success,
-    required TResult Function(AppException error) error,
+    required TResult Function(TemboException exc) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$AppState {
     TResult? Function()? initial,
     TResult? Function(String? message)? loading,
     TResult? Function(String? message)? success,
-    TResult? Function(AppException error)? error,
+    TResult? Function(TemboException exc)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$AppState {
     TResult Function()? initial,
     TResult Function(String? message)? loading,
     TResult Function(String? message)? success,
-    TResult Function(AppException error)? error,
+    TResult Function(TemboException exc)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,24 +86,25 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -113,7 +114,7 @@ class _$_Initial extends _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -125,7 +126,7 @@ class _$_Initial extends _Initial {
     required TResult Function() initial,
     required TResult Function(String? message) loading,
     required TResult Function(String? message) success,
-    required TResult Function(AppException error) error,
+    required TResult Function(TemboException exc) error,
   }) {
     return initial();
   }
@@ -136,7 +137,7 @@ class _$_Initial extends _Initial {
     TResult? Function()? initial,
     TResult? Function(String? message)? loading,
     TResult? Function(String? message)? success,
-    TResult? Function(AppException error)? error,
+    TResult? Function(TemboException exc)? error,
   }) {
     return initial?.call();
   }
@@ -147,7 +148,7 @@ class _$_Initial extends _Initial {
     TResult Function()? initial,
     TResult Function(String? message)? loading,
     TResult Function(String? message)? success,
-    TResult Function(AppException error)? error,
+    TResult Function(TemboException exc)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -195,24 +196,25 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends AppState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -220,7 +222,7 @@ class __$$_LoadingCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_Loading(
+    return _then(_$LoadingImpl(
       freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -231,8 +233,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading extends _Loading {
-  const _$_Loading(this.message) : super._();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl(this.message) : super._();
 
   @override
   final String? message;
@@ -246,7 +248,7 @@ class _$_Loading extends _Loading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loading &&
+            other is _$LoadingImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -256,8 +258,8 @@ class _$_Loading extends _Loading {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
-      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -265,7 +267,7 @@ class _$_Loading extends _Loading {
     required TResult Function() initial,
     required TResult Function(String? message) loading,
     required TResult Function(String? message) success,
-    required TResult Function(AppException error) error,
+    required TResult Function(TemboException exc) error,
   }) {
     return loading(message);
   }
@@ -276,7 +278,7 @@ class _$_Loading extends _Loading {
     TResult? Function()? initial,
     TResult? Function(String? message)? loading,
     TResult? Function(String? message)? success,
-    TResult? Function(AppException error)? error,
+    TResult? Function(TemboException exc)? error,
   }) {
     return loading?.call(message);
   }
@@ -287,7 +289,7 @@ class _$_Loading extends _Loading {
     TResult Function()? initial,
     TResult Function(String? message)? loading,
     TResult Function(String? message)? success,
-    TResult Function(AppException error)? error,
+    TResult Function(TemboException exc)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -335,29 +337,30 @@ class _$_Loading extends _Loading {
 }
 
 abstract class _Loading extends AppState {
-  const factory _Loading(final String? message) = _$_Loading;
+  const factory _Loading(final String? message) = _$LoadingImpl;
   const _Loading._() : super._();
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -365,7 +368,7 @@ class __$$_SuccessCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_Success(
+    return _then(_$SuccessImpl(
       freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -376,8 +379,8 @@ class __$$_SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Success extends _Success {
-  const _$_Success(this.message) : super._();
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(this.message) : super._();
 
   @override
   final String? message;
@@ -391,7 +394,7 @@ class _$_Success extends _Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Success &&
+            other is _$SuccessImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -401,8 +404,8 @@ class _$_Success extends _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -410,7 +413,7 @@ class _$_Success extends _Success {
     required TResult Function() initial,
     required TResult Function(String? message) loading,
     required TResult Function(String? message) success,
-    required TResult Function(AppException error) error,
+    required TResult Function(TemboException exc) error,
   }) {
     return success(message);
   }
@@ -421,7 +424,7 @@ class _$_Success extends _Success {
     TResult? Function()? initial,
     TResult? Function(String? message)? loading,
     TResult? Function(String? message)? success,
-    TResult? Function(AppException error)? error,
+    TResult? Function(TemboException exc)? error,
   }) {
     return success?.call(message);
   }
@@ -432,7 +435,7 @@ class _$_Success extends _Success {
     TResult Function()? initial,
     TResult Function(String? message)? loading,
     TResult Function(String? message)? success,
-    TResult Function(AppException error)? error,
+    TResult Function(TemboException exc)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -480,73 +483,75 @@ class _$_Success extends _Success {
 }
 
 abstract class _Success extends AppState {
-  const factory _Success(final String? message) = _$_Success;
+  const factory _Success(final String? message) = _$SuccessImpl;
   const _Success._() : super._();
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppException error});
+  $Res call({TemboException exc});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? exc = null,
   }) {
-    return _then(_$_Error(
-      null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as AppException,
+    return _then(_$ErrorImpl(
+      null == exc
+          ? _value.exc
+          : exc // ignore: cast_nullable_to_non_nullable
+              as TemboException,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Error extends _Error {
-  const _$_Error(this.error) : super._();
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl(this.exc) : super._();
 
   @override
-  final AppException error;
+  final TemboException exc;
 
   @override
   String toString() {
-    return 'AppState.error(error: $error)';
+    return 'AppState.error(exc: $exc)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
-            (identical(other.error, error) || other.error == error));
+            other is _$ErrorImpl &&
+            (identical(other.exc, exc) || other.exc == exc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, exc);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -554,9 +559,9 @@ class _$_Error extends _Error {
     required TResult Function() initial,
     required TResult Function(String? message) loading,
     required TResult Function(String? message) success,
-    required TResult Function(AppException error) error,
+    required TResult Function(TemboException exc) error,
   }) {
-    return error(this.error);
+    return error(exc);
   }
 
   @override
@@ -565,9 +570,9 @@ class _$_Error extends _Error {
     TResult? Function()? initial,
     TResult? Function(String? message)? loading,
     TResult? Function(String? message)? success,
-    TResult? Function(AppException error)? error,
+    TResult? Function(TemboException exc)? error,
   }) {
-    return error?.call(this.error);
+    return error?.call(exc);
   }
 
   @override
@@ -576,11 +581,11 @@ class _$_Error extends _Error {
     TResult Function()? initial,
     TResult Function(String? message)? loading,
     TResult Function(String? message)? success,
-    TResult Function(AppException error)? error,
+    TResult Function(TemboException exc)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(exc);
     }
     return orElse();
   }
@@ -624,11 +629,11 @@ class _$_Error extends _Error {
 }
 
 abstract class _Error extends AppState {
-  const factory _Error(final AppException error) = _$_Error;
+  const factory _Error(final TemboException exc) = _$ErrorImpl;
   const _Error._() : super._();
 
-  AppException get error;
+  TemboException get exc;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

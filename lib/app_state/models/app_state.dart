@@ -14,5 +14,5 @@ class AppState with _$AppState {
 
   const factory AppState.success(String? message) = _Success;
 
-  const factory AppState.error(AppException error) = _Error;
+  const factory AppState.error(TemboException exc) = _Error;
 }
