@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:tembo_ui/components/form/form.dart';
-import 'package:tembo_ui/tembo_ui.dart';
+import 'package:tembo_ui/source.dart';
 
 class ExampleForm extends StatefulWidget {
   const ExampleForm({super.key});
@@ -10,24 +9,48 @@ class ExampleForm extends StatefulWidget {
 }
 
 class _ExampleFormState extends State<ExampleForm> {
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+
   final formKey = GlobalKey<TemboFormState>();
+
+  String? size;
 
   @override
   Widget build(BuildContext context) {
     return TemboForm(
       key: formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TemboTextField.labelled(
+          TemboTextField.labelled(
             "Name",
+            controller: nameController,
+            textInputType: TextInputType.name,
+            validator: (s) => validateName(s, label: "Name"),
+          ),
+          vSpace(),
+          TemboTextField.labelled(
+            "Phone",
+            controller: phoneController,
+            textInputType: TextInputType.phone,
+            validator: validateTZPhone,
+          ),
+          vSpace(),
+          TemboTextField.labelled(
+            "Email",
+            controller: emailController,
             textInputType: TextInputType.emailAddress,
             validator: validateEmail,
           ),
           vSpace(),
-          const TemboTextField.labelled(
-            "Email",
-            textInputType: TextInputType.emailAddress,
-            validator: validateEmail,
+          const TemboFormLabel("Choose Size"),
+          TemboChips<String>(
+            options: const ["Small", "Medium", "Large"],
+            name: (e) => e,
+            onTap: chooseSize,
+            selected: (e) => size == e,
           ),
           vSpace(),
           TemboTextButton(
@@ -40,6 +63,8 @@ class _ExampleFormState extends State<ExampleForm> {
       ),
     );
   }
+
+  void chooseSize(String e) => setState(() => size = e);
 
   void onPressed() {
     formKey.currentState?.validate();

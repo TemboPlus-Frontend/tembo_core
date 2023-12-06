@@ -1,27 +1,51 @@
-String? validateName(String? text, {String? label, bool optional = false}) {
+import 'package:tembo_ui/exceptions/exception.dart';
+
+Message? validateName(String? text, {String? label, bool optional = false}) {
   if (text == null || text.trim().isEmpty) {
-    return optional ? null : '${label ?? "This field"} can\'t be empty';
+    return optional
+        ? null
+        : Message(
+            enMessage: '${label ?? "This field"} can\'t be empty',
+            swMessage: label == null ? 'Lazima ujaze hapa' : '$label ni lazima',
+          );
   }
   return null;
 }
 
-String? validateEmail(String? email, {bool optional = false}) {
+Message? validateEmail(String? email, {bool optional = false}) {
   if (email == null || email.trim().isEmpty) {
-    return optional ? null : 'Email can\'t be empty';
+    return optional
+        ? null
+        : const Message(
+            enMessage: 'Email can\'t be empty',
+            swMessage: 'Lazima uweke barua pepe',
+          );
   }
+  
   final regex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z]+\.[a-zA-Z]+");
   final isValidEmail = regex.hasMatch(email);
-  if (!isValidEmail) return 'Invalid Email';
+  if (!isValidEmail) {
+    return const Message(
+      enMessage: 'Invalid Email',
+      swMessage: 'Barua pepe sio sahihi',
+    );
+  }
   return null;
 }
 
-String? validatePassword(String? password) {
+Message? validatePassword(String? password) {
   if (password == null || password.trim().isEmpty) {
-    return 'Password can\'t be empty';
+    return const Message(
+      enMessage: 'Password can\'t be empty',
+      swMessage: 'Msimbo ni lazima',
+    );
   }
-  if (password.length < 8) {
-    return 'Password should contain at least 8 characters';
+  if (password.length < 6) {
+    return const Message(
+      enMessage: 'Password should contain at least 6 characters',
+      swMessage: 'Msimbo lazima uwe na zaidi ya herufi 6',
+    );
   }
   return null;
 }

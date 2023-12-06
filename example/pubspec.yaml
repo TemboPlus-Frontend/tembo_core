@@ -7,8 +7,12 @@ environment:
   sdk: '>=3.1.5 <4.0.0'
 
 dependencies:
+  flex_color_scheme: ^7.3.1
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.3.6
+  hive: ^2.2.3
+  path_provider: ^2.0.11
   tembo_ui:
     path: "/Users/macbookpro/Downloads/programs/packages/tembo_ui/"
 

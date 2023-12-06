@@ -11,3 +11,4 @@ export 'styles/source.dart';
 export 'components/source.dart';
 export 'extensions/source.dart';
 export 'utils/source.dart';
+export 'widgets/source.dart';

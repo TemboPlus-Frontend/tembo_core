@@ -4,7 +4,7 @@ import 'package:tembo_ui/source.dart';
 class TemboTextField extends StatefulWidget {
   final TextEditingController? controller;
   final bool? obscureText;
-  final String? Function(String?)? validator;
+  final Message? Function(String?)? validator;
   final ValueChanged<String>? onChanged;
   final TextCapitalization? textCapitalization;
   final TextInputType? textInputType;
@@ -59,7 +59,7 @@ class TemboTextField extends StatefulWidget {
 class _TemboTextFieldState extends State<TemboTextField> {
   final controllerHasTextNotifier = ValueNotifier(false);
 
-  final errorNotifier = ValueNotifier<String?>(null);
+  final errorNotifier = ValueNotifier<Message?>(null);
 
   @override
   void initState() {
@@ -92,7 +92,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
         SizedBox(
           width: decoration.size?.width,
           height: decoration.size?.height,
-          child: ValueListenableBuilder<String?>(
+          child: ValueListenableBuilder<Message?>(
               valueListenable: errorNotifier,
               builder: (context, error, snapshot) {
                 final hasError = error != null;
@@ -143,12 +143,14 @@ class _TemboTextFieldState extends State<TemboTextField> {
         if (error == null) return Container();
         return Padding(
           padding: const EdgeInsets.only(top: 5),
-          child: TemboText(
-            error,
-            style: context.textTheme.bodyMedium.withColor(
-              TemboColors.error,
-            ),
-          ),
+          child: LocaleWrapper(child: (context, locale) {
+            return TemboText(
+              error.fromLocale(locale),
+              style: context.textTheme.bodyMedium.withColor(
+                TemboColors.error,
+              ),
+            );
+          }),
         );
       },
     );

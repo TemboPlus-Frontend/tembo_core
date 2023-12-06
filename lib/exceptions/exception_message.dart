@@ -1,21 +1,25 @@
 part of 'exception.dart';
 
-class ExceptionMessage {
+class Message {
   final String enMessage;
   final String swMessage;
 
-  const ExceptionMessage({
+  const Message({
     required this.enMessage,
     required this.swMessage,
   });
+
+  String fromLocale(TemboLocale locale) {
+    return locale.isEN ? enMessage : swMessage;
+  }
 }
 
-const _unknownMessage = ExceptionMessage(
+const _unknownMessage = Message(
   enMessage: "Unknown error",
   swMessage: "Tatizo limetokea",
 );
 
-const _timeoutMessage = ExceptionMessage(
+const _timeoutMessage = Message(
   enMessage: "Please try again when your internet is stable",
   swMessage: "Tafadhali jaribu tena mtandao wako ukiwa thabiti",
 );

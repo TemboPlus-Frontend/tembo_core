@@ -22,7 +22,7 @@ class TemboTextButton extends StatefulWidget {
 
 class _TemboTextButtonState extends State<TemboTextButton> {
   TemboButtonStyle get _style =>
-      widget.style ?? const TemboButtonStyle.transparent();
+      widget.style ?? const TemboButtonStyle.outline();
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
       style: _style.getTextStyle ??
           TextStyle(
             color: _style.foregroundColor,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
       child: IconTheme(
         data: IconThemeData(color: _style.foregroundColor),

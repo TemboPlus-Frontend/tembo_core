@@ -4,6 +4,9 @@ class TemboColors {
   static const primary = Color(0xff04448B);
   static const onPrimary = Colors.white;
 
+  static const primaryContainer = Color.fromARGB(255, 178, 207, 240);
+  static const onPrimaryContainer = Color.fromARGB(255, 73, 74, 74);
+
   static const border = Colors.black45;
   static const hint = Colors.black54;
   static const title = Color(0xffAAC0CE);
@@ -25,12 +28,16 @@ class TemboColors {
 class TemboColorScheme {
   final Color? primary,
       onPrimary,
+      primaryContainer,
+      onPrimaryContainer,
       border,
       hint,
       title,
       body,
       background,
       onBackground,
+      surface,
+      onSurface,
       surfaceContainer,
       onSurfaceContainer,
       error,
@@ -49,6 +56,10 @@ class TemboColorScheme {
     this.onSurfaceContainer,
     this.error,
     this.onError,
+    this.primaryContainer,
+    this.onPrimaryContainer,
+    this.surface,
+    this.onSurface,
   });
 
   const TemboColorScheme.light({
@@ -64,5 +75,9 @@ class TemboColorScheme {
     this.onSurfaceContainer = TemboColors.onSurfaceContainer,
     this.error = TemboColors.error,
     this.onError = TemboColors.onError,
+    this.primaryContainer = TemboColors.primaryContainer,
+    this.onPrimaryContainer = TemboColors.onPrimaryContainer,
+    this.surface = TemboColors.surface,
+    this.onSurface = TemboColors.onSurface,
   });
 }

@@ -5,7 +5,7 @@ export 'handle_exception.dart';
 part 'exception_message.dart';
 
 class TemboException implements Exception {
-  final ExceptionMessage message;
+  final Message message;
   const TemboException(this.message);
 
   factory TemboException.unknown() => const TemboException(_unknownMessage);

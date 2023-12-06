@@ -9,7 +9,7 @@ class TemboLabelledFormField extends StatelessWidget {
 
   final TextEditingController? controller;
   final bool? obscureText;
-  final String? Function(String?)? validator;
+  final Message? Function(String?)? validator;
   final ValueChanged<String>? onChanged;
   final TextCapitalization? textCapitalization;
   final TextInputType? textInputType;
