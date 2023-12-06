@@ -8,9 +8,9 @@ class ColorsScheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: horizontal() + vertical(),
-      child: const OverflowBar(
+      child: const Wrap(
         spacing: 20,
-        overflowSpacing: 20,
+        runSpacing: 40,
         children: [
           ColorBox(
             "Background",
@@ -26,6 +26,11 @@ class ColorsScheme extends StatelessWidget {
             "Primary Container",
             TemboColors.primaryContainer,
             TemboColors.onPrimaryContainer,
+          ),
+          ColorBox(
+            "Secondary",
+            TemboColors.secondary,
+            TemboColors.onSecondary,
           ),
           ColorBox(
             "Surface ",

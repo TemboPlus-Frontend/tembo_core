@@ -22,7 +22,7 @@ class TemboTextButton extends StatefulWidget {
 
 class _TemboTextButtonState extends State<TemboTextButton> {
   TemboButtonStyle get _style =>
-      widget.style ?? const TemboButtonStyle.outline();
+      widget.style ?? const TemboButtonStyle.filled();
 
   @override
   Widget build(BuildContext context) {

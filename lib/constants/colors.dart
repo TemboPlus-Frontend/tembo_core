@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
 class TemboColors {
-  static const primary = Color(0xff04448B);
+  static const primary = Color.fromARGB(255, 24, 25, 26);
   static const onPrimary = Colors.white;
 
-  static const primaryContainer = Color.fromARGB(255, 178, 207, 240);
-  static const onPrimaryContainer = Color.fromARGB(255, 73, 74, 74);
+  static const primaryContainer = Color(0xff989898);
+  static const onPrimaryContainer = Colors.white;
 
-  static const border = Colors.black45;
-  static const hint = Colors.black54;
-  static const title = Color(0xffAAC0CE);
-  static const body = Colors.black87;
+  static const secondary = Color(0xff04448B);
+  static const onSecondary = Colors.white;
 
   static const background = Colors.white;
   static const onBackground = Colors.black87;
@@ -23,6 +21,11 @@ class TemboColors {
 
   static const error = Color(0xff841617);
   static const onError = Colors.white;
+
+  static const border = Colors.black45;
+  static const hint = Colors.black54;
+  static const title = Color(0xffAAC0CE);
+  static const body = Colors.black87;
 }
 
 class TemboColorScheme {
@@ -30,6 +33,8 @@ class TemboColorScheme {
       onPrimary,
       primaryContainer,
       onPrimaryContainer,
+      secondary,
+      onSecondary,
       border,
       hint,
       title,
@@ -46,6 +51,8 @@ class TemboColorScheme {
   const TemboColorScheme({
     this.primary,
     this.onPrimary,
+    this.secondary,
+    this.onSecondary,
     this.border,
     this.hint,
     this.title,
@@ -65,6 +72,10 @@ class TemboColorScheme {
   const TemboColorScheme.light({
     this.primary = TemboColors.primary,
     this.onPrimary = TemboColors.onPrimary,
+    this.primaryContainer = TemboColors.primaryContainer,
+    this.onPrimaryContainer = TemboColors.onPrimaryContainer,
+    this.secondary = TemboColors.secondary,
+    this.onSecondary = TemboColors.onSecondary,
     this.border = TemboColors.border,
     this.hint = TemboColors.hint,
     this.title = TemboColors.title,
@@ -75,8 +86,6 @@ class TemboColorScheme {
     this.onSurfaceContainer = TemboColors.onSurfaceContainer,
     this.error = TemboColors.error,
     this.onError = TemboColors.onError,
-    this.primaryContainer = TemboColors.primaryContainer,
-    this.onPrimaryContainer = TemboColors.onPrimaryContainer,
     this.surface = TemboColors.surface,
     this.onSurface = TemboColors.onSurface,
   });
