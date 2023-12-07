@@ -34,6 +34,24 @@ class TemboTextField extends StatefulWidget {
   })  : label = null,
         super(key: key);
 
+  TemboTextField.value(
+    String value, {
+    this.label,
+    this.obscureText,
+    this.validator,
+    this.focusNode,
+    this.enabled,
+    this.textCapitalization,
+    this.onChanged,
+    this.textInputType,
+    this.formatters,
+    this.hint,
+    Key? key,
+    this.textAlign,
+    this.decoration,
+  })  : controller = TextEditingController(text: value),
+        super(key: key);
+
   const TemboTextField.labelled(
     String lbl, {
     this.controller,
@@ -84,11 +102,10 @@ class _TemboTextFieldState extends State<TemboTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null)
-          TemboText(
+          TemboLabel(
             widget.label!,
             style: decoration.labelStyle,
           ),
-        if (widget.label != null) vSpace(12),
         SizedBox(
           width: decoration.size?.width,
           height: decoration.size?.height,

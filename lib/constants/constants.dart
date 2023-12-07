@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
-
-const kPagePadding = EdgeInsets.only(top: 20, left: 15, right: 15);
-
-const kBorderRadius = 5.0;
-const kBorderRadius2 = 15.0;
-const kBorderRadius3 = 30.0;
-
 const kdx = 15.0;
 
+const kBorderRadius = 0.0;
+const kBorderRadius2 = 5.0;
+const kBorderRadius3 = 15.0;
+const kBorderRadius4 = 30.0;
+
+const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
+const kPagePadding = EdgeInsets.only(top: 20, left: 15, right: 15);
 const buttonPadding = EdgeInsets.symmetric(horizontal: 15, vertical: 6);
 
 const kMaxConstraints = BoxConstraints.expand();

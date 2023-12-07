@@ -43,6 +43,11 @@ class ColorsScheme extends StatelessWidget {
             TemboColors.onSurfaceContainer,
           ),
           ColorBox(
+            "Success ",
+            TemboColors.success,
+            TemboColors.onSuccess,
+          ),
+          ColorBox(
             "Error ",
             TemboColors.error,
             TemboColors.onError,

@@ -16,7 +16,7 @@ extension StringExt on String {
 }
 
 extension DateTimeExt on DateTime {
-  String format({String? pattern}) {
+  String format([String? pattern]) {
     return DateFormat(pattern ?? "yyyy-MM-dd").format(this);
   }
 

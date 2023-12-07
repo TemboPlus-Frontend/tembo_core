@@ -22,6 +22,9 @@ class TemboColors {
   static const error = Color(0xff841617);
   static const onError = Colors.white;
 
+  static const success = Color(0xff006400);
+  static const onSuccess = Colors.white;
+
   static const border = Colors.black45;
   static const hint = Colors.black54;
   static const title = Color(0xffAAC0CE);
@@ -45,6 +48,8 @@ class TemboColorScheme {
       onSurface,
       surfaceContainer,
       onSurfaceContainer,
+      success,
+      onSuccess,
       error,
       onError;
 
@@ -67,6 +72,8 @@ class TemboColorScheme {
     this.onPrimaryContainer,
     this.surface,
     this.onSurface,
+    this.success,
+    this.onSuccess,
   });
 
   const TemboColorScheme.light({
@@ -88,5 +95,7 @@ class TemboColorScheme {
     this.onError = TemboColors.onError,
     this.surface = TemboColors.surface,
     this.onSurface = TemboColors.onSurface,
+    this.success = TemboColors.success,
+    this.onSuccess = TemboColors.onSuccess,
   });
 }

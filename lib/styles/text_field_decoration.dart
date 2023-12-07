@@ -20,7 +20,6 @@ class TemboTextFieldDecoration {
   final Widget? suffixIcon;
   final TemboBorderStyle? borderStyle;
   final EdgeInsets? padding;
-  // final bool useDefinedStylesForDisabledBorder;
 
   const TemboTextFieldDecoration({
     this.fillColor,
@@ -36,11 +35,7 @@ class TemboTextFieldDecoration {
     ),
     this.hint,
     this.label,
-    this.labelStyle = const TextStyle(
-      color: TemboColors.onSurface,
-      fontWeight: FontWeight.w400,
-      fontSize: 14,
-    ),
+    this.labelStyle,
     this.borderWidth,
     this.borderRadius,
     this.borderColor,
@@ -50,7 +45,6 @@ class TemboTextFieldDecoration {
     this.suffixIcon,
     this.borderStyle = TemboBorderStyle.outline,
     this.padding,
-    // this.useDefinedStylesForDisabledBorder = false,
   });
 
   TemboTextFieldDecoration copyWith({

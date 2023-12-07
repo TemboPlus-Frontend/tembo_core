@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import 'phone_utils/mobile_number.dart';
+
 /// Makes sure every first letter in a sentence is uppercased.
 class OnlyIntegerFormatter extends TextInputFormatter {
   @override
@@ -13,6 +15,36 @@ class OnlyIntegerFormatter extends TextInputFormatter {
     } else {
       return oldValue;
     }
+  }
+}
+
+class OnlyTIGOAIRTELFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final text = newValue.text.trim();
+    if (text.length == 2) {
+      final allowedPrefixes =
+          [Telecom.airtel, Telecom.tigo].expand((e) => e.prefixes);
+      if (allowedPrefixes.contains(text)) return newValue;
+      return oldValue;
+    }
+
+    if (text.length >= 9) {
+      // for copy-pasted number
+      final mobileNumber =
+          getMobileNumberFrom(text, outputFormat: MobileNumberFormat.none);
+      if (mobileNumber == null) return oldValue;
+
+      return newValue.copyWith(
+        text: mobileNumber.number,
+        selection: TextSelection.fromPosition(
+          TextPosition(offset: mobileNumber.number.length),
+        ),
+      );
+    }
+
+    return newValue;
   }
 }
 

@@ -45,7 +45,7 @@ class _ExampleFormState extends State<ExampleForm> {
             validator: validateEmail,
           ),
           vSpace(),
-          const TemboFormLabel("Choose Size"),
+          const TemboLabel("Choose Size"),
           TemboChips<String>(
             options: const ["Small", "Medium", "Large"],
             name: (e) => e,

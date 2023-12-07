@@ -72,13 +72,13 @@ class TemboButtonStyle {
       return Size(width!.toDouble(), height!.toDouble());
     }
     if (width != null && height == null) {
-      return Size(width!.toDouble(), 45);
+      return Size(width!.toDouble(), 50);
     }
     if (width == null && height != null) {
       return Size.fromHeight(height!.toDouble());
     }
     if (width == null && height == null) {
-      return const Size.fromHeight(45);
+      return const Size.fromHeight(50);
     }
     return null;
   }

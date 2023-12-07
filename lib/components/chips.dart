@@ -56,8 +56,9 @@ class TemboOptionButton extends StatelessWidget {
       backgroundColor: context.colorScheme.background,
       foregroundColor: context.colorScheme.onBackground,
       borderColor: context.colorScheme.primaryContainer,
-      borderWidth: 1.5,
-      borderRadius: kBorderRadius3,
+      textStyle: context.textTheme.bodyMedium.withFW400,
+      borderWidth: 1.0,
+      borderRadius: kBorderRadius4,
       padding: horizontal() + vertical(),
     );
   }
@@ -66,6 +67,7 @@ class TemboOptionButton extends StatelessWidget {
     return unselectedStyle(context).copyWith(
       backgroundColor: context.colorScheme.primaryContainer,
       foregroundColor: context.colorScheme.onPrimaryContainer,
+      textStyle: context.textTheme.bodyMedium.withFW500,
       borderWidth: 0,
       borderColor: Colors.transparent,
     );

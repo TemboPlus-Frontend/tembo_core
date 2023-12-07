@@ -25,4 +25,12 @@ extension ColorSchemeExt on ColorScheme {
   Color get onSurfaceContainer {
     return TemboColors.onSurfaceContainer;
   }
+
+  Color get success {
+    return TemboColors.success;
+  }
+
+  Color get onSuccess {
+    return TemboColors.onSuccess;
+  }
 }
