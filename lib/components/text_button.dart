@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
-import '../styles/source.dart';
+import 'package:flutter/gestures.dart';
+import 'package:tembo_ui/source.dart';
 
 class TemboTextButton extends StatefulWidget {
   final VoidCallback onPressed;
@@ -79,6 +78,47 @@ class _TemboTextButtonState extends State<TemboTextButton> {
       child: IconTheme(
         data: IconThemeData(color: _style.foregroundColor),
         child: widget.child,
+      ),
+    );
+  }
+}
+
+
+class TemboPlainTextButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  final TextStyle? style;
+
+  final bool _decorated;
+
+  const TemboPlainTextButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.style,
+  }) : _decorated = false;
+
+  const TemboPlainTextButton.decorated({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.style,
+  }) : _decorated = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: RichText(
+        text: TextSpan(
+          text: text,
+          style:
+              (style ?? context.textTheme.bodyMedium.bold.withPrimaryColor)
+                  .copyWith(
+            decoration: _decorated ? TextDecoration.underline : null,
+            decorationColor: _decorated ? context.colorScheme.primary : null,
+          ),
+          recognizer: TapGestureRecognizer()..onTap = onPressed,
+        ),
       ),
     );
   }
