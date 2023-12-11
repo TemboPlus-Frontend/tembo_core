@@ -8,9 +8,9 @@ extension BuildContextExtension on BuildContext {
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
-  double get maxWidth => MediaQuery.of(this).size.width;
+  double get viewportWidth => MediaQuery.of(this).size.width;
 
-  double get maxHeight => MediaQuery.of(this).size.height;
+  double get viewportHeight => MediaQuery.of(this).size.height;
 
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
 

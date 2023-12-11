@@ -100,6 +100,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (widget.label != null)
           TemboLabel(
@@ -120,7 +121,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
                   focusNode: widget.focusNode,
                   decoration: hasError
                       ? decoration
-                          .copyWith(borderColor: TemboColors.error)
+                          .copyWith(borderColor: context.colorScheme.error)
                           .getInputDecoration
                       : decoration.getInputDecoration.copyWith(
                           errorStyle: context.textTheme.bodySmall.withSize(0),
@@ -164,7 +165,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
             return TemboText(
               error.fromLocale(locale),
               style: context.textTheme.bodyMedium.withColor(
-                TemboColors.error,
+                context.colorScheme.error,
               ),
             );
           }),

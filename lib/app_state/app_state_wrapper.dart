@@ -52,7 +52,7 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
                 borderRadius: BorderRadius.circular(20),
               ),
               height: 200,
-              width: context.maxWidth * .9,
+              width: context.viewportWidth * .9,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
