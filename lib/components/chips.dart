@@ -25,6 +25,7 @@ class _TemboChipsState<T extends Comparable<T>> extends State<TemboChips<T>> {
     return Wrap(
       spacing: kHorPadding.left,
       runSpacing: kHorPadding.left,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: List.generate(widget.options.length, buildButton),
     );
   }
@@ -60,6 +61,8 @@ class TemboOptionButton extends StatelessWidget {
       borderWidth: 1.0,
       borderRadius: kBorderRadius4,
       padding: horizontal() + vertical(),
+      height: null,
+      width: null,
     );
   }
 

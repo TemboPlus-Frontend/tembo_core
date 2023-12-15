@@ -18,22 +18,55 @@ class OnlyIntegerFormatter extends TextInputFormatter {
   }
 }
 
-class OnlyTIGOAIRTELFormatter extends TextInputFormatter {
+class FixedLengthFormatter extends TextInputFormatter {
+  final int length;
+  const FixedLengthFormatter(this.length);
+
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.length > length) return oldValue;
+    return newValue;
+  }
+}
+
+class TelecomFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     final text = newValue.text.trim();
+    // must start with "0"
+    if (text.length == 1) {
+      if (text != "0") return oldValue;
+    }
+
     if (text.length == 2) {
-      final allowedPrefixes =
-          [Telecom.airtel, Telecom.tigo].expand((e) => e.prefixes);
-      if (allowedPrefixes.contains(text)) return newValue;
+      if (text.startsWith("0")) {
+        final allowedPrefixes = [Telecom.airtel, Telecom.tigo, Telecom.vodacom]
+            .expand((e) => e.prefixes);
+        final oneLetterPrefixes = allowedPrefixes.map((e) => e.substring(0, 1));
+        if (oneLetterPrefixes.contains(text.substring(1))) return newValue;
+        return oldValue;
+      }
+
       return oldValue;
     }
 
-    if (text.length >= 9) {
+    if (text.length == 3) {
+      if (text.startsWith("0")) {
+        final allowedPrefixes = [Telecom.airtel, Telecom.tigo, Telecom.vodacom]
+            .expand((e) => e.prefixes);
+        if (allowedPrefixes.contains(text.substring(1))) return newValue;
+        return oldValue;
+      }
+
+      return oldValue;
+    }
+
+    if (text.length >= 10) {
       // for copy-pasted number
       final mobileNumber =
-          getMobileNumberFrom(text, outputFormat: MobileNumberFormat.none);
+          getMobileNumberFrom(text, outputFormat: MobileNumberFormat.s0);
       if (mobileNumber == null) return oldValue;
 
       return newValue.copyWith(
@@ -47,6 +80,8 @@ class OnlyTIGOAIRTELFormatter extends TextInputFormatter {
     return newValue;
   }
 }
+
+// 255713456789
 
 /// Makes sure every first letter in a sentence is uppercased.
 class OTPFormatter extends TextInputFormatter {

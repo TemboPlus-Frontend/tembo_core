@@ -18,7 +18,7 @@ class TemboButtonStyle {
     this.borderRadius,
     this.elevation,
     this.width,
-    this.padding = kHorPadding,
+    this.padding,
     this.height,
     this.textStyle,
     this.useContinuousBorder = false,
@@ -35,7 +35,7 @@ class TemboButtonStyle {
     this.elevation,
     this.width,
     this.height,
-    this.padding = kHorPadding,
+    this.padding,
     this.textStyle,
     this.useContinuousBorder = false,
   })  : borderColor = Colors.transparent,
@@ -48,7 +48,7 @@ class TemboButtonStyle {
     this.borderRadius = kBorderRadius,
     this.width,
     this.height,
-    this.padding = kHorPadding,
+    this.padding,
     this.textStyle,
   })  : useContinuousBorder = false,
         elevation = 0,
@@ -58,7 +58,7 @@ class TemboButtonStyle {
     this.foregroundColor = Colors.black,
     this.width,
     this.height,
-    this.padding = kHorPadding,
+    this.padding,
     this.textStyle,
   })  : borderRadius = null,
         useContinuousBorder = false,
@@ -77,9 +77,9 @@ class TemboButtonStyle {
     if (width == null && height != null) {
       return Size.fromHeight(height!.toDouble());
     }
-    if (width == null && height == null) {
+    /*   if (width == null && height == null) {
       return const Size.fromHeight(50);
-    }
+    } */
     return null;
   }
 
@@ -174,7 +174,9 @@ class TemboButtonStyle {
             ),
       textStyle: getTextStyle,
       fixedSize: _size,
-      padding: padding,
+      padding: _size == null && padding == null
+          ? horizontal() + vertical()
+          : padding,
     );
   }
 }

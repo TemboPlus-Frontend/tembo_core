@@ -36,6 +36,11 @@ class _ExampleFormState extends State<ExampleForm> {
             controller: phoneController,
             textInputType: TextInputType.phone,
             validator: validateTZPhone,
+            formatters: [
+              NoSpaceFormatter(),
+              OnlyIntegerFormatter(),
+              TelecomFormatter(),
+            ],
           ),
           vSpace(),
           TemboTextField.labelled(
