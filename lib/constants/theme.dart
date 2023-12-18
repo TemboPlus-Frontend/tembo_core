@@ -11,6 +11,8 @@ final _flexColorCheme = FlexColorScheme.light(
   onPrimary: colorScheme.onPrimary,
   primaryContainer: colorScheme.primaryContainer,
   onPrimaryContainer: colorScheme.onPrimaryContainer,
+  secondary: colorScheme.secondary,
+  onSecondary: colorScheme.onSecondary,
   error: colorScheme.primary,
   onError: colorScheme.onPrimary,
   background: colorScheme.background,

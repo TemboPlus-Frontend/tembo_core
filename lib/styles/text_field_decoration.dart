@@ -103,7 +103,7 @@ class TemboTextFieldDecoration {
         ? borderStyle == TemboBorderStyle.outline
             ? OutlineInputBorder(
                 borderRadius:
-                    BorderRadius.circular(borderRadius ?? kBorderRadius),
+                    BorderRadius.circular(borderRadius ?? kBorderRadius3),
                 borderSide: BorderSide(
                   color: borderColor ?? TemboColors.border,
                   width: borderWidth ?? 1.5,
@@ -111,7 +111,7 @@ class TemboTextFieldDecoration {
               )
             : UnderlineInputBorder(
                 borderRadius:
-                    BorderRadius.circular(borderRadius ?? kBorderRadius),
+                    BorderRadius.circular(borderRadius ?? kBorderRadius3),
                 borderSide: BorderSide(
                   color: borderColor ?? TemboColors.background,
                   width: borderWidth ?? 1.0,
@@ -125,7 +125,12 @@ class TemboTextFieldDecoration {
       isDense: false,
       border: border,
       enabledBorder: border,
-      focusedBorder: border,
+      focusedBorder: border.copyWith(
+        borderSide: BorderSide(
+          color: TemboColors.secondary,
+          width: border.borderSide.width,
+        ),
+      ),
       errorBorder: border.copyWith(
         borderSide: BorderSide(
           color: TemboColors.error,

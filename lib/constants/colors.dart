@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 class TemboColors {
-  static const primary = Color.fromARGB(255, 24, 25, 26);
+  static const primary = Color.fromRGBO(113, 45, 255, 1);
   static const onPrimary = Colors.white;
 
-  static const primaryContainer = Color(0xff989898);
+  static const primaryContainer = Color.fromARGB(255, 159, 127, 218);
   static const onPrimaryContainer = Colors.white;
 
-  static const secondary = Color(0xff04448B);
+  static const secondary = Color(0xff5000F0);
   static const onSecondary = Colors.white;
 
   static const background = Colors.white;
   static const onBackground = Colors.black87;
 
-  static const surfaceContainer = Color(0xffE9F4FD);
+  static const surfaceContainer = Color.fromARGB(255, 245, 245, 245);
   static const onSurfaceContainer = Colors.black54;
 
-  static const surface = Color.fromARGB(255, 237, 236, 236);
+  static const surface = Color(0xfff4f5f8);
   static const onSurface = Color.fromARGB(255, 93, 93, 93);
 
   static const error = Color(0xff841617);
