@@ -1,4 +1,11 @@
-export 'package:flutter/material.dart';
+export 'package:flutter/material.dart'  hide
+        ViewBuilder,
+        AutovalidateMode,
+        FormField,
+        FormFieldBuilder,
+        FormFieldSetter,
+        FormFieldState,
+        FormFieldValidator;
 
 export 'localizations/app_localizations.dart';
 

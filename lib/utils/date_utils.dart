@@ -16,6 +16,16 @@ extension StringExt on String {
 }
 
 extension DateTimeExt on DateTime {
+  static DateTime fromJson(
+    String json, [
+    String pattern = "yyyy-MM-ddThh:mm:ss",
+  ]) {
+    return DateFormat(pattern).parse(json);
+  }
+
+  String toJson([String pattern = "yyyy-MM-ddThh:mm:ss"]) =>
+      DateFormat(pattern).format(this);
+
   String format([String? pattern]) {
     return DateFormat(pattern ?? "yyyy-MM-dd").format(this);
   }
