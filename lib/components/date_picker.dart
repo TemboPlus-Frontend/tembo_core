@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
 
 import '../source.dart';
 
 class TemboDatePicker extends StatefulWidget {
-  final DateTime? initialDate;
+  final DateTime? date;
+  final String Function(DateTime date) label;
   final ValueChanged<DateTime> onSelected;
+
   const TemboDatePicker({
     super.key,
-    this.initialDate,
+    this.date,
+    required this.label,
     required this.onSelected,
   });
 
@@ -18,19 +20,7 @@ class TemboDatePicker extends StatefulWidget {
 }
 
 class _TemboDatePickerState extends State<TemboDatePicker> {
-  DateTime? selectedDate;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedDate = widget.initialDate;
-  }
-
-  onSelected(DateTime date) {
-    selectedDate = date;
-    widget.onSelected(date);
-    setState(() {});
-  }
+  onSelected(DateTime date) => widget.onSelected(date);
 
   showPicker() {
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -53,16 +43,14 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
         fixedSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: const BorderSide( width: 2),
+          side: const BorderSide(width: 2),
         ),
       ),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              selectedDate != null
-                  ? DateFormat("dd/MM/yyyy").format(selectedDate!)
-                  : "",
+              widget.date != null ? widget.label(widget.date!) : "",
               style: TextStyle(
                 color: context.colorScheme.onBackground,
               ),
@@ -70,7 +58,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
           ),
           const SizedBox(width: 10),
           const Icon(
-            CupertinoIcons.calendar,
+            Icons.calendar_month,
             color: TemboColors.onBackground,
           )
         ],
@@ -84,7 +72,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
   ) async {
     final selectedDate = await showDatePicker(
       context: context,
-      initialDate: widget.initialDate ?? DateTime.now(),
+      initialDate: widget.date ?? DateTime.now(),
       firstDate: DateTime.now().subtract(const Duration(days: 366)),
       lastDate: DateTime.now().add(const Duration(days: 366)),
     );
@@ -131,7 +119,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
             ),
             Expanded(
               child: CupertinoDatePicker(
-                initialDateTime: selectedDate ?? DateTime.now(),
+                initialDateTime: widget.date ?? DateTime.now(),
                 minimumDate: DateTime.now().subtract(const Duration(days: 366)),
                 maximumDate: DateTime.now().add(const Duration(days: 366)),
                 mode: CupertinoDatePickerMode.date,
