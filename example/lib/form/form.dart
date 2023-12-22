@@ -1,4 +1,3 @@
-import 'package:tembo_ui/components/form/form.dart';
 import 'package:tembo_ui/source.dart';
 
 class ExampleForm extends StatefulWidget {
@@ -39,7 +38,7 @@ class _ExampleFormState extends State<ExampleForm> {
             formatters: [
               NoSpaceFormatter(),
               OnlyIntegerFormatter(),
-              TelecomFormatter(),
+              const TelecomFormatter(),
             ],
           ),
           vSpace(),
