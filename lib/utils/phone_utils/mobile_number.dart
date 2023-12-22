@@ -152,6 +152,10 @@ enum Telecom {
   ),
   ;
 
+  String get b2cName => "TZ-${label.toUpperCase()}-B2C";
+
+  String get c2bName => "TZ-${label.toUpperCase()}-C2B";
+
   final List<String> prefixes;
   final String label;
   final String company;

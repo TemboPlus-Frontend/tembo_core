@@ -15,6 +15,14 @@ class TemboTextButton extends StatefulWidget {
     required this.child,
   });
 
+  TemboTextButton.text({
+    super.key,
+    required String text,
+    required this.onPressed,
+    this.onLongPress,
+    this.style,
+  }) : child = TemboText.w500(text);
+
   @override
   State<TemboTextButton> createState() => _TemboTextButtonState();
 }
@@ -83,7 +91,6 @@ class _TemboTextButtonState extends State<TemboTextButton> {
   }
 }
 
-
 class TemboPlainTextButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
@@ -111,9 +118,8 @@ class TemboPlainTextButton extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: text,
-          style:
-              (style ?? context.textTheme.bodyMedium.bold.withPrimaryColor)
-                  .copyWith(
+          style: (style ?? context.textTheme.bodyMedium.bold.withPrimaryColor)
+              .copyWith(
             decoration: _decorated ? TextDecoration.underline : null,
             decorationColor: _decorated ? context.colorScheme.primary : null,
           ),

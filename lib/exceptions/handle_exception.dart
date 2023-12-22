@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'exception.dart';
 
 TemboException handleException(var e, [StackTrace? trace]) {
-  debugPrint(e);
+  debugPrint("$e");
   debugPrint(trace?.toString());
 
   switch (e.runtimeType) {

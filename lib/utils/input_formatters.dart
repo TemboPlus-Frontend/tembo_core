@@ -31,6 +31,11 @@ class FixedLengthFormatter extends TextInputFormatter {
 }
 
 class TelecomFormatter extends TextInputFormatter {
+  final List<Telecom> telecoms;
+  const TelecomFormatter([
+    this.telecoms = const [Telecom.airtel, Telecom.tigo, Telecom.vodacom],
+  ]);
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -42,8 +47,7 @@ class TelecomFormatter extends TextInputFormatter {
 
     if (text.length == 2) {
       if (text.startsWith("0")) {
-        final allowedPrefixes = [Telecom.airtel, Telecom.tigo, Telecom.vodacom]
-            .expand((e) => e.prefixes);
+        final allowedPrefixes = telecoms.expand((e) => e.prefixes);
         final oneLetterPrefixes = allowedPrefixes.map((e) => e.substring(0, 1));
         if (oneLetterPrefixes.contains(text.substring(1))) return newValue;
         return oldValue;
@@ -54,8 +58,7 @@ class TelecomFormatter extends TextInputFormatter {
 
     if (text.length == 3) {
       if (text.startsWith("0")) {
-        final allowedPrefixes = [Telecom.airtel, Telecom.tigo, Telecom.vodacom]
-            .expand((e) => e.prefixes);
+        final allowedPrefixes = telecoms.expand((e) => e.prefixes);
         if (allowedPrefixes.contains(text.substring(1))) return newValue;
         return oldValue;
       }

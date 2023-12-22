@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 extension TextStyleExtension on TextStyle? {
-  TextStyle get withPrimaryColor =>
-      this!.copyWith(color: TemboColors.primary);
-
+  TextStyle get withPrimaryColor => this!.copyWith(color: TemboColors.primary);
   TextStyle get withOnPrimaryColor =>
       this!.copyWith(color: TemboColors.onPrimary);
+
+  TextStyle get withOnBgColor =>
+      this!.copyWith(color: TemboColors.onBackground);
 
   TextStyle get withFW300 => this!.copyWith(fontWeight: FontWeight.w300);
   TextStyle get withFW400 => this!.copyWith(fontWeight: FontWeight.w400);

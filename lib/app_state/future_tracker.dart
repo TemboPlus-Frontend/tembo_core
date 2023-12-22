@@ -52,7 +52,7 @@ class _FutureTracker {
     required ModelStateNotifier<T> notifier,
     required Future<T> future,
     bool showErrorWithSnackbar = true,
-    void Function(T)? onSuccess,
+    void Function(T data)? onSuccess,
     void Function()? onLoading,
     void Function(TemboException exc)? onError,
   }) async {
