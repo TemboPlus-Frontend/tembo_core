@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tembo_ui/source.dart';
 
-class TemboChips<T extends Comparable<T>> extends StatefulWidget {
+class TemboChips<T> extends StatefulWidget {
   final List<T> options;
   final String Function(T option) name;
   final void Function(T option) onTap;
@@ -19,7 +19,7 @@ class TemboChips<T extends Comparable<T>> extends StatefulWidget {
   State<TemboChips<T>> createState() => _TemboChipsState<T>();
 }
 
-class _TemboChipsState<T extends Comparable<T>> extends State<TemboChips<T>> {
+class _TemboChipsState<T> extends State<TemboChips<T>> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
