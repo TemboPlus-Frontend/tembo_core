@@ -19,6 +19,7 @@ dependencies:
   flutter_riverpod: ^2.3.6
   hive: ^2.2.3
   cupertino_icons: 
+  linked_scroll_controller: ^0.2.0
 
 dev_dependencies:
   flutter_test:

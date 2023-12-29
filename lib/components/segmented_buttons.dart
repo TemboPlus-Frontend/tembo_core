@@ -1,10 +1,9 @@
-library segmented_tabs;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:tembo_ui/constants/colors.dart';
 
-class RoseiteSegmentedButton<T> extends StatefulWidget {
+class TemboSegmentedButton<T> extends StatefulWidget {
   final List<T> tabs;
   final Widget Function(T tab, int index, bool selected) childBuilder;
   final void Function(T tab, int index) onTap;
@@ -13,7 +12,7 @@ class RoseiteSegmentedButton<T> extends StatefulWidget {
   final SegmentedTagsStyle? style;
   final double height;
 
-  const RoseiteSegmentedButton({
+  const TemboSegmentedButton({
     super.key,
     required this.tabs,
     required this.childBuilder,
@@ -30,10 +29,10 @@ class RoseiteSegmentedButton<T> extends StatefulWidget {
   }
 
   @override
-  State<RoseiteSegmentedButton<T>> createState() => _SegmentedButtonState<T>();
+  State<TemboSegmentedButton<T>> createState() => _SegmentedButtonState<T>();
 }
 
-class _SegmentedButtonState<T> extends State<RoseiteSegmentedButton<T>> {
+class _SegmentedButtonState<T> extends State<TemboSegmentedButton<T>> {
   int selectedTabIndex = 0;
 
   @override
@@ -298,9 +297,9 @@ class SegmentedTagsStyle {
     this.borderRadius = 10,
     this.borderWidth = 1,
     this.horizontalPadding = 15,
-    this.selectedBackgroundColor = const Color(0xffFFF8E7),
+    this.selectedBackgroundColor = TemboColors.primaryContainer,
     this.unselectedBorderColor = const Color(0xffBAC7D5),
-    this.selectedBorderColor = const Color(0xffFFB800),
+    this.selectedBorderColor = TemboColors.primary,
     this.unselectedBackgroundColor = Colors.transparent,
   });
 }

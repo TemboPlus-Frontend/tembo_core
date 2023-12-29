@@ -3,7 +3,7 @@ import '../source.dart';
 class TemboAppBar extends AppBar {
   final String? label;
   final VoidCallback? onBackPress;
-  TemboAppBar({super.key, this.label, this.onBackPress, super.leading, super.actions});
+  TemboAppBar({super.key, this.label, this.onBackPress, super.leading, super.actions, super.backgroundColor});
 
   @override
   Widget? get title => label == null ? null : TemboText.bold(label!);
