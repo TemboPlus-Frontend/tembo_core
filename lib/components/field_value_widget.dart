@@ -7,7 +7,7 @@ class TemboFVWidget extends StatelessWidget {
   final int valueMaxLines;
 
   const TemboFVWidget({
-    this.breakpoint = 400,
+    this.breakpoint = 300,
     required this.field,
     required this.value,
     this.fieldStyle,

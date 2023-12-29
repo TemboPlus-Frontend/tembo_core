@@ -70,7 +70,7 @@ class TemboOptionButton extends StatelessWidget {
     return unselectedStyle(context).copyWith(
       backgroundColor: context.colorScheme.primaryContainer,
       foregroundColor: context.colorScheme.onPrimaryContainer,
-      textStyle: context.textTheme.bodyMedium.withFW500,
+      textStyle: context.textTheme.bodyMedium.bold,
       borderWidth: 0,
       borderColor: Colors.transparent,
     );
