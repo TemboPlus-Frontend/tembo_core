@@ -13,8 +13,8 @@ dependencies:
   flutter_riverpod: ^2.3.6
   hive: ^2.2.3
   path_provider: ^2.0.11
-  tembo_ui:
-    path: "/Users/macbookpro/Downloads/programs/packages/tembo_ui/"
+  tembo_core:
+    path: "/Users/macbookpro/Downloads/programs/packages/tembo_core/"
 
 dev_dependencies:
   flutter_test:

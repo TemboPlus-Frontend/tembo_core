@@ -1,9 +1,9 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:tembo_ui/constants/source.dart';
+import 'package:tembo_core/constants/source.dart';
 
 final theme = _flexColorCheme.toTheme;
 
-const kFontFamily = "TTHoves";
+const kFontFamily = "GoogleSans";
 const colorScheme = TemboColorScheme.light();
 final _flexColorCheme = FlexColorScheme.light(
   fontFamily: kFontFamily,

@@ -9,4 +9,4 @@ export 'package:flutter/material.dart'
         FormFieldValidator;
 
 export 'package:flutter_riverpod/flutter_riverpod.dart';
-export 'package:tembo_ui/tembo_ui.dart';
+export 'package:tembo_core/tembo_core.dart';

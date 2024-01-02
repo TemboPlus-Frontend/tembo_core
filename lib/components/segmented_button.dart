@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tembo_ui/source.dart';
+import 'package:tembo_core/source.dart';
 
 class TemboSegmentedButton<T> extends SegmentedButton<T> {
   final num breakpoint;

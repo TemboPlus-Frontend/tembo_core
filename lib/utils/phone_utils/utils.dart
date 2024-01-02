@@ -1,5 +1,5 @@
-import 'package:tembo_ui/exceptions/exception.dart';
-import 'package:tembo_ui/utils/phone_utils/mobile_number.dart';
+import 'package:tembo_core/exceptions/exception.dart';
+import 'package:tembo_core/utils/phone_utils/mobile_number.dart';
 
 Message? validateTZPhone(String? text, [bool optional = false]) {
   if (text == null) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tembo_ui/extensions/stateful_widget_extension.dart';
+import 'package:tembo_core/extensions/stateful_widget_extension.dart';
 
 extension NavigatorExtension on GlobalKey<NavigatorState> {
   Future<T?> to<T>(String routeName, Widget page) async {

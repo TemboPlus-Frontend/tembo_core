@@ -322,10 +322,10 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  tembo_ui:
+  tembo_core:
     dependency: "direct main"
     description:
-      path: "/Users/macbookpro/Downloads/programs/packages/tembo_ui/"
+      path: "/Users/macbookpro/Downloads/programs/packages/tembo_core/"
       relative: false
     source: path
     version: "0.0.1"

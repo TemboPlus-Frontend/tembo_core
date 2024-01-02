@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:tembo_ui/constants/colors.dart';
+import 'package:tembo_core/constants/colors.dart';
 
 class TemboSegmentedButton<T> extends StatefulWidget {
   final List<T> tabs;

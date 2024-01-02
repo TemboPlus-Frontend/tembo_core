@@ -1,4 +1,4 @@
-import 'package:tembo_ui/tembo_ui.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 import '../user_preferences/user_preferences_api.dart';
 

@@ -1,4 +1,4 @@
-import 'package:tembo_ui/constants/locale.dart';
+import 'package:tembo_core/constants/locale.dart';
 
 export 'handle_exception.dart';
 

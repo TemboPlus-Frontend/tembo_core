@@ -1,7 +1,7 @@
-name: tembo_ui
+name: tembo_core
 description: Tembo UI SDK By TemboPlus
 version: 0.0.1
-homepage: https://github.com/okellogerald/tembo_ui
+homepage: https://github.com/okellogerald/tembo_core
 
 environment:
   sdk: '>=3.1.4 <4.0.0'

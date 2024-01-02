@@ -1,4 +1,4 @@
-library tembo_ui;
+library tembo_core;
 
 export 'constants/source.dart';
 export 'app_state/source.dart';

@@ -1,5 +1,5 @@
-import 'package:tembo_ui/localizations/app_localizations_en.dart';
-import 'package:tembo_ui/source.dart';
+import 'package:tembo_core/localizations/app_localizations_en.dart';
+import 'package:tembo_core/source.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

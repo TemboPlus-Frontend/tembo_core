@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:tembo_ui/utils/date_utils.dart';
+import 'package:tembo_core/utils/date_utils.dart';
 
 enum TemboLocale {
   en("en", "US", "English"),

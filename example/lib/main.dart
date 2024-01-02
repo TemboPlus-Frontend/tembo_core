@@ -2,7 +2,7 @@ import 'package:example/app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tembo_ui/user_preferences/user_preferences_api.dart';
+import 'package:tembo_core/user_preferences/user_preferences_api.dart';
 
 import 'source.dart';
 

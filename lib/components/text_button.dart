@@ -1,5 +1,5 @@
 import 'package:flutter/gestures.dart';
-import 'package:tembo_ui/source.dart';
+import 'package:tembo_core/source.dart';
 
 class TemboTextButton extends StatefulWidget {
   final VoidCallback onPressed;
