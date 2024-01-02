@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:tembo_core/components/container/decoration.dart';
 import 'package:tembo_core/source.dart';
 
 class TemboSegmentedButton<T> extends SegmentedButton<T> {
   final num breakpoint;
+  final String Function(T value) name;
   const TemboSegmentedButton({
     super.key,
     this.breakpoint = 300,
+    required this.name,
     required super.segments,
     required super.selected,
     super.emptySelectionAllowed,
@@ -24,11 +27,25 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
         return Row(
           children: [
             PopupMenuButton<T>(
-              child: const CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  CupertinoIcons.line_horizontal_3,
-                  color: Colors.black,
+              splashRadius: kBorderRadius5,
+              child: TemboContainer(
+                padding: horizontal(15) + vertical(5),
+                decoration: const TemboBoxDecoration(
+                  borderWidth: 1.5,
+                  radius: kBorderRadius5,
+                ),
+                child: Row(
+                  children: [
+                    const Icon(
+                      CupertinoIcons.line_horizontal_3,
+                      color: Colors.black,
+                    ),
+                    hSpace(10),
+                    TemboText.w500(
+                      name(selected.first),
+                      style: context.textTheme.bodyMedium,
+                    )
+                  ],
                 ),
               ),
               itemBuilder: (c) {
@@ -47,7 +64,9 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
             onSelectionChanged: onSelectionChanged,
             selectedIcon: selectedIcon,
             showSelectedIcon: showSelectedIcon,
-            style: style,
+            style: style ??
+                const ButtonStyle(
+                    side: MaterialStatePropertyAll(BorderSide(width: 1.5))),
           ),
         ],
       ),
@@ -56,12 +75,20 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
 
   PopupMenuEntry<T> buildMenuItem(int index) {
     final item = segments[index];
+    final active = selected.contains(item.value);
 
     return PopupMenuItem(
       onTap: () {
         if (onSelectionChanged != null) onSelectionChanged!({item.value});
       },
-      child: item.label,
+      child: Builder(builder: (context) {
+        var style = context.textTheme.bodyMedium.withFW400;
+        if (active) style = style.bold;
+        return DefaultTextStyle(
+          style: style,
+          child: item.label ?? TemboText(name(item.value)),
+        );
+      }),
     );
   }
 }

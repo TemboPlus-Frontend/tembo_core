@@ -61,7 +61,7 @@ class _TemboTableState extends State<TemboTable> {
       _maxWidth >= widget.tableWidth ? _maxWidth : widget.tableWidth;
 
   List<num> get mobileFlexes =>
-      widget.columns.map((e) => e.onMobileFlex ?? e.widthFlex * .85).toList();
+      widget.columns.map((e) => e.widthFlex * .85).toList();
 
   double get totalFlexes =>
       widget.columns.fold(0, (prev, current) => prev + current.widthFlex);
@@ -327,14 +327,8 @@ class _TemboTableState extends State<TemboTable> {
         builder: (context, setState) {
           return MouseRegion(
             cursor: SystemMouseCursors.click,
-        /*    onHover: (event) {
-              color = Colors.grey.shade50;
-             // setState(() {});
-            },
-            onExit: (event) {
-              color = null;
-             // setState(() {});
-            },*/
+            onHover: (event) => setState(() => color = Colors.grey.shade50),
+            onExit: (event) => setState(() => color = null),
             child: GestureDetector(
               onTap: () {
                 if (row.onTap != null) row.onTap!();
@@ -397,7 +391,7 @@ class _TemboTableState extends State<TemboTable> {
 class TemboTableColumn {
   final Widget label;
   final num widthFlex;
-  final num? onMobileFlex, fixedWidth;
+  final num? fixedWidth;
   final Alignment alignment;
   final EdgeInsets? margin;
 
@@ -414,7 +408,6 @@ class TemboTableColumn {
   const TemboTableColumn({
     required this.label,
     this.widthFlex = 0,
-    this.onMobileFlex,
     this.fixedWidth,
     this.margin,
     this.alignment = Alignment.centerLeft,
@@ -423,7 +416,7 @@ class TemboTableColumn {
 
 class TemboTableRow {
   final int index;
-  final List<RoseiteTableRowCell> cells;
+  final List<TemboTableRowCell> cells;
   final RowDecoration decoration;
   final VoidCallback? onTap;
 
@@ -435,11 +428,11 @@ class TemboTableRow {
   });
 }
 
-class RoseiteTableRowCell {
+class TemboTableRowCell {
   final Widget child;
   final Alignment alignment;
 
-  const RoseiteTableRowCell({
+  const TemboTableRowCell({
     required this.child,
     this.alignment = Alignment.centerLeft,
   });
