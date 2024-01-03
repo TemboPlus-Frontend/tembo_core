@@ -325,7 +325,7 @@ packages:
   tembo_core:
     dependency: "direct main"
     description:
-      path: "/Users/macbookpro/Downloads/programs/packages/tembo_core/"
+      path: "/Users/macbookpro/Downloads/programs/temboplus/tembo_core"
       relative: false
     source: path
     version: "0.0.1"

@@ -7,7 +7,7 @@ typedef ViewBuilder = Widget Function(
   BoxConstraints constr,
 );
 
-class LayoutWrapper extends StatelessWidget {
+class LayoutWrapper extends StatefulWidget {
   final ViewBuilder desktopView, tabletView;
   final ViewBuilder? mobileView;
 
@@ -19,22 +19,33 @@ class LayoutWrapper extends StatelessWidget {
   });
 
   @override
+  State<LayoutWrapper> createState() => _LayoutWrapperState();
+}
+
+class _LayoutWrapperState extends State<LayoutWrapper> {
+  ViewBuilder? builder;
+  late Widget built;
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constr) {
-      final maxWidth = constr.maxWidth;
-      if (maxWidth >= 2500) {
-        return Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 2500),
-            child: desktopView(context, constr),
-          ),
-        );
+      final newBuilder = switch (constr.maxWidth) {
+        < 536 => widget.mobileView ?? widget.tabletView,
+        < 1026 => widget.tabletView,
+        < 2500 => widget.desktopView,
+        _ => (BuildContext _, BoxConstraints __) => Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 2500),
+                child: widget.desktopView(context, constr),
+              ),
+            ),
+      };
+
+      if (newBuilder != builder) {
+        builder = newBuilder;
+        built = newBuilder(context, constr);
       }
-      if (maxWidth >= 1026) return desktopView(context, constr);
-      if (maxWidth >= 536) return tabletView(context, constr);
-      return mobileView == null
-          ? tabletView(context, constr)
-          : mobileView!(context, constr);
+      return built;
     });
   }
 }

@@ -107,21 +107,23 @@ class _TemboTableState extends State<TemboTable> {
                 if (widget.hasTitleColumn) buildMobileTableColumns(),
                 if (widget.hasTitleColumn)
                   SizedBox(height: widget.titleRowTableRowsSpace),
-                SizedBox(
-                  width: getTableWidth,
-                  child: ListView.separated(
-                    itemCount: widget.rows.length,
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) => widget.hasDivider
-                        ? Container(
-                            height: 1,
-                            width: double.maxFinite,
-                            color: const Color(0xffE4E7EC),
-                          )
-                        : SizedBox(height: widget.spaceBtnRows),
-                    itemBuilder: (_, index) {
-                      return buildMobileTableRow(widget.rows[index]);
-                    },
+                Expanded(
+                  child: SizedBox(
+                    width: getTableWidth,
+                    child: ListView.separated(
+                      itemCount: widget.rows.length,
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) => widget.hasDivider
+                          ? Container(
+                              height: 1,
+                              width: double.maxFinite,
+                              color: const Color(0xffE4E7EC),
+                            )
+                          : SizedBox(height: widget.spaceBtnRows),
+                      itemBuilder: (_, index) {
+                        return buildMobileTableRow(widget.rows[index]);
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -132,22 +134,22 @@ class _TemboTableState extends State<TemboTable> {
               if (widget.hasTitleColumn) buildColumns(),
               if (widget.hasTitleColumn)
                 SizedBox(height: widget.titleRowTableRowsSpace),
-              SizedBox(
-                width: getTableWidth,
-                child: ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: widget.rows.length,
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) => widget.hasDivider
-                      ? Container(
-                          height: 1,
-                          width: double.maxFinite,
-                          color: const Color(0xffE4E7EC),
-                        )
-                      : SizedBox(height: widget.spaceBtnRows),
-                  itemBuilder: (_, index) {
-                    return buildRow(widget.rows[index]);
-                  },
+              Expanded(
+                child: SizedBox(
+                  width: getTableWidth,
+                  child: ListView.separated(
+                    itemCount: widget.rows.length,
+                    separatorBuilder: (context, index) => widget.hasDivider
+                        ? Container(
+                            height: 1,
+                            width: double.maxFinite,
+                            color: const Color(0xffE4E7EC),
+                          )
+                        : SizedBox(height: widget.spaceBtnRows),
+                    itemBuilder: (_, index) {
+                      return buildRow(widget.rows[index]);
+                    },
+                  ),
                 ),
               ),
             ],
