@@ -3,7 +3,7 @@ import 'package:tembo_core/constants/source.dart';
 
 final theme = _flexColorCheme.toTheme;
 
-const kFontFamily = "GoogleSans";
+const kFontFamily = "IBMPlexSans";
 const colorScheme = TemboColorScheme.light();
 final _flexColorCheme = FlexColorScheme.light(
   fontFamily: kFontFamily,

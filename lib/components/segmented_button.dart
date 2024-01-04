@@ -2,21 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:tembo_core/components/container/decoration.dart';
 import 'package:tembo_core/source.dart';
 
-class TemboSegmentedButton<T> extends SegmentedButton<T> {
+class TemboSegmentedButton<T> extends StatelessWidget {
   final num breakpoint;
   final String Function(T value) name;
+  final void Function(T value)? onTap;
+  final T current;
+  final List<T> options;
+  final Widget Function(T value)? optionBuilder;
+
   const TemboSegmentedButton({
     super.key,
     this.breakpoint = 300,
+    this.onTap,
     required this.name,
-    required super.segments,
-    required super.selected,
-    super.emptySelectionAllowed,
-    super.multiSelectionEnabled,
-    super.onSelectionChanged,
-    super.selectedIcon,
-    super.showSelectedIcon,
-    super.style,
+    required this.current,
+    required this.options,
+    this.optionBuilder,
   });
 
   @override
@@ -42,14 +43,14 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
                     ),
                     hSpace(10),
                     TemboText.w500(
-                      name(selected.first),
+                      name(current),
                       style: context.textTheme.bodyMedium,
                     )
                   ],
                 ),
               ),
               itemBuilder: (c) {
-                return List.generate(segments.length, buildMenuItem);
+                return List.generate(options.length, buildMenuItem);
               },
             ),
           ],
@@ -58,15 +59,19 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
       onGreaterThanB1: (context, _) => Row(
         children: [
           SegmentedButton(
-            segments: segments,
-            selected: selected,
-            emptySelectionAllowed: emptySelectionAllowed,
-            onSelectionChanged: onSelectionChanged,
-            selectedIcon: selectedIcon,
-            showSelectedIcon: showSelectedIcon,
-            style: style ??
-                const ButtonStyle(
-                    side: MaterialStatePropertyAll(BorderSide(width: 1.5))),
+            segments: options
+                .map(
+                  (e) => ButtonSegment(
+                      value: e,
+                      label: e == current
+                          ? TemboText.w500(name(e))
+                          : TemboText.w400(name(e))),
+                )
+                .toList(),
+            selected: {current},
+            onSelectionChanged: (e) => onTap != null ? onTap!(e.first) : () {},
+            style: const ButtonStyle(
+                side: MaterialStatePropertyAll(BorderSide(width: 1.5))),
           ),
         ],
       ),
@@ -74,19 +79,19 @@ class TemboSegmentedButton<T> extends SegmentedButton<T> {
   }
 
   PopupMenuEntry<T> buildMenuItem(int index) {
-    final item = segments[index];
-    final active = selected.contains(item.value);
+    final item = options[index];
+    final active = current == item;
 
     return PopupMenuItem(
       onTap: () {
-        if (onSelectionChanged != null) onSelectionChanged!({item.value});
+        if (onTap != null) onTap!(item);
       },
       child: Builder(builder: (context) {
         var style = context.textTheme.bodyMedium.withFW400;
         if (active) style = style.bold;
         return DefaultTextStyle(
           style: style,
-          child: item.label ?? TemboText(name(item.value)),
+          child: TemboText(name(item)),
         );
       }),
     );

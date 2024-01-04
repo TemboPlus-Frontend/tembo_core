@@ -11,6 +11,7 @@ class _ExampleFormState extends State<ExampleForm> {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
+  final tinNoController = TextEditingController();
 
   final formKey = GlobalKey<TemboFormState>();
 
@@ -55,6 +56,17 @@ class _ExampleFormState extends State<ExampleForm> {
             name: (e) => e,
             onTap: chooseSize,
             selected: (e) => size == e,
+          ),
+          vSpace(),
+          TemboTextField.labelled(
+            "TIN Number",
+            controller: tinNoController,
+            validator: validateName,
+            textInputType: TextInputType.number,
+            formatters: [
+              const FixedLengthFormatter(13),
+              TINNumberFormatter(),
+            ],
           ),
           vSpace(),
           TemboTextButton(

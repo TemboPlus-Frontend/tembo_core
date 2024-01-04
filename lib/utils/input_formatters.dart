@@ -1,7 +1,36 @@
+import 'dart:math';
+
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import 'phone_utils/mobile_number.dart';
+
+String getFormattedTINNumber(String value) {
+  final text = value.trim().split("-").join();
+
+  final parts = <String>[];
+  for (var i = 0; i < text.length; i += 4) {
+    final part = text.substring(i, min(i + 4, text.length));
+    parts.add(part);
+  }
+  return parts.join("-");
+}
+
+/// Is intended to work along with [OnlyIntegerFormatter]
+class TINNumberFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.isEmpty) return newValue;
+    final text = newValue.text.trim().split("-").join();
+    final newText = getFormattedTINNumber(text);
+    return newValue.copyWith(
+      text: newText,
+      selection:
+          TextSelection.fromPosition(TextPosition(offset: newText.length)),
+    );
+  }
+}
 
 /// Makes sure every first letter in a sentence is uppercased.
 class OnlyIntegerFormatter extends TextInputFormatter {
