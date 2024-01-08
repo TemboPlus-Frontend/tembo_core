@@ -14,13 +14,13 @@ class _FutureTracker {
   Future<void> track<T>({
     required Future<T> future,
     void Function()? onLoading,
-    void Function(T data)? onDone,
+    void Function(T data)? onSuccess,
     void Function(TemboException exc)? onError,
   }) async {
     if (onLoading != null) onLoading();
     try {
       final result = await future.timeout(_timeOutLimit);
-      if (onDone != null) onDone(result);
+      if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
       final error = handleException(e, trace);
       if (onError == null) _showErrorSnackbar(ref, error);
@@ -30,7 +30,7 @@ class _FutureTracker {
 
   Future<void> trackAppState<T>({
     required Future<T> future,
-    void Function(T data)? onDone,
+    void Function(T data)? onSuccess,
     void Function(TemboException exc)? onError,
     String? loadingMessage,
     String? successMessage,
@@ -40,7 +40,7 @@ class _FutureTracker {
     try {
       final result = await future.timeout(_timeOutLimit);
       ref.read(appStateProvider.notifier).showSuccess(successMessage);
-      if (onDone != null) onDone(result);
+      if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
       final error = handleException(e, trace);
       ref.read(appStateProvider.notifier).showFailure(error);

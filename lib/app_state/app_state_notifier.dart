@@ -9,6 +9,8 @@ final appStateProvider = StateNotifierProvider<_AppStateNotifier, AppState>(
 class _AppStateNotifier extends StateNotifier<AppState> {
   _AppStateNotifier() : super(const AppState.initial());
 
+  void refresh() => state = const AppState.initial();
+
   void startLoading([String? message]) {
     state = AppState.loading(message);
   }
