@@ -131,6 +131,7 @@ class TemboTextFieldDecoration {
           width: border.borderSide.width,
         ),
       ),
+      focusedErrorBorder: border,
       errorBorder: border.copyWith(
         borderSide: BorderSide(
           color: TemboColors.error,

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:tembo_core/source.dart';
 
-class TemboTextField extends StatefulWidget {
+class TemboTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
   final bool? obscureText;
   final Message? Function(String?)? validator;
@@ -71,10 +71,10 @@ class TemboTextField extends StatefulWidget {
         super(key: key);
 
   @override
-  State<TemboTextField> createState() => _TemboTextFieldState();
+  ConsumerState<TemboTextField> createState() => _TemboTextFieldState();
 }
 
-class _TemboTextFieldState extends State<TemboTextField> {
+class _TemboTextFieldState extends ConsumerState<TemboTextField> {
   final controllerHasTextNotifier = ValueNotifier(false);
 
   final errorNotifier = ValueNotifier<Message?>(null);
@@ -115,7 +115,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
               builder: (context, error, snapshot) {
                 final hasError = error != null;
 
-                return TemboTextFormField(
+                return TextFormField(
                   style: decoration.valueStyle,
                   controller: widget.controller,
                   focusNode: widget.focusNode,
@@ -142,7 +142,7 @@ class _TemboTextFieldState extends State<TemboTextField> {
                 );
               }),
         ),
-        buildError(),
+        // buildError(),
       ],
     );
   }
@@ -150,7 +150,12 @@ class _TemboTextFieldState extends State<TemboTextField> {
   String? validate(String? value) {
     if (widget.validator == null) return null;
     final error = widget.validator!(value);
-    if (error != null) errorNotifier.value = error;
+    if (error != null) {
+      errorNotifier.value = error;
+      final isEn = ref.read(localesManagerProvider).isEN;
+      return isEn ? error.enMessage : error.swMessage;
+    }
+
     return null;
   }
 

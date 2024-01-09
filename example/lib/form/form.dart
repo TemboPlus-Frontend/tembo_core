@@ -13,13 +13,13 @@ class _ExampleFormState extends State<ExampleForm> {
   final emailController = TextEditingController();
   final tinNoController = TextEditingController();
 
-  final formKey = GlobalKey<TemboFormState>();
+  final formKey = GlobalKey<FormState>();
 
   String? size;
 
   @override
   Widget build(BuildContext context) {
-    return TemboForm(
+    return Form(
       key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,10 +36,10 @@ class _ExampleFormState extends State<ExampleForm> {
             controller: phoneController,
             textInputType: TextInputType.phone,
             validator: validateTZPhone,
-            formatters: [
+            formatters: const [
               NoSpaceFormatter(),
               OnlyIntegerFormatter(),
-              const TelecomFormatter(),
+              TelecomFormatter(),
             ],
           ),
           vSpace(),
@@ -63,8 +63,8 @@ class _ExampleFormState extends State<ExampleForm> {
             controller: tinNoController,
             validator: validateName,
             textInputType: TextInputType.number,
-            formatters: [
-              const FixedLengthFormatter(13),
+            formatters: const [
+              FixedLengthFormatter(13),
               TINNumberFormatter(),
             ],
           ),
