@@ -9,6 +9,12 @@ class Message {
     required this.swMessage,
   });
 
+  const Message.notEmpty({
+    required String enlabel,
+    required String swlabel,
+  })  : enMessage = "$enlabel should not be empty",
+        swMessage = "$swlabel ni lazima";
+
   String fromLocale(TemboLocale locale) {
     return locale.isEN ? enMessage : swMessage;
   }

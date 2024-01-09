@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:tembo_core/exceptions/exception.dart';
 
 // Duration for delay before announcement in IOS so that the announcement won't be interrupted.
 const Duration _kIOSAnnouncementDelayDuration = Duration(seconds: 1);
@@ -129,7 +130,7 @@ class TemboForm extends StatefulWidget {
   ///
   ///  * [WillPopScope], another widget that provides a way to intercept the
   ///    back button.
-  final WillPopCallback? onWillPop;
+  final void Function(bool)? onWillPop;
 
   /// Called when one of the form fields changes.
   ///
@@ -195,8 +196,8 @@ class TemboFormState extends State<TemboForm> {
         break;
     }
 
-    return WillPopScope(
-      onWillPop: widget.onWillPop,
+    return PopScope(
+      onPopInvoked: widget.onWillPop,
       child: _FormScope(
         formState: this,
         generation: _generation,

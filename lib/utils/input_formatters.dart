@@ -18,6 +18,8 @@ String getFormattedTINNumber(String value) {
 
 /// Is intended to work along with [OnlyIntegerFormatter]
 class TINNumberFormatter extends TextInputFormatter {
+  const TINNumberFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -34,6 +36,8 @@ class TINNumberFormatter extends TextInputFormatter {
 
 /// Makes sure every first letter in a sentence is uppercased.
 class OnlyIntegerFormatter extends TextInputFormatter {
+  const OnlyIntegerFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -117,6 +121,8 @@ class TelecomFormatter extends TextInputFormatter {
 
 /// Makes sure every first letter in a sentence is uppercased.
 class OTPFormatter extends TextInputFormatter {
+  const OTPFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -133,6 +139,8 @@ class OTPFormatter extends TextInputFormatter {
 
 /// Makes sure every first letter in a sentence is uppercased.
 class FirstLetterUppercaseFormatter extends TextInputFormatter {
+  const FirstLetterUppercaseFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -150,7 +158,7 @@ class FirstLetterUppercaseFormatter extends TextInputFormatter {
 class CurrencyFormatter extends TextInputFormatter {
   final int decimalPoints;
   final String? symbol;
-  CurrencyFormatter({
+  const CurrencyFormatter({
     this.decimalPoints = 4,
     this.symbol,
   });
@@ -213,6 +221,8 @@ class CurrencyFormatter extends TextInputFormatter {
 }
 
 class NoSpaceFormatter extends TextInputFormatter {
+  const NoSpaceFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -230,6 +240,8 @@ class NoSpaceFormatter extends TextInputFormatter {
 }
 
 class ExpiryDateFormatter extends TextInputFormatter {
+  const ExpiryDateFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
@@ -266,6 +278,8 @@ class ExpiryDateFormatter extends TextInputFormatter {
 }
 
 class CVVFormatter extends TextInputFormatter {
+  const CVVFormatter();
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
@@ -283,6 +297,8 @@ class CVVFormatter extends TextInputFormatter {
 }
 
 class DateTextFormatter extends TextInputFormatter {
+  const DateTextFormatter();
+  
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
