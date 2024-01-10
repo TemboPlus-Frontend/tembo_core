@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 enum ViewMode { mobile, tablet, desktop }
 
-typedef ViewBuilder = Widget Function(
+typedef TemboViewBuilder = Widget Function(
   BuildContext context,
   BoxConstraints constr,
 );
 
 class LayoutWrapper extends StatefulWidget {
-  final ViewBuilder desktopView, tabletView;
-  final ViewBuilder? mobileView;
+  final TemboViewBuilder desktopView, tabletView;
+  final TemboViewBuilder? mobileView;
 
   const LayoutWrapper({
     super.key,
@@ -23,7 +23,7 @@ class LayoutWrapper extends StatefulWidget {
 }
 
 class _LayoutWrapperState extends State<LayoutWrapper> {
-  ViewBuilder? builder;
+  TemboViewBuilder? builder;
   late Widget built;
 
   @override

@@ -1,5 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tembo_core/source.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tembo_core/constants/source.dart';
+import 'package:tembo_core/extensions/source.dart';
+
+import '../../exceptions/exception.dart';
+import '../../locales/language_settings_manager.dart';
+import '../../styles/text_field_decoration.dart';
+import '../../widgets/locale_wrapper.dart';
+import '../label.dart';
+import '../text.dart';
 
 class TemboTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;

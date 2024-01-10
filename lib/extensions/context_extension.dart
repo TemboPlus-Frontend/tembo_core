@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:tembo_core/localizations/app_localizations_en.dart';
-import 'package:tembo_core/source.dart';
+
+import '../constants/colors.dart';
+import '../localizations/app_localizations.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

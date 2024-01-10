@@ -1,4 +1,11 @@
-import '../../../source.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tembo_core/extensions/source.dart';
+import 'package:tembo_core/locales/language_settings_manager.dart';
+
+import '../components/source.dart';
+import '../exceptions/exception.dart';
+import '../utils/navigation_utils.dart';
 import 'app_state_notifier.dart';
 
 class AppStateWrapper extends ConsumerStatefulWidget {

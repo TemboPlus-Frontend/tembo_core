@@ -57,48 +57,6 @@ class BreakPointsBuilder {
     );
   }
 
-  static Widget for2BreakPointsWithScalefactor({
-    required num b1,
-    required num b2,
-    required Widget Function(BuildContext context, double maxWidth) onB1,
-    required Widget Function(BuildContext context, double maxWidth) onB2,
-    Widget Function(BuildContext context, double maxWidth)? onGreaterThanB2,
-  }) {
-    return LayoutBuilder(
-      builder: (context, constr) {
-        final maxWidth = constr.maxWidth;
-        Widget getChild() {
-          if (maxWidth <= b1) return onB1(context, maxWidth);
-          if (maxWidth <= b2) return onB2(context, maxWidth);
-          if (onGreaterThanB2 != null) {
-            return onGreaterThanB2(context, maxWidth);
-          }
-          return onB2(context, maxWidth);
-        }
-
-        double getScaleFactor() {
-          double scaleFactor() {
-            if (maxWidth <= b1) return maxWidth / b1;
-            if (maxWidth <= b2) return maxWidth / b2;
-            if (onGreaterThanB2 != null) return 1;
-            return 1;
-          }
-
-          final result = scaleFactor();
-          if (result < .8) return .8;
-          return result;
-        }
-
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-            textScaleFactor: getScaleFactor(),
-          ),
-          child: getChild(),
-        );
-      },
-    );
-  }
-
   static Widget for3BreakPoints({
     required num b1,
     required num b2,

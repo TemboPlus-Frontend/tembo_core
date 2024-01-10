@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:tembo_core/components/container/decoration.dart';
-import 'package:tembo_core/source.dart';
+import 'package:tembo_core/extensions/source.dart';
+
+import '../constants/constants.dart';
+import '../widgets/breakpoints_builder.h.dart';
+import 'container/container.dart';
+import 'text.dart';
 
 class TemboSegmentedButton<T> extends StatelessWidget {
   final num breakpoint;

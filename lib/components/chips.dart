@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tembo_core/source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/extensions/source.dart';
+
+import '../constants/constants.dart';
+import '../styles/source.dart';
+import '../widgets/source.dart';
+import 'text.dart';
+import 'text_button.dart';
 
 class TemboChips<T> extends StatefulWidget {
   final List<T> options;

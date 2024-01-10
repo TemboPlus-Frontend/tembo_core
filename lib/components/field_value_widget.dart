@@ -1,4 +1,9 @@
-import '../source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/components/source.dart';
+import 'package:tembo_core/extensions/source.dart';
+
+import '../constants/source.dart';
+import '../widgets/source.dart';
 
 class TemboFVWidget extends StatelessWidget {
   final num breakpoint;

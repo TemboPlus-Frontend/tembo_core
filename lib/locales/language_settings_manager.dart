@@ -1,4 +1,6 @@
-import '../source.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../constants/locale.dart';
 import 'language_settings_api.dart';
 
 final localesManagerProvider =

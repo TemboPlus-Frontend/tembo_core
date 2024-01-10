@@ -1,8 +1,8 @@
 import 'package:tembo_core/constants/locale.dart';
 
-export 'handle_exception.dart';
+export 'utils.dart';
 
-part 'exception_message.dart';
+part 'message.dart';
 
 class TemboException implements Exception {
   final Message message;

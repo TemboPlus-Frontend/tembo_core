@@ -1,7 +1,9 @@
-import '../source.dart';
+import 'package:flutter/widgets.dart';
+
+import 'layout_wrapper.dart';
 
 class BreakpointsLayoutBuilder extends StatefulWidget {
-  final ViewBuilder? onB1, onB2, onB3, maxBuilder;
+  final TemboViewBuilder? onB1, onB2, onB3, maxBuilder;
   final int? b1, b2, b3;
 
   const BreakpointsLayoutBuilder.one({
@@ -65,14 +67,14 @@ class BreakpointsLayoutBuilder extends StatefulWidget {
 }
 
 class _BreakpointsLayoutBuilderState extends State<BreakpointsLayoutBuilder> {
-  ViewBuilder? builder;
+  TemboViewBuilder? builder;
   late Widget built;
 
   @override
   Widget build(BuildContext context) {
     if (widget.hasOneBreakpoint) {
       return LayoutBuilder(builder: (context, constr) {
-        late ViewBuilder newBuilder;
+        late TemboViewBuilder newBuilder;
         final maxWidth = constr.maxWidth;
 
         if (maxWidth <= widget.b1!) newBuilder = widget.onB1!;
@@ -90,7 +92,7 @@ class _BreakpointsLayoutBuilderState extends State<BreakpointsLayoutBuilder> {
 
     if (widget.hasTwoBreakpoint) {
       return LayoutBuilder(builder: (context, constr) {
-        late ViewBuilder newBuilder;
+        late TemboViewBuilder newBuilder;
         final maxWidth = constr.maxWidth;
 
         if (maxWidth <= widget.b1!) newBuilder = widget.onB1!;
@@ -109,7 +111,7 @@ class _BreakpointsLayoutBuilderState extends State<BreakpointsLayoutBuilder> {
 
     if (widget.hasThreeBreakpoint) {
       return LayoutBuilder(builder: (context, constr) {
-        late ViewBuilder newBuilder;
+        late TemboViewBuilder newBuilder;
         final maxWidth = constr.maxWidth;
 
         if (maxWidth <= widget.b1!) newBuilder = widget.onB1!;

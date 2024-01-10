@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
-import "../source.dart";
+import 'package:tembo_core/extensions/source.dart';
+
+import '../constants/colors.dart';
 
 class TemboTable extends StatefulWidget {
   final List<TemboTableColumn> columns;

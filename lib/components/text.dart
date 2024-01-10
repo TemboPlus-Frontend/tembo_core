@@ -1,4 +1,6 @@
-import '../source.dart';
+import 'package:flutter/material.dart';
+
+import '../constants/theme.dart';
 
 class TemboText extends StatelessWidget {
   const TemboText(
@@ -79,7 +81,7 @@ class TemboText extends StatelessWidget {
           ? TextOverflow.ellipsis
           : overflow,
       maxLines: maxLines,
-      textScaleFactor: 1.0,
+      textScaler: const TextScaler.linear(1.0),
     );
   }
 }

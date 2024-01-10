@@ -1,4 +1,4 @@
-import 'package:tembo_core/source.dart';
+import '../source.dart';
 
 class ExampleForm extends StatefulWidget {
   const ExampleForm({super.key});

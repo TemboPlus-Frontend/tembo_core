@@ -1,4 +1,8 @@
-import '../source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/constants/source.dart';
+import 'package:tembo_core/extensions/source.dart';
+
+import 'text.dart';
 
 class TemboLabel extends StatelessWidget {
   final String label;
