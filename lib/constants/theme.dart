@@ -1,4 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
 final theme = _flexColorCheme.toTheme;
@@ -27,3 +28,13 @@ final _flexColorCheme = FlexColorScheme.light(
     appBarBackgroundSchemeColor: SchemeColor.background,
   ),
 );
+
+extension ColorSchemeExt on ColorScheme {
+  Color get surfaceContainer => TemboColors.surfaceContainer;
+
+  Color get onSurfaceContainer => TemboColors.onSurfaceContainer;
+
+  Color get success => TemboColors.success;
+
+  Color get onSuccess => TemboColors.onSuccess;
+}
