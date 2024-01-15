@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:tembo_core/extensions/source.dart';
 
-import '../constants/colors.dart';
+import 'models.dart';
 
 class TemboTable extends StatefulWidget {
   final List<TemboTableColumn> columns;
@@ -63,32 +63,16 @@ class _TemboTableState extends State<TemboTable> {
   double get getTableWidth =>
       _maxWidth >= widget.tableWidth ? _maxWidth : widget.tableWidth;
 
-  List<num> get mobileFlexes =>
-      widget.columns.map((e) => e.widthFlex * .85).toList();
-
-  double get totalFlexes =>
-      widget.columns.fold(0, (prev, current) => prev + current.widthFlex);
-
-  num get totalFixedWidth =>
-      widget.columns.fold<num>(0, (prev, e) => e.totalFixedWidth + prev);
-
   double getColumnWidth(int columnIndex) {
     final column = widget.columns[columnIndex];
-    if (column.hasFixedWidth) return column.fixedWidth!.toDouble();
-
-    final tableWidth =
-        _maxWidth >= widget.tableWidth ? _maxWidth : widget.tableWidth;
-    final width =
-        column.widthFlex / totalFlexes * (tableWidth - totalFixedWidth);
-    return width;
+    return column.fixedWidth?.toDouble() ??
+        getTableWidth / widget.columns.length;
   }
 
   double getMobileColumnWidth(int columnIndex) {
     final column = widget.columns[columnIndex];
-    if (column.hasFixedWidth) return column.fixedWidth!.toDouble();
-    final width =
-        mobileFlexes[columnIndex] / totalFlexes * (800 - totalFixedWidth);
-    return width;
+    return column.fixedWidth?.toDouble() ??
+        getTableWidth / widget.columns.length;
   }
 
   @override
@@ -391,93 +375,4 @@ class _TemboTableState extends State<TemboTable> {
           : null,
     );
   }
-}
-
-class TemboTableColumn {
-  final Widget label;
-  final num widthFlex;
-  final num? fixedWidth;
-  final Alignment alignment;
-  final EdgeInsets? margin;
-
-  bool get hasFixedWidth => fixedWidth != null;
-
-  double get totalFixedWidth {
-    final width = fixedWidth?.toDouble() ?? 0.0;
-    if (margin != null) {
-      return width + margin!.left + margin!.right;
-    }
-    return width;
-  }
-
-  const TemboTableColumn({
-    required this.label,
-    this.widthFlex = 0,
-    this.fixedWidth,
-    this.margin,
-    this.alignment = Alignment.centerLeft,
-  });
-}
-
-class TemboTableRow {
-  final int index;
-  final List<TemboTableRowCell> cells;
-  final RowDecoration decoration;
-  final VoidCallback? onTap;
-
-  const TemboTableRow({
-    required this.index,
-    required this.cells,
-    this.decoration = const RowDecoration(),
-    this.onTap,
-  });
-}
-
-class TemboTableRowCell {
-  final Widget child;
-  final Alignment alignment;
-
-  const TemboTableRowCell({
-    required this.child,
-    this.alignment = Alignment.centerLeft,
-  });
-}
-
-enum RowDecorationType { bordered, zebraColored, none }
-
-class RowDecoration {
-  final RowDecorationType type;
-
-  const RowDecoration({this.type = RowDecorationType.none});
-
-  bool get isBordered => type == RowDecorationType.bordered;
-
-  bool get isZebraColored => type == RowDecorationType.zebraColored;
-}
-
-class BorderedRowDecoration extends RowDecoration {
-  final Color borderColor;
-  final double borderWidth, borderRadius;
-
-  const BorderedRowDecoration({
-    this.borderWidth = 1.0,
-    this.borderRadius = 5,
-    this.borderColor = TemboColors.border,
-  }) : super(type: RowDecorationType.bordered);
-}
-
-class ZebraColoredRowDecoration extends RowDecoration {
-  final Color color1, color2;
-
-  /// condition to decide which color to paint given the row index.
-  /// return 1 for [color1] or 2 for [color2].
-  /// if the function returns some other number, function will use [color2] by
-  /// default.
-  final int Function(int rowIndex) condition;
-
-  const ZebraColoredRowDecoration({
-    required this.color1,
-    required this.color2,
-    required this.condition,
-  }) : super(type: RowDecorationType.zebraColored);
 }

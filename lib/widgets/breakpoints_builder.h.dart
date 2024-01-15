@@ -78,6 +78,30 @@ class BreakPointsBuilder {
     );
   }
 
+  static Widget for4BreakPoints({
+    required num b1,
+    required num b2,
+    required num b3,
+    required num b4,
+    required Widget Function(BuildContext context, double maxWidth) onB1,
+    required Widget Function(BuildContext context, double maxWidth) onB2,
+    required Widget Function(BuildContext context, double maxWidth) onB3,
+    required Widget Function(BuildContext context, double maxWidth) onB4,
+    Widget Function(BuildContext context, double maxWidth)? onGreaterThanB4,
+  }) {
+    return LayoutBuilder(
+      builder: (context, constr) {
+        final maxWidth = constr.maxWidth;
+        if (maxWidth <= b1) return onB1(context, maxWidth);
+        if (maxWidth <= b2) return onB2(context, maxWidth);
+        if (maxWidth <= b3) return onB3(context, maxWidth);
+        if (maxWidth <= b4) return onB4(context, maxWidth);
+        if (onGreaterThanB4 != null) return onGreaterThanB4(context, maxWidth);
+        return onB4(context, maxWidth);
+      },
+    );
+  }
+
   static Widget for5BreakPoints({
     required num b1,
     required num b2,

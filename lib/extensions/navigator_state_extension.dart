@@ -22,6 +22,10 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
     currentState?.pop(result);
   }
 
+  void popUntil(bool Function(Route r) predicate) {
+    currentState?.popUntil(predicate);
+  }
+
   void popToFirstPage() {
     currentState?.popUntil((route) => route.isFirst);
   }

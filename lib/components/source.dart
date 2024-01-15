@@ -10,3 +10,4 @@ export 'segmented_button.dart';
 
 export 'form/source.dart';
 export 'container/container.dart';
+export 'table/source.dart';
