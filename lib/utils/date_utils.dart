@@ -27,7 +27,7 @@ extension DateTimeExt on DateTime {
       DateFormat(pattern).format(this);
 
   String format([String? pattern]) {
-    return DateFormat(pattern ?? "yyyy-MM-dd").format(this);
+    return DateFormat(pattern ?? "dd/MM/yyyy").format(this);
   }
 
   int get timestamp {

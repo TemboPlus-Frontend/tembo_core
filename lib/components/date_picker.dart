@@ -6,17 +6,18 @@ import 'package:tembo_core/extensions/source.dart';
 import '../constants/source.dart';
 import '../styles/source.dart';
 
-
 class TemboDatePicker extends StatefulWidget {
-  final DateTime? date;
+  final DateTime date;
   final String Function(DateTime date) label;
   final ValueChanged<DateTime> onSelected;
   final TemboButtonStyle? style;
+  final Widget Function(DateTime date, String lbl)? child;
 
   const TemboDatePicker({
     super.key,
-    this.date,
+    required this.date,
     this.style,
+    this.child,
     required this.label,
     required this.onSelected,
   });
@@ -46,17 +47,17 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
             foregroundColor: context.colorScheme.onBackground,
             textStyle: context.textTheme.bodyLarge.withFW500,
           ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              widget.date != null ? widget.label(widget.date!) : "",
+      child: widget.child != null
+          ? widget.child!(widget.date, widget.label(widget.date))
+          : Row(
+              children: [
+                TemboText(
+                  widget.label(widget.date),
+                ),
+                const SizedBox(width: 10),
+                const Icon(Icons.calendar_month)
+              ],
             ),
-          ),
-          const SizedBox(width: 10),
-          const Icon(Icons.calendar_month)
-        ],
-      ),
     );
   }
 
@@ -66,7 +67,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
   ) async {
     final selectedDate = await showDatePicker(
       context: context,
-      initialDate: widget.date ?? DateTime.now(),
+      initialDate: widget.date,
       firstDate: DateTime.now().subtract(const Duration(days: 366)),
       lastDate: DateTime.now().add(const Duration(days: 366)),
     );
@@ -87,7 +88,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  const TemboText(
                     "Select Date",
                     style: TextStyle(
                       fontSize: 18,
@@ -97,7 +98,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
                   ),
                   TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text(
+                      child: const TemboText(
                         "Done",
                         style: TextStyle(
                           fontSize: 18,
@@ -108,7 +109,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
             ),
             Expanded(
               child: CupertinoDatePicker(
-                initialDateTime: widget.date ?? DateTime.now(),
+                initialDateTime: widget.date,
                 minimumDate: DateTime.now().subtract(const Duration(days: 366)),
                 maximumDate: DateTime.now().add(const Duration(days: 366)),
                 mode: CupertinoDatePickerMode.date,
