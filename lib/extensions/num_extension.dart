@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
 extension DoubleCurrencyExt on num {
-  String format() =>
-      NumberFormat.currency(decimalDigits: 2, symbol: "TZS ").format(this);
+  String format({int decimals = 0}) =>
+      NumberFormat.currency(decimalDigits: decimals, symbol: "TZS ").format(this);
 }

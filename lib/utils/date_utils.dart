@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../constants/locale.dart';
@@ -36,4 +37,16 @@ extension DateTimeExt on DateTime {
 
   String localizedFormat(TemboLocale l, [String pattern = "dd/MM/yyyy"]) =>
       DateFormat(pattern, l.locale.languageCode).format(this);
+}
+
+extension DateTimeRangeExt on DateTimeRange {
+  String format() {
+    if (start.year == end.year) {
+      if (start.month == end.month) {
+        return "${start.format("dd")} - ${end.format("dd")} ${start.format("MMM yy")}";
+      }
+      return "${start.format("dd MMM")} - ${end.format("dd MMM")} ${start.format("yy")}";
+    }
+    return "${start.format("dd MMM yy")} - ${end.format("dd MMM yy")}";
+  }
 }

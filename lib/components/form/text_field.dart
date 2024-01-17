@@ -13,7 +13,7 @@ import '../text.dart';
 
 class TemboTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
-  final bool? obscureText;
+  final bool obscureText;
   final Message? Function(String?)? validator;
   final ValueChanged<String>? onChanged;
   final TextCapitalization? textCapitalization;
@@ -29,7 +29,7 @@ class TemboTextField extends ConsumerStatefulWidget {
 
   const TemboTextField({
     this.controller,
-    this.obscureText,
+    this.obscureText = false,
     this.validator,
     this.focusNode,
     this.enabled,
@@ -47,7 +47,7 @@ class TemboTextField extends ConsumerStatefulWidget {
   TemboTextField.value(
     String value, {
     this.label,
-    this.obscureText,
+    this.obscureText = false,
     this.validator,
     this.focusNode,
     this.enabled,
@@ -65,7 +65,7 @@ class TemboTextField extends ConsumerStatefulWidget {
   const TemboTextField.labelled(
     String lbl, {
     this.controller,
-    this.obscureText,
+    this.obscureText = false,
     this.validator,
     this.focusNode,
     this.enabled,
@@ -129,6 +129,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
                   style: decoration.valueStyle,
                   controller: widget.controller,
                   focusNode: widget.focusNode,
+                  obscureText: widget.obscureText,
                   decoration: hasError
                       ? decoration
                           .copyWith(borderColor: context.colorScheme.error)
