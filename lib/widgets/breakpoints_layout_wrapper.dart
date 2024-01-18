@@ -8,8 +8,8 @@ class BreakpointsLayoutBuilder extends StatefulWidget {
 
   const BreakpointsLayoutBuilder.one({
     super.key,
-    required this.onB1,
     required this.b1,
+    required this.onB1,
     this.maxBuilder,
   })  : b2 = null,
         b3 = null,
