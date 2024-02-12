@@ -50,6 +50,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
       child: widget.child != null
           ? widget.child!(widget.date, widget.label(widget.date))
           : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TemboText(
                   widget.label(widget.date),

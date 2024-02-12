@@ -6,9 +6,9 @@ class LanguageSettingsAPI {
   final prefsAPI = UserPreferencesAPI.instance;
 
   TemboLocale? get currentLocale {
-    final json = prefsAPI.get("locale");
-    if (json == null) return null;
     try {
+      final json = prefsAPI.get("locale");
+      if (json == null) return null;
       return TemboLocale.fromJson(json);
     } catch (_) {
       return null;

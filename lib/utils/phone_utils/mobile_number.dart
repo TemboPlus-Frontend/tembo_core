@@ -45,11 +45,13 @@ Telecom? detectTelecomFromPrefix(String number) {
   }
 }
 
-({
+typedef ParsedPhoneNumber = ({
   Telecom telecom,
   MobileNumberFormat format,
   String numberWithoutCountryPrefix,
-})? parsePhoneNumber(String number) {
+});
+
+ParsedPhoneNumber? parsePhoneNumber(String number) {
   try {
     late String id, compactNumber;
     late MobileNumberFormat format;

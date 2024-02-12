@@ -1,4 +1,4 @@
-import 'package:tembo_core/exceptions/exception.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 Message? validateName(String? text, {String? label, bool optional = false}) {
   if (text == null || text.trim().isEmpty) {
@@ -21,7 +21,7 @@ Message? validateEmail(String? email, {bool optional = false}) {
             swMessage: 'Lazima uweke barua pepe',
           );
   }
-  
+
   final regex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z]+\.[a-zA-Z]+");
   final isValidEmail = regex.hasMatch(email);
@@ -63,4 +63,25 @@ bool checkIfOnSameDay(DateTime? date1, DateTime? date2) {
   return date1.year == date2.year &&
       date1.month == date2.month &&
       date1.day == date2.day;
+}
+
+Message? validateTZPhoneNumber(String? phone, {bool optional = false}) {
+  if (phone == null || phone.trim().isEmpty) {
+    return optional
+        ? null
+        : const Message(
+            enMessage: 'Phone number can\'t be empty',
+            swMessage: 'Lazima uweke namba ya simu',
+          );
+  }
+
+  final result = parsePhoneNumber(phone);
+  if (result == null) {
+    return const Message(
+      enMessage: 'Invalid phone number',
+      swMessage: 'Namba ya simu si sahihi',
+    );
+  }
+
+  return null;
 }

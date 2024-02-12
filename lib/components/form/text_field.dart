@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tembo_core/constants/source.dart';
+import 'package:intl/intl.dart';
 import 'package:tembo_core/extensions/source.dart';
 
 import '../../exceptions/exception.dart';
-import '../../locales/language_settings_manager.dart';
 import '../../styles/text_field_decoration.dart';
 import '../../widgets/locale_wrapper.dart';
 import '../label.dart';
@@ -163,7 +162,10 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
     final error = widget.validator!(value);
     if (error != null) {
       errorNotifier.value = error;
-      final isEn = ref.read(localesManagerProvider).isEN;
+      // final isEn = ref.read(localesManagerProvider).isEN;
+      // print(Intl.getCurrentLocale());
+
+      final isEn = Intl.getCurrentLocale() == "en_US";
       return isEn ? error.enMessage : error.swMessage;
     }
 
