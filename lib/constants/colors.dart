@@ -31,6 +31,37 @@ class TemboColors {
   static const body = Colors.black87;
 }
 
+class DarkTemboColors {
+  static const primary = Colors.lightBlueAccent;
+  static const onPrimary = Colors.black87;
+
+  static const primaryContainer = Color.fromARGB(255, 159, 127, 218);
+  static const onPrimaryContainer = Colors.white;
+
+  static const secondary = Color(0xff5000F0);
+  static const onSecondary = Colors.white;
+
+  static const background = Colors.black45;
+  static const onBackground = Colors.white;
+
+  static const surfaceContainer = Color(0xff3D3D3D);
+  static const onSurfaceContainer = Colors.white;
+
+  static const surface = Color.fromARGB(255, 237, 236, 236);
+  static const onSurface = Color.fromARGB(255, 93, 93, 93);
+
+  static const success = Color(0xff006400);
+  static const onSuccess = Colors.white;
+
+  static const error = Colors.red;
+  static const onError = Colors.white;
+
+  static const border = Colors.grey;
+  static const hint = Colors.white70;
+  static const title = Color(0xffAAC0CE);
+  static const body = Colors.white70;
+}
+
 class TemboColorScheme {
   final Color? primary,
       onPrimary,
@@ -97,5 +128,28 @@ class TemboColorScheme {
     this.onSurface = TemboColors.onSurface,
     this.success = TemboColors.success,
     this.onSuccess = TemboColors.onSuccess,
+  });
+
+  const TemboColorScheme.dark({
+    this.primary = DarkTemboColors.primary,
+    this.onPrimary = DarkTemboColors.onPrimary,
+    this.primaryContainer = DarkTemboColors.primaryContainer,
+    this.onPrimaryContainer = DarkTemboColors.onPrimaryContainer,
+    this.secondary = DarkTemboColors.secondary,
+    this.onSecondary = DarkTemboColors.onSecondary,
+    this.border = DarkTemboColors.border,
+    this.hint = DarkTemboColors.hint,
+    this.title = DarkTemboColors.title,
+    this.body = DarkTemboColors.body,
+    this.background = DarkTemboColors.background,
+    this.onBackground = DarkTemboColors.onBackground,
+    this.surfaceContainer = DarkTemboColors.surfaceContainer,
+    this.onSurfaceContainer = DarkTemboColors.onSurfaceContainer,
+    this.error = DarkTemboColors.error,
+    this.onError = DarkTemboColors.onError,
+    this.surface = DarkTemboColors.surface,
+    this.onSurface = DarkTemboColors.onSurface,
+    this.success = DarkTemboColors.success,
+    this.onSuccess = DarkTemboColors.onSuccess,
   });
 }
