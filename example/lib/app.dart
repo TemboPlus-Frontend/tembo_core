@@ -1,6 +1,8 @@
-import 'package:example/colors_cheme/colors_scheme.dart';
-import 'package:example/components.dart';
-import 'package:example/source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/tembo_core.dart';
+
+import './colors_cheme/colors_scheme.dart';
+import './components.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

@@ -1,5 +1,6 @@
-import 'package:example/colors_cheme/color_box.dart';
-import 'package:example/source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/tembo_core.dart';
+import './color_box.dart';
 
 class ColorsScheme extends StatelessWidget {
   const ColorsScheme({super.key});

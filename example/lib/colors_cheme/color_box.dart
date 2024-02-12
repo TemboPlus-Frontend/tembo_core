@@ -1,4 +1,5 @@
-import 'package:example/source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 class ColorBox extends StatelessWidget {
   final String name;

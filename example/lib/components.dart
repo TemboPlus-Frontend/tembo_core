@@ -1,5 +1,7 @@
-import 'package:example/form/form.dart';
-import 'package:example/source.dart';
+import 'package:flutter/material.dart';
+import 'package:tembo_core/tembo_core.dart';
+
+import './form/form.dart';
 
 class ComponentsPreview extends StatefulWidget {
   const ComponentsPreview({super.key});
