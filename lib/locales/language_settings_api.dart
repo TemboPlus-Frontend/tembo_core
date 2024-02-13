@@ -1,6 +1,6 @@
 import 'package:tembo_core/tembo_core.dart';
 
-import '../user_preferences/user_preferences_api.dart';
+import '../api/user_preferences_api.dart';
 
 class LanguageSettingsAPI {
   final prefsAPI = UserPreferencesAPI.instance;
