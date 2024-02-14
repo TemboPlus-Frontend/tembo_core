@@ -2,27 +2,49 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-final theme = _flexColorCheme.toTheme;
+final lightTheme = _colorScheme.toTheme;
+final darkTheme = _darkColorScheme.toTheme;
 
 const kFontFamily = "IBMPlexSans";
-const colorScheme = TemboColorScheme.light();
-final _flexColorCheme = FlexColorScheme.light(
+
+const _light = TemboColorScheme.light();
+final _colorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
-  primary: colorScheme.primary,
-  onPrimary: colorScheme.onPrimary,
-  primaryContainer: colorScheme.primaryContainer,
-  onPrimaryContainer: colorScheme.onPrimaryContainer,
-  secondary: colorScheme.secondary,
-  onSecondary: colorScheme.onSecondary,
-  error: colorScheme.primary,
-  onError: colorScheme.onPrimary,
-  background: colorScheme.background,
-  scaffoldBackground: colorScheme.background,
-  onBackground: colorScheme.onBackground,
-  surface: colorScheme.surface,
-  onSurface: colorScheme.onSurface,
+  appBarBackground: _light.background,
+  primary: _light.primary,
+  onPrimary: _light.onPrimary,
+  error: _light.error,
+  onError: _light.onError,
+  background: _light.background,
+  scaffoldBackground: _light.background,
+  surface: _light.surface,
+  onSurface: _light.onSurface,
+  onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
+  appBarStyle: FlexAppBarStyle.material,
+  subThemesData: const FlexSubThemesData(
+    elevatedButtonSchemeColor: SchemeColor.background,
+    appBarBackgroundSchemeColor: SchemeColor.background,
+  ),
+);
+
+const _dark = TemboColorScheme.dark();
+final _darkColorScheme = FlexColorScheme.dark(
+  fontFamily: kFontFamily,
+  primary: _dark.primary,
+  onPrimary: _dark.onPrimary,
+  appBarBackground: _dark.background,
+  error: _dark.error,
+  onError: _dark.onError,
+  background: _dark.background,
+  scaffoldBackground: _dark.background,
+  surface: _dark.surface,
+  onSurface: _dark.onSurface,
+  onBackground: Colors.black87,
+  useMaterial3: true,
+  useMaterial3ErrorColors: true,
+  appBarStyle: FlexAppBarStyle.material,
   subThemesData: const FlexSubThemesData(
     elevatedButtonSchemeColor: SchemeColor.background,
     appBarBackgroundSchemeColor: SchemeColor.background,
