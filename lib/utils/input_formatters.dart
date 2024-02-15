@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-import 'phone_utils/mobile_number.dart';
+import 'phone_utils/format.dart';
+import 'phone_utils/telecom.dart';
+import 'phone_utils/utils.dart';
 
 String getFormattedTINNumber(String value) {
   final text = value.trim().split("-").join();
