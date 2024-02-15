@@ -1,5 +1,7 @@
 import 'telecom.dart';
+import 'phone_number.dart';
 
+///@Deprecated Use [PhoneNumber] instead.
 class MobileNumber {
   final Telecom telecom;
   final String number;

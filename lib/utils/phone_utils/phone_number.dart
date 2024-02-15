@@ -32,7 +32,8 @@ class PhoneNumber {
   factory PhoneNumber.fromJson(String source) =>
       PhoneNumber.fromMap(json.decode(source) as Map<String, dynamic>);
 
-  static PhoneNumber? from(String number) {
+  static PhoneNumber? from(String s) {
+    final number = s.trim();
     try {
       late String id, compactNumber;
 
