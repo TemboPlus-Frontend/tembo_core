@@ -5,8 +5,6 @@ import 'package:tembo_core/constants/source.dart';
 final lightTheme = _colorScheme.toTheme;
 final darkTheme = _darkColorScheme.toTheme;
 
-const kFontFamily = "IBMPlexSans";
-
 const _light = TemboColorScheme.light();
 final _colorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,

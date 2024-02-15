@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/theme.dart';
+import '../constants/constants.dart';
 
 class TemboText extends StatelessWidget {
   const TemboText(

@@ -1,5 +1,7 @@
 export 'colors.dart';
 export 'constants.dart';
 export 'locale.dart';
-export 'theme.dart';
 export 'typedefs.dart';
+
+export 'themes/default.dart';
+export 'themes/lipa_china.dart';

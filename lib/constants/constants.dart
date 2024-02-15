@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const kFontFamily = "IBMPlexSans";
+
 const kdx = 15.0;
 
 const kBorderRadius = 0.0;
