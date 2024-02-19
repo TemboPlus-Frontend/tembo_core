@@ -16,5 +16,5 @@ extension BuildContextExtension on BuildContext {
 
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
 
-  AppLocalizations get l => AppLocalizations.of(this) ?? AppLocalizationsEn();
+  AppLocalizations get loc => AppLocalizations.of(this) ?? AppLocalizationsEn();
 }
