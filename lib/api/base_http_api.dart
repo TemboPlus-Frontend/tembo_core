@@ -31,7 +31,7 @@ abstract class BaseHTTPAPI {
     final h = Map<String, String>.from(_baseHeaders);
 
     final token = UserPreferencesAPI.instance.get("api_token");
-    if (token != null) h.addAll({"x-authorization": token!});
+    if (token != null) h.addAll({"token": token!});
     return h;
   }
 
@@ -47,6 +47,9 @@ abstract class BaseHTTPAPI {
     String endpoint, {
     String? params,
     StatusCodeHandler? statusCodeHandler,
+
+    /// some apis return empty bodies, so we need to check if the body is empty
+    bool checkBody = true,
   }) async {
     var url = getUri(endpoint);
     if (params?.trim().isNotEmpty ?? false) {
@@ -61,6 +64,9 @@ abstract class BaseHTTPAPI {
     String? body,
     StatusCodeHandler? statusCodeHandler,
     String? params,
+
+    /// some apis return empty bodies, so we need to check if the body is empty
+    bool checkBody = true,
   }) async {
     var url = getUri(endpoint);
     if (params?.trim().isNotEmpty ?? false) {
@@ -78,6 +84,9 @@ abstract class BaseHTTPAPI {
     String endpoint,
     String body, [
     StatusCodeHandler? statusCodeHandler,
+
+    /// some apis return empty bodies, so we need to check if the body is empty
+    bool checkBody = true,
   ]) async {
     final response = await http.patch(
       getUri(endpoint),
@@ -91,10 +100,14 @@ abstract class BaseHTTPAPI {
     http.Response response, [
     dynamic requestBody,
     StatusCodeHandler? statusCodeHandler,
+
+    // some apis return empty bodies, so we need to check if the body is empty
+    bool checkBody = true,
   ]) {
     debugPrint(response.stringRep(requestBody));
 
     if (statusCodeHandler != null) statusCodeHandler(response.statusCode);
+    if (!checkBody) return;
 
     final body = jsonDecode(response.body);
     if (body is Map) return body;
@@ -109,7 +122,7 @@ extension ResponseExtension on http.Response {
     Request:
       url: ${request?.url}
       method: ${request?.method}
-      token: ${request?.headers['x-authorization']}
+      token: ${request?.headers['token']}
       body: $requestBody
 
     Response:
