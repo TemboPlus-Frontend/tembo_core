@@ -26,9 +26,6 @@ class TemboColors {
   static const onSuccess = Colors.white;
 
   static const border = Colors.black45;
-  static const hint = Colors.black54;
-  static const title = Color(0xffAAC0CE);
-  static const body = Colors.black87;
 }
 
 class DarkTemboColors {
@@ -69,10 +66,9 @@ class TemboColorScheme {
       onPrimaryContainer,
       secondary,
       onSecondary,
+      secondaryContainer,
+      onSecondaryContainer,
       border,
-      hint,
-      title,
-      body,
       background,
       onBackground,
       surface,
@@ -90,9 +86,6 @@ class TemboColorScheme {
     this.secondary,
     this.onSecondary,
     this.border,
-    this.hint,
-    this.title,
-    this.body,
     this.background,
     this.onBackground,
     this.surfaceContainer,
@@ -105,6 +98,8 @@ class TemboColorScheme {
     this.onSurface,
     this.success,
     this.onSuccess,
+    this.secondaryContainer,
+    this.onSecondaryContainer,
   });
 
   const TemboColorScheme.light({
@@ -112,12 +107,11 @@ class TemboColorScheme {
     this.onPrimary = TemboColors.onPrimary,
     this.primaryContainer = TemboColors.primaryContainer,
     this.onPrimaryContainer = TemboColors.onPrimaryContainer,
+    this.secondaryContainer = TemboColors.primaryContainer,
+    this.onSecondaryContainer = TemboColors.onPrimaryContainer,
     this.secondary = TemboColors.secondary,
     this.onSecondary = TemboColors.onSecondary,
     this.border = TemboColors.border,
-    this.hint = TemboColors.hint,
-    this.title = TemboColors.title,
-    this.body = TemboColors.body,
     this.background = TemboColors.background,
     this.onBackground = TemboColors.onBackground,
     this.surfaceContainer = TemboColors.surfaceContainer,
@@ -135,12 +129,11 @@ class TemboColorScheme {
     this.onPrimary = DarkTemboColors.onPrimary,
     this.primaryContainer = DarkTemboColors.primaryContainer,
     this.onPrimaryContainer = DarkTemboColors.onPrimaryContainer,
+    this.secondaryContainer = DarkTemboColors.primaryContainer,
+    this.onSecondaryContainer = DarkTemboColors.onPrimaryContainer,
     this.secondary = DarkTemboColors.secondary,
     this.onSecondary = DarkTemboColors.onSecondary,
     this.border = DarkTemboColors.border,
-    this.hint = DarkTemboColors.hint,
-    this.title = DarkTemboColors.title,
-    this.body = DarkTemboColors.body,
     this.background = DarkTemboColors.background,
     this.onBackground = DarkTemboColors.onBackground,
     this.surfaceContainer = DarkTemboColors.surfaceContainer,
@@ -152,4 +145,9 @@ class TemboColorScheme {
     this.success = DarkTemboColors.success,
     this.onSuccess = DarkTemboColors.onSuccess,
   });
+
+  @override
+  String toString() {
+    return 'TemboColorScheme(primary: $primary, onPrimary: $onPrimary, primaryContainer: $primaryContainer, onPrimaryContainer: $onPrimaryContainer, secondary: $secondary  , onSecondary: $onSecondary, secondaryContainer: $secondaryContainer, onSecondaryContainer: $onSecondaryContainer , border: $border, background: $background, onBackground: $onBackground, surfaceContainer: $surfaceContainer, onSurfaceContainer: $onSurfaceContainer, error: $error, onError: $onError, border: $border)';
+  }
 }

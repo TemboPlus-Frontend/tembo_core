@@ -2,13 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:tembo_core/extensions/source.dart';
-
-import '../../exceptions/exception.dart';
-import '../../styles/text_field_decoration.dart';
-import '../../widgets/locale_wrapper.dart';
-import '../label.dart';
-import '../text.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 class TemboTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
@@ -46,19 +40,19 @@ class TemboTextField extends ConsumerStatefulWidget {
   TemboTextField.value(
     String value, {
     this.label,
-    this.obscureText = false,
-    this.validator,
-    this.focusNode,
-    this.enabled,
     this.textCapitalization,
-    this.onChanged,
-    this.textInputType,
-    this.formatters,
-    this.hint,
     Key? key,
     this.textAlign,
     this.decoration,
-  })  : controller = TextEditingController(text: value),
+  })  : textInputType = null,
+        hint = null,
+        validator = null,
+        obscureText = false,
+        onChanged = null,
+        focusNode = null,
+        formatters = null,
+        enabled = false,
+        controller = TextEditingController(text: value),
         super(key: key);
 
   const TemboTextField.labelled(
@@ -103,8 +97,16 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final decoration = (widget.decoration ?? const TemboTextFieldDecoration())
-        .copyWith(hint: widget.hint);
+    final scheme = getTemboColorScheme();
+
+    final defaultDeco = TemboTextFieldDecoration(borderColor: scheme.border);
+    var decoration = widget.decoration ?? defaultDeco;
+    decoration = decoration.copyWith(hint: widget.hint);
+
+    if (!(widget.enabled ?? true)) {
+      decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
+    }
+
     final bool canExpand = decoration.size != null;
 
     return Column(

@@ -2,11 +2,11 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-final lightTheme = _colorScheme.toTheme;
-final darkTheme = _darkColorScheme.toTheme;
+final lightTheme = defaultLightFlexColorScheme.toTheme;
+final darkTheme = defaultDarkFlexColorScheme.toTheme;
 
 const defaultLightColorScheme = TemboColorScheme.light();
-final _colorScheme = FlexColorScheme.light(
+final defaultLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
   appBarBackground: defaultLightColorScheme.background,
   primary: defaultLightColorScheme.primary,
@@ -28,7 +28,7 @@ final _colorScheme = FlexColorScheme.light(
 );
 
 const defaultDarkColorScheme = TemboColorScheme.dark();
-final _darkColorScheme = FlexColorScheme.dark(
+final defaultDarkFlexColorScheme = FlexColorScheme.dark(
   fontFamily: kFontFamily,
   primary: defaultDarkColorScheme.primary,
   onPrimary: defaultDarkColorScheme.onPrimary,
@@ -51,10 +51,10 @@ final _darkColorScheme = FlexColorScheme.dark(
 
 extension ColorSchemeExt on ColorScheme {
   Color get surfaceContainer => TemboColors.surfaceContainer;
-
   Color get onSurfaceContainer => TemboColors.onSurfaceContainer;
 
   Color get success => TemboColors.success;
-
   Color get onSuccess => TemboColors.onSuccess;
+
+  Color get border => TemboColors.border;
 }

@@ -13,6 +13,8 @@ class _ExampleFormState extends State<ExampleForm> {
   final emailController = TextEditingController();
   final tinNoController = TextEditingController();
 
+  var date = DateTime.now();
+
   final formKey = GlobalKey<FormState>();
 
   String? size;
@@ -43,11 +45,9 @@ class _ExampleFormState extends State<ExampleForm> {
             ],
           ),
           vSpace(),
-          TemboTextField.labelled(
-            "Email",
-            controller: emailController,
-            textInputType: TextInputType.emailAddress,
-            validator: validateEmail,
+          TemboTextField.value(
+            "johndoe@gmail.com",
+            label: "Filled Email",
           ),
           vSpace(),
           const TemboLabel("Choose Size"),
@@ -67,6 +67,12 @@ class _ExampleFormState extends State<ExampleForm> {
               FixedLengthFormatter(13),
               TINNumberFormatter(),
             ],
+          ),
+          vSpace(),
+          TemboDatePicker(
+            date: date,
+            label: (d) => d.format(),
+            onSelected: (e) => setState(() => date = e),
           ),
           vSpace(),
           TemboTextButton(

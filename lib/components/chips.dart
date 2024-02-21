@@ -8,6 +8,10 @@ import '../widgets/source.dart';
 import 'text.dart';
 import 'text_button.dart';
 
+import '../app/app.dart';
+
+import 'package:flex_color_scheme/flex_color_scheme.dart';
+
 class TemboChips<T> extends StatefulWidget {
   final List<T> options;
   final String Function(T option) name;
@@ -60,12 +64,13 @@ class TemboOptionButton extends StatelessWidget {
   });
 
   TemboButtonStyle unselectedStyle(BuildContext context) {
+    final cs = getTemboColorScheme();
     return TemboButtonStyle(
       backgroundColor: context.colorScheme.background,
       foregroundColor: context.colorScheme.onBackground,
-      borderColor: context.colorScheme.primaryContainer,
+      borderColor: cs.border,
       textStyle: context.textTheme.bodyMedium.withFW400,
-      borderWidth: 1.0,
+      borderWidth: 1.2,
       borderRadius: kBorderRadius4,
       padding: horizontal() + vertical(),
       height: null,
@@ -75,8 +80,8 @@ class TemboOptionButton extends StatelessWidget {
 
   TemboButtonStyle selectedStyle(BuildContext context) {
     return unselectedStyle(context).copyWith(
-      backgroundColor: context.colorScheme.primaryContainer,
-      foregroundColor: context.colorScheme.onPrimaryContainer,
+      backgroundColor: context.colorScheme.secondaryContainer,
+      foregroundColor: context.colorScheme.onSecondaryContainer,
       textStyle: context.textTheme.bodyMedium.bold,
       borderWidth: 0,
       borderColor: Colors.transparent,

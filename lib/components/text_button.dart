@@ -1,9 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tembo_core/extensions/source.dart';
-import 'package:tembo_core/styles/button_styles.dart';
-
-import 'text.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 class TemboTextButton extends StatefulWidget {
   final VoidCallback onPressed;
@@ -48,14 +45,14 @@ class _TemboTextButtonState extends State<TemboTextButton> {
         onTap: _onPressed,
         onLongPress: _onLongPress,
         child: Container(
-          padding: _style.padding,
+          padding: _style.padding ?? kHorPadding ,
           width: _style.width?.toDouble(),
           height: _style.height?.toDouble(),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: _style.backgroundColor,
             borderRadius: BorderRadius.circular(
-              _style.borderRadius?.toDouble() ?? 0.0,
+              _style.borderRadius?.toDouble() ?? kBorderRadius3,
             ),
             border: Border.all(
               color: _style.borderColor ?? Colors.transparent,

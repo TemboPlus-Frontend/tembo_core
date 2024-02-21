@@ -10,5 +10,7 @@ export 'utils/source.dart';
 export 'widgets/source.dart';
 export 'exceptions/source.dart';
 
+export '../app/app.dart';
+
 export 'localizations/app_localizations.dart';
 export 'locales/language_settings_manager.dart';

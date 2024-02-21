@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tembo_core/components/source.dart';
-import 'package:tembo_core/extensions/source.dart';
-
-import '../constants/source.dart';
-import '../styles/source.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 class TemboDatePicker extends StatefulWidget {
   final DateTime date;
@@ -39,13 +35,17 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
 
   @override
   Widget build(BuildContext context) {
+     final cs = getTemboColorScheme();
     return TemboTextButton(
       onPressed: showPicker,
       style: widget.style ??
           TemboButtonStyle.outline(
-            borderColor: TemboColors.border,
+            borderColor: cs.border,
+            borderWidth: 1.5,
             foregroundColor: context.colorScheme.onBackground,
-            textStyle: context.textTheme.bodyLarge.withFW500,
+            textStyle: context.textTheme.bodyMedium.withFW500,
+           // height: kHeight,
+            padding: kHorPadding + vertical(),
           ),
       child: widget.child != null
           ? widget.child!(widget.date, widget.label(widget.date))

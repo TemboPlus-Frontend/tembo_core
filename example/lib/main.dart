@@ -28,12 +28,15 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      child: MaterialApp(
-        navigatorKey: rootNavKey,
-        scaffoldMessengerKey: rootMessengerKey,
-        theme: lightTheme,
-        home: const App(),
-      ),
+      child: Consumer(builder: (context, ref, _) {
+        final theme = ref.watch(themeManagerProvider);
+        return MaterialApp(
+          navigatorKey: rootNavKey,
+          scaffoldMessengerKey: rootMessengerKey,
+          theme: theme.flexColorScheme.toTheme,
+          home: const App(),
+        );
+      }),
     );
   }
 }

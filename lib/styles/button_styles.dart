@@ -203,7 +203,7 @@ class TemboButtonStyle {
       textStyle: getTextStyle,
       fixedSize: _size,
       padding: _size == null && padding == null
-          ? horizontal() + vertical()
+          ? horizontal() + vertical(8)
           : padding,
     );
   }

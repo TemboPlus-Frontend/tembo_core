@@ -24,7 +24,7 @@ class TemboTextFieldDecoration {
   const TemboTextFieldDecoration({
     this.fillColor,
     this.hintStyle = const TextStyle(
-      color: TemboColors.hint,
+      color: TemboColors.onSurface,
       fontWeight: FontWeight.w400,
       fontSize: 15,
     ),
@@ -81,23 +81,6 @@ class TemboTextFieldDecoration {
       hintStyle: hintStyle.copyWith(fontFamily: fontFamily),
     );
   }
-
-/*   InputBorder get disabledBorder {
-    if (useDefinedStylesForDisabledBorder) {
-      return OutlineInputBorder(
-        borderSide: BorderSide(
-          color: borderColor ?? Colors.transparent,
-          width: borderWidth ?? 0,
-        ),
-      );
-    }
-    return const OutlineInputBorder(
-      borderSide: BorderSide(
-        color: LightTemboColors.border,
-        width: 2,
-      ),
-    );
-  } */
 
   InputBorder get border {
     return hasBorder

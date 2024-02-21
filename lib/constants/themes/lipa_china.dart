@@ -9,8 +9,11 @@ class LipaChinaColors {
   static const primaryContainer = Color(0xFFF0F8FF);
   static const onPrimaryContainer = Colors.black87;
 
-  static const secondary = Color(0xff5000F0);
+  static const secondary = Color(0xff78184A);
   static const onSecondary = Colors.white;
+
+  static const secondaryContainer = Color(0xFFFAE6FA);
+  static const onSecondaryContainer = Colors.black;
 
   static const background = Colors.white;
   static const onBackground = Colors.black87;
@@ -27,10 +30,7 @@ class LipaChinaColors {
   static const success = Color(0xff006400);
   static const onSuccess = Colors.white;
 
-  static const border = Colors.black45;
-  static const hint = Colors.black54;
-  static const title = Color(0xffAAC0CE);
-  static const body = Colors.black87;
+  static const border = Colors.black12;
 }
 
 class DarkLipaChinaColors {
@@ -42,6 +42,9 @@ class DarkLipaChinaColors {
 
   static const secondary = Color(0xff5000F0);
   static const onSecondary = Colors.white;
+
+  static const secondaryContainer = Color(0xFFFAE6FA);
+  static const onSecondaryContainer = Colors.black;
 
   static const background = Colors.black45;
   static const onBackground = Colors.white;
@@ -58,31 +61,51 @@ class DarkLipaChinaColors {
   static const error = Colors.red;
   static const onError = Colors.white;
 
-  static const border = Colors.grey;
-  static const hint = Colors.white70;
-  static const title = Color(0xffAAC0CE);
-  static const body = Colors.white70;
+  static const border = Colors.white12;
 }
 
-final lipaChinaLightTheme = _colorScheme.toTheme;
-final lipaChinaDarkTheme = _darkColorScheme.toTheme;
+final lipaChinaLightTheme = lipaChinaLightFlexColorScheme.toTheme;
+final lipaChinaDarkTheme = lipaChinaDarkFlexColorScheme.toTheme;
 
 const lipaChinaLightColorScheme = TemboColorScheme.light(
   primary: LipaChinaColors.primary,
+  onPrimary: LipaChinaColors.onPrimary,
   primaryContainer: LipaChinaColors.primaryContainer,
+  onPrimaryContainer: LipaChinaColors.onPrimaryContainer,
+  secondaryContainer: LipaChinaColors.secondaryContainer,
+  onSecondaryContainer: LipaChinaColors.onSecondaryContainer,
+  secondary: LipaChinaColors.secondary,
+  onSecondary: LipaChinaColors.onSecondary,
+  background: LipaChinaColors.background,
+  onBackground: LipaChinaColors.onBackground,
+  surface: LipaChinaColors.surface,
+  onSurface: LipaChinaColors.onSurface,
+  error: LipaChinaColors.error,
+  onError: LipaChinaColors.onError,
+  success: LipaChinaColors.success,
+  onSuccess: LipaChinaColors.onSuccess,
+  surfaceContainer: LipaChinaColors.surfaceContainer,
+  onSurfaceContainer: LipaChinaColors.onSurfaceContainer,
+  border: LipaChinaColors.border,
 );
-final _colorScheme = FlexColorScheme.light(
+final lipaChinaLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
   appBarBackground: lipaChinaLightColorScheme.background,
   primary: lipaChinaLightColorScheme.primary,
   onPrimary: lipaChinaLightColorScheme.onPrimary,
+  primaryContainer: lipaChinaLightColorScheme.primaryContainer,
+  onPrimaryContainer: lipaChinaLightColorScheme.onPrimaryContainer,
+  secondary: lipaChinaLightColorScheme.secondary,
+  onSecondary: lipaChinaLightColorScheme.onSecondary,
+  secondaryContainer: lipaChinaLightColorScheme.secondaryContainer,
+  onSecondaryContainer: lipaChinaLightColorScheme.onSecondaryContainer,
   error: lipaChinaLightColorScheme.error,
   onError: lipaChinaLightColorScheme.onError,
   background: lipaChinaLightColorScheme.background,
+  onBackground: lipaChinaLightColorScheme.onBackground,
   scaffoldBackground: lipaChinaLightColorScheme.background,
   surface: lipaChinaLightColorScheme.surface,
   onSurface: lipaChinaLightColorScheme.onSurface,
-  onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
   appBarStyle: FlexAppBarStyle.material,
@@ -93,7 +116,7 @@ final _colorScheme = FlexColorScheme.light(
 );
 
 const lipaChinaDarkColorScheme = TemboColorScheme.dark();
-final _darkColorScheme = FlexColorScheme.dark(
+final lipaChinaDarkFlexColorScheme = FlexColorScheme.dark(
   fontFamily: kFontFamily,
   primary: lipaChinaDarkColorScheme.primary,
   onPrimary: lipaChinaDarkColorScheme.onPrimary,
@@ -116,10 +139,10 @@ final _darkColorScheme = FlexColorScheme.dark(
 
 extension LipaChinaColorSchemeExt on ColorScheme {
   Color get surfaceContainer => LipaChinaColors.surfaceContainer;
-
   Color get onSurfaceContainer => LipaChinaColors.onSurfaceContainer;
 
   Color get success => LipaChinaColors.success;
-
   Color get onSuccess => LipaChinaColors.onSuccess;
+
+  Color get border => LipaChinaColors.border;
 }
