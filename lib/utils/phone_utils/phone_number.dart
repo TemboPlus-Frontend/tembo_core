@@ -3,6 +3,15 @@ import 'dart:convert';
 import 'format.dart';
 import 'telecom.dart';
 
+enum TransactionType {
+  toWallet("C2B"),
+  fromWallet("B2C"),
+  ;
+
+  final String channelLabel;
+  const TransactionType(this.channelLabel);
+}
+
 class PhoneNumber {
   /// Number without the country code or '0'. Should only have 9 digits for local (TZ) phone numbers.
   final String compactNumber;
@@ -21,6 +30,12 @@ class PhoneNumber {
   Telecom get telecom {
     final id = compactNumber.substring(0, 2);
     return Telecom.values.where((e) => e.prefixes.contains(id)).single;
+  }
+
+  String getChannel(TransactionType type) {
+    final label = type.channelLabel;
+    final company = telecom.label.toUpperCase();
+    return "TZ-$company-$label";
   }
 
   factory PhoneNumber.fromMap(Map<String, dynamic> map) {

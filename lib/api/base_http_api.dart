@@ -56,7 +56,7 @@ abstract class BaseHTTPAPI {
       url = url.updateQueryParameters(params!);
     }
     final response = await http.get(url, headers: headers);
-    return getResult(response, null, statusCodeHandler);
+    return getResult(response, null, statusCodeHandler, checkBody);
   }
 
   Future<T> post<T>(
@@ -77,7 +77,7 @@ abstract class BaseHTTPAPI {
       body: body,
       headers: headers,
     );
-    return getResult(response, body, statusCodeHandler);
+    return getResult(response, body, statusCodeHandler, checkBody);
   }
 
   Future<T> patch<T>(
@@ -93,7 +93,7 @@ abstract class BaseHTTPAPI {
       body: body,
       headers: headers,
     );
-    return getResult(response, body, statusCodeHandler);
+    return getResult(response, body, statusCodeHandler, checkBody);
   }
 
   dynamic getResult(
