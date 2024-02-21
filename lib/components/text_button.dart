@@ -32,8 +32,15 @@ class TemboTextButton extends StatefulWidget {
 }
 
 class _TemboTextButtonState extends State<TemboTextButton> {
-  TemboButtonStyle get _style =>
-      widget.style ?? const TemboButtonStyle.filled();
+  TemboButtonStyle get _style {
+    final style = widget.style ??
+        TemboButtonStyle.filled(
+          backgroundColor: context.colorScheme.primary,
+          foregroundColor: context.colorScheme.onPrimary,
+        );
+
+    return style;
+  }
 
   @override
   Widget build(BuildContext context) {
