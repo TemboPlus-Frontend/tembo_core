@@ -5,18 +5,18 @@ import 'package:tembo_core/constants/source.dart';
 final lightTheme = _colorScheme.toTheme;
 final darkTheme = _darkColorScheme.toTheme;
 
-const _light = TemboColorScheme.light();
+const defaultLightColorScheme = TemboColorScheme.light();
 final _colorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
-  appBarBackground: _light.background,
-  primary: _light.primary,
-  onPrimary: _light.onPrimary,
-  error: _light.error,
-  onError: _light.onError,
-  background: _light.background,
-  scaffoldBackground: _light.background,
-  surface: _light.surface,
-  onSurface: _light.onSurface,
+  appBarBackground: defaultLightColorScheme.background,
+  primary: defaultLightColorScheme.primary,
+  onPrimary: defaultLightColorScheme.onPrimary,
+  error: defaultLightColorScheme.error,
+  onError: defaultLightColorScheme.onError,
+  background: defaultLightColorScheme.background,
+  scaffoldBackground: defaultLightColorScheme.background,
+  surface: defaultLightColorScheme.surface,
+  onSurface: defaultLightColorScheme.onSurface,
   onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
@@ -27,18 +27,18 @@ final _colorScheme = FlexColorScheme.light(
   ),
 );
 
-const _dark = TemboColorScheme.dark();
+const defaultDarkColorScheme = TemboColorScheme.dark();
 final _darkColorScheme = FlexColorScheme.dark(
   fontFamily: kFontFamily,
-  primary: _dark.primary,
-  onPrimary: _dark.onPrimary,
-  appBarBackground: _dark.background,
-  error: _dark.error,
-  onError: _dark.onError,
-  background: _dark.background,
-  scaffoldBackground: _dark.background,
-  surface: _dark.surface,
-  onSurface: _dark.onSurface,
+  primary: defaultDarkColorScheme.primary,
+  onPrimary: defaultDarkColorScheme.onPrimary,
+  appBarBackground: defaultDarkColorScheme.background,
+  error: defaultDarkColorScheme.error,
+  onError: defaultDarkColorScheme.onError,
+  background: defaultDarkColorScheme.background,
+  scaffoldBackground: defaultDarkColorScheme.background,
+  surface: defaultDarkColorScheme.surface,
+  onSurface: defaultDarkColorScheme.onSurface,
   onBackground: Colors.black87,
   useMaterial3: true,
   useMaterial3ErrorColors: true,

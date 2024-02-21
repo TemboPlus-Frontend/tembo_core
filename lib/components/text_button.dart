@@ -33,37 +33,33 @@ class TemboTextButton extends StatefulWidget {
 
 class _TemboTextButtonState extends State<TemboTextButton> {
   TemboButtonStyle get _style {
-    final style = widget.style ??
-        TemboButtonStyle.filled(
-          backgroundColor: context.colorScheme.primary,
-          foregroundColor: context.colorScheme.onPrimary,
-        );
-
+    var style = widget.style ?? const TemboButtonStyle.filled();
+    style = style.applyDefaultThemes(context);
     return style;
   }
 
   @override
   Widget build(BuildContext context) {
-    final height = widget.style?.height;
-    final width = widget.style?.width;
+    final height = _style.height;
+    final width = _style.width;
 
     if ((height != null && height <= 35) || (width != null && width <= 35)) {
       return GestureDetector(
         onTap: _onPressed,
         onLongPress: _onLongPress,
         child: Container(
-          padding: widget.style?.padding,
-          width: widget.style?.width?.toDouble(),
-          height: widget.style?.height?.toDouble(),
+          padding: _style.padding,
+          width: _style.width?.toDouble(),
+          height: _style.height?.toDouble(),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: widget.style?.backgroundColor,
+            color: _style.backgroundColor,
             borderRadius: BorderRadius.circular(
-              widget.style?.borderRadius?.toDouble() ?? 0.0,
+              _style.borderRadius?.toDouble() ?? 0.0,
             ),
             border: Border.all(
-              color: widget.style?.borderColor ?? Colors.transparent,
-              width: widget.style?.borderWidth?.toDouble() ?? 1,
+              color: _style.borderColor ?? Colors.transparent,
+              width: _style.borderWidth?.toDouble() ?? 1,
             ),
           ),
           child: getChild(context),

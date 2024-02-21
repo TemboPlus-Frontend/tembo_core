@@ -67,21 +67,21 @@ class DarkLipaChinaColors {
 final lipaChinaLightTheme = _colorScheme.toTheme;
 final lipaChinaDarkTheme = _darkColorScheme.toTheme;
 
-const _light = TemboColorScheme.light(
+const lipaChinaLightColorScheme = TemboColorScheme.light(
   primary: LipaChinaColors.primary,
   primaryContainer: LipaChinaColors.primaryContainer,
 );
 final _colorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
-  appBarBackground: _light.background,
-  primary: _light.primary,
-  onPrimary: _light.onPrimary,
-  error: _light.error,
-  onError: _light.onError,
-  background: _light.background,
-  scaffoldBackground: _light.background,
-  surface: _light.surface,
-  onSurface: _light.onSurface,
+  appBarBackground: lipaChinaLightColorScheme.background,
+  primary: lipaChinaLightColorScheme.primary,
+  onPrimary: lipaChinaLightColorScheme.onPrimary,
+  error: lipaChinaLightColorScheme.error,
+  onError: lipaChinaLightColorScheme.onError,
+  background: lipaChinaLightColorScheme.background,
+  scaffoldBackground: lipaChinaLightColorScheme.background,
+  surface: lipaChinaLightColorScheme.surface,
+  onSurface: lipaChinaLightColorScheme.onSurface,
   onBackground: Colors.black,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
@@ -92,18 +92,18 @@ final _colorScheme = FlexColorScheme.light(
   ),
 );
 
-const _dark = TemboColorScheme.dark();
+const lipaChinaDarkColorScheme = TemboColorScheme.dark();
 final _darkColorScheme = FlexColorScheme.dark(
   fontFamily: kFontFamily,
-  primary: _dark.primary,
-  onPrimary: _dark.onPrimary,
-  appBarBackground: _dark.background,
-  error: _dark.error,
-  onError: _dark.onError,
-  background: _dark.background,
-  scaffoldBackground: _dark.background,
-  surface: _dark.surface,
-  onSurface: _dark.onSurface,
+  primary: lipaChinaDarkColorScheme.primary,
+  onPrimary: lipaChinaDarkColorScheme.onPrimary,
+  appBarBackground: lipaChinaDarkColorScheme.background,
+  error: lipaChinaDarkColorScheme.error,
+  onError: lipaChinaDarkColorScheme.onError,
+  background: lipaChinaDarkColorScheme.background,
+  scaffoldBackground: lipaChinaDarkColorScheme.background,
+  surface: lipaChinaDarkColorScheme.surface,
+  onSurface: lipaChinaDarkColorScheme.onSurface,
   onBackground: Colors.black87,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
