@@ -10,8 +10,6 @@ import 'text_button.dart';
 
 import '../app/app.dart';
 
-import 'package:flex_color_scheme/flex_color_scheme.dart';
-
 class TemboChips<T> extends StatefulWidget {
   final List<T> options;
   final String Function(T option) name;
