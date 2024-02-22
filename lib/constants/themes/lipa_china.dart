@@ -2,8 +2,6 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-import 'color_scheme.dart';
-
 class LipaChinaColors {
   static const primary = Color(0xFF00308F);
   static const onPrimary = Colors.white;
