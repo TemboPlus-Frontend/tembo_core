@@ -35,7 +35,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-     final cs = getTemboColorScheme();
+    final cs = getTemboColorScheme();
     return TemboTextButton(
       onPressed: showPicker,
       style: widget.style ??
@@ -44,8 +44,8 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
             borderWidth: 1.5,
             foregroundColor: context.colorScheme.onBackground,
             textStyle: context.textTheme.bodyMedium.withFW500,
-           // height: kHeight,
-            padding: kHorPadding + vertical(),
+            // height: kHeight,
+            padding: kHorPadding + vertical(12.5),
           ),
       child: widget.child != null
           ? widget.child!(widget.date, widget.label(widget.date))
@@ -56,7 +56,10 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
                   widget.label(widget.date),
                 ),
                 const SizedBox(width: 10),
-                const Icon(Icons.calendar_month)
+                Icon(
+                  Icons.calendar_month,
+                  color: context.colorScheme.onSurface,
+                )
               ],
             ),
     );

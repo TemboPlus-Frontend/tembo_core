@@ -7,6 +7,7 @@ export 'chips.dart';
 export 'date_picker.dart';
 export 'field_value_widget.dart';
 export 'segmented_button.dart';
+export 'alert_dialog.dart';
 
 export 'form/source.dart';
 export 'table/source.dart';

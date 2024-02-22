@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/app/app.dart';
 
 import '../constants/colors.dart';
 import '../constants/constants.dart';
@@ -83,13 +84,14 @@ class TemboTextFieldDecoration {
   }
 
   InputBorder get border {
+    final scheme = getTemboColorScheme();
     return hasBorder
         ? borderStyle == TemboBorderStyle.outline
             ? OutlineInputBorder(
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? kBorderRadius3),
                 borderSide: BorderSide(
-                  color: borderColor ?? TemboColors.border,
+                  color: borderColor ?? scheme.border ?? TemboColors.border,
                   width: borderWidth ?? 1.5,
                 ),
               )
@@ -105,20 +107,22 @@ class TemboTextFieldDecoration {
   }
 
   InputDecoration get getInputDecoration {
+    final scheme = getTemboColorScheme();
+
     final decoration = InputDecoration(
       isDense: false,
       border: border,
       enabledBorder: border,
       focusedBorder: border.copyWith(
         borderSide: BorderSide(
-          color: TemboColors.secondary,
+          color: scheme.primary ?? TemboColors.primary,
           width: border.borderSide.width,
         ),
       ),
       focusedErrorBorder: border,
       errorBorder: border.copyWith(
         borderSide: BorderSide(
-          color: TemboColors.error,
+          color: scheme.error ?? TemboColors.error,
           width: border.borderSide.width,
         ),
       ),
