@@ -1,4 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/material.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 enum Project {
@@ -21,11 +22,15 @@ Project getProject() {
   );
 }
 
+ThemeData getTheme() {
+  return getColorScheme().toTheme;
+}
+
 FlexColorScheme getColorScheme() {
   final project = getProject();
   switch (project) {
     case Project.lipaChina:
-      return lipaChinaLightFlexColorScheme;
+      return defaultLightFlexColorScheme;
     default:
       return defaultLightFlexColorScheme;
   }
@@ -35,7 +40,7 @@ TemboColorScheme getTemboColorScheme() {
   final project = getProject();
   switch (project) {
     case Project.lipaChina:
-      return lipaChinaLightColorScheme;
+      return defaultLightColorScheme;
     default:
       return defaultLightColorScheme;
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tembo_core/app/app.dart';
 
-import '../constants/colors.dart';
-import '../constants/constants.dart';
+import '../constants/source.dart';
 
 enum TemboBorderStyle { underline, outline }
 

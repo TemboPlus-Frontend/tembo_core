@@ -10,7 +10,7 @@ class TemboLoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isIOS
-        ? CupertinoActivityIndicator(color: color, radius: 5)
+        ? CupertinoActivityIndicator(color: color, radius: 10)
         : CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation(color),
           );

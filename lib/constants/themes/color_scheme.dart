@@ -1,63 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class TemboColors {
-  static const primary = Color.fromRGBO(113, 45, 255, 1);
-  static const onPrimary = Colors.white;
-
-  static const primaryContainer = Color.fromARGB(255, 159, 127, 218);
-  static const onPrimaryContainer = Colors.white;
-
-  static const secondary = Color(0xff5000F0);
-  static const onSecondary = Colors.white;
-
-  static const background = Colors.white;
-  static const onBackground = Colors.black87;
-
-  static const surfaceContainer = Color.fromARGB(255, 245, 245, 245);
-  static const onSurfaceContainer = Colors.black54;
-
-  static const surface = Color(0xfff4f5f8);
-  static const onSurface = Color.fromARGB(255, 93, 93, 93);
-
-  static const error = Color(0xff841617);
-  static const onError = Colors.white;
-
-  static const success = Color(0xff006400);
-  static const onSuccess = Colors.white;
-
-  static const border = Colors.black45;
-}
-
-class DarkTemboColors {
-  static const primary = Colors.lightBlueAccent;
-  static const onPrimary = Colors.black87;
-
-  static const primaryContainer = Color.fromARGB(255, 159, 127, 218);
-  static const onPrimaryContainer = Colors.white;
-
-  static const secondary = Color(0xff5000F0);
-  static const onSecondary = Colors.white;
-
-  static const background = Colors.black45;
-  static const onBackground = Colors.white;
-
-  static const surfaceContainer = Color(0xff3D3D3D);
-  static const onSurfaceContainer = Colors.white;
-
-  static const surface = Color.fromARGB(255, 237, 236, 236);
-  static const onSurface = Color.fromARGB(255, 93, 93, 93);
-
-  static const success = Color(0xff006400);
-  static const onSuccess = Colors.white;
-
-  static const error = Colors.red;
-  static const onError = Colors.white;
-
-  static const border = Colors.grey;
-  static const hint = Colors.white70;
-  static const title = Color(0xffAAC0CE);
-  static const body = Colors.white70;
-}
+import 'default.dart';
 
 class TemboColorScheme {
   final Color? primary,
