@@ -12,7 +12,9 @@ typedef StatusCodeHandler = void Function(int statusCode);
 abstract class BaseHTTPAPI {
   final String root;
   final String? mainEndpoint;
-  const BaseHTTPAPI(this.root, [this.mainEndpoint]);
+  BaseHTTPAPI(this.root, [this.mainEndpoint]);
+
+  void Function()? _unauthorizedCallback;
 
   String get url => mainEndpoint == null ? root : "$root/$mainEndpoint";
 
@@ -41,6 +43,10 @@ abstract class BaseHTTPAPI {
 
   Future deleteToken() async {
     await UserPreferencesAPI.instance.delete("api_token");
+  }
+
+  void registerUnauthorizedCallback(void Function() callback) {
+    _unauthorizedCallback = callback;
   }
 
   Future<T> get<T>(
@@ -105,6 +111,11 @@ abstract class BaseHTTPAPI {
     bool checkBody = true,
   ]) {
     debugPrint(response.stringRep(requestBody));
+
+    if(_unauthorizedCallback != null && response.statusCode == 401) {
+      _unauthorizedCallback!();
+      return;
+    }
 
     if (statusCodeHandler != null) statusCodeHandler(response.statusCode);
     if (!checkBody) return;

@@ -18,7 +18,7 @@ class TemboColors {
   static const background = Colors.white;
   static const onBackground = Colors.black87;
 
-  static const surfaceContainer = Color.fromARGB(255, 245, 245, 245);
+  static const surfaceContainer = Color(0xffF8F8F8);
   static const onSurfaceContainer = Colors.black54;
 
   static const surface = Color(0xfff4f5f8);
