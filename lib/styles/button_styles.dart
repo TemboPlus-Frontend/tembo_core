@@ -13,6 +13,8 @@ class TemboButtonStyle {
   final TextStyle? textStyle;
   final bool? useContinuousBorder;
 
+  final ImageProvider? imageProvider;
+
   final _ButtonStyle? _style;
 
   const TemboButtonStyle({
@@ -27,6 +29,7 @@ class TemboButtonStyle {
     this.height,
     this.textStyle,
     this.useContinuousBorder = false,
+    this.imageProvider,
   }) : _style = null;
 
   TextStyle? get getTextStyle => textStyle?.copyWith(
@@ -42,6 +45,7 @@ class TemboButtonStyle {
     this.height,
     this.padding,
     this.textStyle,
+    this.imageProvider,
     this.useContinuousBorder = false,
   })  : _style = _ButtonStyle.filled,
         borderColor = Colors.transparent,
@@ -59,7 +63,8 @@ class TemboButtonStyle {
   })  : _style = _ButtonStyle.outline,
         useContinuousBorder = false,
         elevation = 0,
-        backgroundColor = Colors.transparent;
+        backgroundColor = Colors.transparent,
+        imageProvider = null;
 
   const TemboButtonStyle.transparent({
     this.foregroundColor,
@@ -68,12 +73,13 @@ class TemboButtonStyle {
     this.padding,
     this.textStyle,
   })  : _style = _ButtonStyle.transparent,
-        borderRadius = null,
+        borderRadius = 0,
         useContinuousBorder = false,
         elevation = 0,
         backgroundColor = Colors.transparent,
         borderColor = Colors.transparent,
-        borderWidth = 0;
+        borderWidth = 0,
+        imageProvider = null;
 
   Size? get _size {
     if (width != null && height != null) {
@@ -116,6 +122,7 @@ class TemboButtonStyle {
       padding: padding ?? this.padding,
       textStyle: textStyle ?? this.textStyle,
       useContinuousBorder: useContinuousBorder ?? this.useContinuousBorder,
+      imageProvider: imageProvider,
     );
   }
 
@@ -132,6 +139,7 @@ class TemboButtonStyle {
       padding: other.padding ?? padding,
       // textStyle: other.textStyle ?? textStyle,
       useContinuousBorder: other.useContinuousBorder ?? useContinuousBorder,
+      imageProvider: imageProvider,
     );
   }
 
@@ -152,6 +160,7 @@ class TemboButtonStyle {
       padding: padding,
       textStyle: textStyle,
       useContinuousBorder: useContinuousBorder,
+      imageProvider: imageProvider,
     );
   }
 
@@ -173,6 +182,7 @@ class TemboButtonStyle {
       padding: padding,
       // textStyle: other.textStyle ?? textStyle,
       useContinuousBorder: useContinuousBorder,
+      imageProvider: imageProvider,
     );
   }
 

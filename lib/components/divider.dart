@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 Widget compactListViewDivider(BuildContext _, int __) =>
     const TemboDivider.compact();
@@ -15,12 +16,13 @@ class TemboDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = getTemboColorScheme();
     return compact
         ? Divider(
             indent: 0,
             height: 0,
-            color: color,
+            color: color ?? scheme.border,
           )
-        : Divider(color: color);
+        : Divider(color: color ?? scheme.border);
   }
 }

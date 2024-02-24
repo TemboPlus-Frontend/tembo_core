@@ -27,10 +27,10 @@ class TemboColors {
   static const error = Color(0xff841617);
   static const onError = Colors.white;
 
-  static const success = Color(0xff006400);
+  static const success = Color(0xff50C878);
   static const onSuccess = Colors.white;
 
-  static const border = Colors.black12;
+  static const border = Colors.black26;
 }
 
 class DarkTemboColors {

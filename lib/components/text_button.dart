@@ -40,26 +40,37 @@ class _TemboTextButtonState extends State<TemboTextButton> {
     final height = _style.height;
     final width = _style.width;
 
-    if ((height != null && height <= 35) || (width != null && width <= 35)) {
-      return GestureDetector(
-        onTap: _onPressed,
-        onLongPress: _onLongPress,
-        child: Container(
-          padding: _style.padding ?? kHorPadding ,
-          width: _style.width?.toDouble(),
-          height: _style.height?.toDouble(),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: _style.backgroundColor,
-            borderRadius: BorderRadius.circular(
-              _style.borderRadius?.toDouble() ?? kBorderRadius3,
+    if ((height != null && height <= 35) ||
+        (width != null && width <= 35) ||
+        _style.imageProvider != null) {
+      return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: _onPressed,
+          onLongPress: _onLongPress,
+          child: Container(
+            padding: _style.padding ?? kHorPadding,
+            width: _style.width?.toDouble(),
+            height: _style.height?.toDouble(),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: _style.backgroundColor,
+              borderRadius: BorderRadius.circular(
+                _style.borderRadius?.toDouble() ?? kBorderRadius3,
+              ),
+              border: Border.all(
+                color: _style.borderColor ?? Colors.transparent,
+                width: _style.borderWidth?.toDouble() ?? 1,
+              ),
+              image: _style.imageProvider == null
+                  ? null
+                  : DecorationImage(
+                      image: _style.imageProvider!,
+                      fit: BoxFit.fill,
+                    ),
             ),
-            border: Border.all(
-              color: _style.borderColor ?? Colors.transparent,
-              width: _style.borderWidth?.toDouble() ?? 1,
-            ),
+            child: getChild(context),
           ),
-          child: getChild(context),
         ),
       );
     }
