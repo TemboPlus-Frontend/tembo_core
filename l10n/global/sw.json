@@ -3,7 +3,6 @@
   "no": "Hapana",
   "home": "Nyumbani",
   "account": "Akaunti",
-  "transactions": "Miamala",
   "hide": "Ficha",
   "show": "Onesha",
   "beCareful": "Kuwa Makini!",
@@ -26,5 +25,10 @@
   "close": "Funga",
   "comingSoon": "Inakuja Hivi Karibuni!",
   "validationError": "Tafadhari angalia taarifa zako vizuri",
-  "isRequired": "$name: Ni Lazima Ujaze"
+  "isRequired": "$name: Ni Lazima Ujaze",
+  "accountNumber": "Akaunti Namba",
+  "bank": "Benki",
+  "description": "Maelezo",
+  "channel": "Channel",
+  "date": "Tarehe"
 }

@@ -5,104 +5,98 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  TOC get toc => TOCEn();
-
-  @override
-  String isRequired(String name) => "$name is required";
-
-  @override
-  String get account => "Account";
-
-  @override
-  String get transactions => "Transactions";
-
-  @override
-  String get seeAll => "See All";
-
-  @override
-  String get unknownError => "An unknown error happened";
-
-  @override
   String get tryAgain => "Try Again";
 
   @override
   String get to => "To";
 
   @override
-  String get no => "No";
-
-  @override
-  String get done => "Done";
-
-  @override
-  String get next => "Next";
-
-  @override
-  String get refresh => "Refresh";
-
-  @override
-  String get send => "Send";
-
-  @override
-  String get validationError => "Please check your information carefully";
+  String get cancel => "Cancel";
 
   @override
   String get amount => "Amount";
 
   @override
-  String get sendLink => "Send link to the customer";
+  String get comingSoon => "Coming Soon!";
 
   @override
-  String get beCareful => "Be careful!";
+  String get accountNumber => "Account Number";
 
   @override
-  String get remove => "Remove";
+  String get bank => "Bank";
 
   @override
-  String get cancel => "Cancel";
+  String get seeAll => "See All";
 
   @override
-  String get show => "Show";
+  String isRequired(String name) => "$name is required";
 
   @override
-  String get yes => "Yes";
+  String get description => "Description";
+
+  @override
+  String get validationError => "Please check your information carefully";
 
   @override
   String get hide => "Hide";
 
   @override
+  String get done => "Done";
+
+  @override
+  String get channel => "Channel";
+
+  @override
+  String get yes => "Yes";
+
+  @override
   String get phone => "Phone";
 
   @override
-  String get preview => "Preview";
+  String get no => "No";
 
   @override
-  String get close => "Close";
+  String get confirm => "Confirm";
 
   @override
-  String get comingSoon => "Coming Soon!";
+  String get send => "Send";
 
   @override
-  String get home => "Home";
+  String get show => "Show";
+
+  @override
+  String get remove => "Remove";
 
   @override
   String get from => "From";
 
   @override
-  String get confirm => "Confirm";
-}
-
-class TOCEn extends TOC {
-  @override
-  String get desc =>
-      "You need to agree to our Terms and Conditions to proceed with the onboarding process";
+  String get account => "Account";
 
   @override
-  String get title => "Terms & Conditions";
+  String get beCareful => "Be careful!";
 
   @override
-  String get readTerms => "Read Our Terms & Conditions";
+  String get next => "Next";
 
   @override
-  String get readAlready => "I have read and agreed to your Terms & Conditions";
+  String get preview => "Preview";
+
+  @override
+  String get sendLink => "Send link to the customer";
+
+  @override
+  String get date => "Date";
+
+  @override
+  String get home => "Home";
+
+  @override
+  String get refresh => "Refresh";
+
+  @override
+  String get close => "Close";
+
+  @override
+  String get unknownError => "An unknown error happened";
 }

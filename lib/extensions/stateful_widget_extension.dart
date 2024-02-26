@@ -25,8 +25,8 @@ abstract class TemboState<T extends StatefulWidget> extends State<T>
   FutureOr<void> afterFirstLayout(BuildContext context);
 }
 
-abstract class TemboConsumerState<T extends ConsumerStatefulWidget> extends ConsumerState<T>
-    with AfterLayoutMixin {
+abstract class TemboConsumerState<T extends ConsumerStatefulWidget>
+    extends ConsumerState<T> with AfterLayoutMixin {
   @override
   FutureOr<void> afterFirstLayout(BuildContext context);
 }

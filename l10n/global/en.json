@@ -3,7 +3,6 @@
     "no": "No",
     "home": "Home",
     "account": "Account",
-    "transactions": "Transactions",
     "hide": "Hide",
     "show": "Show",
     "beCareful": "Be careful!",
@@ -34,5 +33,10 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "accountNumber": "Account Number",
+    "bank": "Bank",
+    "description": "Description",
+    "channel": "Channel",
+    "date": "Date"
 }

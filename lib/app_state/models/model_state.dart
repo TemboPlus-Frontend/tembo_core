@@ -25,5 +25,6 @@ class ModelState<T> with _$ModelState<T> {
 
   bool get isLoading => maybeWhen(orElse: () => false, loading: () => true);
 
-  TemboException? get exception => maybeWhen(orElse: ()=>null, error: (e) => e);
+  TemboException? get exception =>
+      maybeWhen(orElse: () => null, error: (e) => e);
 }

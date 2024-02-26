@@ -5,105 +5,98 @@ class AppLocalizationsSw extends AppLocalizations {
   AppLocalizationsSw([String locale = 'sw']) : super(locale);
 
   @override
-  TOC get toc => TOCSw();
-
-  @override
-  String isRequired(String name) => "$name: Ni Lazima Ujaze";
-
-  @override
-  String get account => "Akaunti";
-
-  @override
-  String get transactions => "Miamala";
-
-  @override
-  String get seeAll => "Ona Yote";
-
-  @override
-  String get unknownError => "Kuna tatizo limetokea";
-
-  @override
   String get tryAgain => "Jaribu Tena";
 
   @override
   String get to => "Kwenda";
 
   @override
-  String get no => "Hapana";
-
-  @override
-  String get done => "Tayari";
-
-  @override
-  String get next => "Endelea";
-
-  @override
-  String get refresh => "Onyesha upya";
-
-  @override
-  String get send => "Tuma";
-
-  @override
-  String get validationError => "Tafadhari angalia taarifa zako vizuri";
+  String get cancel => "Ghairi";
 
   @override
   String get amount => "Kiasi";
 
   @override
-  String get sendLink => "Tuma link kwa mteja";
+  String get comingSoon => "Inakuja Hivi Karibuni!";
 
   @override
-  String get beCareful => "Kuwa Makini!";
+  String get accountNumber => "Akaunti Namba";
 
   @override
-  String get remove => "Toa";
+  String get bank => "Benki";
 
   @override
-  String get cancel => "Ghairi";
+  String get seeAll => "Ona Yote";
 
   @override
-  String get show => "Onesha";
+  String isRequired(String name) => "$name: Ni Lazima Ujaze";
 
   @override
-  String get yes => "Ndio";
+  String get description => "Maelezo";
+
+  @override
+  String get validationError => "Tafadhari angalia taarifa zako vizuri";
 
   @override
   String get hide => "Ficha";
 
   @override
+  String get done => "Tayari";
+
+  @override
+  String get channel => "Channel";
+
+  @override
+  String get yes => "Ndio";
+
+  @override
   String get phone => "Namba Ya Simu";
 
   @override
-  String get preview => "Angalia";
+  String get no => "Hapana";
 
   @override
-  String get close => "Funga";
+  String get confirm => "Thibitisha";
 
   @override
-  String get comingSoon => "Inakuja Hivi Karibuni!";
+  String get send => "Tuma";
 
   @override
-  String get home => "Nyumbani";
+  String get show => "Onesha";
+
+  @override
+  String get remove => "Toa";
 
   @override
   String get from => "Kutoka";
 
   @override
-  String get confirm => "Thibitisha";
-}
-
-class TOCSw extends TOC {
-  @override
-  String get desc =>
-      "Unahitaji kukubaliana na Sheria na Masharti yetu ili kuendelea na mchakato wa kujisajili";
+  String get account => "Akaunti";
 
   @override
-  String get title => "Sheria na Masharti";
+  String get beCareful => "Kuwa Makini!";
 
   @override
-  String get readTerms => "Soma Sheria na Masharti Yetu";
+  String get next => "Endelea";
 
   @override
-  String get readAlready =>
-      "Nimesoma na ninakubaliana na Sheria na Masharti yenu";
+  String get preview => "Angalia";
+
+  @override
+  String get sendLink => "Tuma link kwa mteja";
+
+  @override
+  String get date => "Tarehe";
+
+  @override
+  String get home => "Nyumbani";
+
+  @override
+  String get refresh => "Onyesha upya";
+
+  @override
+  String get close => "Funga";
+
+  @override
+  String get unknownError => "Kuna tatizo limetokea";
 }

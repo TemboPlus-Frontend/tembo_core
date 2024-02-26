@@ -112,7 +112,7 @@ abstract class BaseHTTPAPI {
   ]) {
     debugPrint(response.stringRep(requestBody));
 
-    if(_unauthorizedCallback != null && response.statusCode == 401) {
+    if (_unauthorizedCallback != null && response.statusCode == 401) {
       _unauthorizedCallback!();
       return;
     }

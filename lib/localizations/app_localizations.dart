@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -34,38 +36,6 @@ abstract class AppLocalizations {
     Locale('sw')
   ];
 
-  TOC get toc;
-
-  /// Used in forms when a certain required field is not filled
-  ///
-  /// In en it is translated to:
-  /// **{name} is required**
-  String isRequired(String name);
-
-  /// No description provided for @account
-  ///
-  /// In en it is translated to:
-  /// **Account**
-  String get account;
-
-  /// No description provided for @transactions
-  ///
-  /// In en it is translated to:
-  /// **Transactions**
-  String get transactions;
-
-  /// No description provided for @seeAll
-  ///
-  /// In en it is translated to:
-  /// **See All**
-  String get seeAll;
-
-  /// No description provided for @unknownError
-  ///
-  /// In en it is translated to:
-  /// **An unknown error happened**
-  String get unknownError;
-
   /// No description provided for @tryAgain
   ///
   /// In en it is translated to:
@@ -78,41 +48,11 @@ abstract class AppLocalizations {
   /// **To**
   String get to;
 
-  /// No description provided for @no
+  /// No description provided for @cancel
   ///
   /// In en it is translated to:
-  /// **No**
-  String get no;
-
-  /// No description provided for @done
-  ///
-  /// In en it is translated to:
-  /// **Done**
-  String get done;
-
-  /// No description provided for @next
-  ///
-  /// In en it is translated to:
-  /// **Next**
-  String get next;
-
-  /// No description provided for @refresh
-  ///
-  /// In en it is translated to:
-  /// **Refresh**
-  String get refresh;
-
-  /// No description provided for @send
-  ///
-  /// In en it is translated to:
-  /// **Send**
-  String get send;
-
-  /// No description provided for @validationError
-  ///
-  /// In en it is translated to:
-  /// **Please check your information carefully**
-  String get validationError;
+  /// **Cancel**
+  String get cancel;
 
   /// No description provided for @amount
   ///
@@ -120,41 +60,47 @@ abstract class AppLocalizations {
   /// **Amount**
   String get amount;
 
-  /// No description provided for @sendLink
+  /// No description provided for @comingSoon
   ///
   /// In en it is translated to:
-  /// **Send link to the customer**
-  String get sendLink;
+  /// **Coming Soon!**
+  String get comingSoon;
 
-  /// No description provided for @beCareful
+  /// No description provided for @accountNumber
   ///
   /// In en it is translated to:
-  /// **Be careful!**
-  String get beCareful;
+  /// **Account Number**
+  String get accountNumber;
 
-  /// No description provided for @remove
+  /// No description provided for @bank
   ///
   /// In en it is translated to:
-  /// **Remove**
-  String get remove;
+  /// **Bank**
+  String get bank;
 
-  /// No description provided for @cancel
+  /// No description provided for @seeAll
   ///
   /// In en it is translated to:
-  /// **Cancel**
-  String get cancel;
+  /// **See All**
+  String get seeAll;
 
-  /// No description provided for @show
+  /// Used in forms when a certain required field is not filled
   ///
   /// In en it is translated to:
-  /// **Show**
-  String get show;
+  /// **{name} is required**
+  String isRequired(String name);
 
-  /// No description provided for @yes
+  /// No description provided for @description
   ///
   /// In en it is translated to:
-  /// **Yes**
-  String get yes;
+  /// **Description**
+  String get description;
+
+  /// No description provided for @validationError
+  ///
+  /// In en it is translated to:
+  /// **Please check your information carefully**
+  String get validationError;
 
   /// No description provided for @hide
   ///
@@ -162,35 +108,59 @@ abstract class AppLocalizations {
   /// **Hide**
   String get hide;
 
+  /// No description provided for @done
+  ///
+  /// In en it is translated to:
+  /// **Done**
+  String get done;
+
+  /// No description provided for @channel
+  ///
+  /// In en it is translated to:
+  /// **Channel**
+  String get channel;
+
+  /// No description provided for @yes
+  ///
+  /// In en it is translated to:
+  /// **Yes**
+  String get yes;
+
   /// No description provided for @phone
   ///
   /// In en it is translated to:
   /// **Phone**
   String get phone;
 
-  /// No description provided for @preview
+  /// No description provided for @no
   ///
   /// In en it is translated to:
-  /// **Preview**
-  String get preview;
+  /// **No**
+  String get no;
 
-  /// No description provided for @close
+  /// No description provided for @confirm
   ///
   /// In en it is translated to:
-  /// **Close**
-  String get close;
+  /// **Confirm**
+  String get confirm;
 
-  /// No description provided for @comingSoon
+  /// No description provided for @send
   ///
   /// In en it is translated to:
-  /// **Coming Soon!**
-  String get comingSoon;
+  /// **Send**
+  String get send;
 
-  /// No description provided for @home
+  /// No description provided for @show
   ///
   /// In en it is translated to:
-  /// **Home**
-  String get home;
+  /// **Show**
+  String get show;
+
+  /// No description provided for @remove
+  ///
+  /// In en it is translated to:
+  /// **Remove**
+  String get remove;
 
   /// No description provided for @from
   ///
@@ -198,11 +168,65 @@ abstract class AppLocalizations {
   /// **From**
   String get from;
 
-  /// No description provided for @confirm
+  /// No description provided for @account
   ///
   /// In en it is translated to:
-  /// **Confirm**
-  String get confirm;
+  /// **Account**
+  String get account;
+
+  /// No description provided for @beCareful
+  ///
+  /// In en it is translated to:
+  /// **Be careful!**
+  String get beCareful;
+
+  /// No description provided for @next
+  ///
+  /// In en it is translated to:
+  /// **Next**
+  String get next;
+
+  /// No description provided for @preview
+  ///
+  /// In en it is translated to:
+  /// **Preview**
+  String get preview;
+
+  /// No description provided for @sendLink
+  ///
+  /// In en it is translated to:
+  /// **Send link to the customer**
+  String get sendLink;
+
+  /// No description provided for @date
+  ///
+  /// In en it is translated to:
+  /// **Date**
+  String get date;
+
+  /// No description provided for @home
+  ///
+  /// In en it is translated to:
+  /// **Home**
+  String get home;
+
+  /// No description provided for @refresh
+  ///
+  /// In en it is translated to:
+  /// **Refresh**
+  String get refresh;
+
+  /// No description provided for @close
+  ///
+  /// In en it is translated to:
+  /// **Close**
+  String get close;
+
+  /// No description provided for @unknownError
+  ///
+  /// In en it is translated to:
+  /// **An unknown error happened**
+  String get unknownError;
 }
 
 class _AppLocalizationsDelegate
@@ -236,30 +260,4 @@ class _AppLocalizationsDelegate
         'on GitHub with a reproducible sample app and the gen-l10n configuration '
         'that was used.');
   }
-}
-
-abstract class TOC {
-  /// No description provided for @desc
-  ///
-  /// In en it is translated to:
-  /// **You need to agree to our Terms and Conditions to proceed with the onboarding process**
-  String get desc;
-
-  /// No description provided for @title
-  ///
-  /// In en it is translated to:
-  /// **Terms & Conditions**
-  String get title;
-
-  /// No description provided for @readTerms
-  ///
-  /// In en it is translated to:
-  /// **Read Our Terms & Conditions**
-  String get readTerms;
-
-  /// No description provided for @readAlready
-  ///
-  /// In en it is translated to:
-  /// **I have read and agreed to your Terms & Conditions**
-  String get readAlready;
 }

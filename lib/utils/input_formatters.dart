@@ -300,7 +300,7 @@ class CVVFormatter extends TextInputFormatter {
 
 class DateTextFormatter extends TextInputFormatter {
   const DateTextFormatter();
-  
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,

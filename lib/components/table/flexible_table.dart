@@ -138,7 +138,8 @@ class _TemboTableState extends State<TemboFlexibleTable> {
             },
             child: Container(
               height: widget.rowHeight,
-              decoration: getRowDecoration(row.decoration, row.index).copyWith(),
+              decoration:
+                  getRowDecoration(row.decoration, row.index).copyWith(),
               child: Row(
                 children: List.generate(
                   row.cells.length,
