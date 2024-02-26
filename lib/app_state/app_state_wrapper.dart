@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tembo_core/extensions/source.dart';
-import 'package:tembo_core/locales/language_settings_manager.dart';
 
 import '../components/source.dart';
 import '../exceptions/exception.dart';
@@ -93,6 +92,5 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
 }
 
 void _showErrorSnackbar(WidgetRef ref, TemboException exc, [int? duration]) {
-  final locale = ref.read(localesManagerProvider);
-  return showSnackbar(exc.fromLocale(locale), duration: duration);
+  return showSnackbar(exc.message.enMessage, duration: duration);
 }

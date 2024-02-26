@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:tembo_core/utils/date_utils.dart';
 
 enum TemboLocale {
-  en("en", "US", "English"),
-  sw("sw", "TZ", "Swahili"),
+  en("en_US", "US", "English"),
+  sw("sw_TZ", "TZ", "Swahili"),
   ;
 
   const TemboLocale(this.languageCode, this.countryCode, this.name);

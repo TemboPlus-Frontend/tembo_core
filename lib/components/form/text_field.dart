@@ -179,17 +179,17 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       valueListenable: errorNotifier,
       builder: (_, error, __) {
         if (error == null) return Container();
+        final isEn = Intl.getCurrentLocale() == "en_US";
+        final locale = isEn ? TemboLocale.en : TemboLocale.sw;
+
         return Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: LocaleWrapper(child: (context, locale) {
-            return TemboText(
+            padding: const EdgeInsets.only(top: 5),
+            child: TemboText(
               error.fromLocale(locale),
               style: context.textTheme.bodyMedium.withColor(
                 context.colorScheme.error,
               ),
-            );
-          }),
-        );
+            ));
       },
     );
   }

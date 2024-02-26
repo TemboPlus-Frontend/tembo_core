@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tembo_core/localizations/app_localizations_en.dart';
-
-import '../localizations/app_localizations.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -15,6 +12,4 @@ extension BuildContextExtension on BuildContext {
   double get viewportHeight => MediaQuery.of(this).size.height;
 
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
-
-  AppLocalizations get loc => AppLocalizations.of(this) ?? AppLocalizationsEn();
 }
