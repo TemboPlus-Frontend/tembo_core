@@ -16,7 +16,7 @@ class TemboColors {
   static const onSecondaryContainer = Colors.black;
 
   static const background = Colors.white;
-  static const onBackground = Colors.black87;
+  static const onBackground = Colors.black;
 
   static const surfaceContainer = Color(0xffF8F8F8);
   static const onSurfaceContainer = Colors.black54;
@@ -64,7 +64,12 @@ class DarkTemboColors {
   static const border = Colors.white12;
 }
 
-final defaultLightTheme = defaultLightFlexColorScheme.toTheme;
+final defaultLightTheme = defaultLightFlexColorScheme.toTheme.copyWith(
+  textTheme: defaultLightFlexColorScheme.toTheme.textTheme.apply(
+    bodyColor: defaultLightColorScheme.onBackground,
+    displayColor: defaultLightColorScheme.onBackground,
+  ),
+);
 final defaultDarkTheme = defaultDarkFlexColorScheme.toTheme;
 
 const defaultLightColorScheme = TemboColorScheme.light(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kFontFamily = "IBMPlexSans";
+const kFontFamily = "MarkPro";
 
 const kdx = 15.0;
 
