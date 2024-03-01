@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'format.dart';
@@ -54,35 +55,29 @@ class PhoneNumber {
 
       if (number.startsWith("+255")) {
         compactNumber = number.substring(4);
-        if (compactNumber.length != 9) return null;
-
         // format = MobileNumberFormat.sp255;
       } else if (number.startsWith("255")) {
         compactNumber = number.substring(3);
-        id = compactNumber.substring(0, 2);
-        if (compactNumber.length != 9) return null;
-
         // format = MobileNumberFormat.s255;
       } else if (number.startsWith("0")) {
         compactNumber = number.substring(1);
-        id = compactNumber.substring(0, 2);
-        if (compactNumber.length != 9) return null;
-
         // format = MobileNumberFormat.s0;
       } else {
         compactNumber = number;
-        id = compactNumber.substring(0, 2);
-        if (compactNumber.length != 9) return null;
-
         // format = MobileNumberFormat.none;
       }
 
+      if (compactNumber.length != 9) return null;
+      id = compactNumber.substring(0, 2);
+
       /// This may fail if the number is not a valid TZ phone number. So if it fails, it will return null.
       final _ = Telecom.values.where((e) => e.prefixes.contains(id)).single;
-
       return PhoneNumber(compactNumber);
     } catch (e) {
       return null;
     }
   }
+
+  @override
+  String toString() => 'PhoneNumber(compactNumber: $compactNumber)';
 }

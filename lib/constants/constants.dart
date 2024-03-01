@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const fonts = (markPro: "MarkPro", ibm: "IBMPlexSans");
+
 const kFontFamily = "MarkPro";
 
 const kdx = 15.0;

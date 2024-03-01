@@ -34,3 +34,31 @@ flutter:
   assets:
     - assets/
     - lib/fonts/
+
+
+  # fonts:
+  #   - family: MarkPro
+  #     fonts:
+  #       - asset: packages/tembo_core/fonts/MarkPro/light.otf
+  #         weight: 300
+  #       - asset: packages/tembo_core/fonts/MarkPro/regular.otf
+  #         weight: 400
+  #       - asset: packages/tembo_core/fonts/MarkPro/medium.otf
+  #         weight: 500
+  #       - asset: packages/tembo_core/fonts/MarkPro/bold.otf
+  #         weight: 600
+  #       - asset: packages/tembo_core/fonts/MarkPro/black.otf
+  #         weight: 700
+
+  #   - family: IBMPlexSans
+  #     fonts:
+  #       - asset: packages/tembo_core/fonts/IBMPlexSans/Light.ttf
+  #         weight: 300
+  #       - asset: packages/tembo_core/fonts/IBMPlexSans/Regular.ttf
+  #         weight: 400
+  #       - asset: packages/tembo_core/fonts/IBMPlexSans/Medium.ttf
+  #         weight: 500
+  #       - asset: packages/tembo_core/fonts/IBMPlexSans/SemiBold.ttf
+  #         weight: 600
+  #       - asset: packages/tembo_core/fonts/IBMPlexSans/Bold.ttf
+  #         weight: 700

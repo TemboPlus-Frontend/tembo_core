@@ -72,10 +72,11 @@ class TemboText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textstyle = style ?? DefaultTextStyle.of(context).style;
+    final ff = textstyle.fontFamily ?? fonts.markPro;
 
     return Text(
       data,
-      style: textstyle.copyWith(fontWeight: _weight, fontFamily: kFontFamily),
+      style: textstyle.copyWith(fontWeight: _weight, fontFamily: ff),
       textAlign: textAlign,
       overflow: maxLines != null && maxLines != 0 && overflow == null
           ? TextOverflow.ellipsis
