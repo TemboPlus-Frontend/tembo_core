@@ -68,6 +68,7 @@ final defaultLightTheme = defaultLightFlexColorScheme.toTheme.copyWith(
   textTheme: defaultLightFlexColorScheme.toTheme.textTheme.apply(
     bodyColor: defaultLightColorScheme.onBackground,
     displayColor: defaultLightColorScheme.onBackground,
+    fontFamily: kFontFamily
   ),
 );
 final defaultDarkTheme = defaultDarkFlexColorScheme.toTheme;

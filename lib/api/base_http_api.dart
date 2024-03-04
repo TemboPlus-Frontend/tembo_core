@@ -9,6 +9,8 @@ import '../constants/typedefs.dart';
 
 typedef StatusCodeHandler = void Function(int statusCode);
 
+typedef Headers = Map<String, String>;
+
 abstract class BaseHTTPAPI {
   final String root;
   final String? mainEndpoint;
@@ -29,12 +31,25 @@ abstract class BaseHTTPAPI {
     "Access-Control-Allow-Origin": "*",
   };
 
+  String get apiToken => UserPreferencesAPI.instance.get("api_token") ?? "";
+
   Map<String, String> get headers {
     final h = Map<String, String>.from(_baseHeaders);
 
     final token = UserPreferencesAPI.instance.get("api_token");
     if (token != null) h.addAll({"token": token!});
     return h;
+  }
+
+  Map<String, String> _handleHeaders(Headers? value) {
+    final h = value == null ? headers : mergeHeaders(value);
+    return h;
+  }
+
+  Map<String, String> mergeHeaders(Map<String, String> value) {
+    final h = Map<String, String>.from(headers);
+    final v = Map<String, String>.from(value);
+    return v..addAll(h);
   }
 
   Future updateToken(String value) async {
@@ -53,6 +68,7 @@ abstract class BaseHTTPAPI {
     String endpoint, {
     String? params,
     StatusCodeHandler? statusCodeHandler,
+    Headers? headers,
 
     /// some apis return empty bodies, so we need to check if the body is empty
     bool checkBody = true,
@@ -61,7 +77,10 @@ abstract class BaseHTTPAPI {
     if (params?.trim().isNotEmpty ?? false) {
       url = url.updateQueryParameters(params!);
     }
-    final response = await http.get(url, headers: headers);
+    final response = await http.get(
+      url,
+      headers: _handleHeaders(headers),
+    );
     return getResult(response, null, statusCodeHandler, checkBody);
   }
 
@@ -69,6 +88,7 @@ abstract class BaseHTTPAPI {
     String endpoint, {
     String? body,
     StatusCodeHandler? statusCodeHandler,
+    Headers? headers,
     String? params,
 
     /// some apis return empty bodies, so we need to check if the body is empty
@@ -78,18 +98,34 @@ abstract class BaseHTTPAPI {
     if (params?.trim().isNotEmpty ?? false) {
       url = url.updateQueryParameters(params!);
     }
+
     final response = await http.post(
       url,
       body: body,
-      headers: headers,
+      headers: _handleHeaders(headers),
     );
     return getResult(response, body, statusCodeHandler, checkBody);
+  }
+
+  Future<T> put<T>(
+    String endpoint,
+    String body, {
+    StatusCodeHandler? statusCodeHandler,
+    Headers? headers,
+  }) async {
+    final response = await http.put(
+      getUri(endpoint),
+      body: body,
+      headers: _handleHeaders(headers),
+    );
+    return getResult(response, body, statusCodeHandler);
   }
 
   Future<T> patch<T>(
     String endpoint,
     String body, [
     StatusCodeHandler? statusCodeHandler,
+    Headers? headers,
 
     /// some apis return empty bodies, so we need to check if the body is empty
     bool checkBody = true,
@@ -97,7 +133,7 @@ abstract class BaseHTTPAPI {
     final response = await http.patch(
       getUri(endpoint),
       body: body,
-      headers: headers,
+      headers: _handleHeaders(headers),
     );
     return getResult(response, body, statusCodeHandler, checkBody);
   }
