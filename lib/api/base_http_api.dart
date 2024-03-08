@@ -175,6 +175,9 @@ extension ResponseExtension on http.Response {
     Response:
       statusCode: $statusCode
       body: $body
+
+    More:
+      Request-headers: ${request?.headers}
 """;
   }
 }
