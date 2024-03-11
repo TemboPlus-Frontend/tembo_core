@@ -49,7 +49,9 @@ abstract class BaseHTTPAPI {
   Map<String, String> mergeHeaders(Map<String, String> value) {
     final h = Map<String, String>.from(headers);
     final v = Map<String, String>.from(value);
-    return v..addAll(h);
+    final result = v..addAll(h);
+    print(result);
+    return result;
   }
 
   Future updateToken(String value) async {
@@ -169,15 +171,13 @@ extension ResponseExtension on http.Response {
     Request:
       url: ${request?.url}
       method: ${request?.method}
+      x-request-id: ${request?.headers['x-request-id']}
       token: ${request?.headers['token']}
       body: $requestBody
 
     Response:
       statusCode: $statusCode
       body: $body
-
-    More:
-      Request-headers: ${request?.headers}
 """;
   }
 }
