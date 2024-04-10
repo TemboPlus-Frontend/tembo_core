@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:tembo_core/api/user_preferences_api.dart';
+import 'package:uuid/uuid.dart';
 
 import '../constants/typedefs.dart';
 
@@ -38,6 +39,8 @@ abstract class BaseHTTPAPI {
 
     final token = UserPreferencesAPI.instance.get("api_token");
     if (token != null) h.addAll({"token": token!});
+
+    h.addAll({"x-request-id": (const Uuid()).v4()});
     return h;
   }
 
