@@ -53,7 +53,6 @@ abstract class BaseHTTPAPI {
     final h = Map<String, String>.from(headers);
     final v = Map<String, String>.from(value);
     final result = v..addAll(h);
-    print(result);
     return result;
   }
 
