@@ -24,6 +24,10 @@ class PhoneNumber {
     };
   }
 
+  String get label {
+    return getNumberWithFormat(MobileNumberFormat.s255);
+  }
+
   String getNumberWithFormat(MobileNumberFormat format) {
     return "${format.startPattern}$compactNumber";
   }
