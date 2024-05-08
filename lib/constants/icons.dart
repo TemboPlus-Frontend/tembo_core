@@ -17,4 +17,7 @@ class TemboIcon {
 
   static IconData get creditCardOutline =>
       isIOS ? CupertinoIcons.creditcard : Icons.credit_card_outlined;
+
+  static IconData get settings =>
+      isIOS ? CupertinoIcons.settings : Icons.settings_outlined;
 }

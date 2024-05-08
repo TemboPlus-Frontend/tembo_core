@@ -109,53 +109,59 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
     final bool canExpand = decoration.size != null;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (widget.label != null)
-          TemboLabel(
-            widget.label!,
-            style: decoration.labelStyle,
-          ),
-        SizedBox(
-          width: decoration.size?.width,
-          height: decoration.size?.height,
-          child: ValueListenableBuilder<Message?>(
-              valueListenable: errorNotifier,
-              builder: (context, error, snapshot) {
-                final hasError = error != null;
+    final mqData = MediaQuery.of(context);
+    final mqDataNew = mqData.copyWith(textScaler: const TextScaler.linear(1.0));
 
-                return TextFormField(
-                  style: decoration.valueStyle,
-                  controller: widget.controller,
-                  focusNode: widget.focusNode,
-                  obscureText: widget.obscureText,
-                  decoration: hasError
-                      ? decoration
-                          .copyWith(borderColor: context.colorScheme.error)
-                          .getInputDecoration
-                      : decoration.getInputDecoration.copyWith(
-                          errorStyle: context.textTheme.bodySmall.withSize(0),
-                        ),
-                  inputFormatters: widget.formatters,
-                  validator: validate,
-                  textAlign: widget.textAlign ?? TextAlign.start,
-                  onTap: () => errorNotifier.value = null,
-                  textCapitalization:
-                      widget.textCapitalization ?? TextCapitalization.none,
-                  textInputAction: TextInputAction.done,
-                  keyboardType: widget.textInputType,
-                  onChanged: widget.onChanged,
-                  enabled: widget.enabled ?? true,
-                  expands: canExpand,
-                  maxLines: canExpand ? null : 1,
-                  minLines: canExpand ? null : null,
-                );
-              }),
-        ),
-        // buildError(),
-      ],
+    return MediaQuery(
+      data: mqDataNew,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (widget.label != null)
+            TemboLabel(
+              widget.label!,
+              style: decoration.labelStyle,
+            ),
+          SizedBox(
+            width: decoration.size?.width,
+            height: decoration.size?.height,
+            child: ValueListenableBuilder<Message?>(
+                valueListenable: errorNotifier,
+                builder: (context, error, snapshot) {
+                  final hasError = error != null;
+      
+                  return TextFormField(
+                    style: decoration.valueStyle,
+                    controller: widget.controller,
+                    focusNode: widget.focusNode,
+                    obscureText: widget.obscureText,
+                    decoration: hasError
+                        ? decoration
+                            .copyWith(borderColor: context.colorScheme.error)
+                            .getInputDecoration
+                        : decoration.getInputDecoration.copyWith(
+                            errorStyle: context.textTheme.bodySmall.withSize(0),
+                          ),
+                    inputFormatters: widget.formatters,
+                    validator: validate,
+                    textAlign: widget.textAlign ?? TextAlign.start,
+                    onTap: () => errorNotifier.value = null,
+                    textCapitalization:
+                        widget.textCapitalization ?? TextCapitalization.none,
+                    textInputAction: TextInputAction.done,
+                    keyboardType: widget.textInputType,
+                    onChanged: widget.onChanged,
+                    enabled: widget.enabled ?? true,
+                    expands: canExpand,
+                    maxLines: canExpand ? null : 1,
+                    minLines: canExpand ? null : null,
+                  );
+                }),
+          ),
+          // buildError(),
+        ],
+      ),
     );
   }
 
