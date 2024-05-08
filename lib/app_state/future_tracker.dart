@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../constants/locale.dart';
 import '../exceptions/source.dart';
 import '../utils/navigation_utils.dart';
 import 'app_state_notifier.dart';
@@ -77,5 +78,8 @@ class _FutureTracker {
 }
 
 void _showErrorSnackbar(ProviderRef ref, TemboException exc, [int? duration]) {
-  return showSnackbar(exc.message.enMessage, duration: duration);
+  return showSnackbar(
+    exc.message.fromLocale(getCurrentLocale()),
+    duration: duration,
+  );
 }

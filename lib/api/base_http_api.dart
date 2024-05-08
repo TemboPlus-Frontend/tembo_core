@@ -34,6 +34,8 @@ abstract class BaseHTTPAPI {
 
   String get apiToken => UserPreferencesAPI.instance.get("api_token") ?? "";
 
+  String getCurrentDateISOString() => DateTime.now().toUtc().toIso8601String();
+
   Map<String, String> get headers {
     final h = Map<String, String>.from(_baseHeaders);
 

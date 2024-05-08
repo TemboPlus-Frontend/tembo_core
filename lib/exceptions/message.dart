@@ -18,6 +18,9 @@ class Message {
   String fromLocale(TemboLocale locale) {
     return locale.isEN ? enMessage : swMessage;
   }
+
+  @override
+  String toString() => 'Message(enMessage: $enMessage, swMessage: $swMessage)';
 }
 
 const _unknownMessage = Message(

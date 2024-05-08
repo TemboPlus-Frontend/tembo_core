@@ -7,7 +7,12 @@ import 'package:tembo_core/tembo_core.dart';
 class TemboTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
   final bool obscureText;
+
+  @Deprecated("Please use TemboTextField.fieldValidator instead")
   final Message? Function(String?)? validator;
+
+  final String? Function(String?)? fieldValidator;
+
   final ValueChanged<String>? onChanged;
   final TextCapitalization? textCapitalization;
   final TextInputType? textInputType;
@@ -33,6 +38,7 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.hint,
     Key? key,
     this.textAlign,
+    this.fieldValidator,
     this.decoration,
   })  : label = null,
         super(key: key);
@@ -47,6 +53,7 @@ class TemboTextField extends ConsumerStatefulWidget {
   })  : textInputType = null,
         hint = null,
         validator = null,
+        fieldValidator = null,
         obscureText = false,
         onChanged = null,
         focusNode = null,
@@ -66,6 +73,7 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.onChanged,
     this.textInputType,
     this.formatters,
+    this.fieldValidator,
     this.hint,
     Key? key,
     this.textAlign,
@@ -81,6 +89,8 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
   final controllerHasTextNotifier = ValueNotifier(false);
 
   final errorNotifier = ValueNotifier<Message?>(null);
+
+  final fieldErrorValidatorNotifier = ValueNotifier<String?>(null);
 
   @override
   void initState() {
@@ -107,8 +117,6 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
     }
 
-    final bool canExpand = decoration.size != null;
-
     final mqData = MediaQuery.of(context);
     final mqDataNew = mqData.copyWith(textScaler: const TextScaler.linear(1.0));
 
@@ -126,77 +134,90 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
           SizedBox(
             width: decoration.size?.width,
             height: decoration.size?.height,
-            child: ValueListenableBuilder<Message?>(
-                valueListenable: errorNotifier,
-                builder: (context, error, snapshot) {
-                  final hasError = error != null;
-      
-                  return TextFormField(
-                    style: decoration.valueStyle,
-                    controller: widget.controller,
-                    focusNode: widget.focusNode,
-                    obscureText: widget.obscureText,
-                    decoration: hasError
-                        ? decoration
-                            .copyWith(borderColor: context.colorScheme.error)
-                            .getInputDecoration
-                        : decoration.getInputDecoration.copyWith(
-                            errorStyle: context.textTheme.bodySmall.withSize(0),
-                          ),
-                    inputFormatters: widget.formatters,
-                    validator: validate,
-                    textAlign: widget.textAlign ?? TextAlign.start,
-                    onTap: () => errorNotifier.value = null,
-                    textCapitalization:
-                        widget.textCapitalization ?? TextCapitalization.none,
-                    textInputAction: TextInputAction.done,
-                    keyboardType: widget.textInputType,
-                    onChanged: widget.onChanged,
-                    enabled: widget.enabled ?? true,
-                    expands: canExpand,
-                    maxLines: canExpand ? null : 1,
-                    minLines: canExpand ? null : null,
-                  );
-                }),
+            child: handleValidationErrors(),
           ),
-          // buildError(),
         ],
       ),
     );
   }
 
-  String? validate(String? value) {
-    if (widget.validator == null) return null;
-    final error = widget.validator!(value);
-    if (error != null) {
-      errorNotifier.value = error;
-      // final isEn = ref.read(localesManagerProvider).isEN;
-      // print(Intl.getCurrentLocale());
+  Widget handleValidationErrors() {
+    if (widget.fieldValidator != null) {
+      return ValueListenableBuilder<String?>(
+          valueListenable: fieldErrorValidatorNotifier,
+          builder: (context, error, snapshot) {
+            return buildField(error != null);
+          });
+    }
 
-      final isEn = Intl.getCurrentLocale() == "en_US";
-      return isEn ? error.enMessage : error.swMessage;
+    return ValueListenableBuilder<Message?>(
+        valueListenable: errorNotifier,
+        builder: (context, error, snapshot) {
+          return buildField(error != null);
+        });
+  }
+
+  Widget buildField([bool hasError = false]) {
+    final scheme = getTemboColorScheme();
+
+    final defaultDeco = TemboTextFieldDecoration(borderColor: scheme.border);
+    var decoration = widget.decoration ?? defaultDeco;
+    decoration = decoration.copyWith(hint: widget.hint);
+
+    if (!(widget.enabled ?? true)) {
+      decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
+    }
+
+    final bool canExpand = decoration.size != null;
+
+    return TextFormField(
+      style: decoration.valueStyle,
+      controller: widget.controller,
+      focusNode: widget.focusNode,
+      obscureText: widget.obscureText,
+      decoration: hasError
+          ? decoration
+              .copyWith(borderColor: context.colorScheme.error)
+              .getInputDecoration
+          : decoration.getInputDecoration.copyWith(
+              errorStyle: context.textTheme.bodySmall.withSize(0),
+            ),
+      inputFormatters: widget.formatters,
+      validator: validate,
+      textAlign: widget.textAlign ?? TextAlign.start,
+      onTap: () {
+        errorNotifier.value = null;
+        fieldErrorValidatorNotifier.value = null;
+      },
+      textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
+      textInputAction: TextInputAction.done,
+      keyboardType: widget.textInputType,
+      onChanged: widget.onChanged,
+      enabled: widget.enabled ?? true,
+      expands: canExpand,
+      maxLines: canExpand ? null : 1,
+      minLines: canExpand ? null : null,
+    );
+  }
+
+  String? validate(String? value) {
+    if (widget.fieldValidator != null) {
+      final fieldValidatorError = widget.fieldValidator!(value);
+      if (fieldValidatorError != null) {
+        fieldErrorValidatorNotifier.value = fieldValidatorError;
+        return fieldValidatorError;
+      }
+    }
+
+    if (widget.validator != null) {
+      final error = widget.validator!(value);
+      if (error != null) {
+        errorNotifier.value = error;
+        final isEn = Intl.getCurrentLocale().toLowerCase().contains("en");
+        return isEn ? error.enMessage : error.swMessage;
+      }
     }
 
     return null;
-  }
-
-  Widget buildError() {
-    return ValueListenableBuilder(
-      valueListenable: errorNotifier,
-      builder: (_, error, __) {
-        if (error == null) return Container();
-        final isEn = Intl.getCurrentLocale() == "en_US";
-        final locale = isEn ? TemboLocale.en : TemboLocale.sw;
-
-        return Padding(
-            padding: const EdgeInsets.only(top: 5),
-            child: TemboText(
-              error.fromLocale(locale),
-              style: context.textTheme.bodyMedium.withColor(
-                context.colorScheme.error,
-              ),
-            ));
-      },
-    );
   }
 }

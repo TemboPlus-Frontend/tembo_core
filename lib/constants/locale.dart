@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tembo_core/utils/date_utils.dart';
 
+import '../api/user_preferences_api.dart';
+
 enum TemboLocale {
   en("en", "US", "English"),
   sw("sw", "TZ", "Swahili"),
@@ -33,5 +35,14 @@ extension TemboLocaleExt on TemboLocale {
   String formatDate(DateTime date,
       [String pattern = "dd/MM/yyyy hh:mm:ss aa"]) {
     return date.localizedFormat(this, pattern);
+  }
+}
+
+TemboLocale getCurrentLocale() {
+  try {
+    final json = UserPreferencesAPI.instance.get("locale");
+    return TemboLocale.fromJson(json);
+  } catch (_) {
+    return TemboLocale.en;
   }
 }
