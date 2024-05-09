@@ -92,5 +92,5 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
 }
 
 void _showErrorSnackbar(WidgetRef ref, TemboException exc, [int? duration]) {
-  return showSnackbar(exc.message.enMessage, duration: duration);
+  return showSnackbar(exc.message.text, duration: duration);
 }

@@ -19,6 +19,9 @@ class Message {
     return locale.isEN ? enMessage : swMessage;
   }
 
+  /// Returns text according to the current locale
+  String get text => fromLocale(getCurrentLocale());
+
   @override
   String toString() => 'Message(enMessage: $enMessage, swMessage: $swMessage)';
 }

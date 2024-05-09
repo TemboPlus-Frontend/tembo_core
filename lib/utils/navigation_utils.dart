@@ -49,12 +49,15 @@ void showSnackbar(
   String message, {
   bool isError = true,
   int? duration,
+  GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
 }) {
-  rootMessengerKey.currentState?.showSnackBar(TemboSnackbar(
-    message,
-    isError: isError,
-    durationInSeconds: duration,
-  ));
+  (scaffoldMessengerKey ?? rootMessengerKey)
+      .currentState
+      ?.showSnackBar(TemboSnackbar(
+        message,
+        isError: isError,
+        durationInSeconds: duration,
+      ));
 }
 
 void showInfoSnackbar(String message) => showSnackbar(
