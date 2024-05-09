@@ -3,10 +3,8 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart' show debugPrint;
-import 'package:tembo_core/api/user_preferences_api.dart';
+import 'package:tembo_core/tembo_core.dart';
 import 'package:uuid/uuid.dart';
-
-import '../constants/typedefs.dart';
 
 typedef StatusCodeHandler = void Function(int statusCode);
 
@@ -163,7 +161,19 @@ abstract class BaseHTTPAPI {
     if (!checkBody) return;
 
     final body = jsonDecode(response.body);
-    if (body is Map) return body;
+    if (body is Map) {
+      final error = body["error"];
+      final details = body["details"];
+      if (error != null && details != null) {
+        if(details is Map) {
+          final data = Map.from(details);
+          final message = data.entries.first.value;
+          throw Message(enMessage: message, swMessage: message);
+        }
+      }
+
+      return body;
+    }
     if (body is List) return List<MapSD>.from(body);
     return body;
   }

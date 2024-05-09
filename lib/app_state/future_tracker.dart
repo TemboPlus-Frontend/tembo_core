@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/locale.dart';
 import '../exceptions/source.dart';
+import '../exceptions/utils.dart';
 import '../utils/navigation_utils.dart';
 import 'app_state_notifier.dart';
 import 'model_state_notifier.dart';
@@ -25,8 +26,8 @@ class _FutureTracker {
       final result = await future.timeout(_timeOutLimit);
       if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
-      final error = handleException(e, trace);
-      if (onError == null) _showErrorSnackbar(ref, error);
+      final error = handleError(e, trace);
+      if (onError == null) _showErrorSnackbar(error);
       if (onError != null) onError(error);
     }
   }
@@ -46,10 +47,10 @@ class _FutureTracker {
       ref.read(appStateProvider.notifier).showSuccess(successMessage);
       if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
-      final error = handleException(e, trace);
+      final error = handleError(e, trace);
       ref.read(appStateProvider.notifier).showFailure(error);
       if (showErrorWithSnackbar) {
-        _showErrorSnackbar(ref, error);
+        _showErrorSnackbar(error);
       }
       if (onError != null) onError(error);
     }
@@ -71,17 +72,17 @@ class _FutureTracker {
       notifier.showSuccess(result);
       if (onSuccess != null) onSuccess(result);
     } catch (e, trace) {
-      final error = handleException(e, trace);
+      final error = handleError(e, trace);
       notifier.showFailure(error);
       if (onError != null) onError(error);
       if (onError == null && showErrorWithSnackbar) {
-        _showErrorSnackbar(ref, error);
+        _showErrorSnackbar(error);
       }
     }
   }
 }
 
-void _showErrorSnackbar(ProviderRef ref, TemboException exc, [int? duration]) {
+void _showErrorSnackbar(TemboException exc, [int? duration]) {
   return showSnackbar(
     exc.message.fromLocale(getCurrentLocale()),
     duration: duration,

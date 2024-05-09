@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'exception.dart';
 
+@Deprecated("Use handleError instead")
 TemboException handleException(var e, [StackTrace? trace]) {
   debugPrint("$e");
   debugPrint(trace?.toString());
