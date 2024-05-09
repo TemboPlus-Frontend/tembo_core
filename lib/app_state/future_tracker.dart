@@ -35,6 +35,7 @@ class _FutureTracker {
     required Future<T> future,
     void Function(T data)? onSuccess,
     void Function(TemboException exc)? onError,
+    bool showErrorWithSnackbar = true,
     String? loadingMessage,
     String? successMessage,
   }) async {
@@ -47,6 +48,9 @@ class _FutureTracker {
     } catch (e, trace) {
       final error = handleException(e, trace);
       ref.read(appStateProvider.notifier).showFailure(error);
+      if (showErrorWithSnackbar) {
+        _showErrorSnackbar(ref, error);
+      }
       if (onError != null) onError(error);
     }
   }

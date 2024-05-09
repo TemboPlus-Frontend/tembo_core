@@ -20,3 +20,22 @@ TemboException handleException(var e, [StackTrace? trace]) {
       return TemboException.unknown();
   }
 }
+
+TemboException handleError(e, [StackTrace? trace]) {
+  switch (e) {
+    case Message msg:
+      return TemboException(msg);
+    case TemboException err:
+      return err;
+    case SocketException:
+    case TimeoutException:
+      return const TemboException(
+        Message(
+          enMessage: "Please check your internet connection",
+          swMessage: "Tafadhali angalia internet yako",
+        ),
+      );
+  }
+
+  return TemboException.unknown();
+}

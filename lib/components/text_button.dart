@@ -5,6 +5,7 @@ import 'package:tembo_core/tembo_core.dart';
 class TemboTextButton extends StatefulWidget {
   final VoidCallback onPressed;
   final VoidCallback? onLongPress;
+
   final Widget child;
   final TemboButtonStyle? style;
 

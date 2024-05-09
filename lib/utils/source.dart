@@ -4,4 +4,6 @@ export 'platform_utils.dart';
 export 'input_formatters.dart';
 export 'validate_utils.dart';
 
+export "format_utils.dart";
+
 export 'phone_utils/source.dart';
