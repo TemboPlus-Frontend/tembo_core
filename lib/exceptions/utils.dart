@@ -23,6 +23,8 @@ TemboException handleException(var e, [StackTrace? trace]) {
 }
 
 TemboException handleError(e, [StackTrace? trace]) {
+  debugPrint("$e");
+  debugPrint(trace?.toString());
   switch (e) {
     case Message msg:
       return TemboException(msg);

@@ -35,6 +35,10 @@ extension DateTimeExt on DateTime {
     return toUtc().millisecondsSinceEpoch;
   }
 
+  String get utcISOString {
+    return toUtc().toIso8601String();
+  }
+
   String localizedFormat(TemboLocale l, [String pattern = "dd/MM/yyyy"]) =>
       DateFormat(pattern, l.locale.languageCode).format(this);
 }
