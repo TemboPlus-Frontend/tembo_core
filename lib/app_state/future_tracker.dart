@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/locale.dart';
 import '../exceptions/source.dart';
-import '../exceptions/utils.dart';
 import '../utils/navigation_utils.dart';
 import 'app_state_notifier.dart';
 import 'model_state_notifier.dart';
