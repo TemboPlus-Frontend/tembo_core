@@ -195,6 +195,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       onChanged: widget.onChanged,
       enabled: widget.enabled ?? true,
       expands: canExpand,
+      textAlignVertical: TextAlignVertical.center,
       maxLines: canExpand ? null : 1,
       minLines: canExpand ? null : null,
     );

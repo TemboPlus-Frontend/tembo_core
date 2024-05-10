@@ -8,6 +8,7 @@ import '../widgets/source.dart';
 class TemboFVWidget extends StatelessWidget {
   final num breakpoint;
   final String field, value;
+  final Widget? icon;
   final TextStyle? fieldStyle, valueStyle;
   final int valueMaxLines;
 
@@ -18,6 +19,7 @@ class TemboFVWidget extends StatelessWidget {
     this.fieldStyle,
     this.valueStyle,
     this.valueMaxLines = 1,
+    this.icon,
     super.key,
   });
 
@@ -47,7 +49,16 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildField() {
-    return TemboText(field, style: fieldStyle);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (icon != null) Padding(
+          padding: right(),
+          child: icon!,
+        ),
+        TemboText(field, style: fieldStyle),
+      ],
+    );
   }
 
   Widget buildValue() {
