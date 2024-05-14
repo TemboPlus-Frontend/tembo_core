@@ -16,6 +16,10 @@ class TemboLabel extends StatelessWidget {
     super.key,
   });
 
+  static TextStyle getDefaultTextStyle(BuildContext c) {
+    return c.textTheme.bodyMedium.withFW500.withColor(c.colorScheme.onSurface);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(

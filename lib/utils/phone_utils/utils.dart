@@ -6,7 +6,7 @@ import 'telecom.dart';
 import 'phone_number.dart';
 
 Message? validateTZPhone(String? text, [bool optional = false]) {
-  if (text == null) {
+  if (text?.trim().isEmpty ?? true) {
     if (optional) return null;
 
     return const Message(
@@ -15,7 +15,7 @@ Message? validateTZPhone(String? text, [bool optional = false]) {
     );
   }
 
-  final number = parsePhoneNumber(text);
+  final number = parsePhoneNumber(text!);
   if (number == null) {
     return const Message(
       enMessage: "Invalid TZ Phone Number",

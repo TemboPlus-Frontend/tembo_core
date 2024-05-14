@@ -14,6 +14,8 @@ class TemboTextField extends ConsumerStatefulWidget {
   final String? Function(String?)? fieldValidator;
 
   final ValueChanged<String>? onChanged;
+  final void Function(String?)? onSave;
+
   final TextCapitalization? textCapitalization;
   final TextInputType? textInputType;
   final FocusNode? focusNode;
@@ -33,6 +35,7 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.enabled,
     this.textCapitalization,
     this.onChanged,
+    this.onSave,
     this.textInputType,
     this.formatters,
     this.hint,
@@ -56,6 +59,7 @@ class TemboTextField extends ConsumerStatefulWidget {
         fieldValidator = null,
         obscureText = false,
         onChanged = null,
+        onSave = null,
         focusNode = null,
         formatters = null,
         enabled = false,
@@ -71,6 +75,7 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.enabled,
     this.textCapitalization,
     this.onChanged,
+    this.onSave,
     this.textInputType,
     this.formatters,
     this.fieldValidator,
@@ -189,6 +194,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
         errorNotifier.value = null;
         fieldErrorValidatorNotifier.value = null;
       },
+      onSaved: widget.onSave,
       textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
       textInputAction: TextInputAction.done,
       keyboardType: widget.textInputType,
