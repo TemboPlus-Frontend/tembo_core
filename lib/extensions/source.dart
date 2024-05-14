@@ -5,4 +5,5 @@ export 'stateful_widget_extension.dart';
 export "string_extension.dart";
 export 'locale_extension.dart';
 export 'num_extension.dart';
+export 'date_time_extension.dart';
 export 'text_editing_controller_extension.dart';

@@ -4,3 +4,4 @@ export 'app_state_notifier.dart';
 export 'app_state_wrapper.dart';
 export 'models/app_state.dart';
 export 'models/model_state.dart';
+export 'models/model_state_2.dart';
