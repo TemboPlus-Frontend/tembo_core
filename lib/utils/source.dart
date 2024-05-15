@@ -3,6 +3,7 @@ export 'navigation_utils.dart';
 export 'platform_utils.dart';
 export 'input_formatters.dart';
 export 'validate_utils.dart';
+export 'string_utils.dart';
 
 export "format_utils.dart";
 

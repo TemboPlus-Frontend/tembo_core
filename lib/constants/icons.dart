@@ -12,6 +12,9 @@ class TemboIcon {
   static IconData get personOutline =>
       isIOS ? CupertinoIcons.person : Icons.person_outlined;
 
+  static IconData get personCircleOutline =>
+      isIOS ? CupertinoIcons.person_circle : Icons.account_circle_outlined;
+
   static IconData get arrowRightLeft =>
       isIOS ? CupertinoIcons.arrow_right_arrow_left : Icons.swap_horiz_outlined;
 
