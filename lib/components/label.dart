@@ -30,6 +30,7 @@ class TemboLabel extends StatelessWidget {
             context.textTheme.bodyMedium.withFW500.withColor(
               context.colorScheme.onSurface,
             ),
+        maxLines: 1,
       ),
     );
   }

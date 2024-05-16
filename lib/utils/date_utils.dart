@@ -31,6 +31,14 @@ extension DateTimeExt on DateTime {
     return DateFormat(pattern ?? "dd/MM/yyyy").format(this);
   }
 
+  String formatDefaultToDateMonth([String? pattern]) {
+    if (year == DateTime.now().year) {
+      return DateFormat(pattern ?? "MMM dd").format(this);
+    }
+
+    return DateFormat(pattern ?? "MMM dd").format(this);
+  }
+
   int get timestamp {
     return toUtc().millisecondsSinceEpoch;
   }
