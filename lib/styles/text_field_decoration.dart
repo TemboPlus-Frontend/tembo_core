@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tembo_core/app/app.dart';
-
-import '../constants/source.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 enum TemboBorderStyle { underline, outline }
 
@@ -136,5 +134,22 @@ class TemboTextFieldDecoration {
     if (prefixIcon != null) return decoration.copyWith(prefixIcon: prefixIcon);
     if (suffixIcon != null) return decoration.copyWith(suffixIcon: suffixIcon);
     return decoration;
+  }
+
+  static TemboTextFieldDecoration getDefaultAmountDeco(BuildContext context) {
+    return TemboTextFieldDecoration(
+      size: const Size.fromHeight(60),
+      borderStyle: TemboBorderStyle.underline,
+      hintStyle:
+          context.textTheme.titleLarge.bold.withColor(Colors.grey.shade500),
+      valueStyle: context.textTheme.titleLarge.bold.copyWith(
+        color: context.colorScheme.onSurface,
+      ),
+      hint: "TZS 0",
+      hasBorder: true,
+      borderWidth: 2,
+      borderColor: Colors.black45,
+      fillColor: Colors.transparent,
+    );
   }
 }
