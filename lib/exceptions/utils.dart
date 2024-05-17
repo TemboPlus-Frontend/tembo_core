@@ -26,6 +26,17 @@ TemboException handleError(e, [StackTrace? trace]) {
   debugPrint("$e");
   debugPrint(trace?.toString());
   switch (e) {
+    case Map map:
+      if (map.containsKey("message")) {
+        return TemboException(
+          Message(
+            enMessage: map["message"],
+            swMessage: map["message"],
+          ),
+        );
+      } else {
+        return TemboException.unknown();
+      }
     case Message msg:
       return TemboException(msg);
     case TemboException err:

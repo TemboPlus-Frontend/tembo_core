@@ -1,4 +1,4 @@
-import 'package:tembo_core/constants/locale.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 export 'utils.dart';
 
@@ -13,6 +13,11 @@ class TemboException implements Exception {
   factory TemboException.unknown() => const TemboException(_unknownMessage);
 
   factory TemboException.timeout() => const TemboException(_timeoutMessage);
+
+  factory TemboException.from(e, [StackTrace? trace]) {
+    final error = handleError(e, trace);
+    return error;
+  }
 
   String fromLocale(TemboLocale locale) =>
       locale.isEN ? message.enMessage : message.swMessage;
