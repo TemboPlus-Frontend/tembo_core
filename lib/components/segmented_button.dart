@@ -77,7 +77,7 @@ class TemboSegmentedButton<T> extends StatelessWidget {
             selected: {current},
             onSelectionChanged: (e) => onTap != null ? onTap!(e.first) : () {},
             style: const ButtonStyle(
-                side: MaterialStatePropertyAll(BorderSide(width: 1.5))),
+                side: WidgetStatePropertyAll(BorderSide(width: 1.5))),
           ),
         ],
       ),

@@ -53,7 +53,9 @@ class PhoneNumber {
       PhoneNumber.fromMap(json.decode(source) as Map<String, dynamic>);
 
   static PhoneNumber? from(String s) {
-    final number = s.trim();
+    var number = s.trim();
+    number = number.replaceAll(" ", "");
+
     try {
       late String id, compactNumber;
 

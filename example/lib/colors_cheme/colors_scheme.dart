@@ -19,11 +19,6 @@ class ColorsScheme extends ConsumerWidget {
         runSpacing: 40,
         children: [
           ColorBox(
-            "Background",
-            context.colorScheme.background,
-            context.colorScheme.onBackground,
-          ),
-          ColorBox(
             "Primary",
             context.colorScheme.primary,
             context.colorScheme.onPrimary,

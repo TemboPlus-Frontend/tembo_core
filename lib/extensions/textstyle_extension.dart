@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/app/app.dart';
 
 import '../constants/source.dart';
 
 extension TextStyleExtension on TextStyle? {
-  TextStyle get withPrimaryColor => this!.copyWith(color: TemboColors.primary);
-  TextStyle get withOnPrimaryColor =>
-      this!.copyWith(color: TemboColors.onPrimary);
+  TextStyle get withPrimaryColor => this!.copyWith(
+        color: getColorScheme().primary,
+      );
+  TextStyle get withOnPrimaryColor => this!.copyWith(
+        color: getColorScheme().onPrimary,
+      );
 
-  TextStyle get withOnBgColor =>
-      this!.copyWith(color: TemboColors.onBackground);
+  TextStyle get withOnBgColor => this!.copyWith(
+        color: getColorScheme().onBackground,
+      );
+
+  TextStyle get white => this!.copyWith(
+        color: Colors.white,
+      );
+
+  TextStyle get black => this!.copyWith(
+        color: Colors.black,
+      );
+
+  TextStyle get defaultFF => this!.copyWith(
+    fontFamily: kFontFamily,
+      );
 
   TextStyle get withFW300 => this!.copyWith(fontWeight: FontWeight.w300);
   TextStyle get withFW400 => this!.copyWith(fontWeight: FontWeight.w400);

@@ -143,7 +143,7 @@ class TemboTextFieldDecoration {
       hintStyle:
           context.textTheme.titleLarge.bold.withColor(Colors.grey.shade500),
       valueStyle: context.textTheme.titleLarge.bold.copyWith(
-        color: context.colorScheme.onSurface,
+        color: Colors.black87,
       ),
       hint: "TZS 0",
       hasBorder: true,

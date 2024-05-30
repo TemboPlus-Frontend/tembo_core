@@ -1,9 +1,11 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:tembo_core/constants/themes/clouds.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 enum Project {
   temboPlus("TemboPlus"),
+  clouds("CloudsTembo"),
   lipaChina("LipaChina"),
   ;
 
@@ -31,6 +33,8 @@ FlexColorScheme getColorScheme() {
   switch (project) {
     case Project.lipaChina:
       return defaultLightFlexColorScheme;
+    case Project.clouds:
+      return cloudsTemboLightFlexColorScheme;
     default:
       return defaultLightFlexColorScheme;
   }
@@ -41,6 +45,8 @@ TemboColorScheme getTemboColorScheme() {
   switch (project) {
     case Project.lipaChina:
       return defaultLightColorScheme;
+    case Project.clouds:
+      return cloudsTemboAppLightScheme;      
     default:
       return defaultLightColorScheme;
   }

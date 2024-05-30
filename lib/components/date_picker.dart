@@ -42,7 +42,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
           TemboButtonStyle.outline(
             borderColor: cs.border,
             borderWidth: 1.5,
-            foregroundColor: context.colorScheme.onBackground,
+            foregroundColor: context.colorScheme.onSurface,
             textStyle: context.textTheme.bodyMedium.withFW500,
             // height: kHeight,
             padding: kHorPadding + vertical(12.5),

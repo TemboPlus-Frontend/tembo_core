@@ -48,6 +48,7 @@ void showLoadingMaterialBanner([String? message]) {
 void showSnackbar(
   String message, {
   bool isError = true,
+  /// seconds
   int? duration,
   GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
 }) {
