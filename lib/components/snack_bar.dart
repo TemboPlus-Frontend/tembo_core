@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/app/app.dart';
 
 import '../constants/source.dart';
 import 'source.dart';
@@ -26,9 +27,12 @@ class TemboSnackbar extends SnackBar {
           content: _Content(message, true),
         );
 
+  TemboColorScheme get scheme {
+    return getTemboColorScheme();
+  }
+
   @override
-  Color? get backgroundColor =>
-      isError ? TemboColors.error : TemboColors.primary;
+  Color? get backgroundColor => isError ? scheme.error : scheme.primary;
 
   @override
   SnackBarBehavior? get behavior => SnackBarBehavior.floating;
@@ -49,13 +53,17 @@ class _Content extends StatelessWidget {
   final String message;
   const _Content(this.message, this.isError);
 
+  TemboColorScheme get scheme {
+    return getTemboColorScheme();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TemboText(
       message,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: isError ? TemboColors.onError : TemboColors.onPrimary,
+        color: isError ? scheme.onError : scheme.onPrimary,
         fontSize: 14,
       ),
     );
