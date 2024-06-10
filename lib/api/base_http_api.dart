@@ -165,7 +165,7 @@ abstract class BaseHTTPAPI {
       final error = body["error"];
       final details = body["details"];
       if (error != null && details != null) {
-        if(details is Map) {
+        if (details is Map) {
           final data = Map.from(details);
           final message = data.entries.first.value;
           throw Message(enMessage: message, swMessage: message);
@@ -219,4 +219,8 @@ extension on Uri {
       queryParameters: null,
     );
   }
+}
+
+extension IntExt on int {
+  bool get success => this == 200 || this == 201;
 }

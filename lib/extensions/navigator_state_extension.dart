@@ -30,9 +30,11 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
     currentState?.popUntil((route) => route.isFirst);
   }
 
-  void removeAllAndPush(Widget page) {
-    currentState?.pushAndRemoveUntil(
-        _createRouteFor("", page), (route) => false);
+  Future<T?> removeAllAndPush<T>(Widget page) async {
+    return await currentState?.pushAndRemoveUntil<T>(
+      _createRouteFor<T>("", page),
+      (route) => false,
+    );
   }
 }
 

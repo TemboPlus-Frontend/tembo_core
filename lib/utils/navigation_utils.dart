@@ -48,17 +48,22 @@ void showLoadingMaterialBanner([String? message]) {
 void showSnackbar(
   String message, {
   bool isError = true,
+
   /// seconds
   int? duration,
   GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+  BuildContext? context,
 }) {
-  (scaffoldMessengerKey ?? rootMessengerKey)
-      .currentState
-      ?.showSnackBar(TemboSnackbar(
-        message,
-        isError: isError,
-        durationInSeconds: duration,
-      ));
+  ScaffoldMessengerState? state;
+  if (scaffoldMessengerKey != null) state = scaffoldMessengerKey.currentState;
+  if (state == null && context != null) state = ScaffoldMessenger.of(context);
+  state ??= rootMessengerKey.currentState;
+
+  state?.showSnackBar(TemboSnackbar(
+    message,
+    isError: isError,
+    durationInSeconds: duration,
+  ));
 }
 
 void showInfoSnackbar(String message) => showSnackbar(
