@@ -10,4 +10,6 @@ export 'utils/source.dart';
 export 'widgets/source.dart';
 export 'exceptions/source.dart';
 
+export "mixpanel/mixpanel.dart";
+
 export '../app/app.dart';
