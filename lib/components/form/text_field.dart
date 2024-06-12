@@ -220,8 +220,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       final error = widget.validator!(value);
       if (error != null) {
         errorNotifier.value = error;
-        final isEn = Intl.getCurrentLocale().toLowerCase().contains("en");
-        return isEn ? error.enMessage : error.swMessage;
+        return error.text;
       }
     }
 

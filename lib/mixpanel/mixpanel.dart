@@ -7,7 +7,6 @@ const token = "ce4828939524f88e71d47cb71dce2118";
 const _DEVICE_NAME_KEY = "Device Name";
 const _APP_NAME_KEY = "App Name";
 
-
 class MixPanelManager {
   late Mixpanel mixpanel;
 
@@ -33,7 +32,11 @@ class MixPanelManager {
     await mixpanel.track(eventName, properties: props);
   }
 
-  Future<void> identifyUser(String id) async => await mixpanel.identify(id);
+  Future<void> identifyUser(String id,
+      {Map<String, dynamic>? superProps}) async {
+    await mixpanel.identify(id);
+    if (superProps != null) await mixpanel.registerSuperProperties(superProps);
+  }
 
   Future<void> onUserLogout() async => await mixpanel.reset();
 }
