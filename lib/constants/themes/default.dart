@@ -6,7 +6,8 @@ class TemboColors {
   static const primary = Color(0xFF00308F);
   static const onPrimary = Colors.white;
 
-  static const primaryContainer = Color(0xFFF0F8FF);
+  // static const primaryContainer = Color(0xFFF0F8FF);
+  static const primaryContainer = Color.fromARGB(255, 221, 234, 243);
   static const onPrimaryContainer = Colors.black87;
 
   static const secondary = Color(0xff78184A);
