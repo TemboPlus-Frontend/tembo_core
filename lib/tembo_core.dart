@@ -9,6 +9,7 @@ export 'extensions/source.dart';
 export 'utils/source.dart';
 export 'widgets/source.dart';
 export 'exceptions/source.dart';
+export 'models/source.dart';
 
 export "mixpanel/mixpanel.dart";
 
