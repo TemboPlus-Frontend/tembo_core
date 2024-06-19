@@ -23,13 +23,11 @@ class TemboLineProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size.fromHeight(height),
-      painter: ProgressPainter(
-        percentCompleted,
-        paintText: paintText,
-        height: height,
-        textStyle: textStyle,
-        lineColor: lineColor
-      ),
+      painter: ProgressPainter(percentCompleted,
+          paintText: paintText,
+          height: height,
+          textStyle: textStyle,
+          lineColor: lineColor),
     );
   }
 }
@@ -60,10 +58,8 @@ class ProgressPainter extends CustomPainter {
     final rect2 = Rect.fromLTWH(0, 0, width, height);
     final rrect2 = RRect.fromRectAndRadius(rect2, radius);
 
-    final paint1 = Paint()
-      ..color = lineColor ?? getTemboColorScheme().surface ?? Colors.grey;
-    final paint2 = Paint()
-      ..color = getTemboColorScheme().primary ?? Colors.blue;
+    final paint1 = Paint()..color = lineColor ?? getTemboColorScheme().surface;
+    final paint2 = Paint()..color = getTemboColorScheme().primary;
 
     if (paintText) {
       final textPainter = TextPainter(
