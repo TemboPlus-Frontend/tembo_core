@@ -1,12 +1,14 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/themes/clouds.dart';
+import 'package:tembo_core/constants/themes/tembo_cars.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 enum Project {
   temboPlus("TemboPlus"),
   clouds("CloudsTembo"),
   lipaChina("LipaChina"),
+  temboCars("TemboCars"),
   ;
 
   final String label;
@@ -35,6 +37,8 @@ FlexColorScheme getColorScheme() {
       return defaultLightFlexColorScheme;
     case Project.clouds:
       return cloudsTemboLightFlexColorScheme;
+    case Project.temboCars:
+      return temboCarsLightFlexColorScheme;
     default:
       return defaultLightFlexColorScheme;
   }
@@ -46,7 +50,9 @@ TemboColorScheme getTemboColorScheme() {
     case Project.lipaChina:
       return defaultLightColorScheme;
     case Project.clouds:
-      return cloudsTemboAppLightScheme;      
+      return cloudsTemboAppLightScheme;
+    case Project.temboCars:
+      return temboCarsLightColorScheme;
     default:
       return defaultLightColorScheme;
   }

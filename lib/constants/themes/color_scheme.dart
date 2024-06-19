@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'default.dart';
 
 class TemboColorScheme {
-  final Color? primary,
+  final Color primary,
       onPrimary,
       primaryContainer,
       onPrimaryContainer,
@@ -24,25 +24,25 @@ class TemboColorScheme {
       onError;
 
   const TemboColorScheme({
-    this.primary,
-    this.onPrimary,
-    this.secondary,
-    this.onSecondary,
-    this.border,
-    this.background,
-    this.onBackground,
-    this.surfaceContainer,
-    this.onSurfaceContainer,
-    this.error,
-    this.onError,
-    this.primaryContainer,
-    this.onPrimaryContainer,
-    this.surface,
-    this.onSurface,
-    this.success,
-    this.onSuccess,
-    this.secondaryContainer,
-    this.onSecondaryContainer,
+    required this.primary,
+    required this.onPrimary,
+    required this.secondary,
+    required this.onSecondary,
+    required this.border,
+    required this.background,
+    required this.onBackground,
+    required this.surfaceContainer,
+    required this.onSurfaceContainer,
+    required this.error,
+    required this.onError,
+    required this.primaryContainer,
+    required this.onPrimaryContainer,
+    required this.surface,
+    required this.onSurface,
+    required this.success,
+    required this.onSuccess,
+    required this.secondaryContainer,
+    required this.onSecondaryContainer,
   });
 
   const TemboColorScheme.light({

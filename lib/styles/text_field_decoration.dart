@@ -88,7 +88,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? kBorderRadius3),
                 borderSide: BorderSide(
-                  color: borderColor ?? scheme.border ?? TemboColors.border,
+                  color: borderColor ?? scheme.border,
                   width: borderWidth ?? 1.5,
                 ),
               )
@@ -112,14 +112,14 @@ class TemboTextFieldDecoration {
       enabledBorder: border,
       focusedBorder: border.copyWith(
         borderSide: BorderSide(
-          color: scheme.primary ?? TemboColors.primary,
+          color: scheme.primary,
           width: border.borderSide.width,
         ),
       ),
       focusedErrorBorder: border,
       errorBorder: border.copyWith(
         borderSide: BorderSide(
-          color: scheme.error ?? TemboColors.error,
+          color: scheme.error,
           width: border.borderSide.width,
         ),
       ),

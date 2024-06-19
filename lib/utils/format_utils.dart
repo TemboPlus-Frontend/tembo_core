@@ -22,7 +22,7 @@ extension DoubleExt on num {
   String format({
     bool compact = true,
     int decimalDigits = 4,
-    String symbol = "",
+    String symbol = "TZS",
   }) {
     final formatter = NumberFormat.currency(
       symbol: "$symbol ",
