@@ -33,9 +33,9 @@ class CloudsTemboColors {
   static const border = Colors.black12;
 }
 
-final cloudsTemboLightTheme = cloudsTemboLightFlexColorScheme.toTheme;
+final dauTemboLightTheme = dauTemboLightFlexColorScheme.toTheme;
 
-const cloudsTemboAppLightScheme = TemboColorScheme.light(
+const dauTemboAppLightScheme = TemboColorScheme.light(
   primary: CloudsTemboColors.primary,
   onPrimary: CloudsTemboColors.onPrimary,
   primaryContainer: CloudsTemboColors.primaryContainer,
@@ -56,24 +56,24 @@ const cloudsTemboAppLightScheme = TemboColorScheme.light(
   onSurfaceContainer: CloudsTemboColors.onSurfaceContainer,
   border: CloudsTemboColors.border,
 );
-final cloudsTemboLightFlexColorScheme = FlexColorScheme.light(
+final dauTemboLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
-  appBarBackground: cloudsTemboAppLightScheme.background,
-  primary: cloudsTemboAppLightScheme.primary,
-  onPrimary: cloudsTemboAppLightScheme.onPrimary,
-  primaryContainer: cloudsTemboAppLightScheme.primaryContainer,
-  onPrimaryContainer: cloudsTemboAppLightScheme.onPrimaryContainer,
-  secondary: cloudsTemboAppLightScheme.secondary,
-  onSecondary: cloudsTemboAppLightScheme.onSecondary,
-  secondaryContainer: cloudsTemboAppLightScheme.secondaryContainer,
-  onSecondaryContainer: cloudsTemboAppLightScheme.onSecondaryContainer,
-  error: cloudsTemboAppLightScheme.error,
-  onError: cloudsTemboAppLightScheme.onError,
-  background: cloudsTemboAppLightScheme.background,
-  onBackground: cloudsTemboAppLightScheme.onBackground,
-  scaffoldBackground: cloudsTemboAppLightScheme.background,
-  surface: cloudsTemboAppLightScheme.surface,
-  onSurface: cloudsTemboAppLightScheme.onSurface,
+  appBarBackground: dauTemboAppLightScheme.background,
+  primary: dauTemboAppLightScheme.primary,
+  onPrimary: dauTemboAppLightScheme.onPrimary,
+  primaryContainer: dauTemboAppLightScheme.primaryContainer,
+  onPrimaryContainer: dauTemboAppLightScheme.onPrimaryContainer,
+  secondary: dauTemboAppLightScheme.secondary,
+  onSecondary: dauTemboAppLightScheme.onSecondary,
+  secondaryContainer: dauTemboAppLightScheme.secondaryContainer,
+  onSecondaryContainer: dauTemboAppLightScheme.onSecondaryContainer,
+  error: dauTemboAppLightScheme.error,
+  onError: dauTemboAppLightScheme.onError,
+  background: dauTemboAppLightScheme.background,
+  onBackground: dauTemboAppLightScheme.onBackground,
+  scaffoldBackground: dauTemboAppLightScheme.background,
+  surface: dauTemboAppLightScheme.surface,
+  onSurface: dauTemboAppLightScheme.onSurface,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
   appBarStyle: FlexAppBarStyle.material,

@@ -33,14 +33,13 @@ class _TemboColors {
   static const border = Colors.black26;
 }
 
-final temboCarsTheme = temboCarsLightFlexColorScheme.toTheme.copyWith(
-  textTheme: temboCarsLightFlexColorScheme.toTheme.textTheme.apply(
-    bodyColor: temboCarsLightColorScheme.onBackground,
-    displayColor: temboCarsLightColorScheme.onBackground,
-    fontFamily: kFontFamily
-  ),
+final temboCarsTheme = rideLightFlexColorScheme.toTheme.copyWith(
+  textTheme: rideLightFlexColorScheme.toTheme.textTheme.apply(
+      bodyColor: rideLightColorScheme.onBackground,
+      displayColor: rideLightColorScheme.onBackground,
+      fontFamily: kFontFamily),
 );
-const temboCarsLightColorScheme = TemboColorScheme.light(
+const rideLightColorScheme = TemboColorScheme.light(
   primary: _TemboColors.primary,
   onPrimary: _TemboColors.onPrimary,
   primaryContainer: _TemboColors.primaryContainer,
@@ -61,24 +60,24 @@ const temboCarsLightColorScheme = TemboColorScheme.light(
   onSurfaceContainer: _TemboColors.onSurfaceContainer,
   border: _TemboColors.border,
 );
-final temboCarsLightFlexColorScheme = FlexColorScheme.light(
+final rideLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
-  appBarBackground: temboCarsLightColorScheme.background,
-  primary: temboCarsLightColorScheme.primary,
-  onPrimary: temboCarsLightColorScheme.onPrimary,
-  primaryContainer: temboCarsLightColorScheme.primaryContainer,
-  onPrimaryContainer: temboCarsLightColorScheme.onPrimaryContainer,
-  secondary: temboCarsLightColorScheme.secondary,
-  onSecondary: temboCarsLightColorScheme.onSecondary,
-  secondaryContainer: temboCarsLightColorScheme.secondaryContainer,
-  onSecondaryContainer: temboCarsLightColorScheme.onSecondaryContainer,
-  error: temboCarsLightColorScheme.error,
-  onError: temboCarsLightColorScheme.onError,
-  background: temboCarsLightColorScheme.background,
-  onBackground: temboCarsLightColorScheme.onBackground,
-  scaffoldBackground: temboCarsLightColorScheme.background,
-  surface: temboCarsLightColorScheme.surface,
-  onSurface: temboCarsLightColorScheme.onSurface,
+  appBarBackground: rideLightColorScheme.background,
+  primary: rideLightColorScheme.primary,
+  onPrimary: rideLightColorScheme.onPrimary,
+  primaryContainer: rideLightColorScheme.primaryContainer,
+  onPrimaryContainer: rideLightColorScheme.onPrimaryContainer,
+  secondary: rideLightColorScheme.secondary,
+  onSecondary: rideLightColorScheme.onSecondary,
+  secondaryContainer: rideLightColorScheme.secondaryContainer,
+  onSecondaryContainer: rideLightColorScheme.onSecondaryContainer,
+  error: rideLightColorScheme.error,
+  onError: rideLightColorScheme.onError,
+  background: rideLightColorScheme.background,
+  onBackground: rideLightColorScheme.onBackground,
+  scaffoldBackground: rideLightColorScheme.background,
+  surface: rideLightColorScheme.surface,
+  onSurface: rideLightColorScheme.onSurface,
   useMaterial3: true,
   useMaterial3ErrorColors: true,
   appBarStyle: FlexAppBarStyle.material,
