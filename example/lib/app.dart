@@ -25,13 +25,6 @@ class ThemeManager extends StateNotifier<ThemeState> {
 
   void setTheme(Project project) {
     switch (project) {
-      case Project.lipaChina:
-        state = (
-          flexColorScheme: lipaChinaLightFlexColorScheme,
-          colorScheme: lipaChinaLightColorScheme,
-          project: Project.lipaChina
-        );
-        break;
       default:
         state = (
           flexColorScheme: defaultLightFlexColorScheme,

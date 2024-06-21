@@ -15,4 +15,6 @@ export 'localization/source.dart';
 
 export "mixpanel/mixpanel.dart";
 
+export 'deep_links/deep_link_manager.dart';
+
 export '../app/app.dart';

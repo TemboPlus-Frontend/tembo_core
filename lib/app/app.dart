@@ -9,32 +9,42 @@ enum Project {
     "TemboPlus",
     primaryColor: DefaultTemboColors.primary,
     onPrimaryColor: DefaultTemboColors.onPrimary,
+    androidPackageName: "com.temboplus.temp",
+    iosBundleID: "com.temboplus.tembo",
+    dynamicLinkUrl: "https://tembobank.page.link",
   ),
   dau(
     "Dau",
     primaryColor: DauColors.primary,
     onPrimaryColor: DauColors.onPrimary,
-  ),
-  lipaChina(
-    "LipaChina",
-    primaryColor: LipaChinaColors.primary,
-    onPrimaryColor: LipaChinaColors.onPrimary,
+    androidPackageName: "com.temboplus.dau",
+    iosBundleID: "com.temboplus.dau",
+    dynamicLinkUrl: "https://dautemboplus.page.link",
   ),
   ride(
     "Ride",
     primaryColor: RideColors.primary,
     onPrimaryColor: RideColors.onPrimary,
+    androidPackageName: "com.temboplus.ride",
+    iosBundleID: "com.temboplus.tembo",
+    dynamicLinkUrl: "https://tembobank.page.link",
   ),
   ;
 
   final String label;
   final Color primaryColor;
   final Color onPrimaryColor;
+  final String androidPackageName;
+  final String iosBundleID;
+  final String dynamicLinkUrl;
 
   const Project(
     this.label, {
     required this.primaryColor,
     required this.onPrimaryColor,
+    required this.androidPackageName,
+    required this.iosBundleID,
+    required this.dynamicLinkUrl,
   });
 }
 
@@ -76,8 +86,6 @@ ThemeData getTheme([BuildContext? context]) {
 FlexColorScheme getColorScheme() {
   final project = getProject();
   switch (project) {
-    case Project.lipaChina:
-      return defaultLightFlexColorScheme;
     case Project.dau:
       return dauTemboLightFlexColorScheme;
     case Project.ride:
@@ -90,8 +98,6 @@ FlexColorScheme getColorScheme() {
 TemboColorScheme getTemboColorScheme() {
   final project = getProject();
   switch (project) {
-    case Project.lipaChina:
-      return defaultLightColorScheme;
     case Project.dau:
       return dauTemboAppLightScheme;
     case Project.ride:
@@ -119,7 +125,7 @@ class InitialApp extends StatelessWidget {
             alignment: Alignment.center,
             child: TemboText.bold(
               project.label.toUpperCase(),
-              style: context.textTheme.displayLarge
+              style: context.textTheme.displaySmall
                   .withColor(project.onPrimaryColor),
             ),
           );
