@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-class CloudsTemboColors {
+class DauColors {
   static const primary = Color(0xffE92531);
   static const onPrimary = Colors.white;
 
@@ -36,25 +36,25 @@ class CloudsTemboColors {
 final dauTemboLightTheme = dauTemboLightFlexColorScheme.toTheme;
 
 const dauTemboAppLightScheme = TemboColorScheme.light(
-  primary: CloudsTemboColors.primary,
-  onPrimary: CloudsTemboColors.onPrimary,
-  primaryContainer: CloudsTemboColors.primaryContainer,
-  onPrimaryContainer: CloudsTemboColors.onPrimaryContainer,
-  secondaryContainer: CloudsTemboColors.secondaryContainer,
-  onSecondaryContainer: CloudsTemboColors.onSecondaryContainer,
-  secondary: CloudsTemboColors.secondary,
-  onSecondary: CloudsTemboColors.onSecondary,
-  background: CloudsTemboColors.background,
-  onBackground: CloudsTemboColors.onBackground,
-  surface: CloudsTemboColors.surface,
-  onSurface: CloudsTemboColors.onSurface,
-  error: CloudsTemboColors.error,
-  onError: CloudsTemboColors.onError,
-  success: CloudsTemboColors.success,
-  onSuccess: CloudsTemboColors.onSuccess,
-  surfaceContainer: CloudsTemboColors.surfaceContainer,
-  onSurfaceContainer: CloudsTemboColors.onSurfaceContainer,
-  border: CloudsTemboColors.border,
+  primary: DauColors.primary,
+  onPrimary: DauColors.onPrimary,
+  primaryContainer: DauColors.primaryContainer,
+  onPrimaryContainer: DauColors.onPrimaryContainer,
+  secondaryContainer: DauColors.secondaryContainer,
+  onSecondaryContainer: DauColors.onSecondaryContainer,
+  secondary: DauColors.secondary,
+  onSecondary: DauColors.onSecondary,
+  background: DauColors.background,
+  onBackground: DauColors.onBackground,
+  surface: DauColors.surface,
+  onSurface: DauColors.onSurface,
+  error: DauColors.error,
+  onError: DauColors.onError,
+  success: DauColors.success,
+  onSuccess: DauColors.onSuccess,
+  surfaceContainer: DauColors.surfaceContainer,
+  onSurfaceContainer: DauColors.onSurfaceContainer,
+  border: DauColors.border,
 );
 final dauTemboLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -83,12 +83,12 @@ final dauTemboLightFlexColorScheme = FlexColorScheme.light(
   ),
 );
 
-extension TemboAppColorSchemeExt on ColorScheme {
-  Color get surfaceContainer => CloudsTemboColors.surfaceContainer;
-  Color get onSurfaceContainer => CloudsTemboColors.onSurfaceContainer;
+extension DauColorSchemeExt on ColorScheme {
+  Color get surfaceContainer => DauColors.surfaceContainer;
+  Color get onSurfaceContainer => DauColors.onSurfaceContainer;
 
-  Color get success => CloudsTemboColors.success;
-  Color get onSuccess => CloudsTemboColors.onSuccess;
+  Color get success => DauColors.success;
+  Color get onSuccess => DauColors.onSuccess;
 
-  Color get border => CloudsTemboColors.border;
+  Color get border => DauColors.border;
 }

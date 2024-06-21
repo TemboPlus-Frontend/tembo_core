@@ -11,6 +11,8 @@ export 'widgets/source.dart';
 export 'exceptions/source.dart';
 export 'models/source.dart';
 
+export 'localization/source.dart';
+
 export "mixpanel/mixpanel.dart";
 
 export '../app/app.dart';

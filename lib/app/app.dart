@@ -1,18 +1,41 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/themes/dau.dart';
-import 'package:tembo_core/constants/themes/tembo_cars.dart';
+import 'package:tembo_core/constants/themes/ride.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 enum Project {
-  temboPlus("TemboPlus"),
-  dau("Dau"),
-  lipaChina("LipaChina"),
-  ride("Ride"),
+  temboPlus(
+    "TemboPlus",
+    primaryColor: DefaultTemboColors.primary,
+    onPrimaryColor: DefaultTemboColors.onPrimary,
+  ),
+  dau(
+    "Dau",
+    primaryColor: DauColors.primary,
+    onPrimaryColor: DauColors.onPrimary,
+  ),
+  lipaChina(
+    "LipaChina",
+    primaryColor: LipaChinaColors.primary,
+    onPrimaryColor: LipaChinaColors.onPrimary,
+  ),
+  ride(
+    "Ride",
+    primaryColor: RideColors.primary,
+    onPrimaryColor: RideColors.onPrimary,
+  ),
   ;
 
   final String label;
-  const Project(this.label);
+  final Color primaryColor;
+  final Color onPrimaryColor;
+
+  const Project(
+    this.label, {
+    required this.primaryColor,
+    required this.onPrimaryColor,
+  });
 }
 
 Future<void> registerApp(Project project) async {
@@ -75,5 +98,33 @@ TemboColorScheme getTemboColorScheme() {
       return rideLightColorScheme;
     default:
       return defaultLightColorScheme;
+  }
+}
+
+class InitialApp extends StatelessWidget {
+  final Project project;
+  const InitialApp(this.project, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: kFontFamily),
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        body: Builder(builder: (context) {
+          return Container(
+            constraints: const BoxConstraints.expand(),
+            decoration: BoxDecoration(color: project.primaryColor),
+            alignment: Alignment.center,
+            child: TemboText.bold(
+              project.label.toUpperCase(),
+              style: context.textTheme.displayLarge
+                  .withColor(project.onPrimaryColor),
+            ),
+          );
+        }),
+      ),
+    );
   }
 }

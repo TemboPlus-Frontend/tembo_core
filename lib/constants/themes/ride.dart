@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-class _TemboColors {
+class RideColors {
   static const primary = Color(0xffF90081);
   static const onPrimary = Colors.white;
 
@@ -40,25 +40,25 @@ final temboCarsTheme = rideLightFlexColorScheme.toTheme.copyWith(
       fontFamily: kFontFamily),
 );
 const rideLightColorScheme = TemboColorScheme.light(
-  primary: _TemboColors.primary,
-  onPrimary: _TemboColors.onPrimary,
-  primaryContainer: _TemboColors.primaryContainer,
-  onPrimaryContainer: _TemboColors.onPrimaryContainer,
-  secondaryContainer: _TemboColors.secondaryContainer,
-  onSecondaryContainer: _TemboColors.onSecondaryContainer,
-  secondary: _TemboColors.secondary,
-  onSecondary: _TemboColors.onSecondary,
-  background: _TemboColors.background,
-  onBackground: _TemboColors.onBackground,
-  surface: _TemboColors.surface,
-  onSurface: _TemboColors.onSurface,
-  error: _TemboColors.error,
-  onError: _TemboColors.onError,
-  success: _TemboColors.success,
-  onSuccess: _TemboColors.onSuccess,
-  surfaceContainer: _TemboColors.surfaceContainer,
-  onSurfaceContainer: _TemboColors.onSurfaceContainer,
-  border: _TemboColors.border,
+  primary: RideColors.primary,
+  onPrimary: RideColors.onPrimary,
+  primaryContainer: RideColors.primaryContainer,
+  onPrimaryContainer: RideColors.onPrimaryContainer,
+  secondaryContainer: RideColors.secondaryContainer,
+  onSecondaryContainer: RideColors.onSecondaryContainer,
+  secondary: RideColors.secondary,
+  onSecondary: RideColors.onSecondary,
+  background: RideColors.background,
+  onBackground: RideColors.onBackground,
+  surface: RideColors.surface,
+  onSurface: RideColors.onSurface,
+  error: RideColors.error,
+  onError: RideColors.onError,
+  success: RideColors.success,
+  onSuccess: RideColors.onSuccess,
+  surfaceContainer: RideColors.surfaceContainer,
+  onSurfaceContainer: RideColors.onSurfaceContainer,
+  border: RideColors.border,
 );
 final rideLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -87,12 +87,12 @@ final rideLightFlexColorScheme = FlexColorScheme.light(
   ),
 );
 
-extension TemboCarsColorSchemeExt on ColorScheme {
-  Color get surfaceContainer => _TemboColors.surfaceContainer;
-  Color get onSurfaceContainer => _TemboColors.onSurfaceContainer;
+extension RideColorSchemeExt on ColorScheme {
+  Color get surfaceContainer => RideColors.surfaceContainer;
+  Color get onSurfaceContainer => RideColors.onSurfaceContainer;
 
-  Color get success => _TemboColors.success;
-  Color get onSuccess => _TemboColors.onSuccess;
+  Color get success => RideColors.success;
+  Color get onSuccess => RideColors.onSuccess;
 
-  Color get border => _TemboColors.border;
+  Color get border => RideColors.border;
 }

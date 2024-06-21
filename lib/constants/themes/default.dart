@@ -2,11 +2,10 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
-class TemboColors {
+class DefaultTemboColors {
   static const primary = Color(0xFF00308F);
   static const onPrimary = Colors.white;
 
-  // static const primaryContainer = Color(0xFFF0F8FF);
   static const primaryContainer = Color.fromARGB(255, 221, 234, 243);
   static const onPrimaryContainer = Colors.black87;
 
@@ -67,33 +66,32 @@ class DarkTemboColors {
 
 final defaultLightTheme = defaultLightFlexColorScheme.toTheme.copyWith(
   textTheme: defaultLightFlexColorScheme.toTheme.textTheme.apply(
-    bodyColor: defaultLightColorScheme.onBackground,
-    displayColor: defaultLightColorScheme.onBackground,
-    fontFamily: kFontFamily
-  ),
+      bodyColor: defaultLightColorScheme.onBackground,
+      displayColor: defaultLightColorScheme.onBackground,
+      fontFamily: kFontFamily),
 );
 final defaultDarkTheme = defaultDarkFlexColorScheme.toTheme;
 
 const defaultLightColorScheme = TemboColorScheme.light(
-  primary: TemboColors.primary,
-  onPrimary: TemboColors.onPrimary,
-  primaryContainer: TemboColors.primaryContainer,
-  onPrimaryContainer: TemboColors.onPrimaryContainer,
-  secondaryContainer: TemboColors.secondaryContainer,
-  onSecondaryContainer: TemboColors.onSecondaryContainer,
-  secondary: TemboColors.secondary,
-  onSecondary: TemboColors.onSecondary,
-  background: TemboColors.background,
-  onBackground: TemboColors.onBackground,
-  surface: TemboColors.surface,
-  onSurface: TemboColors.onSurface,
-  error: TemboColors.error,
-  onError: TemboColors.onError,
-  success: TemboColors.success,
-  onSuccess: TemboColors.onSuccess,
-  surfaceContainer: TemboColors.surfaceContainer,
-  onSurfaceContainer: TemboColors.onSurfaceContainer,
-  border: TemboColors.border,
+  primary: DefaultTemboColors.primary,
+  onPrimary: DefaultTemboColors.onPrimary,
+  primaryContainer: DefaultTemboColors.primaryContainer,
+  onPrimaryContainer: DefaultTemboColors.onPrimaryContainer,
+  secondaryContainer: DefaultTemboColors.secondaryContainer,
+  onSecondaryContainer: DefaultTemboColors.onSecondaryContainer,
+  secondary: DefaultTemboColors.secondary,
+  onSecondary: DefaultTemboColors.onSecondary,
+  background: DefaultTemboColors.background,
+  onBackground: DefaultTemboColors.onBackground,
+  surface: DefaultTemboColors.surface,
+  onSurface: DefaultTemboColors.onSurface,
+  error: DefaultTemboColors.error,
+  onError: DefaultTemboColors.onError,
+  success: DefaultTemboColors.success,
+  onSuccess: DefaultTemboColors.onSuccess,
+  surfaceContainer: DefaultTemboColors.surfaceContainer,
+  onSurfaceContainer: DefaultTemboColors.onSurfaceContainer,
+  border: DefaultTemboColors.border,
 );
 final defaultLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -145,11 +143,11 @@ final defaultDarkFlexColorScheme = FlexColorScheme.dark(
 );
 
 extension TemboColorSchemeExt on ColorScheme {
-  Color get surfaceContainer => TemboColors.surfaceContainer;
-  Color get onSurfaceContainer => TemboColors.onSurfaceContainer;
+  Color get surfaceContainer => DefaultTemboColors.surfaceContainer;
+  Color get onSurfaceContainer => DefaultTemboColors.onSurfaceContainer;
 
-  Color get success => TemboColors.success;
-  Color get onSuccess => TemboColors.onSuccess;
+  Color get success => DefaultTemboColors.success;
+  Color get onSuccess => DefaultTemboColors.onSuccess;
 
-  Color get border => TemboColors.border;
+  Color get border => DefaultTemboColors.border;
 }

@@ -24,7 +24,7 @@ extension TextStyleExtension on TextStyle? {
       );
 
   TextStyle get defaultFF => this!.copyWith(
-    fontFamily: kFontFamily,
+        fontFamily: kFontFamily,
       );
 
   TextStyle get withFW300 => this!.copyWith(fontWeight: FontWeight.w300);
@@ -47,6 +47,6 @@ extension TextStyleExtension on TextStyle? {
       );
 
   TextStyle withPrimaryColorIf(bool canApply) => this!.copyWith(
-        color: canApply ? TemboColors.primary : null,
+        color: canApply ? DefaultTemboColors.primary : null,
       );
 }

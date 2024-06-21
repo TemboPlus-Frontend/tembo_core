@@ -69,7 +69,7 @@ class BorderedRowDecoration extends RowDecoration {
   const BorderedRowDecoration({
     this.borderWidth = 1.0,
     this.borderRadius = 5,
-    this.borderColor = TemboColors.border,
+    this.borderColor = DefaultTemboColors.border,
   }) : super(type: RowDecorationType.bordered);
 }
 

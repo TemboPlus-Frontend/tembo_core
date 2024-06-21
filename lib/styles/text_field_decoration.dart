@@ -22,12 +22,12 @@ class TemboTextFieldDecoration {
   const TemboTextFieldDecoration({
     this.fillColor,
     this.hintStyle = const TextStyle(
-      color: TemboColors.onSurface,
+      color: DefaultTemboColors.onSurface,
       fontWeight: FontWeight.w400,
       fontSize: 15,
     ),
     this.valueStyle = const TextStyle(
-      color: TemboColors.onBackground,
+      color: DefaultTemboColors.onBackground,
       fontWeight: FontWeight.w500,
       fontSize: 15,
     ),
@@ -96,7 +96,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? kBorderRadius3),
                 borderSide: BorderSide(
-                  color: borderColor ?? TemboColors.background,
+                  color: borderColor ?? DefaultTemboColors.background,
                   width: borderWidth ?? 1.0,
                 ),
               )
