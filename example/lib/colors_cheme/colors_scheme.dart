@@ -45,13 +45,13 @@ class ColorsScheme extends ConsumerWidget {
           ),
           ColorBox(
             "Surface Container",
-            cs.surfaceContainer!,
-            cs.onSurfaceContainer!,
+            cs.surfaceContainer,
+            cs.onSurfaceContainer,
           ),
           ColorBox(
             "Success ",
-            cs.success!,
-            cs.onSuccess!,
+            cs.success,
+            cs.onSuccess,
           ),
           ColorBox(
             "Error ",
