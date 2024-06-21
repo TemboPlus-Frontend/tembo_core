@@ -11,8 +11,11 @@ export 'alert_dialog.dart';
 
 export 'column.dart';
 export 'line_progress_indicator.dart';
+export 'bottom_button.dart';
+export 'section_title.dart';
 
 export 'form/source.dart';
 export 'table/source.dart';
 export 'container/source.dart';
 export 'picker/source.dart';
+export 'bottom_sheet/source.dart';

@@ -85,3 +85,53 @@ Message? validateTZPhoneNumber(String? phone, {bool optional = false}) {
 
   return null;
 }
+
+
+String? validateAmount(String? value, [bool optional = false]) {
+  var text = value?.trim() ?? "";
+  text = text.replaceAll(",", "");
+
+  if (text.isEmpty && !optional) {
+    const msg =
+        Message(enMessage: "Amount is required", swMessage: "Kiasi ni lazima");
+    return msg.text;
+  }
+
+  if (text.isEmpty && optional) return null;
+
+  if (double.tryParse(text) == null) {
+    const msg =
+        Message(enMessage: "Invalid amount", swMessage: "Kiasi si sahihi");
+    return msg.text;
+  }
+
+  return null;
+}
+
+String? validateTZAmount(String? value, [bool optional = false]) {
+  var text = value?.trim().toLowerCase() ?? "";
+  text = text.replaceAll(",", "");
+  text = text.replaceAll("tzs", "");
+  text = text.replaceAll("tsh", "");
+  text = text.trim();
+
+  if (text.isEmpty && !optional) {
+    const msg = Message(
+      enMessage: "Amount is required",
+      swMessage: "Kiasi ni lazima",
+    );
+    return msg.text;
+  }
+
+  if (text.isEmpty && optional) return null;
+
+  if (double.tryParse(text) == null) {
+    const msg = Message(
+      enMessage: "Invalid amount",
+      swMessage: "Kiasi si sahihi",
+    );
+    return msg.text;
+  }
+
+  return null;
+}
