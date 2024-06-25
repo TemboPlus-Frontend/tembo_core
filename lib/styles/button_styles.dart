@@ -55,7 +55,7 @@ class TemboButtonStyle {
     this.foregroundColor,
     this.borderColor,
     this.borderWidth = 1.5,
-    this.borderRadius = kBorderRadius3,
+    this.borderRadius = kBorderRadius4,
     this.width,
     this.height,
     this.padding,
@@ -73,7 +73,7 @@ class TemboButtonStyle {
     this.padding,
     this.textStyle,
   })  : _style = _ButtonStyle.transparent,
-        borderRadius = 0,
+        borderRadius = kBorderRadius4,
         useContinuousBorder = false,
         elevation = 0,
         backgroundColor = Colors.transparent,
@@ -196,7 +196,7 @@ class TemboButtonStyle {
       shape: _usesContinuousBorder
           ? ContinuousRectangleBorder(
               borderRadius: BorderRadius.circular(
-                  borderRadius?.toDouble() ?? kBorderRadius3),
+                  borderRadius?.toDouble() ?? kBorderRadius4),
               side: BorderSide(
                 color: borderColor ?? Colors.grey,
                 width: borderWidth?.toDouble() ?? 1.0,
@@ -204,7 +204,7 @@ class TemboButtonStyle {
             )
           : RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                  borderRadius?.toDouble() ?? kBorderRadius3),
+                  borderRadius?.toDouble() ?? kBorderRadius4),
               side: BorderSide(
                 color: borderColor ?? Colors.grey,
                 width: borderWidth?.toDouble() ?? 1.0,

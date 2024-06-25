@@ -95,6 +95,8 @@ FlexColorScheme getColorScheme() {
   }
 }
 
+TemboColorScheme get temboColorScheme => getTemboColorScheme();
+
 TemboColorScheme getTemboColorScheme() {
   final project = getProject();
   switch (project) {

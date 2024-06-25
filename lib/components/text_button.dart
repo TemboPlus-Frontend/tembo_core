@@ -57,7 +57,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
             decoration: BoxDecoration(
               color: _style.backgroundColor,
               borderRadius: BorderRadius.circular(
-                _style.borderRadius?.toDouble() ?? kBorderRadius3,
+                _style.borderRadius?.toDouble() ?? kBorderRadius4,
               ),
               border: Border.all(
                 color: _style.borderColor ?? Colors.transparent,

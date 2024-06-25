@@ -22,7 +22,7 @@ class BottomButton extends StatelessWidget {
         style: TemboButtonStyle.filled(
           height: 60,
           textStyle: context.textTheme.titleMedium.bold,
-          borderRadius: 10,
+          borderRadius: kBorderRadius4,
         ),
         child: isLoading
             ? TemboLoadingIndicator(color: context.colorScheme.onPrimary)
