@@ -2,7 +2,7 @@
 
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 
-const token = "ce4828939524f88e71d47cb71dce2118";
+const _token = "ce4828939524f88e71d47cb71dce2118";
 
 const _DEVICE_NAME_KEY = "Device Name";
 const _APP_NAME_KEY = "App Name";
@@ -22,7 +22,7 @@ class MixPanelManager {
     if (deviceName != null) superProps[_DEVICE_NAME_KEY] = deviceName;
 
     mixpanel = await Mixpanel.init(
-      token,
+      _token,
       trackAutomaticEvents: true,
       superProperties: superProps,
     );
