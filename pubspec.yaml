@@ -40,17 +40,3 @@ flutter:
   assets:
     - assets/
     - lib/fonts/
-
-  # fonts:
-  #   - family: MarkPro
-  #     fonts:
-  #       - asset: packages/tembo_core/fonts/MarkPro/light.otf
-  #         weight: 300
-  #       - asset: packages/tembo_core/fonts/MarkPro/regular.otf
-  #         weight: 400
-  #       - asset: packages/tembo_core/fonts/MarkPro/medium.otf
-  #         weight: 500
-  #       - asset: packages/tembo_core/fonts/MarkPro/bold.otf
-  #         weight: 600
-  #       - asset: packages/tembo_core/fonts/MarkPro/black.otf
-  #         weight: 700
