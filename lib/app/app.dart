@@ -12,6 +12,7 @@ enum Project {
     androidPackageName: "com.temboplus.temp",
     iosBundleID: "com.temboplus.tembo",
     dynamicLinkUrl: "https://tembobank.page.link",
+    logoUrl: "packages/tembo_core/assets/logos/temboplus.png",
   ),
   dau(
     "Dau",
@@ -20,14 +21,16 @@ enum Project {
     androidPackageName: "com.temboplus.dau",
     iosBundleID: "com.temboplus.dau",
     dynamicLinkUrl: "https://dautemboplus.page.link",
+    logoUrl: "packages/tembo_core/assets/logos/dau.png",
   ),
   ride(
     "Ride",
     primaryColor: RideColors.primary,
     onPrimaryColor: RideColors.onPrimary,
     androidPackageName: "com.temboplus.ride",
-    iosBundleID: "com.temboplus.tembo",
-    dynamicLinkUrl: "https://tembobank.page.link",
+    iosBundleID: "com.temboplus.ride",
+    dynamicLinkUrl: "https://temboride.page.link",
+    logoUrl: "assets/logos/ride.png",
   ),
   ;
 
@@ -37,6 +40,7 @@ enum Project {
   final String androidPackageName;
   final String iosBundleID;
   final String dynamicLinkUrl;
+  final String logoUrl;
 
   const Project(
     this.label, {
@@ -45,19 +49,14 @@ enum Project {
     required this.androidPackageName,
     required this.iosBundleID,
     required this.dynamicLinkUrl,
+    required this.logoUrl,
   });
 }
 
-Future<void> registerApp(Project project) async {
-  await UserPreferencesAPI.instance.put("app", project.name);
-}
+Future<void> registerApp(Project project) =>
+    TemboPreferencesAPI.instance.registerProject(project);
 
-Project getProject() {
-  return Project.values.firstWhere(
-    (e) => e.name == UserPreferencesAPI.instance.get("app"),
-    orElse: () => Project.temboPlus,
-  );
-}
+Project getProject() => TemboPreferencesAPI.instance.getProject();
 
 /// Provide context if you want to turn all text-themes colors to black
 ThemeData getTheme([BuildContext? context]) {
@@ -125,10 +124,20 @@ class InitialApp extends StatelessWidget {
             constraints: const BoxConstraints.expand(),
             decoration: BoxDecoration(color: project.primaryColor),
             alignment: Alignment.center,
-            child: TemboText.bold(
-              project.label.toUpperCase(),
-              style: context.textTheme.displaySmall
-                  .withColor(project.onPrimaryColor),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                /* Image.asset(
+                  project.logoUrl,
+                  height: 120,
+                ),
+                vSpace(), */
+                TemboText.bold(
+                  project.label.toUpperCase(),
+                  style: context.textTheme.displaySmall
+                      .withColor(project.onPrimaryColor),
+                ),
+              ],
             ),
           );
         }),

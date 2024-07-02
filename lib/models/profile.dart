@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:tembo_core/tembo_core.dart';
+import '../utils/phone_utils/phone_number.dart';
 
 class Profile {
   final String id;

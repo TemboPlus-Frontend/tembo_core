@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/api/user_prefs_apis/locale_api.dart';
 import 'package:tembo_core/utils/date_utils.dart';
-
-import '../api/user_preferences_api.dart';
 
 enum TemboLocale {
   en("en", "US", "English"),
@@ -39,10 +38,5 @@ extension TemboLocaleExt on TemboLocale {
 }
 
 TemboLocale getCurrentLocale() {
-  try {
-    final json = UserPreferencesAPI.instance.get("locale");
-    return TemboLocale.fromJson(json);
-  } catch (_) {
-    return TemboLocale.en;
-  }
+  return LocaleAPI.instance.getLocale() ?? TemboLocale.en;
 }

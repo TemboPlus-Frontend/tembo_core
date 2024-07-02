@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tembo_core/extensions/textstyle_extension.dart';
-import 'package:tembo_core/localization/locale_api.dart';
 
+import '../../api/user_prefs_apis/locale_api.dart';
 import '../../app/app.dart';
 import '../../components/text.dart';
 import '../../constants/constants.dart';

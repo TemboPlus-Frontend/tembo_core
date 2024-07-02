@@ -32,9 +32,7 @@ class TemboButtonStyle {
     this.imageProvider,
   }) : _style = null;
 
-  TextStyle? get getTextStyle => textStyle?.copyWith(
-        color: foregroundColor,
-      );
+  TextStyle? get getTextStyle => textStyle?.copyWith(color: foregroundColor);
 
   const TemboButtonStyle.filled({
     this.backgroundColor,

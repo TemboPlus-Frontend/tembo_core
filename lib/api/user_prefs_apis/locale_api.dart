@@ -1,16 +1,17 @@
-import '../api/base_local_api.dart';
-import '../api/user_preferences_api.dart';
-import '../constants/locale.dart';
+import '../../constants/locale.dart';
+import 'user_prefs_api.dart';
 
-class LocaleAPI extends BaseLocalAPI {
+class LocaleAPI {
   LocaleAPI._();
   static final instance = LocaleAPI._();
 
-  final _api = UserPreferencesAPI.instance;
+  static final _api = UserPreferencesAPI.instance;
+
+  static const _key = "locale";
 
   static TemboLocale getCurrentLocale() {
     try {
-      final json = UserPreferencesAPI.instance.get("locale");
+      final json = _api.get(_key);
       return TemboLocale.fromJson(json);
     } catch (_) {
       return TemboLocale.en;
@@ -19,7 +20,7 @@ class LocaleAPI extends BaseLocalAPI {
 
   TemboLocale? getLocale() {
     try {
-      final json = _api.get("locale");
+      final json = _api.get(_key);
       return TemboLocale.fromJson(json);
     } catch (_) {
       return null;
@@ -27,6 +28,6 @@ class LocaleAPI extends BaseLocalAPI {
   }
 
   Future<void> setLocale(TemboLocale locale) async {
-    await _api.put("locale", locale.toJson());
+    await _api.put(_key, locale.toJson());
   }
 }

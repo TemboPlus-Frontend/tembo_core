@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../api/user_prefs_apis/locale_api.dart';
 import '../constants/locale.dart';
-import 'locale_api.dart';
 
 typedef LocManagerProvider = StateNotifierProvider<LocalizationManager, TemboLocale>;
 

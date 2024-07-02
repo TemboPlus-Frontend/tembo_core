@@ -89,16 +89,16 @@ class TemboOptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = selected ? selectedStyle(context) : unselectedStyle(context);
-    final smallStyle = style.copyWith(
+/*     final smallStyle = style.copyWith(
       padding: horizontal(10) + vertical(3),
       textStyle: selected
           ? context.textTheme.bodySmall.bold
           : context.textTheme.bodySmall.withFW400,
-    );
+    ); */
 
     return BreakPointsBuilder.for1BreakPoint(
       b1: 350,
-      onB1: (_, __) => buildButton(smallStyle),
+      onB1: (_, __) => buildButton(style),
       onGreaterThanB1: (_, __) => buildButton(style),
     );
   }

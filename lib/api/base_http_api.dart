@@ -24,50 +24,52 @@ abstract class BaseHTTPAPI {
     return Uri.parse("$url/$endpoint");
   }
 
-  static const _baseHeaders = <String, String>{
+  static const _constantHeaders = <String, String>{
     "content-type": "application/json",
     "accept": "application/json",
     "Access-Control-Allow-Origin": "*",
   };
 
-  String get apiToken => UserPreferencesAPI.instance.get("api_token") ?? "";
+  String get apiToken => TokenAPI.instance.getToken() ?? "";
 
   String getCurrentDateISOString() => DateTime.now().toUtc().toIso8601String();
 
-  Map<String, String> get headers {
-    final h = Map<String, String>.from(_baseHeaders);
+  /// Calling all authenticated endpoints successfully will need 'x-request-id' and 'token'
+  /// keys in the request header.
+  ///
+  /// 'x-request-id' will be generated randomly in every request.
+  /// 'token' will be saved as soon as the user is authenticated successfully. The class
+  /// that will handle authentication logic will need to extend [BaseHTTPAPI] to call
+  /// [updateToken] method, which will store the token in the local storage. It will then
+  /// be fetched from the local storage in all future requests.
+  ///
+  /// This token can be delete by a class that extends [BaseHTTPAPI] by calling [deleteToken] method.
+  /// That means all future requests will be sent without a token, which will result to
+  /// unsuccessful requests for authenticated endpoints.
+  Map<String, String> get baseHeaders {
+    final h = Map<String, String>.from(_constantHeaders);
 
-    final token = UserPreferencesAPI.instance.get("api_token");
-    if (token != null) h.addAll({"token": token!});
+    final token = TokenAPI.instance.getToken();
+    if (token != null) h.addAll({"token": token});
 
     h.addAll({"x-request-id": (const Uuid()).v4()});
     return h;
   }
 
-  Map<String, String> _handleHeaders(Headers? value) {
-    final h = value == null ? headers : mergeHeaders(value);
-    return h;
-  }
+  /// Saves token to user preferences.
+  Future updateToken(String value) => TokenAPI.instance.saveToken(value);
 
-  Map<String, String> mergeHeaders(Map<String, String> value) {
-    final h = Map<String, String>.from(headers);
-    final v = Map<String, String>.from(value);
-    final result = v..addAll(h);
-    return result;
-  }
+  /// Deletes token from the user preferences.
+  Future deleteToken() async => await TokenAPI.instance.deleteToken();
 
-  Future updateToken(String value) async {
-    await UserPreferencesAPI.instance.put("api_token", value);
-  }
-
-  Future deleteToken() async {
-    await UserPreferencesAPI.instance.delete("api_token");
-  }
-
+  /// [callback] to be called when status code returned == 404.
+  ///
+  /// For example, log out the user and take the user to the splash page
   void registerUnauthorizedCallback(void Function() callback) {
     _unauthorizedCallback = callback;
   }
 
+  /// Performs a GET request
   Future<T> get<T>(
     String endpoint, {
     String? params,
@@ -88,6 +90,7 @@ abstract class BaseHTTPAPI {
     return getResult(response, null, statusCodeHandler, checkBody);
   }
 
+  /// Performs a POST request
   Future<T> post<T>(
     String endpoint, {
     String? body,
@@ -111,6 +114,7 @@ abstract class BaseHTTPAPI {
     return getResult(response, body, statusCodeHandler, checkBody);
   }
 
+  /// Performs a PUT request
   Future<T> put<T>(
     String endpoint,
     String body, {
@@ -125,6 +129,7 @@ abstract class BaseHTTPAPI {
     return getResult(response, body, statusCodeHandler);
   }
 
+  /// Performs a PATCH request
   Future<T> patch<T>(
     String endpoint,
     String body, [
@@ -176,6 +181,18 @@ abstract class BaseHTTPAPI {
     }
     if (body is List) return List<MapSD>.from(body);
     return body;
+  }
+
+  Map<String, String> _handleHeaders(Headers? value) {
+    final h = value == null ? baseHeaders : mergeHeaders(value);
+    return h;
+  }
+
+  Map<String, String> mergeHeaders(Map<String, String> other) {
+    final h = Map<String, String>.from(baseHeaders);
+    final v = Map<String, String>.from(other);
+    final result = v..addAll(h);
+    return result;
   }
 }
 
