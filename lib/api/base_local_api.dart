@@ -41,9 +41,7 @@ abstract class BaseLocalAPI {
 
   Future<void> clear() async => await deleteAll();
 
-  Future<void> deleteAll() async {
-    await box.deleteAll(box.keys);
-  }
+  Future<void> deleteAll() async => await box.clear();
 
   T? get<T>(key) => box.get(key) as T?;
 }
