@@ -23,6 +23,18 @@ abstract class BaseLocalAPI {
 
   List getAll() => box.values.toList();
 
+  List<MapEntry> getEntries() {
+    final entries = <MapEntry>[];
+
+    final values = box.values.toList();
+    final keys = box.keys;
+    for (int i = 0; i < values.length; i++) {
+      entries.add(MapEntry(keys.elementAt(i), values.elementAt(i)));
+    }
+
+    return entries;
+  }
+
   Future<void> put(key, value) async => await box.put(key, value);
 
   Future<void> delete(key) async => await box.delete(key);

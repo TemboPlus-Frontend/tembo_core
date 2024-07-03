@@ -30,8 +30,6 @@ abstract class BaseHTTPAPI {
     "Access-Control-Allow-Origin": "*",
   };
 
-  String get apiToken => TokenAPI.instance.getToken() ?? "";
-
   String getCurrentDateISOString() => DateTime.now().toUtc().toIso8601String();
 
   /// Calling all authenticated endpoints successfully will need 'x-request-id' and 'token'
@@ -55,12 +53,6 @@ abstract class BaseHTTPAPI {
     h.addAll({"x-request-id": (const Uuid()).v4()});
     return h;
   }
-
-  /// Saves token to user preferences.
-  Future updateToken(String value) => TokenAPI.instance.saveToken(value);
-
-  /// Deletes token from the user preferences.
-  Future deleteToken() async => await TokenAPI.instance.deleteToken();
 
   /// [callback] to be called when status code returned == 404.
   ///

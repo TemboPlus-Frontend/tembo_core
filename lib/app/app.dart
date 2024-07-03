@@ -12,7 +12,6 @@ enum Project {
     androidPackageName: "com.temboplus.temp",
     iosBundleID: "com.temboplus.tembo",
     dynamicLinkUrl: "https://tembobank.page.link",
-    logoUrl: "packages/tembo_core/assets/logos/temboplus.png",
   ),
   dau(
     "Dau",
@@ -21,7 +20,6 @@ enum Project {
     androidPackageName: "com.temboplus.dau",
     iosBundleID: "com.temboplus.dau",
     dynamicLinkUrl: "https://dautemboplus.page.link",
-    logoUrl: "packages/tembo_core/assets/logos/dau.png",
   ),
   ride(
     "Ride",
@@ -30,7 +28,6 @@ enum Project {
     androidPackageName: "com.temboplus.ride",
     iosBundleID: "com.temboplus.ride",
     dynamicLinkUrl: "https://temboride.page.link",
-    logoUrl: "assets/logos/ride.png",
   ),
   ;
 
@@ -40,7 +37,6 @@ enum Project {
   final String androidPackageName;
   final String iosBundleID;
   final String dynamicLinkUrl;
-  final String logoUrl;
 
   const Project(
     this.label, {
@@ -49,7 +45,6 @@ enum Project {
     required this.androidPackageName,
     required this.iosBundleID,
     required this.dynamicLinkUrl,
-    required this.logoUrl,
   });
 }
 
@@ -127,11 +122,11 @@ class InitialApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                /* Image.asset(
-                  project.logoUrl,
+                Image.asset(
+                  "assets/images/logos/logo.png",
                   height: 120,
                 ),
-                vSpace(), */
+                vSpace(),
                 TemboText.bold(
                   project.label.toUpperCase(),
                   style: context.textTheme.displaySmall

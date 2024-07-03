@@ -1,53 +1,66 @@
 import 'dart:convert';
 
+import 'package:rxdart/rxdart.dart';
 import 'package:tembo_core/api/source.dart';
 
 import '../../constants/typedefs.dart';
 import '../../models/profile.dart';
-import '../../utils/phone_utils/phone_number.dart';
+import 'local_api.dart';
 
-class ProfileRepository {
+/// Handles all profile operations.
+///
+/// Get the current saved profile from anywhere with [ProfileManager.getCurrent]
+class ProfileManager {
   final _remoteApi = ProfileRemoteAPI("https://api.afloat.money/v1");
   final _localAPI = ProfileAPI.instance;
 
-  Future<Profile> getUserProfile() async {
+  ProfileManager._() {
+    UserPreferencesAPI.instance.box.watch(key: ProfileAPI.eventKey).listen((e) {
+      _subject.add(_localAPI.getProfile());
+    });
+  }
+
+  static final instance = ProfileManager._();
+
+  final _subject = BehaviorSubject<Profile?>();
+  Stream<Profile?> get onProfileUpdate => _subject.stream;
+
+  Profile? getCurrent() => _localAPI.getProfile();
+
+  /// Should only be done once when the user logs in with their phone number
+  Future<void> saveProfileLocally(Profile profile) async {
+    await _localAPI.saveProfile(profile);
+  }
+
+  Future<Profile> fetch() async {
     final json = await _remoteApi.getUserProfile();
     final profile = Profile.fromMap(json);
-    await saveProfile(profile);
+    await _onProfileChange(profile);
     return profile;
   }
 
-  Future<Profile> createProfile(MapSD data) async {
+  Future<Profile> create(MapSD data) async {
     final body = jsonEncode(data);
     final result = await _remoteApi.createProfile(body);
     final profile = Profile.fromMap(result);
-    await saveProfile(profile);
+    await _onProfileChange(profile);
     return profile;
   }
 
-  Future<Profile> updateProfile(MapSD data) async {
+  Future<Profile> update(MapSD data) async {
     final body = jsonEncode(data);
     final result = await _remoteApi.editProfile(body);
     final profile = Profile.fromMap(result);
-    await saveProfile(profile);
+    await _onProfileChange(profile);
     return profile;
   }
 
-  Future<void> markEmailAsVerified(String fbToken) =>
-      _remoteApi.markEmailAsVerified(fbToken);
+  Future<void> verifyEmail(String fbToken) async {
+    return await _remoteApi.markEmailVerified(fbToken);
+  }
 
-  Future<({bool success, bool hasNotSetProfile})> sendOTP(
-    PhoneNumber phoneNumber,
-  ) =>
-      _remoteApi.sendOTP(phoneNumber);
-
-  Future<({bool success, bool hasNotSetProfile})> verifyPhone(String otp) =>
-      _remoteApi.verifyPhone(otp);
-
-  Future<void> saveProfile(Profile profile) => _localAPI.saveProfile(profile);
-
-  Profile? getLocalProfile() => _localAPI.getProfile();
-
-  Future<void> deleteLocalProfile() =>
-      _localAPI.deleteProfile().catchError((_) {});
+  Future<void> _onProfileChange(Profile profile) async {
+    await saveProfileLocally(profile);
+    _subject.sink.add(profile);
+  }
 }

@@ -8,7 +8,10 @@ class TokenAPI {
 
   static const _key = "api_token";
 
+  /// Should only be called once when the user logs in
   Future<void> saveToken(String token) => _api.put(_key, token);
+
   Future<void> deleteToken() => _api.delete(_key);
+
   String? getToken() => _api.get(_key);
 }

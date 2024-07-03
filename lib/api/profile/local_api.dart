@@ -1,16 +1,16 @@
 import '../../models/profile.dart';
-import 'user_prefs_api.dart';
+import '../user_prefs_apis/user_prefs_api.dart';
 
 class ProfileAPI {
   ProfileAPI._();
   static final instance = ProfileAPI._();
 
   final _api = UserPreferencesAPI.instance;
-  static const _key = "profile";
+  static const eventKey = "profile";
 
   Profile? getProfile() {
     try {
-      final json = _api.get(_key);
+      final json = _api.get(eventKey);
       return Profile.fromJson(json);
     } catch (_) {
       return null;
@@ -18,8 +18,8 @@ class ProfileAPI {
   }
 
   Future<void> saveProfile(Profile profile) async {
-    await _api.put(_key, profile.toJson());
+    await _api.put(eventKey, profile.toJson());
   }
 
-  Future<void> deleteProfile() => _api.delete(_key);
+  Future<void> deleteProfile() async => await _api.delete(eventKey);
 }
