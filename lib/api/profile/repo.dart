@@ -39,14 +39,6 @@ class ProfileManager {
     return profile;
   }
 
-  Future<Profile> create(MapSD data) async {
-    final body = jsonEncode(data);
-    final result = await _remoteApi.createProfile(body);
-    final profile = Profile.fromMap(result);
-    await _onProfileChange(profile);
-    return profile;
-  }
-
   Future<Profile> update(MapSD data) async {
     final body = jsonEncode(data);
     final result = await _remoteApi.editProfile(body);

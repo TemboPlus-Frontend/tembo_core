@@ -122,13 +122,13 @@ class InitialApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
+                /*  Image.asset(
                   "assets/images/logos/logo.png",
                   height: 120,
                 ),
-                vSpace(),
+                vSpace(), */
                 TemboText.bold(
-                  project.label.toUpperCase(),
+                  project.label,
                   style: context.textTheme.displaySmall
                       .withColor(project.onPrimaryColor),
                 ),
