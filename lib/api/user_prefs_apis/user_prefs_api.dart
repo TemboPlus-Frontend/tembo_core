@@ -31,6 +31,6 @@ class UserPreferencesAPI extends BaseLocalAPI {
   /// Clears [LocaleAPI], [TokenAPI], [ProfileAPI] along with other apis
   /// using [UserPreferencesAPI.instance] to store data
   Future<void> clear() async {
-    return super.clear().catchError((e) => debugPrint(e));
+    return super.clear().catchError((e) => debugPrint("Error on clearing user preferences: $e"));
   }
 }

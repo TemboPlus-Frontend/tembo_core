@@ -53,7 +53,7 @@ class TemboPreferencesAPI extends BaseLocalAPI {
     if (lastInstallDate == null) return true;
 
     final now = DateTime.now();
-    return now.difference(lastInstallDate).abs().inDays > 7;
+    return now.difference(lastInstallDate).abs().inDays > 30;
   }
 
   Future<void> registerProject(Project project) async {

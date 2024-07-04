@@ -14,7 +14,7 @@ enum Telecom {
     label: "Tigo",
     company: "Tigo-Pesa",
   ),
-  halopesa(
+  halotel(
     prefixes: ["62", "61"],
     label: "Halotel",
     company: "Halo-Pesa",
@@ -38,10 +38,10 @@ enum Telecom {
 extension TelecomExt on Telecom {
   bool get isVoda => this == Telecom.vodacom;
   bool get isTigo => this == Telecom.tigo;
-  bool get isHalotel => this == Telecom.halopesa;
+  bool get isHalotel => this == Telecom.halotel;
   bool get isAirtel => this == Telecom.airtel;
 
-  bool get isCurrentlySupported => isAirtel || isTigo;
+  bool get isCurrentlySupported => isAirtel || isTigo || isHalotel;
 
   String toJson() => name;
 
