@@ -7,6 +7,7 @@ import 'package:tembo_core/tembo_core.dart';
 enum Project {
   temboPlus(
     "TemboPlus",
+    fcmTopicName: "TemboPlus",
     primaryColor: DefaultTemboColors.primary,
     onPrimaryColor: DefaultTemboColors.onPrimary,
     androidPackageName: "com.temboplus.temp",
@@ -15,6 +16,7 @@ enum Project {
   ),
   dau(
     "Dau",
+    fcmTopicName: "Dau",
     primaryColor: DauColors.primary,
     onPrimaryColor: DauColors.onPrimary,
     androidPackageName: "com.temboplus.dau",
@@ -23,6 +25,7 @@ enum Project {
   ),
   ride(
     "Ride",
+    fcmTopicName: "Ride",
     primaryColor: RideColors.primary,
     onPrimaryColor: RideColors.onPrimary,
     androidPackageName: "com.temboplus.ride",
@@ -32,6 +35,10 @@ enum Project {
   ;
 
   final String label;
+
+  /// See TemboWallet/Notifications/SetUpManager
+  final String fcmTopicName;
+
   final Color primaryColor;
   final Color onPrimaryColor;
   final String androidPackageName;
@@ -40,6 +47,7 @@ enum Project {
 
   const Project(
     this.label, {
+    required this.fcmTopicName,
     required this.primaryColor,
     required this.onPrimaryColor,
     required this.androidPackageName,
