@@ -157,6 +157,12 @@ class FirstLetterUppercaseFormatter extends TextInputFormatter {
   }
 }
 
+/// Currency Formatter with a default symbol 'TZS'
+class TZSCurrencyFormatter extends CurrencyFormatter {
+  const TZSCurrencyFormatter([int decimalPts = 4])
+      : super(decimalPoints: decimalPts, symbol: "TZS");
+}
+
 class CurrencyFormatter extends TextInputFormatter {
   final int decimalPoints;
   final String? symbol;

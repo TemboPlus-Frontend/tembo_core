@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 Message? validateName(String? text, {String? label, bool optional = false}) {
@@ -86,7 +87,6 @@ Message? validateTZPhoneNumber(String? phone, {bool optional = false}) {
   return null;
 }
 
-
 String? validateAmount(String? value, [bool optional = false]) {
   var text = value?.trim() ?? "";
   text = text.replaceAll(",", "");
@@ -134,4 +134,19 @@ String? validateTZAmount(String? value, [bool optional = false]) {
   }
 
   return null;
+}
+
+double? getTZAmountFrom(TextEditingController controller) {
+  final value = controller.text;
+  var text = value.trim().toLowerCase();
+  text = text.replaceAll(",", "");
+  text = text.replaceAll("tzs", "");
+  text = text.replaceAll("tsh", "");
+  text = text.trim();
+
+  if (text.isEmpty) return null;
+
+  final amount = double.tryParse(text);
+  if (amount == null) return null;
+  return amount;
 }
