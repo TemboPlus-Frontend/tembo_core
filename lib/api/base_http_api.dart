@@ -33,7 +33,8 @@ abstract class BaseHTTPAPI {
   String getCurrentDateISOString() => DateTime.now().toUtc().toIso8601String();
 
   /// Calling all authenticated endpoints successfully will need 'x-request-id' and 'token'
-  /// keys in the request header.
+  /// keys in the request header. Some endpoints (mostly Fantuzzi related) will require 
+  /// Authorization parameter to be passed
   ///
   /// 'x-request-id' will be generated randomly in every request.
   /// 'token' will be saved as soon as the user is authenticated successfully. The class
@@ -47,8 +48,11 @@ abstract class BaseHTTPAPI {
   Map<String, String> get baseHeaders {
     final h = Map<String, String>.from(_constantHeaders);
 
-    final token = TokenAPI.instance.getToken();
-    if (token != null) h.addAll({"token": token});
+    final apiToken = TokenAPI.instance.getToken(TokenType.token);
+    if (apiToken != null) h.addAll({"token": apiToken});
+
+    final bToken = TokenAPI.instance.getToken(TokenType.bearer);
+    if (bToken != null) h.addAll({"Authorization": "Bearer $bToken"});
 
     h.addAll({"x-request-id": (const Uuid()).v4()});
     return h;
@@ -195,7 +199,9 @@ extension ResponseExtension on http.Response {
       url: ${request?.url}
       method: ${request?.method}
       x-request-id: ${request?.headers['x-request-id']}
+      Authorization: ${request?.headers['Authorization']}
       token: ${request?.headers['token']}
+      
       body: $requestBody
 
     Response:

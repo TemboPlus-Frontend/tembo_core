@@ -1,17 +1,34 @@
 import 'package:tembo_core/tembo_core.dart';
 
+/// Tembo servers now suport 2 types of tokens, Bearer token mostly for Fantuzzi products and
+/// just token passed as a header parameter for mostly TemboPlus products
+enum TokenType {
+  token("api_token"),
+  bearer("bearer_token"),
+  ;
+
+  final String localStorageKeyName;
+  const TokenType(this.localStorageKeyName);
+}
+
 class TokenAPI {
   TokenAPI._();
   static final instance = TokenAPI._();
 
   final _api = UserPreferencesAPI.instance;
 
-  static const _key = "api_token";
-
   /// Should only be called once when the user logs in
-  Future<void> saveToken(String token) => _api.put(_key, token);
+  Future<void> saveToken(String token, [TokenType type = TokenType.token]) {
+    return _api.put(type.localStorageKeyName, token);
+  }
 
-  Future<void> deleteToken() => _api.delete(_key);
+  Future<void> deleteToken(TokenType type) =>
+      _api.delete(type.localStorageKeyName);
 
-  String? getToken() => _api.get(_key);
+  Future<void> clear() async {
+    await _api.delete(TokenType.bearer.localStorageKeyName);
+    await _api.delete(TokenType.token.localStorageKeyName);
+  }
+
+  String? getToken(TokenType type) => _api.get(type.localStorageKeyName);
 }
