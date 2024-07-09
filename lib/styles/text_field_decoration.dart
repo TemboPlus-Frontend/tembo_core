@@ -5,7 +5,7 @@ enum TemboBorderStyle { underline, outline }
 
 class TemboTextFieldDecoration {
   final Color? fillColor;
-  final TextStyle hintStyle;
+  final TextStyle? hintStyle;
   final TextStyle? labelStyle;
   final TextStyle? valueStyle;
   final String? hint, label;
@@ -21,16 +21,8 @@ class TemboTextFieldDecoration {
 
   const TemboTextFieldDecoration({
     this.fillColor,
-    this.hintStyle = const TextStyle(
-      color: DefaultTemboColors.onSurface,
-      fontWeight: FontWeight.w400,
-      fontSize: 15,
-    ),
-    this.valueStyle = const TextStyle(
-      color: DefaultTemboColors.onBackground,
-      fontWeight: FontWeight.w500,
-      fontSize: 15,
-    ),
+    this.valueStyle,
+    this.hintStyle,
     this.hint,
     this.label,
     this.labelStyle,
@@ -58,6 +50,7 @@ class TemboTextFieldDecoration {
       fillColor: fillColor ?? this.fillColor,
       hint: hint ?? this.hint,
       hintStyle: hintStyle ?? this.hintStyle,
+      valueStyle: valueStyle ?? this.valueStyle,
       borderColor: borderColor ?? this.borderColor,
       borderRadius: borderRadius,
       borderWidth: borderWidth,
@@ -69,14 +62,13 @@ class TemboTextFieldDecoration {
       borderStyle: borderStyle,
       padding: padding,
       suffixIcon: suffixIcon ?? this.suffixIcon,
-      valueStyle: valueStyle ?? this.valueStyle,
     );
   }
 
   TemboTextFieldDecoration copyFontFamily(String? fontFamily) {
     return copyWith(
       valueStyle: valueStyle?.copyWith(fontFamily: fontFamily),
-      hintStyle: hintStyle.copyWith(fontFamily: fontFamily),
+      hintStyle: hintStyle?.copyWith(fontFamily: fontFamily),
     );
   }
 
@@ -131,25 +123,50 @@ class TemboTextFieldDecoration {
       hintText: hint,
       label: label == null ? null : Text(label!, style: labelStyle),
     );
-    if (prefixIcon != null) return decoration.copyWith(prefixIcon: prefixIcon);
-    if (suffixIcon != null) return decoration.copyWith(suffixIcon: suffixIcon);
+    if (prefixIcon != null) {
+      return decoration.copyWith(
+          prefixIcon: IconTheme(
+        data: IconThemeData(color: scheme.onBackground),
+        child: prefixIcon!,
+      ));
+    }
+    if (suffixIcon != null) {
+      return decoration.copyWith(
+          suffixIcon: IconTheme(
+        data: IconThemeData(color: scheme.onBackground),
+        child: suffixIcon!,
+      ));
+    }
     return decoration;
   }
 
   static TemboTextFieldDecoration getDefaultAmountDeco(BuildContext context) {
+    final scheme = getTemboColorScheme();
     return TemboTextFieldDecoration(
       size: const Size.fromHeight(60),
-      borderStyle: TemboBorderStyle.underline,
-      hintStyle:
-          context.textTheme.titleLarge.bold.withColor(Colors.grey.shade500),
-      valueStyle: context.textTheme.titleLarge.bold.copyWith(
-        color: Colors.black87,
-      ),
-      hint: "TZS 0",
       hasBorder: true,
       borderWidth: 2,
-      borderColor: Colors.black45,
+      borderStyle: TemboBorderStyle.underline,
+      hintStyle: context.textTheme.titleLarge.bold.withColor(scheme.hint),
+      valueStyle: context.textTheme.titleLarge.bold.copyWith(
+        color: scheme.onBackground,
+      ),
+      hint: "TZS 0",
+      borderColor: scheme.border,
       fillColor: Colors.transparent,
+    );
+  }
+
+  static TemboTextFieldDecoration getDefaultFilledDeco(BuildContext context) {
+    final scheme = getTemboColorScheme();
+    return TemboTextFieldDecoration(
+      labelStyle: context.textTheme.bodyMedium.bold.withColor(scheme.onBackground),
+      hintStyle: context.textTheme.bodyMedium.withColor(scheme.hint),
+      valueStyle: context.textTheme.bodyMedium.withFW500.copyWith(
+        color: scheme.onBackground,
+      ),
+      hint: "TZS 0",
+      fillColor: scheme.surface,
     );
   }
 }

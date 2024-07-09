@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tembo_core/components/source.dart';
 import 'package:tembo_core/extensions/source.dart';
 
+import '../app/app.dart';
 import '../constants/source.dart';
 import '../widgets/source.dart';
 
@@ -49,19 +50,31 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildField() {
+    final scheme = getTemboColorScheme();
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (icon != null) Padding(
-          padding: right(),
-          child: icon!,
-        ),
-        TemboText(field, style: fieldStyle),
+        if (icon != null)
+          Padding(
+            padding: right(),
+            child: icon!,
+          ),
+        Builder(builder: (context) {
+          return TemboText(
+            field,
+            style: fieldStyle ??
+                context.textTheme.bodyMedium.withColor(
+                  scheme.onBackground,
+                ),
+          );
+        }),
       ],
     );
   }
 
   Widget buildValue() {
+    final scheme = getTemboColorScheme();
     return Builder(builder: (context) {
       return TemboText(
         value,
@@ -69,7 +82,7 @@ class TemboFVWidget extends StatelessWidget {
         textAlign: TextAlign.end,
         style: valueStyle ??
             context.textTheme.bodyMedium.withFW500.withColor(
-              Colors.black,
+              scheme.onBackground,
             ),
       );
     });

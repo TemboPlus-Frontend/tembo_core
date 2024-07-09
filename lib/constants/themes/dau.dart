@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
 class DauColors {
-  static const primary = Color(0xffE92531);
-  static const onPrimary = Colors.white;
+  static const primary = Color(0xff33E8F2);
+  static const onPrimary = Colors.black;
 
-  static const primaryContainer = Color.fromARGB(255, 250, 227, 228);
+  static const primaryContainer = Color(0xffebfdfe);
   static const onPrimaryContainer = Colors.black;
 
   static const secondary = Color.fromARGB(255, 249, 213, 53);
@@ -15,14 +15,14 @@ class DauColors {
   static const secondaryContainer = Color.fromARGB(255, 245, 241, 222);
   static const onSecondaryContainer = Color.fromARGB(181, 0, 0, 0);
 
-  static const background = Colors.white;
-  static const onBackground = Colors.black87;
+  static const background = Colors.black87;
+  static const onBackground = Colors.white;
 
-  static const surfaceContainer = Color.fromARGB(255, 245, 245, 245);
+  static const surfaceContainer = Color.fromARGB(255, 188, 185, 185);
   static const onSurfaceContainer = Colors.black54;
 
-  static const surface = Color(0xfff4f5f8);
-  static const onSurface = Color.fromARGB(255, 93, 93, 93);
+  static const surface = Color.fromARGB(255, 37, 38, 41);
+  static const onSurface = Color.fromARGB(255, 255, 255, 255);
 
   static const error = Color(0xff841617);
   static const onError = Colors.white;
@@ -30,7 +30,8 @@ class DauColors {
   static const success = Color(0xff006400);
   static const onSuccess = Colors.white;
 
-  static const border = Colors.black12;
+  static const border = Color.fromARGB(31, 200, 196, 196);
+  static const hint = Colors.white70;
 }
 
 final dauTemboLightTheme = dauTemboLightFlexColorScheme.toTheme;
@@ -55,6 +56,7 @@ const dauTemboAppLightScheme = TemboColorScheme.light(
   surfaceContainer: DauColors.surfaceContainer,
   onSurfaceContainer: DauColors.onSurfaceContainer,
   border: DauColors.border,
+  hint: DauColors.hint,
 );
 final dauTemboLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -91,4 +93,5 @@ extension DauColorSchemeExt on ColorScheme {
   Color get onSuccess => DauColors.onSuccess;
 
   Color get border => DauColors.border;
+  Color get hint => DauColors.hint;
 }

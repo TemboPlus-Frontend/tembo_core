@@ -31,6 +31,7 @@ class DefaultTemboColors {
   static const onSuccess = Colors.white;
 
   static const border = Colors.black26;
+  static const hint = Color.fromARGB(66, 105, 101, 101);
 }
 
 class DarkTemboColors {
@@ -62,6 +63,7 @@ class DarkTemboColors {
   static const onError = Colors.white;
 
   static const border = Colors.white12;
+  static const hint = Colors.white12;
 }
 
 final defaultLightTheme = defaultLightFlexColorScheme.toTheme.copyWith(
@@ -92,6 +94,7 @@ const defaultLightColorScheme = TemboColorScheme.light(
   surfaceContainer: DefaultTemboColors.surfaceContainer,
   onSurfaceContainer: DefaultTemboColors.onSurfaceContainer,
   border: DefaultTemboColors.border,
+  hint: DefaultTemboColors.hint,
 );
 final defaultLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -150,4 +153,5 @@ extension TemboColorSchemeExt on ColorScheme {
   Color get onSuccess => DefaultTemboColors.onSuccess;
 
   Color get border => DefaultTemboColors.border;
+  Color get hint => DefaultTemboColors.hint;
 }

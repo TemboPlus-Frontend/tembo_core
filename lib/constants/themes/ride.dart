@@ -31,6 +31,7 @@ class RideColors {
   static const onSuccess = Colors.white;
 
   static const border = Colors.black26;
+  static const hint = Color.fromARGB(66, 56, 54, 54);
 }
 
 final temboCarsTheme = rideLightFlexColorScheme.toTheme.copyWith(
@@ -59,6 +60,7 @@ const rideLightColorScheme = TemboColorScheme.light(
   surfaceContainer: RideColors.surfaceContainer,
   onSurfaceContainer: RideColors.onSurfaceContainer,
   border: RideColors.border,
+  hint: RideColors.hint,
 );
 final rideLightFlexColorScheme = FlexColorScheme.light(
   fontFamily: kFontFamily,
@@ -95,4 +97,5 @@ extension RideColorSchemeExt on ColorScheme {
   Color get onSuccess => RideColors.onSuccess;
 
   Color get border => RideColors.border;
+  Color get hint => RideColors.hint;
 }

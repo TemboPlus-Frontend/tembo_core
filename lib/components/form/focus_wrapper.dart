@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../app/app.dart';
+
 class FocusWrapper extends StatelessWidget {
   final Widget child;
   final VoidCallback? onTap;
@@ -8,7 +10,7 @@ class FocusWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: getTemboColorScheme().background,
       child: SafeArea(
         child: GestureDetector(
           onTap: () {

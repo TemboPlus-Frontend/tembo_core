@@ -12,6 +12,7 @@ class TemboColorScheme {
       secondaryContainer,
       onSecondaryContainer,
       border,
+      hint,
       background,
       onBackground,
       surface,
@@ -43,6 +44,7 @@ class TemboColorScheme {
     required this.onSuccess,
     required this.secondaryContainer,
     required this.onSecondaryContainer,
+    required this.hint,
   });
 
   const TemboColorScheme.light({
@@ -65,6 +67,7 @@ class TemboColorScheme {
     this.onSurface = DefaultTemboColors.onSurface,
     this.success = DefaultTemboColors.success,
     this.onSuccess = DefaultTemboColors.onSuccess,
+    this.hint = DefaultTemboColors.hint,
   });
 
   const TemboColorScheme.dark({
@@ -87,6 +90,7 @@ class TemboColorScheme {
     this.onSurface = DarkTemboColors.onSurface,
     this.success = DarkTemboColors.success,
     this.onSuccess = DarkTemboColors.onSuccess,
+    this.hint = DarkTemboColors.hint,
   });
 
   @override

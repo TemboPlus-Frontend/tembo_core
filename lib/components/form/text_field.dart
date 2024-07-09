@@ -109,8 +109,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  TemboTextFieldDecoration getDecoration(BuildContext context) {
     final scheme = getTemboColorScheme();
 
     final defaultDeco = TemboTextFieldDecoration(borderColor: scheme.border);
@@ -121,6 +120,23 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
     }
 
+    if (decoration.hintStyle == null) {
+      decoration = decoration.copyWith(
+          hintStyle: context.textTheme.bodyMedium?.defaultFF
+              .copyWith(color: scheme.hint));
+    }
+
+    if (decoration.valueStyle == null) {
+      decoration = decoration.copyWith(
+          valueStyle: context.textTheme.bodyMedium?.defaultFF
+              .copyWith(color: scheme.onBackground));
+    }
+    return decoration;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final decoration = getDecoration(context);
     final mqData = MediaQuery.of(context);
     final mqDataNew = mqData.copyWith(textScaler: const TextScaler.linear(1.0));
 
@@ -162,15 +178,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
   }
 
   Widget buildField([bool hasError = false]) {
-    final scheme = getTemboColorScheme();
-
-    final defaultDeco = TemboTextFieldDecoration(borderColor: scheme.border);
-    var decoration = widget.decoration ?? defaultDeco;
-    decoration = decoration.copyWith(hint: widget.hint);
-
-    if (!(widget.enabled ?? true)) {
-      decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
-    }
+    final decoration = getDecoration(context);
 
     final bool canExpand = decoration.size != null;
 
