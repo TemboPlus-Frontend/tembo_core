@@ -205,7 +205,7 @@ class CurrencyFormatter extends TextInputFormatter {
     if (numbersAfterDecimal > decimalPoints) return oldValue;
 
     final formatter = NumberFormat.currency(
-      symbol: symbol ?? "",
+      symbol: symbol != null ? "$symbol " : "",
       decimalDigits: numbersAfterDecimal,
     );
     var newText = formatter.format(num.parse(onlyText));
