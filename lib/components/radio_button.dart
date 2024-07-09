@@ -29,7 +29,7 @@ class TemboRadioButton<T> extends StatelessWidget {
         borderWidth: selectedValue ? 2.0 : 0.0,
         foregroundColor: selectedValue
             ? context.colorScheme.primary
-            : context.colorScheme.onSurface,
+            : context.colorScheme.onPrimaryContainer,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         textStyle: context.textTheme.bodyMedium!.copyWith(
           fontWeight: selectedValue ? FontWeight.bold : FontWeight.normal,

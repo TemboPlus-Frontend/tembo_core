@@ -165,7 +165,6 @@ class TemboTextFieldDecoration {
       valueStyle: context.textTheme.bodyMedium.withFW500.copyWith(
         color: scheme.onBackground,
       ),
-      hint: "TZS 0",
       fillColor: scheme.surface,
     );
   }
