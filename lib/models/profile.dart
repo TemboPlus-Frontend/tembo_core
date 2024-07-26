@@ -133,4 +133,12 @@ extension NullableProfileExt on Profile? {
     final e = this?.accountNo?.trim().isNotEmpty ?? false;
     return e;
   }
+
+  bool get hasVerifiedEmail {
+    return this?.isEmailVerified ?? false;
+  }
+
+  bool get hasVerifiedPhone {
+    return this?.isPhoneVerified ?? false;
+  }
 }

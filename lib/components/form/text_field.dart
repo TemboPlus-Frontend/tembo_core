@@ -122,13 +122,13 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
     if (decoration.hintStyle == null) {
       decoration = decoration.copyWith(
-          hintStyle: context.textTheme.bodyMedium?.defaultFF
+          hintStyle: context.textTheme.bodyMedium?.bold.defaultFF
               .copyWith(color: scheme.hint));
     }
 
     if (decoration.valueStyle == null) {
       decoration = decoration.copyWith(
-          valueStyle: context.textTheme.bodyMedium?.defaultFF
+          valueStyle: context.textTheme.bodyMedium?.bold.defaultFF
               .copyWith(color: scheme.onBackground));
     }
     return decoration;
