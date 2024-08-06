@@ -39,7 +39,7 @@ class TemboPreferencesAPI extends BaseLocalAPI {
   Future<void> handleLongTimeSinceLastLogIn() async {
     await _registerFirstInstall();
     final requireLogin = _hasExceededDuration();
-    debugPrint("hasExceededOneWeek: $requireLogin");
+    debugPrint("has exceeded $duration?: $requireLogin");
     if (!requireLogin) return;
 
     await UserPreferencesAPI.instance.clear().catchError((_) {});

@@ -31,7 +31,7 @@ class DefaultTemboColors {
   static const onSuccess = Colors.white;
 
   static const border = Colors.black26;
-  static const hint = Color.fromARGB(66, 105, 101, 101);
+  static const hint = Color.fromARGB(255, 140, 140, 140);
 }
 
 class DarkTemboColors {
