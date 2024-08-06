@@ -18,15 +18,27 @@ class TemboPreferencesAPI extends BaseLocalAPI {
     super.initBox(box);
   }
 
+  Future<void> setDuration(Duration d) async {
+    await UserPreferencesAPI.instance
+        .put(_durationKey, d.inMilliseconds.toString());
+  }
+
+  Duration get duration {
+    final durationString = UserPreferencesAPI.instance.get(_durationKey);
+    if (durationString == null) return const Duration(days: 7);
+    return Duration(milliseconds: int.parse(durationString));
+  }
+
   static final instance = TemboPreferencesAPI._();
 
+  static const _durationKey = "duration";
   static const _lidKey = "last_install_date";
   static const _appKey = "app";
 
-  /// if user's last login date is past 7 days clears user preferences
+  /// if user's last login date is past selected duration clears user preferences
   Future<void> handleLongTimeSinceLastLogIn() async {
     await _registerFirstInstall();
-    final requireLogin = _hasExceededOneWeek();
+    final requireLogin = _hasExceededDuration();
     debugPrint("hasExceededOneWeek: $requireLogin");
     if (!requireLogin) return;
 
@@ -48,12 +60,12 @@ class TemboPreferencesAPI extends BaseLocalAPI {
     return DateTime.parse(lastInstall);
   }
 
-  bool _hasExceededOneWeek() {
+  bool _hasExceededDuration() {
     final lastInstallDate = _getLastInstallDate();
     if (lastInstallDate == null) return true;
 
     final now = DateTime.now();
-    return now.difference(lastInstallDate).abs().inDays > 30;
+    return now.difference(lastInstallDate).abs() > duration;
   }
 
   Future<void> registerProject(Project project) async {
