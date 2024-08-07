@@ -4,18 +4,28 @@ import 'package:tembo_core/tembo_core.dart';
 
 class TemboDatePicker extends StatefulWidget {
   final DateTime date;
-  final String Function(DateTime date) label;
+  final String Function(DateTime date)? label;
   final ValueChanged<DateTime> onSelected;
   final TemboButtonStyle? style;
   final Widget Function(DateTime date, String lbl)? child;
+
+  final bool enabled;
+
+  String get lbl {
+    if (label != null) {
+      return label!(date);
+    }
+    return date.format();
+  }
 
   const TemboDatePicker({
     super.key,
     required this.date,
     this.style,
     this.child,
-    required this.label,
+    this.label,
     required this.onSelected,
+    this.enabled = true,
   });
 
   @override
@@ -30,7 +40,9 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
     if (p == TargetPlatform.iOS || p == TargetPlatform.macOS) {
       return showIOSPicker(context, onSelected);
     } */
-    return showAndroidPicker(context, onSelected);
+    if (widget.enabled) {
+      return showAndroidPicker(context, onSelected);
+    }
   }
 
   @override
@@ -42,19 +54,17 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
           TemboButtonStyle.outline(
             borderColor: cs.border,
             borderWidth: 1.5,
-            foregroundColor: context.colorScheme.onSurface,
-            textStyle: context.textTheme.bodyMedium.withFW500,
-            // height: kHeight,
-            padding: kHorPadding + vertical(12.5),
+            foregroundColor: cs.onBackground,
+            padding: horizontal() + vertical(12.5),
+            borderRadius: kBorderRadius3,
+            textStyle: context.textTheme.bodyMedium.bold,
           ),
       child: widget.child != null
-          ? widget.child!(widget.date, widget.label(widget.date))
+          ? widget.child!(widget.date, widget.lbl)
           : Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TemboText(
-                  widget.label(widget.date),
-                ),
+                TemboText(widget.lbl),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.calendar_month,
