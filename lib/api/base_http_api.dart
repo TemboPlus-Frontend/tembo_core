@@ -8,6 +8,8 @@ import 'package:uuid/uuid.dart';
 
 typedef StatusCodeHandler = void Function(int statusCode);
 
+typedef ResponseHandler<T> = T Function(int statusCode, dynamic body);
+
 typedef Headers = Map<String, String>;
 
 abstract class BaseHTTPAPI {
@@ -33,7 +35,7 @@ abstract class BaseHTTPAPI {
   String getCurrentDateISOString() => DateTime.now().toUtc().toIso8601String();
 
   /// Calling all authenticated endpoints successfully will need 'x-request-id' and 'token'
-  /// keys in the request header. Some endpoints (mostly Fantuzzi related) will require 
+  /// keys in the request header. Some endpoints (mostly Fantuzzi related) will require
   /// Authorization parameter to be passed
   ///
   /// 'x-request-id' will be generated randomly in every request.
@@ -91,6 +93,7 @@ abstract class BaseHTTPAPI {
     String endpoint, {
     String? body,
     StatusCodeHandler? statusCodeHandler,
+    ResponseHandler<T>? responseHandler,
     Headers? headers,
     String? params,
 
@@ -107,6 +110,10 @@ abstract class BaseHTTPAPI {
       body: body,
       headers: _handleHeaders(headers),
     );
+
+    if (responseHandler != null) {
+      return responseHandler(response.statusCode, jsonDecode(response.body));
+    }
     return getResult(response, body, statusCodeHandler, checkBody);
   }
 

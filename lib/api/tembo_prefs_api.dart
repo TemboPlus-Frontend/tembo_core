@@ -37,35 +37,35 @@ class TemboPreferencesAPI extends BaseLocalAPI {
 
   /// if user's last login date is past selected duration clears user preferences
   Future<void> handleLongTimeSinceLastLogIn() async {
-    await _registerFirstInstall();
     final requireLogin = _hasExceededDuration();
-    debugPrint("has exceeded $duration?: $requireLogin");
     if (!requireLogin) return;
 
     await UserPreferencesAPI.instance.clear().catchError((_) {});
   }
 
-  /// Will register first install date if the user has installed the app for the first time
-  Future<void> _registerFirstInstall() async {
-    final lastInstallDate = _getLastInstallDate();
-    debugPrint("last install date: $lastInstallDate");
-    if (lastInstallDate != null) return;
-
+  Future<void> resetLastLogInDate() async {
     return put(_lidKey, DateTime.now().toJson());
   }
 
-  DateTime? _getLastInstallDate() {
+  DateTime? _getLastLogInDate() {
     final lastInstall = get(_lidKey);
     if (lastInstall == null) return null;
     return DateTime.parse(lastInstall);
   }
 
   bool _hasExceededDuration() {
-    final lastInstallDate = _getLastInstallDate();
+    final lastInstallDate = _getLastLogInDate();
     if (lastInstallDate == null) return true;
 
     final now = DateTime.now();
-    return now.difference(lastInstallDate).abs() > duration;
+    final diff = now.difference(lastInstallDate).abs();
+    debugPrint("LLD: $lastInstallDate");
+    debugPrint("Now: $now");
+    debugPrint("Now Vs LLD (in hrs): ${now.difference(lastInstallDate).abs().inHours}");
+    debugPrint("Duration Limit: $duration");
+    debugPrint("Exceeded?     : ${diff > duration}");
+
+    return diff > duration;
   }
 
   Future<void> registerProject(Project project) async {

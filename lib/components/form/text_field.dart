@@ -166,51 +166,58 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
       return ValueListenableBuilder<String?>(
           valueListenable: fieldErrorValidatorNotifier,
           builder: (context, error, snapshot) {
-            return buildField(error != null);
+            return buildField(error);
           });
     }
 
     return ValueListenableBuilder<Message?>(
         valueListenable: errorNotifier,
         builder: (context, error, snapshot) {
-          return buildField(error != null);
+          return buildField(error?.text);
         });
   }
 
-  Widget buildField([bool hasError = false]) {
+  Widget buildField([String? error]) {
     final decoration = getDecoration(context);
 
     final bool canExpand = decoration.size != null;
 
-    return TextFormField(
-      style: decoration.valueStyle,
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      obscureText: widget.obscureText,
-      decoration: hasError
-          ? decoration
-              .copyWith(borderColor: context.colorScheme.error)
-              .getInputDecoration
-          : decoration.getInputDecoration.copyWith(
-              errorStyle: context.textTheme.bodySmall.withSize(0),
-            ),
-      inputFormatters: widget.formatters,
-      validator: validate,
-      textAlign: widget.textAlign ?? TextAlign.start,
-      onTap: () {
-        errorNotifier.value = null;
-        fieldErrorValidatorNotifier.value = null;
-      },
-      onSaved: widget.onSave,
-      textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
-      textInputAction: TextInputAction.done,
-      keyboardType: widget.textInputType,
-      onChanged: widget.onChanged,
-      enabled: widget.enabled ?? true,
-      expands: canExpand,
-      textAlignVertical: TextAlignVertical.center,
-      maxLines: canExpand ? null : 1,
-      minLines: canExpand ? null : null,
+    final hasError = error != null;
+
+    return Column(
+      children: [
+        TextFormField(
+          style: decoration.valueStyle,
+          controller: widget.controller,
+          focusNode: widget.focusNode,
+          obscureText: widget.obscureText,
+          decoration: hasError
+              ? decoration
+                  .copyWith(borderColor: context.colorScheme.error)
+                  .getInputDecoration
+              : decoration.getInputDecoration.copyWith(
+                  errorStyle: context.textTheme.bodySmall.withSize(0),
+                ),
+          inputFormatters: widget.formatters,
+          validator: validate,
+          textAlign: widget.textAlign ?? TextAlign.start,
+          onTap: () {
+            errorNotifier.value = null;
+            fieldErrorValidatorNotifier.value = null;
+          },
+          onSaved: widget.onSave,
+          textCapitalization:
+              widget.textCapitalization ?? TextCapitalization.none,
+          textInputAction: TextInputAction.done,
+          keyboardType: widget.textInputType,
+          onChanged: widget.onChanged,
+          enabled: widget.enabled ?? true,
+          expands: canExpand,
+          textAlignVertical: TextAlignVertical.center,
+          maxLines: canExpand ? null : 1,
+          minLines: canExpand ? null : null,
+        ),
+      ],
     );
   }
 

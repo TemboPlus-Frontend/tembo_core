@@ -38,6 +38,10 @@ class Profile {
     return isEmailVerified ?? false;
   }
 
+  bool get hasEmail {
+    return (email ?? "").trim().isNotEmpty;
+  }
+
   String get businessName => "$firstName $lastName";
 
   const Profile({
@@ -136,6 +140,11 @@ extension NullableProfileExt on Profile? {
 
   bool get hasVerifiedEmail {
     return this?.isEmailVerified ?? false;
+  }
+
+  bool get hasEmail {
+    final email = this?.email ?? "";
+    return email.trim().isNotEmpty;
   }
 
   bool get hasVerifiedPhone {
