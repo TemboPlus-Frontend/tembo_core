@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/platform_utils.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 class TemboLoadingIndicator extends StatelessWidget {
   final Color? color;
@@ -9,10 +8,11 @@ class TemboLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = color ?? context.colorScheme.primary;
     return isIOS
-        ? CupertinoActivityIndicator(color: color, radius: 10)
+        ? CupertinoActivityIndicator(color: c, radius: 10)
         : CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(color),
+            valueColor: AlwaysStoppedAnimation(c),
           );
   }
 }
