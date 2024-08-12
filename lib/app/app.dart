@@ -4,6 +4,8 @@ import 'package:tembo_core/constants/themes/dau.dart';
 import 'package:tembo_core/constants/themes/ride.dart';
 import 'package:tembo_core/tembo_core.dart';
 
+import '../constants/themes/fantuzzi.dart';
+
 enum Project {
   temboPlus(
     "TemboPlus",
@@ -31,6 +33,15 @@ enum Project {
     androidPackageName: "com.temboplus.ride",
     iosBundleID: "com.temboplus.ride",
     dynamicLinkUrl: "https://temboride.page.link",
+  ),
+  fantuzzi(
+    "Fantuzzi",
+    fcmTopicName: "",
+    primaryColor: FantuzziColors.primary,
+    onPrimaryColor: FantuzziColors.onPrimary,
+    androidPackageName: "",
+    iosBundleID: "",
+    dynamicLinkUrl: "",
   ),
   ;
 
@@ -92,6 +103,8 @@ FlexColorScheme getColorScheme() {
       return dauTemboLightFlexColorScheme;
     case Project.ride:
       return rideLightFlexColorScheme;
+    case Project.fantuzzi:
+      return fantuzziLightFlexColorScheme;
     default:
       return defaultLightFlexColorScheme;
   }
@@ -106,6 +119,8 @@ TemboColorScheme getTemboColorScheme() {
       return dauTemboAppLightScheme;
     case Project.ride:
       return rideLightColorScheme;
+    case Project.fantuzzi:
+      return fantuzziLightColorScheme;
     default:
       return defaultLightColorScheme;
   }
