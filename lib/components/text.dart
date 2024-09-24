@@ -1,3 +1,4 @@
+import '/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
@@ -58,6 +59,66 @@ class TemboText extends StatelessWidget {
     this.overflow,
     this.maxLines,
   }) : _weight = FontWeight.w500;
+
+  TemboText.headlineMedium(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.displayMedium?.copyWith(color: color),
+        _weight = weight;
+
+  TemboText.bodyLarge(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.bodyLarge?.copyWith(color: color),
+        _weight = weight;
+
+  TemboText.titleLarge(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.titleLarge?.copyWith(color: color),
+        _weight = weight;
+
+  TemboText.titleMedium(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.titleMedium?.copyWith(color: color),
+        _weight = weight;
+
+  TemboText.bodyMedium(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.bodyMedium?.copyWith(color: color),
+        _weight = weight;
 
   final String data;
 
