@@ -76,7 +76,7 @@ Message? validateTZPhoneNumber(String? phone, {bool optional = false}) {
           );
   }
 
-  final result = parsePhoneNumber(phone);
+  final result = PhoneNumber.from(phone);
   if (result == null) {
     return const Message(
       enMessage: 'Invalid phone number',
