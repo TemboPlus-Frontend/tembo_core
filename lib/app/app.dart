@@ -43,6 +43,15 @@ enum Project {
     iosBundleID: "",
     dynamicLinkUrl: "",
   ),
+  loopcard(
+    "LoopCard",
+    fcmTopicName: "",
+    primaryColor: LoopCardLightColors.primary,
+    onPrimaryColor: LoopCardLightColors.onPrimary,
+    androidPackageName: "com.temboplus.loopcard",
+    iosBundleID: "com.temboplus.loopcard",
+    dynamicLinkUrl: "",
+  ),
   ;
 
   final String label;
@@ -105,6 +114,8 @@ FlexColorScheme getColorScheme() {
       return rideLightFlexColorScheme;
     case Project.fantuzzi:
       return fantuzziLightFlexColorScheme;
+    case Project.loopcard:
+      return loopCardLightFlexColorScheme;
     default:
       return defaultLightFlexColorScheme;
   }
@@ -121,6 +132,8 @@ TemboColorScheme getTemboColorScheme() {
       return rideLightColorScheme;
     case Project.fantuzzi:
       return fantuzziLightColorScheme;
+    case Project.loopcard:
+      return loopCardLightColorScheme;
     default:
       return defaultLightColorScheme;
   }
