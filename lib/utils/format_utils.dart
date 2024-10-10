@@ -12,7 +12,7 @@ extension DoubleExt on num {
   }
 
   String get formatted {
-    return NumberFormat.currency(symbol: "", decimalDigits: 4).format(this);
+    return NumberFormat.currency(symbol: "", decimalDigits: 0).format(this);
   }
 
   String get tzsFormatted {

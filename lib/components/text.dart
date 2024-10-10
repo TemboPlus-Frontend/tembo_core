@@ -69,7 +69,19 @@ class TemboText extends StatelessWidget {
     this.maxLines,
     FontWeight? weight,
     Color? color,
-  })  : style = context.textTheme.displayMedium?.copyWith(color: color),
+  })  : style = context.textTheme.headlineMedium?.copyWith(color: color),
+        _weight = weight;
+
+  TemboText.headlineSmall(
+    BuildContext context,
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.overflow,
+    this.maxLines,
+    FontWeight? weight,
+    Color? color,
+  })  : style = context.textTheme.headlineSmall?.copyWith(color: color),
         _weight = weight;
 
   TemboText.bodyLarge(

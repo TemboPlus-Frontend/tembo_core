@@ -27,9 +27,9 @@ class ProfileManager {
 
   Profile? getCurrent() => _localAPI.getProfile();
 
-  /// Should only be done once when the user logs in with their phone number
-  Future<void> saveProfileLocally(Profile profile) async {
-    await _localAPI.saveProfile(profile);
+  /// on successful otp-verification
+  Future<void> save(Profile profile) async {
+    await _onProfileChange(profile);
   }
 
   Future<Profile> fetch() async {
@@ -52,7 +52,7 @@ class ProfileManager {
   }
 
   Future<void> _onProfileChange(Profile profile) async {
-    await saveProfileLocally(profile);
+     await _localAPI.saveProfile(profile);
     _subject.sink.add(profile);
   }
 }

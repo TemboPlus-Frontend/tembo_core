@@ -186,37 +186,40 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
     return Column(
       children: [
-        TextFormField(
-          style: decoration.valueStyle,
-          controller: widget.controller,
-          focusNode: widget.focusNode,
-          obscureText: widget.obscureText,
-          decoration: hasError
-              ? decoration
-                  .copyWith(borderColor: context.colorScheme.error)
-                  .getInputDecoration
-              : decoration.getInputDecoration.copyWith(
-                  errorStyle: context.textTheme.bodySmall.withSize(0),
-                ),
-          inputFormatters: widget.formatters,
-          validator: validate,
-          textAlign: widget.textAlign ?? TextAlign.start,
-          onTap: () {
-            errorNotifier.value = null;
-            fieldErrorValidatorNotifier.value = null;
-          },
-          onSaved: widget.onSave,
-          textCapitalization:
-              widget.textCapitalization ?? TextCapitalization.none,
-          textInputAction: TextInputAction.done,
-          keyboardType: widget.textInputType,
-          onChanged: widget.onChanged,
-          enabled: widget.enabled ?? true,
-          expands: canExpand,
-          textAlignVertical: TextAlignVertical.center,
-          maxLines: canExpand ? null : 1,
-          minLines: canExpand ? null : null,
-        ),
+        SizedBox(
+          height: decoration.size?.height,
+          child: TextFormField(
+            style: decoration.valueStyle,
+            controller: widget.controller,
+            focusNode: widget.focusNode,
+            obscureText: widget.obscureText,
+            decoration: hasError
+                ? decoration
+                    .copyWith(borderColor: context.colorScheme.error)
+                    .getInputDecoration
+                : decoration.getInputDecoration.copyWith(
+                    errorStyle: context.textTheme.bodySmall.withSize(0),
+                  ),
+            inputFormatters: widget.formatters,
+            validator: validate,
+            textAlign: widget.textAlign ?? TextAlign.start,
+            onTap: () {
+              errorNotifier.value = null;
+              fieldErrorValidatorNotifier.value = null;
+            },
+            onSaved: widget.onSave,
+            textCapitalization:
+                widget.textCapitalization ?? TextCapitalization.none,
+            textInputAction: TextInputAction.done,
+            keyboardType: widget.textInputType,
+            onChanged: widget.onChanged,
+            enabled: widget.enabled ?? true,
+            expands: canExpand,
+            textAlignVertical: TextAlignVertical.center,
+            maxLines: canExpand ? null : 1,
+            minLines: canExpand ? null : null,
+          ),
+        )
       ],
     );
   }
