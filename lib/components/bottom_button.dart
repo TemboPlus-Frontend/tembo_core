@@ -16,7 +16,7 @@ class BottomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: horizontal(10) + bottom(5),
+      padding: horizontal(20) + bottom(5),
       child: TemboTextButton(
         onPressed: onPressed,
         style: TemboButtonStyle.filled(

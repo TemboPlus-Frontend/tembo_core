@@ -30,6 +30,10 @@ class Profile {
     return isKycCompleted ?? false;
   }
 
+  bool get hasCompletedKYC {
+    return isKycCompleted ?? false;
+  }
+
   bool get hasVerifiedPhone {
     return isPhoneVerified ?? false;
   }
@@ -132,6 +136,8 @@ class Profile {
 
 extension NullableProfileExt on Profile? {
   bool get hasVerifiedNIDA => this?.hasVerifiedNIDA ?? false;
+
+  bool get hasCompletedKYC => this?.hasCompletedKYC ?? false;
 
   bool get hasAccountNo {
     final e = this?.accountNo?.trim().isNotEmpty ?? false;

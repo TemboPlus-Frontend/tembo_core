@@ -5,7 +5,7 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
     return await currentState?.push<T>(_createRouteFor(page, routeName));
   }
 
-  dynamic pop([result]) {
+  void pop([result]) {
     currentState?.pop(result);
   }
 

@@ -25,7 +25,7 @@ dependencies:
   uuid: ^4.4.0
   mixpanel_flutter: ^2.3.1
 
-  firebase_dynamic_links: ^5.4.8
+  #firebase_dynamic_links: ^5.4.8
   rxdart: ^0.28.0
 
 dev_dependencies:
