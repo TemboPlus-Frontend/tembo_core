@@ -8,6 +8,7 @@ export 'date_picker.dart';
 export 'field_value_widget.dart';
 export 'segmented_button.dart';
 export 'alert_dialog.dart';
+export 'scaffold.dart';
 
 export 'column.dart';
 export 'line_progress_indicator.dart';
