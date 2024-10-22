@@ -8,7 +8,7 @@ typedef LocManagerProvider = StateNotifierProvider<LocalizationManager, TemboLoc
 final localeManagerProvider = LocManagerProvider((r) => LocalizationManager(r));
 
 class LocalizationManager extends StateNotifier<TemboLocale> {
-  final StateNotifierProviderRef ref;
+  final Ref ref;
   LocalizationManager(this.ref) : super(TemboLocale.en) {
     if (hasChosenLocaleAlready()) {
       state = _api.getLocale()!;

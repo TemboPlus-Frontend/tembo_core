@@ -12,7 +12,7 @@ const _timeOutLimit = Duration(seconds: 300);
 final futureTrackerProvider = Provider((ref) => _FutureTracker(ref));
 
 class _FutureTracker {
-  final ProviderRef ref;
+  final Ref ref;
   _FutureTracker(this.ref);
 
   Future<void> track<T>({

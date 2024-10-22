@@ -85,8 +85,8 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
   closeLoadingOverlay() {
     try {
       overlayEntry?.remove();
-    } catch (_) {
-      debugPrint(_.toString());
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 }

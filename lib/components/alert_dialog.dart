@@ -49,13 +49,13 @@ class TemboAlertDialog extends StatelessWidget {
   final bool showCancelingAction;
 
   const TemboAlertDialog({
-    Key? key,
     required this.title,
     required this.description,
     this.actionText,
     this.activeAction = AlertDialogAction.no,
     this.showCancelingAction = true,
-  }) : super(key: key);
+    super.key,
+  });
 
   String get confirmText =>
       actionText != null ? actionText!(AlertDialogAction.yes) : "Okay";

@@ -1,39 +1,37 @@
 name: tembo_core
-description: Tembo UI SDK By TemboPlus
+description: Tembo Core UI SDK By TemboPlus
 version: 0.0.1
-homepage: https://github.com/okellogerald/tembo_core
+homepage: https://github.com/TemboPlus-Frontend/tembo_core
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: 0.19.0
-  url_launcher: ^6.1.12
-  flex_color_scheme: ^7.0.5
-  freezed_annotation: ^2.2.0
-  flutter_riverpod: ^2.3.6
+  url_launcher: ^6.3.1
+  flex_color_scheme: ^7.3.1
+  freezed_annotation: ^2.4.4
+  flutter_riverpod: ^2.6.0
   hive: ^2.2.3
-  path_provider: ^2.0.15
+  path_provider: ^2.1.4
   cupertino_icons: ^1.0.8
   linked_scroll_controller: ^0.2.0
-  http: ^1.2.0
-  uuid: ^4.4.0
-  mixpanel_flutter: ^2.3.1
-
-  #firebase_dynamic_links: ^5.4.8
+  http: ^1.2.2
+  uuid: ^4.5.1
+  mixpanel_flutter: ^2.3.3
   rxdart: ^0.28.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  freezed: ^2.1.0+1
-  build_runner: ^2.2.0
+  flutter_lints: ^5.0.0
+  freezed: ^2.5.7
+  build_runner: ^2.4.13
 
 flutter:
   uses-material-design: true

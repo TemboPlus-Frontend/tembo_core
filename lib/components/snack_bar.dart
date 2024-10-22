@@ -12,18 +12,16 @@ class TemboSnackbar extends SnackBar {
 
   TemboSnackbar(
     this.message, {
-    Key? key,
     this.isError = false,
     this.durationInSeconds,
+    super.key,
   }) : super(
-          key: key,
           content: _Content(message, isError),
         );
 
-  TemboSnackbar.error(this.message, {Key? key, this.durationInSeconds})
+  TemboSnackbar.error(this.message, {super.key, this.durationInSeconds})
       : isError = true,
         super(
-          key: key,
           content: _Content(message, true),
         );
 

@@ -11,11 +11,11 @@ TemboException handleException(var e, [StackTrace? trace]) {
   debugPrint(trace?.toString());
 
   switch (e.runtimeType) {
-    case TemboException:
+    case TemboException _:
       return e;
-    case SocketException:
+    case SocketException _:
       return TemboException.timeout();
-    case TimeoutException:
+    case TimeoutException _:
       return TemboException.timeout();
     default:
       return TemboException.unknown();
@@ -43,8 +43,8 @@ TemboException handleError(e, [StackTrace? trace]) {
       return TemboException(msg);
     case TemboException err:
       return err;
-    case SocketException:
-    case TimeoutException:
+    case SocketException _:
+    case TimeoutException _:
       return const TemboException(
         Message(
           enMessage: "Please check your internet connection",

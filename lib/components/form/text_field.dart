@@ -38,20 +38,19 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.textInputType,
     this.formatters,
     this.hint,
-    Key? key,
     this.textAlign,
     this.fieldValidator,
     this.decoration,
-  })  : label = null,
-        super(key: key);
+    super.key,
+  }) : label = null;
 
   TemboTextField.value(
     String value, {
     this.label,
     this.textCapitalization,
-    Key? key,
     this.textAlign,
     this.decoration,
+    super.key,
   })  : textInputType = null,
         hint = null,
         validator = null,
@@ -62,8 +61,7 @@ class TemboTextField extends ConsumerStatefulWidget {
         focusNode = null,
         formatters = null,
         enabled = false,
-        controller = TextEditingController(text: value),
-        super(key: key);
+        controller = TextEditingController(text: value);
 
   const TemboTextField.labelled(
     String lbl, {
@@ -79,11 +77,10 @@ class TemboTextField extends ConsumerStatefulWidget {
     this.formatters,
     this.fieldValidator,
     this.hint,
-    Key? key,
     this.textAlign,
     this.decoration,
-  })  : label = lbl,
-        super(key: key);
+    super.key,
+  }) : label = lbl;
 
   @override
   ConsumerState<TemboTextField> createState() => _TemboTextFieldState();
