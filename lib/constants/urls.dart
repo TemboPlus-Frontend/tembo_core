@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 const TEMBO_WEBSITE = "https://www.temboplus.com/";
 const TEMBO_PRIVACY_POLICY_URL = "https://www.temboplus.com/app/privacy.html";

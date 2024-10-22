@@ -1,5 +1,3 @@
-import '../app/app.dart';
-
 const shareText =
     "Tembo ni huduma mpya ya kibenki. Ni bora kuliko mitandao ya simu au benki za kawaida. Tumia link hii kuipata:";
 

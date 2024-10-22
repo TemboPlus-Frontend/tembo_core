@@ -15,6 +15,8 @@ class Profile {
   final String? nin;
   final String? onboardId;
   final String? accountNo;
+  final DateTime? cardExpiryDate;
+  final DateTime? cardIssueDate;
 
   String get name {
     if (displayName != null && displayName!.trim().isNotEmpty) {
@@ -61,6 +63,8 @@ class Profile {
     this.nin,
     this.onboardId,
     this.isKycCompleted = false,
+    this.cardExpiryDate,
+    this.cardIssueDate,
   });
 
   Map<String, dynamic> toMap() {
@@ -76,6 +80,8 @@ class Profile {
       'isPhoneVerified': isPhoneVerified,
       'nin': nin,
       'onboardId': onboardId,
+      'cardExpiryDate': cardExpiryDate?.toIso8601String(),
+      'cardIssueDate': cardIssueDate?.toIso8601String(),
     };
   }
 
@@ -92,6 +98,12 @@ class Profile {
       isKycCompleted: map['isKycCompleted'] as bool?,
       isEmailVerified: map['isEmailVerified'] as bool?,
       isPhoneVerified: map['isPhoneVerified'] as bool?,
+      cardExpiryDate: map['cardExpiryDate'] != null
+          ? DateTime.parse(map['cardExpiryDate'])
+          : null,
+      cardIssueDate: map['cardIssueDate'] != null
+          ? DateTime.parse(map['cardIssueDate'])
+          : null,
     );
   }
 

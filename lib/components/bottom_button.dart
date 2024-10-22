@@ -15,18 +15,20 @@ class BottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: horizontal(20) + bottom(5),
-      child: TemboTextButton(
-        onPressed: onPressed,
-        style: TemboButtonStyle.filled(
-          height: 60,
-          textStyle: context.textTheme.titleMedium.bold,
-          borderRadius: kBorderRadius4,
+    return SafeArea(
+      child: Padding(
+        padding: horizontal(20),
+        child: TemboTextButton(
+          onPressed: onPressed,
+          style: TemboButtonStyle.filled(
+            height: 60,
+            textStyle: context.textTheme.titleMedium.bold,
+            borderRadius: kBorderRadius4,
+          ),
+          child: isLoading
+              ? TemboLoadingIndicator(color: context.colorScheme.onPrimary)
+              : TemboText(label ?? _next.text),
         ),
-        child: isLoading
-            ? TemboLoadingIndicator(color: context.colorScheme.onPrimary)
-            : TemboText(label ?? _next.text),
       ),
     );
   }
