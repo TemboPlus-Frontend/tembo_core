@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:tembo_core/extensions/context_extension.dart';
-
+import '../app/app.dart';
 import '../constants/constants.dart';
 
 enum _ButtonStyle { filled, outline, transparent }
 
 class TemboButtonStyle {
   final Color? backgroundColor, borderColor, foregroundColor;
-  final num? elevation, width, height, borderWidth, borderRadius;
+  final double? elevation, width, height, borderWidth, borderRadius;
   final EdgeInsets? padding;
   final TextStyle? textStyle;
   final bool? useContinuousBorder;
@@ -99,11 +99,11 @@ class TemboButtonStyle {
     Color? backgroundColor,
     Color? borderColor,
     Color? foregroundColor,
-    num? elevation,
-    num? width,
-    num? height,
-    num? borderWidth,
-    num? borderRadius,
+    double? elevation,
+    double? width,
+    double? height,
+    double? borderWidth,
+    double? borderRadius,
     EdgeInsets? padding,
     TextStyle? textStyle,
     bool? useContinuousBorder,
@@ -188,24 +188,30 @@ class TemboButtonStyle {
       useContinuousBorder == null || useContinuousBorder == true;
 
   ButtonStyle get buttonStyle {
+    final ui = getTemboUIConstants();
+    final defBorderRadius = ui.borderRadius;
+    final defBorderWidth = ui.borderWidth;
+
+    final colors = getTemboColorScheme();
+
     return ElevatedButton.styleFrom(
       elevation: elevation?.toDouble() ?? 0,
       backgroundColor: backgroundColor,
       shape: _usesContinuousBorder
           ? ContinuousRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  borderRadius?.toDouble() ?? kBorderRadius4),
+              borderRadius:
+                  BorderRadius.circular(borderRadius ?? defBorderRadius),
               side: BorderSide(
-                color: borderColor ?? Colors.grey,
-                width: borderWidth?.toDouble() ?? 1.0,
+                color: borderColor ?? colors.border,
+                width: borderWidth ?? defBorderWidth,
               ),
             )
           : RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  borderRadius?.toDouble() ?? kBorderRadius4),
+              borderRadius:
+                  BorderRadius.circular(borderRadius ?? defBorderRadius),
               side: BorderSide(
-                color: borderColor ?? Colors.grey,
-                width: borderWidth?.toDouble() ?? 1.0,
+                color: borderColor ?? colors.border,
+                width: borderWidth ?? defBorderRadius,
               ),
             ),
       textStyle: getTextStyle,

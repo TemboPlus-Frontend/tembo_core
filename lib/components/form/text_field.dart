@@ -125,8 +125,11 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
     if (decoration.valueStyle == null) {
       decoration = decoration.copyWith(
-          valueStyle: context.textTheme.bodyMedium?.bold.defaultFF
-              .copyWith(color: scheme.onBackground));
+        fillColor: scheme.surfaceContainer,
+        valueStyle: context.textTheme.bodyMedium?.bold.defaultFF.copyWith(
+          color: scheme.onSurfaceContainer,
+        ),
+      );
     }
     return decoration;
   }
@@ -186,6 +189,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
         SizedBox(
           height: decoration.size?.height,
           child: TextFormField(
+            cursorColor: decoration.valueStyle?.color,
             style: decoration.valueStyle,
             controller: widget.controller,
             focusNode: widget.focusNode,

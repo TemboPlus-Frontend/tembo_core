@@ -7,20 +7,22 @@ class BottomButton extends StatelessWidget {
     this.label,
     required this.onPressed,
     this.isLoading = false,
+    this.style,
   });
 
   final VoidCallback onPressed;
   final String? label;
   final bool isLoading;
+  final TemboButtonStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: horizontal(20),
+        padding: horizontal(10) + bottom(10),
         child: TemboTextButton(
           onPressed: onPressed,
-          style: TemboButtonStyle.filled(
+          style: style ?? TemboButtonStyle.filled(
             height: 60,
             textStyle: context.textTheme.titleMedium.bold,
             borderRadius: kBorderRadius4,

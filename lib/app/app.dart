@@ -2,6 +2,8 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/themes/dau.dart';
 import 'package:tembo_core/constants/themes/ride.dart';
+import 'package:tembo_core/constants/ui/_ui_constants.dart';
+import 'package:tembo_core/constants/ui/default.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 import '../constants/themes/fantuzzi.dart';
@@ -136,6 +138,16 @@ TemboColorScheme getTemboColorScheme() {
       return loopCardLightColorScheme;
     default:
       return defaultLightColorScheme;
+  }
+}
+
+TemboUIConstants getTemboUIConstants() {
+  final project = getProject();
+  switch (project) {
+    case Project.loopcard:
+      return LoopCardUIConstants();
+    default:
+      return TemboDefaultUIConstants();
   }
 }
 

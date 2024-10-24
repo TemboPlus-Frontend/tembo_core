@@ -7,6 +7,9 @@ class TemboScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final Widget? bottomNavigationBar;
+  final Color? backgroundColor;
+  final bool extendBodyBehindAppBar;
+  final bool extendBody;
 
   const TemboScaffold({
     required this.body,
@@ -14,18 +17,24 @@ class TemboScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.floatingActionButtonLocation,
     this.bottomNavigationBar,
+    this.backgroundColor,
+    this.extendBodyBehindAppBar = false,
+    this.extendBody = false,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       child: SafeArea(
         child: FocusWrapper(
           child: Scaffold(
             body: body,
             appBar: appBar,
+            extendBodyBehindAppBar: extendBodyBehindAppBar,
+            extendBody: extendBody,
+            backgroundColor: backgroundColor,
             floatingActionButton: floatingActionButton,
             floatingActionButtonLocation: floatingActionButtonLocation,
             bottomNavigationBar: bottomNavigationBar,
