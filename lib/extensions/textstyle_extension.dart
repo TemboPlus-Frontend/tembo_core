@@ -12,7 +12,7 @@ extension TextStyleExtension on TextStyle? {
       );
 
   TextStyle get withOnBgColor => this!.copyWith(
-        color: getColorScheme().onBackground,
+        color: getColorScheme().onSurface,
       );
 
   TextStyle get white => this!.copyWith(
