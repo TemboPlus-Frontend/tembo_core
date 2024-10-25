@@ -25,15 +25,15 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: IBMPlexSans
+    - family: MarkPro
       fonts:
-        - asset: packages/tembo_core/fonts/IBMPlexSans/Light.ttf
+        - asset: packages/tembo_core/assets/MarkPro/light.otf
           weight: 300
-        - asset: packages/tembo_core/fonts/IBMPlexSans/Regular.ttf
+        - asset: packages/tembo_core/assets/MarkPro/regular.otf
           weight: 400
-        - asset: packages/tembo_core/fonts/IBMPlexSans/Medium.ttf
+        - asset: packages/tembo_core/assets/MarkPro/medium.otf
           weight: 500
-        - asset: packages/tembo_core/fonts/IBMPlexSans/SemiBold.ttf
+        - asset: packages/tembo_core/assets/MarkPro/bold.otf
           weight: 600
-        - asset: packages/tembo_core/fonts/IBMPlexSans/Bold.ttf
+        - asset: packages/tembo_core/assets/MarkPro/black.otf
           weight: 700

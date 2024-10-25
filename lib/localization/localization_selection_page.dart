@@ -16,8 +16,8 @@ class LanguageSelectionPage extends ConsumerStatefulWidget {
 class _LanguageSelectionState extends ConsumerState<LanguageSelectionPage> {
   TemboButtonStyle get _buttonStyle {
     return TemboButtonStyle.filled(
-      backgroundColor: getTemboColorScheme().background,
-      foregroundColor: getTemboColorScheme().onBackground,
+      backgroundColor: getColorScheme().surface,
+      foregroundColor: getColorScheme().onSurface,
       width: 250,
       height: 60,
       borderRadius: kBorderRadius3,

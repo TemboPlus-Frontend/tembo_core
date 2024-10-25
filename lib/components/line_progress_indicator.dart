@@ -58,8 +58,8 @@ class ProgressPainter extends CustomPainter {
     final rect2 = Rect.fromLTWH(0, 0, width, height);
     final rrect2 = RRect.fromRectAndRadius(rect2, radius);
 
-    final paint1 = Paint()..color = lineColor ?? getTemboColorScheme().surface;
-    final paint2 = Paint()..color = getTemboColorScheme().primary;
+    final paint1 = Paint()..color = lineColor ?? getColorScheme().surface;
+    final paint2 = Paint()..color = getColorScheme().primary;
 
     if (paintText) {
       final textPainter = TextPainter(

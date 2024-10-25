@@ -50,7 +50,7 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildField() {
-    final scheme = getTemboColorScheme();
+    final scheme = getColorScheme();
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -65,7 +65,7 @@ class TemboFVWidget extends StatelessWidget {
             field,
             style: fieldStyle ??
                 context.textTheme.bodyMedium.withColor(
-                  scheme.onBackground,
+                  scheme.onSurface,
                 ),
           );
         }),
@@ -74,7 +74,7 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildValue() {
-    final scheme = getTemboColorScheme();
+    final scheme = getColorScheme();
     return Builder(builder: (context) {
       return TemboText(
         value,
@@ -82,7 +82,7 @@ class TemboFVWidget extends StatelessWidget {
         textAlign: TextAlign.end,
         style: valueStyle ??
             context.textTheme.bodyMedium.withFW500.withColor(
-              scheme.onBackground,
+              scheme.onSurface,
             ),
       );
     });

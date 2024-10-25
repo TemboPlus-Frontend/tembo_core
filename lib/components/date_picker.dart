@@ -61,40 +61,55 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = getTemboColorScheme();
+    final cs = getColorScheme();
+    final child = widget.date == null && widget.placeholder != null
+        ? Row(
+            children: [
+              TemboText(
+                widget.placeholder!,
+                style: widget.placeholderStyle,
+              ),
+            ],
+          )
+        : widget.child != null
+            ? widget.child!(widget.date!, widget.lbl)
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TemboText(widget.lbl),
+                  const SizedBox(width: 10),
+                  Icon(
+                    Icons.calendar_month,
+                    color: context.colorScheme.onSurface,
+                  )
+                ],
+              );
+
+    final horPadding = EdgeInsets.only(
+      left: widget.style?.padding?.left ?? 15,
+      right: widget.style?.padding?.right ?? 15,
+    );
+
+    final verPadding = EdgeInsets.only(
+      top: widget.style?.padding?.top ?? 12.5,
+      bottom: widget.style?.padding?.bottom ?? 12.5,
+    );
+
     return TemboTextButton(
       onPressed: showPicker,
       style: widget.style ??
           TemboButtonStyle.outline(
-            borderColor: cs.border,
-            borderWidth: 1.5,
-            foregroundColor: cs.onBackground,
-            padding: horizontal() + vertical(12.5),
-            borderRadius: kBorderRadius3,
+            borderColor: cs.onSurface,
+            borderWidth: getUIConstants().borderWidth,
+            foregroundColor: cs.onSurface,
+            borderRadius: getUIConstants().borderRadius,
             textStyle: context.textTheme.bodyMedium.bold,
+            padding: horPadding,
           ),
-      child: widget.date == null && widget.placeholder != null
-          ? Row(
-              children: [
-                TemboText(
-                  widget.placeholder!,
-                  style: widget.placeholderStyle,
-                ),
-              ],
-            )
-          : widget.child != null
-              ? widget.child!(widget.date!, widget.lbl)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TemboText(widget.lbl),
-                    const SizedBox(width: 10),
-                    Icon(
-                      Icons.calendar_month,
-                      color: context.colorScheme.onSurface,
-                    )
-                  ],
-                ),
+      child: Padding(
+        padding: verPadding,
+        child: child,
+      ),
     );
   }
 

@@ -17,7 +17,7 @@ const _hintStyle = TextStyle(
 
 final TEXTFIELDS_DECO = TemboTextFieldDecoration(
   size: const Size.fromHeight(70),
-  fillColor: getTemboColorScheme().primaryContainer,
+  fillColor: getColorScheme().primaryContainer,
   padding: horizontal(),
   labelStyle: _textStyle,
   valueStyle: _textStyle,
@@ -31,9 +31,9 @@ final DATE_PICKER_DECO = TemboButtonStyle(
   padding: horizontal(),
   borderRadius: kBorderRadius3,
   textStyle: _textStyle,
-  backgroundColor: getTemboColorScheme().primaryContainer,
-  foregroundColor: getTemboColorScheme().onPrimaryContainer,
-  borderColor: getTemboColorScheme().border,
+  backgroundColor: getColorScheme().primaryContainer,
+  foregroundColor: getColorScheme().onPrimaryContainer,
+  borderColor: getColorScheme().surface,
   borderWidth: 1.5,
 );
 

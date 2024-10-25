@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tembo_core/app/app.dart';
 
-import '../constants/source.dart';
 import 'source.dart';
 
 class TemboSnackbar extends SnackBar {
@@ -25,8 +24,8 @@ class TemboSnackbar extends SnackBar {
           content: _Content(message, true),
         );
 
-  TemboColorScheme get scheme {
-    return getTemboColorScheme();
+  ColorScheme get scheme {
+    return getColorScheme();
   }
 
   @override
@@ -51,8 +50,8 @@ class _Content extends StatelessWidget {
   final String message;
   const _Content(this.message, this.isError);
 
-  TemboColorScheme get scheme {
-    return getTemboColorScheme();
+  ColorScheme get scheme {
+    return getColorScheme();
   }
 
   @override

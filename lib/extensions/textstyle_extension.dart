@@ -47,6 +47,6 @@ extension TextStyleExtension on TextStyle? {
       );
 
   TextStyle withPrimaryColorIf(bool canApply) => this!.copyWith(
-        color: canApply ? DefaultTemboColors.primary : null,
+        color: canApply ? getColorScheme().primary : null,
       );
 }

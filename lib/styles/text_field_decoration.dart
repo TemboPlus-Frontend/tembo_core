@@ -102,8 +102,8 @@ class TemboTextFieldDecoration {
   }
 
   InputBorder get border {
-    final scheme = getTemboColorScheme();
-    final consts = getTemboUIConstants();
+    final scheme = getColorScheme();
+    final consts = getUIConstants();
 
     final defaultBorderWidth = consts.borderWidth;
     final defaultBorderRadius = consts.borderRadius;
@@ -114,7 +114,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? defaultBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? scheme.border,
+                  color: borderColor ?? scheme.onInverseSurface,
                   width: borderWidth ?? defaultBorderWidth,
                 ),
               )
@@ -122,7 +122,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? defaultBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? scheme.border,
+                  color: borderColor ?? scheme.onInverseSurface,
                   width: borderWidth ?? defaultBorderWidth,
                 ),
               )
@@ -130,7 +130,7 @@ class TemboTextFieldDecoration {
   }
 
   InputBorder get filledBorder {
-    final consts = getTemboUIConstants();
+    final consts = getUIConstants();
     final defaultBorderRadius = consts.borderRadius;
 
     return OutlineInputBorder(
@@ -145,11 +145,11 @@ class TemboTextFieldDecoration {
   TextStyle? get getValueStyle {
     if (valueStyle != null) return valueStyle;
 
-    final scheme = getTemboColorScheme();
-    final textstyle = getColorScheme().toTheme.textTheme.bodyMedium.bold;
+    final scheme = getColorScheme();
+    final textstyle = getThemeData().textTheme.bodyMedium.bold;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
-      return textstyle.copyWith(color: scheme.onSurfaceContainer);
+      return textstyle.copyWith(color: scheme.onSurfaceVariant);
     }
 
     return textstyle;
@@ -158,23 +158,23 @@ class TemboTextFieldDecoration {
   TextStyle? get getLabelStyle {
     if (labelStyle != null) return labelStyle;
 
-    final scheme = getTemboColorScheme();
-    final textstyle = getColorScheme().toTheme.textTheme.bodyLarge.withFW500;
+    final scheme = getColorScheme();
+    final textstyle = getThemeData().textTheme.bodyLarge.withFW500;
     return textstyle.copyWith(color: scheme.onSurface);
   }
 
   TextStyle? get getHintStyle {
     if (hintStyle != null) return hintStyle;
 
-    final scheme = getTemboColorScheme();
-    final textstyle = getColorScheme().toTheme.textTheme.bodyMedium.withFW400;
+    final scheme = getColorScheme();
+    final textstyle = getThemeData().textTheme.bodyMedium.withFW400;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
       return textstyle.copyWith(
-          color: scheme.onSurfaceContainer.withOpacity(.75));
+          color: scheme.onSurfaceVariant.withOpacity(.75));
     }
 
-    return textstyle.copyWith(color: scheme.hint);
+    return textstyle.copyWith(color: scheme.onSurfaceVariant);
   }
 
   InputDecoration get getInputDecoration {
@@ -185,8 +185,8 @@ class TemboTextFieldDecoration {
   }
 
   InputDecoration get getFilledInputDecoration {
-    final scheme = getTemboColorScheme();
-    final consts = getTemboUIConstants();
+    final scheme = getColorScheme();
+    final consts = getUIConstants();
 
     final errorBorder = filledBorder.copyWith(
       borderSide: BorderSide(
@@ -196,7 +196,10 @@ class TemboTextFieldDecoration {
     );
 
     final disabledBorder = filledBorder.copyWith(
-      borderSide: BorderSide(width: consts.borderWidth),
+      borderSide: BorderSide(
+        width: consts.borderWidth,
+        color: Colors.grey,
+      ),
     );
 
     final decoration = InputDecoration(
@@ -231,18 +234,22 @@ class TemboTextFieldDecoration {
   }
 
   InputDecoration get getOutlineInputDecoration {
-    final scheme = getTemboColorScheme();
-    final consts = getTemboUIConstants();
+    final scheme = getColorScheme();
+    final consts = getUIConstants();
 
-    final errorBorder = filledBorder.copyWith(
+    final errorBorder = border.copyWith(
       borderSide: BorderSide(
         color: scheme.error,
         width: consts.borderWidth,
       ),
     );
 
-    final disabledBorder = filledBorder.copyWith(
-      borderSide: BorderSide(width: consts.borderWidth),
+    final disabledBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(consts.borderRadius),
+      borderSide: BorderSide(
+        width: consts.borderWidth,
+        color: Colors.grey,
+      ),
     );
 
     final decoration = InputDecoration(
@@ -277,31 +284,31 @@ class TemboTextFieldDecoration {
   }
 
   static TemboTextFieldDecoration getDefaultAmountDeco(BuildContext context) {
-    final scheme = getTemboColorScheme();
+    final scheme = getColorScheme();
     return TemboTextFieldDecoration(
       size: const Size.fromHeight(60),
       hasBorder: true,
       borderWidth: 2,
       borderStyle: TemboBorderStyle.underline,
-      hintStyle: context.textTheme.titleLarge.bold.withColor(scheme.hint),
+      hintStyle: context.textTheme.titleLarge.bold.withColor(scheme.onSurface),
       valueStyle: context.textTheme.titleLarge.bold.copyWith(
-        color: scheme.onBackground,
+        color: scheme.onSurface,
       ),
       hint: "TZS 0",
-      borderColor: scheme.border,
+      borderColor: scheme.surface,
       fillColor: Colors.transparent,
     );
   }
 
   static TemboTextFieldDecoration getDefaultFilledDeco(BuildContext context) {
-    final scheme = getTemboColorScheme();
+    final scheme = getColorScheme();
 
     final style = context.textTheme.bodyMedium;
 
     return TemboTextFieldDecoration(
       labelStyle: style.bold.withColor(scheme.onSurface),
-      hintStyle: style.withColor(scheme.hint),
-      valueStyle: style.withFW500.withColor(scheme.onSurfaceContainer),
+      hintStyle: style.withColor(scheme.onSurfaceVariant),
+      valueStyle: style.withFW500.withColor(scheme.onSurfaceVariant),
       fillColor: scheme.surfaceContainer,
       borderWidth: 0,
     );

@@ -20,6 +20,7 @@ Future<void> initLocalStorage() async {
   }
 
   await UserPreferencesAPI.init();
+  await TemboPreferencesAPI.init();
 }
 
 class MainApp extends StatelessWidget {
@@ -28,15 +29,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      child: Consumer(builder: (context, ref, _) {
-        final theme = ref.watch(themeManagerProvider);
-        return MaterialApp(
-          navigatorKey: rootNavKey,
-          scaffoldMessengerKey: rootMessengerKey,
-          theme: theme.flexColorScheme.toTheme,
-          home: const App(),
-        );
-      }),
+      child: Consumer(
+        builder: (context, ref, _) {
+          final project = ref.watch(themeManagerProvider);
+          return MaterialApp(
+            navigatorKey: rootNavKey,
+            scaffoldMessengerKey: rootMessengerKey,
+            theme: project.theme,
+            home: const App(),
+          );
+        },
+      ),
     );
   }
 }

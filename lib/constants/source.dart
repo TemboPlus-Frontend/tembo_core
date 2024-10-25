@@ -6,7 +6,6 @@ export 'urls.dart';
 export 'styles.dart';
 
 export 'themes/default.dart';
-export 'themes/color_scheme.dart';
 export 'themes/loopcard.dart';
 
 export 'ui/loopcard.dart';

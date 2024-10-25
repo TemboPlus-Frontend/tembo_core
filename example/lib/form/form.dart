@@ -27,16 +27,18 @@ class _ExampleFormState extends State<ExampleForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TemboTextField.labelled(
-            "Name",
+            "Name (Outline)",
             controller: nameController,
             textInputType: TextInputType.name,
             validator: (s) => validateName(s, label: "Name"),
           ),
           vSpace(),
           TemboTextField.labelled(
-            "Phone",
+            "Phone (Filled)",
+            hint: "e.g 25571234567",
             controller: phoneController,
             textInputType: TextInputType.phone,
+            decoration: const TemboTextFieldDecoration.filled(),
             validator: validateTZPhone,
             formatters: const [
               NoSpaceFormatter(),
@@ -47,7 +49,7 @@ class _ExampleFormState extends State<ExampleForm> {
           vSpace(),
           TemboTextField.value(
             "johndoe@gmail.com",
-            label: "Filled Email",
+            label: "Email (Disabled)",
           ),
           vSpace(),
           const TemboLabel("Choose Size"),
@@ -59,10 +61,11 @@ class _ExampleFormState extends State<ExampleForm> {
           ),
           vSpace(),
           TemboTextField.labelled(
-            "TIN Number",
+            "TIN Number (Filled)",
             controller: tinNoController,
             validator: validateName,
             textInputType: TextInputType.number,
+            decoration: const TemboTextFieldDecoration.filled(),
             formatters: const [
               FixedLengthFormatter(13),
               TINNumberFormatter(),

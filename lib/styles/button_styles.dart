@@ -188,11 +188,11 @@ class TemboButtonStyle {
       useContinuousBorder == null || useContinuousBorder == true;
 
   ButtonStyle get buttonStyle {
-    final ui = getTemboUIConstants();
+    final ui = getUIConstants();
     final defBorderRadius = ui.borderRadius;
     final defBorderWidth = ui.borderWidth;
 
-    final colors = getTemboColorScheme();
+    final colors = getColorScheme();
 
     return ElevatedButton.styleFrom(
       elevation: elevation?.toDouble() ?? 0,
@@ -202,7 +202,7 @@ class TemboButtonStyle {
               borderRadius:
                   BorderRadius.circular(borderRadius ?? defBorderRadius),
               side: BorderSide(
-                color: borderColor ?? colors.border,
+                color: borderColor ?? colors.onInverseSurface,
                 width: borderWidth ?? defBorderWidth,
               ),
             )
@@ -210,7 +210,7 @@ class TemboButtonStyle {
               borderRadius:
                   BorderRadius.circular(borderRadius ?? defBorderRadius),
               side: BorderSide(
-                color: borderColor ?? colors.border,
+                color: borderColor ?? colors.onInverseSurface,
                 width: borderWidth ?? defBorderRadius,
               ),
             ),

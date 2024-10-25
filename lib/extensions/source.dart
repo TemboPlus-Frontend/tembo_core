@@ -7,3 +7,4 @@ export 'locale_extension.dart';
 export 'num_extension.dart';
 export 'date_time_extension.dart';
 export 'text_editing_controller_extension.dart';
+export 'project_ext.dart';

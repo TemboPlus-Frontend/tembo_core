@@ -108,8 +108,6 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
   TemboTextFieldDecoration getDecoration() {
     final dec = widget.decoration ?? TemboTextFieldDecoration();
-    print(dec);
-    print(dec.copyWith(hint: "New Hint"));
     return dec.copyWith(hint: widget.hint);
   }
 

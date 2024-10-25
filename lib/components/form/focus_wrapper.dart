@@ -10,7 +10,7 @@ class FocusWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: getTemboColorScheme().background,
+      color: getColorScheme().surface,
       child: SafeArea(
         child: GestureDetector(
           onTap: () {

@@ -16,13 +16,13 @@ class TemboDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = getTemboColorScheme();
+    final scheme = getColorScheme();
     return compact
         ? Divider(
             indent: 0,
             height: 0,
-            color: color ?? scheme.border,
+            color: color ?? scheme.onSurface,
           )
-        : Divider(color: color ?? scheme.border);
+        : Divider(color: color ?? scheme.onSurface);
   }
 }

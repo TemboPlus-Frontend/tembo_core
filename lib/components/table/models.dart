@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/source.dart';
-
 class TemboTableColumn {
   final Widget label;
   final num? fixedWidth;
@@ -69,7 +67,7 @@ class BorderedRowDecoration extends RowDecoration {
   const BorderedRowDecoration({
     this.borderWidth = 1.0,
     this.borderRadius = 5,
-    this.borderColor = DefaultTemboColors.border,
+    this.borderColor = Colors.grey,
   }) : super(type: RowDecorationType.bordered);
 }
 

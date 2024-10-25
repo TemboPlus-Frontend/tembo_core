@@ -1,4 +1,3 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/themes/dau.dart';
 import 'package:tembo_core/constants/themes/ride.dart';
@@ -12,8 +11,8 @@ enum Project {
   temboPlus(
     "TemboPlus",
     fcmTopicName: "TemboPlus",
-    primaryColor: DefaultTemboColors.primary,
-    onPrimaryColor: DefaultTemboColors.onPrimary,
+    primaryColor: Color(0xFF00308F),
+    onPrimaryColor: Colors.white,
     androidPackageName: "com.temboplus.temp",
     iosBundleID: "com.temboplus.tembo",
     dynamicLinkUrl: "https://tembobank.page.link",
@@ -21,8 +20,8 @@ enum Project {
   dau(
     "Dau",
     fcmTopicName: "Dau",
-    primaryColor: DauColors.primary,
-    onPrimaryColor: DauColors.onPrimary,
+    primaryColor: Colors.red,
+    onPrimaryColor: Colors.black,
     androidPackageName: "com.temboplus.dau",
     iosBundleID: "com.temboplus.dau",
     dynamicLinkUrl: "https://dautemboplus.page.link",
@@ -30,8 +29,8 @@ enum Project {
   ride(
     "Ride",
     fcmTopicName: "Ride",
-    primaryColor: RideColors.primary,
-    onPrimaryColor: RideColors.onPrimary,
+    primaryColor: Colors.white,
+    onPrimaryColor: Colors.black,
     androidPackageName: "com.temboplus.ride",
     iosBundleID: "com.temboplus.ride",
     dynamicLinkUrl: "https://temboride.page.link",
@@ -39,8 +38,8 @@ enum Project {
   fantuzzi(
     "Fantuzzi",
     fcmTopicName: "",
-    primaryColor: FantuzziColors.primary,
-    onPrimaryColor: FantuzziColors.onPrimary,
+    primaryColor: Colors.red,
+    onPrimaryColor: Colors.white,
     androidPackageName: "",
     iosBundleID: "",
     dynamicLinkUrl: "",
@@ -48,8 +47,8 @@ enum Project {
   loopcard(
     "LoopCard",
     fcmTopicName: "",
-    primaryColor: LoopCardLightColors.primary,
-    onPrimaryColor: LoopCardLightColors.onPrimary,
+    primaryColor: Color(0xffF3F3E0),
+    onPrimaryColor: Colors.black,
     androidPackageName: "com.temboplus.loopcard",
     iosBundleID: "com.temboplus.loopcard",
     dynamicLinkUrl: "",
@@ -85,7 +84,7 @@ Project getProject() => TemboPreferencesAPI.instance.getProject();
 
 /// Provide context if you want to turn all text-themes colors to black
 ThemeData getTheme([BuildContext? context]) {
-  var theme = getColorScheme().toTheme;
+  var theme = getThemeData();
   if (context != null) {
     theme = theme.copyWith(
         textTheme: TextTheme(
@@ -107,41 +106,39 @@ ThemeData getTheme([BuildContext? context]) {
   return theme;
 }
 
-FlexColorScheme getColorScheme() {
+ThemeData getThemeData() {
   final project = getProject();
   switch (project) {
     case Project.dau:
-      return dauTemboLightFlexColorScheme;
+      return dauTheme;
     case Project.ride:
-      return rideLightFlexColorScheme;
+      return rideTheme;
     case Project.fantuzzi:
-      return fantuzziLightFlexColorScheme;
+      return fantuzziTheme;
     case Project.loopcard:
-      return loopCardLightFlexColorScheme;
+      return loopcardTheme;
     default:
-      return defaultLightFlexColorScheme;
+      return temboTheme;
   }
 }
 
-TemboColorScheme get temboColorScheme => getTemboColorScheme();
-
-TemboColorScheme getTemboColorScheme() {
+ColorScheme getColorScheme() {
   final project = getProject();
   switch (project) {
     case Project.dau:
-      return dauTemboAppLightScheme;
+      return dauColorScheme;
     case Project.ride:
-      return rideLightColorScheme;
+      return rideColorScheme;
     case Project.fantuzzi:
-      return fantuzziLightColorScheme;
+      return fantuzziColorScheme;
     case Project.loopcard:
-      return loopCardLightColorScheme;
+      return loopcardColorScheme;
     default:
-      return defaultLightColorScheme;
+      return temboColorScheme;
   }
 }
 
-TemboUIConstants getTemboUIConstants() {
+TemboUIConstants getUIConstants() {
   final project = getProject();
   switch (project) {
     case Project.loopcard:

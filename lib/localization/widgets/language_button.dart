@@ -32,12 +32,12 @@ class LanguageButton extends ConsumerWidget {
   TemboButtonStyle get _unselectedStyle {
     if (unselectedStyle != null) return unselectedStyle!;
     return TemboButtonStyle(
-      backgroundColor: getTemboColorScheme().background,
-      foregroundColor: getTemboColorScheme().onBackground,
+      backgroundColor: getColorScheme().surface,
+      foregroundColor: getColorScheme().onSurface,
       width: 250,
       height: 60,
       borderRadius: kBorderRadius3,
-      borderColor: getTemboColorScheme().border,
+      borderColor: getColorScheme().surface,
       padding: const EdgeInsets.symmetric(horizontal: 30),
     );
   }
@@ -46,7 +46,7 @@ class LanguageButton extends ConsumerWidget {
     if (selectedStyle != null) return selectedStyle!;
     return _unselectedStyle.copyWith(
       borderWidth: 1.5,
-      borderColor: getTemboColorScheme().primary,
+      borderColor: getColorScheme().primary,
     );
   }
 

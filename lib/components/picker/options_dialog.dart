@@ -180,7 +180,7 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
     final spans = <TextSpan>[];
 
     final style = context.textTheme.labelLarge
-        ?.copyWith(color: getTemboColorScheme().onBackground);
+        ?.copyWith(color: getColorScheme().onSurface);
 
     if (matches.isEmpty) {
       spans.add(

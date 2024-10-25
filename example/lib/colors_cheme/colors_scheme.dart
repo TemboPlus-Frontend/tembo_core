@@ -1,4 +1,3 @@
-import 'package:example/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tembo_core/tembo_core.dart';
@@ -9,9 +8,6 @@ class ColorsScheme extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final theme = ref.watch(themeManagerProvider);
-    final cs = theme.colorScheme;
-
     return Padding(
       padding: horizontal() + vertical(),
       child: Wrap(
@@ -42,16 +38,6 @@ class ColorsScheme extends ConsumerWidget {
             "Surface ",
             context.colorScheme.surface,
             context.colorScheme.onSurface,
-          ),
-          ColorBox(
-            "Surface Container",
-            cs.surfaceContainer,
-            cs.onSurfaceContainer,
-          ),
-          ColorBox(
-            "Success ",
-            cs.success,
-            cs.onSuccess,
           ),
           ColorBox(
             "Error ",
