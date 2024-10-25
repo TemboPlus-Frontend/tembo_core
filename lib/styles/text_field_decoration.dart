@@ -1,4 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
+
 import 'package:tembo_core/tembo_core.dart';
 
 enum TemboBorderStyle { underline, outline }
@@ -39,7 +43,9 @@ class TemboTextFieldDecoration {
     this.suffixIcon,
     this.borderStyle = TemboBorderStyle.outline,
     this.padding,
-  }) : _decorationStyle = TemboTextFieldDecorationStyle.outline;
+    TemboTextFieldDecorationStyle decorationStyle =
+        TemboTextFieldDecorationStyle.outline,
+  }) : _decorationStyle = decorationStyle;
 
   const TemboTextFieldDecoration.filled({
     this.fillColor,
@@ -55,9 +61,9 @@ class TemboTextFieldDecoration {
     this.size,
     this.prefixIcon,
     this.suffixIcon,
-    this.borderStyle = TemboBorderStyle.outline,
     this.padding,
-  }) : _decorationStyle = TemboTextFieldDecorationStyle.outline;
+  })  : borderStyle = TemboBorderStyle.outline,
+        _decorationStyle = TemboTextFieldDecorationStyle.filled;
 
   TemboTextFieldDecoration copyWith({
     Color? fillColor,
@@ -84,6 +90,7 @@ class TemboTextFieldDecoration {
       borderStyle: borderStyle,
       padding: padding,
       suffixIcon: suffixIcon ?? this.suffixIcon,
+      decorationStyle: _decorationStyle,
     );
   }
 
@@ -122,35 +129,52 @@ class TemboTextFieldDecoration {
         : InputBorder.none;
   }
 
+  InputBorder get filledBorder {
+    final consts = getTemboUIConstants();
+    final defaultBorderRadius = consts.borderRadius;
+
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(borderRadius ?? defaultBorderRadius),
+      borderSide: BorderSide(
+        color: Colors.transparent,
+        width: 0,
+      ),
+    );
+  }
+
   TextStyle? get getValueStyle {
     if (valueStyle != null) return valueStyle;
 
     final scheme = getTemboColorScheme();
+    final textstyle = getColorScheme().toTheme.textTheme.bodyMedium.bold;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
-      return valueStyle?.copyWith(color: scheme.onSurfaceContainer).bold;
+      return textstyle.copyWith(color: scheme.onSurfaceContainer);
     }
 
-    return valueStyle.bold;
+    return textstyle;
   }
 
   TextStyle? get getLabelStyle {
     if (labelStyle != null) return labelStyle;
 
     final scheme = getTemboColorScheme();
-    return labelStyle?.copyWith(color: scheme.onSurface).withFW500;
+    final textstyle = getColorScheme().toTheme.textTheme.bodyLarge.withFW500;
+    return textstyle.copyWith(color: scheme.onSurface);
   }
 
   TextStyle? get getHintStyle {
     if (hintStyle != null) return hintStyle;
 
     final scheme = getTemboColorScheme();
+    final textstyle = getColorScheme().toTheme.textTheme.bodyMedium.withFW400;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
-      return hintStyle?.copyWith(color: scheme.hint);
+      return textstyle.copyWith(
+          color: scheme.onSurfaceContainer.withOpacity(.75));
     }
 
-    return hintStyle?.copyWith(color: scheme.hint);
+    return textstyle.copyWith(color: scheme.hint);
   }
 
   InputDecoration get getInputDecoration {
@@ -162,36 +186,32 @@ class TemboTextFieldDecoration {
 
   InputDecoration get getFilledInputDecoration {
     final scheme = getTemboColorScheme();
+    final consts = getTemboUIConstants();
 
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _hintStyle = hintStyle?.copyWith(color: scheme.onSurfaceContainer);
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _labelStyle = valueStyle?.copyWith(color: scheme.onSurfaceContainer);
+    final errorBorder = filledBorder.copyWith(
+      borderSide: BorderSide(
+        color: scheme.error,
+        width: consts.borderWidth,
+      ),
+    );
+
+    final disabledBorder = filledBorder.copyWith(
+      borderSide: BorderSide(width: consts.borderWidth),
+    );
 
     final decoration = InputDecoration(
       isDense: false,
-      border: border,
-      enabledBorder: border,
-      focusedBorder: border.copyWith(
-        borderSide: BorderSide(
-          color: scheme.border,
-          width: border.borderSide.width,
-        ),
-      ),
-      focusedErrorBorder: border,
-      errorBorder: border.copyWith(
-        borderSide: BorderSide(
-          color: scheme.error,
-          width: border.borderSide.width,
-        ),
-      ),
-      disabledBorder: border,
+      border: filledBorder,
+      enabledBorder: filledBorder,
+      focusedBorder: filledBorder,
+      focusedErrorBorder: errorBorder,
+      errorBorder: errorBorder,
+      disabledBorder: disabledBorder,
       filled: true,
       fillColor: fillColor ?? scheme.surfaceContainer,
       contentPadding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),
-      hintStyle: _hintStyle,
+      hintStyle: getHintStyle,
       hintText: hint,
-      label: label == null ? null : Text(label!, style: _labelStyle),
     );
     if (prefixIcon != null) {
       return decoration.copyWith(
@@ -212,31 +232,32 @@ class TemboTextFieldDecoration {
 
   InputDecoration get getOutlineInputDecoration {
     final scheme = getTemboColorScheme();
+    final consts = getTemboUIConstants();
+
+    final errorBorder = filledBorder.copyWith(
+      borderSide: BorderSide(
+        color: scheme.error,
+        width: consts.borderWidth,
+      ),
+    );
+
+    final disabledBorder = filledBorder.copyWith(
+      borderSide: BorderSide(width: consts.borderWidth),
+    );
 
     final decoration = InputDecoration(
       isDense: false,
       border: border,
       enabledBorder: border,
-      focusedBorder: border.copyWith(
-        borderSide: BorderSide(
-          color: scheme.primary,
-          width: border.borderSide.width,
-        ),
-      ),
-      focusedErrorBorder: border,
-      errorBorder: border.copyWith(
-        borderSide: BorderSide(
-          color: scheme.error,
-          width: border.borderSide.width,
-        ),
-      ),
-      disabledBorder: border,
+      focusedBorder: border,
+      focusedErrorBorder: errorBorder,
+      errorBorder: errorBorder,
+      disabledBorder: disabledBorder,
       filled: fillColor != null,
       fillColor: fillColor,
       contentPadding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),
-      hintStyle: hintStyle,
+      hintStyle: getHintStyle,
       hintText: hint,
-      label: label == null ? null : Text(label!, style: labelStyle),
     );
     if (prefixIcon != null) {
       return decoration.copyWith(
@@ -284,5 +305,10 @@ class TemboTextFieldDecoration {
       fillColor: scheme.surfaceContainer,
       borderWidth: 0,
     );
+  }
+
+  @override
+  String toString() {
+    return 'TemboTextFieldDecoration(fillColor: $fillColor, hintStyle: $hintStyle, labelStyle: $labelStyle, valueStyle: $valueStyle, label: $label, borderWidth: $borderWidth, borderRadius: $borderRadius, borderColor: $borderColor, hasBorder: $hasBorder, size: $size, prefixIcon: $prefixIcon, suffixIcon: $suffixIcon, borderStyle: $borderStyle, padding: $padding, _decorationStyle: $_decorationStyle)';
   }
 }

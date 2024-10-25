@@ -33,6 +33,24 @@ class LoopCardLightColors {
 
 final _theme = loopCardLightFlexColorScheme.toTheme;
 
+final themes = ThemeData(
+  primaryColor: LoopCardLightColors.primary,
+  scaffoldBackgroundColor: LoopCardLightColors.surface,
+  colorScheme: ColorScheme(
+    brightness: Brightness.light,
+    primary: LoopCardLightColors.primary,
+    onPrimary: LoopCardLightColors.onPrimary,
+    primaryContainer: LoopCardLightColors.primaryContainer,
+    onPrimaryContainer: LoopCardLightColors.onPrimaryContainer,
+    secondary: LoopCardLightColors.secondary,
+    onSecondary: LoopCardLightColors.onSecondary,
+    error: LoopCardLightColors.error,
+    onError: LoopCardLightColors.onError,
+    surface: LoopCardLightColors.surface,
+    onSurface: LoopCardLightColors.onSurface,
+  ),
+);
+
 final loopCardLightTheme = _theme.copyWith(
   textTheme: _theme.textTheme.apply(
     bodyColor: loopCardLightColorScheme.onSurface,

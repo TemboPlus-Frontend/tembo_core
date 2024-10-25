@@ -19,7 +19,7 @@ class ThemeManager extends StateNotifier<ThemeState> {
   ThemeManager()
       : super((
           flexColorScheme: defaultLightFlexColorScheme,
-          colorScheme: lipaChinaLightColorScheme,
+          colorScheme: defaultLightColorScheme,
           project: Project.temboPlus
         ));
 
@@ -28,7 +28,7 @@ class ThemeManager extends StateNotifier<ThemeState> {
       default:
         state = (
           flexColorScheme: defaultLightFlexColorScheme,
-          colorScheme: lipaChinaLightColorScheme,
+          colorScheme: defaultLightColorScheme,
           project: Project.temboPlus
         );
     }

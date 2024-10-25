@@ -106,37 +106,16 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
     }
   }
 
-  TemboTextFieldDecoration getDecoration(BuildContext context) {
-    final scheme = getTemboColorScheme();
-
-    final defaultDeco = TemboTextFieldDecoration(borderColor: scheme.border);
-    var decoration = widget.decoration ?? defaultDeco;
-    decoration = decoration.copyWith(hint: widget.hint);
-
-    if (!(widget.enabled ?? true)) {
-      decoration = decoration.copyWith(fillColor: scheme.surfaceContainer);
-    }
-
-    if (decoration.hintStyle == null) {
-      decoration = decoration.copyWith(
-          hintStyle: context.textTheme.bodyMedium?.bold.defaultFF
-              .copyWith(color: scheme.hint));
-    }
-
-    if (decoration.valueStyle == null) {
-      decoration = decoration.copyWith(
-        fillColor: scheme.surfaceContainer,
-        valueStyle: context.textTheme.bodyMedium?.bold.defaultFF.copyWith(
-          color: scheme.onSurfaceContainer,
-        ),
-      );
-    }
-    return decoration;
+  TemboTextFieldDecoration getDecoration() {
+    final dec = widget.decoration ?? TemboTextFieldDecoration();
+    print(dec);
+    print(dec.copyWith(hint: "New Hint"));
+    return dec.copyWith(hint: widget.hint);
   }
 
   @override
   Widget build(BuildContext context) {
-    final decoration = getDecoration(context);
+    final decoration = getDecoration();
     final mqData = MediaQuery.of(context);
     final mqDataNew = mqData.copyWith(textScaler: const TextScaler.linear(1.0));
 
@@ -149,7 +128,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
           if (widget.label != null)
             TemboLabel(
               widget.label!,
-              style: decoration.labelStyle,
+              style: decoration.getLabelStyle,
             ),
           SizedBox(
             width: decoration.size?.width,
@@ -178,7 +157,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
   }
 
   Widget buildField([String? error]) {
-    final decoration = getDecoration(context);
+    final decoration = getDecoration();
 
     final bool canExpand = decoration.size != null;
 
@@ -189,8 +168,8 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
         SizedBox(
           height: decoration.size?.height,
           child: TextFormField(
-            cursorColor: decoration.valueStyle?.color,
-            style: decoration.valueStyle,
+            cursorColor: decoration.getValueStyle?.color,
+            style: decoration.getValueStyle,
             controller: widget.controller,
             focusNode: widget.focusNode,
             obscureText: widget.obscureText,
