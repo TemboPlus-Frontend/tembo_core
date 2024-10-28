@@ -54,15 +54,15 @@ class TemboTextFieldDecoration {
     this.hint,
     this.label,
     this.labelStyle,
-    this.borderWidth,
     this.borderRadius,
-    this.borderColor,
-    this.hasBorder = true,
     this.size,
     this.prefixIcon,
     this.suffixIcon,
     this.padding,
-  })  : borderStyle = TemboBorderStyle.outline,
+  })  : hasBorder = false,
+        borderWidth = 0,
+        borderColor = Colors.transparent,
+        borderStyle = TemboBorderStyle.outline,
         _decorationStyle = TemboTextFieldDecorationStyle.filled;
 
   TemboTextFieldDecoration copyWith({
@@ -198,7 +198,7 @@ class TemboTextFieldDecoration {
     final disabledBorder = filledBorder.copyWith(
       borderSide: BorderSide(
         width: consts.borderWidth,
-        color: Colors.grey,
+        color: scheme.onInverseSurface.withOpacity(.7),
       ),
     );
 
