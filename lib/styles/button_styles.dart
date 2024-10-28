@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'package:tembo_core/extensions/context_extension.dart';
 import '../app/app.dart';
 import '../constants/constants.dart';
 
 enum _ButtonStyle { filled, outline, transparent }
 
+const defaultPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 10);
+
 class TemboButtonStyle {
   final Color? backgroundColor, borderColor, foregroundColor;
   final double? elevation, width, height, borderWidth, borderRadius;
-  final EdgeInsets? padding;
+  final EdgeInsets padding;
   final TextStyle? textStyle;
-  final bool? useContinuousBorder;
 
   final ImageProvider? imageProvider;
 
   final _ButtonStyle? _style;
+
+  bool get isOutline => _style == _ButtonStyle.outline;
+  bool get isFilled => _style == _ButtonStyle.filled;
+  bool get isTransparent => _style == _ButtonStyle.transparent;
 
   const TemboButtonStyle({
     this.backgroundColor,
@@ -25,10 +29,9 @@ class TemboButtonStyle {
     this.borderRadius,
     this.elevation,
     this.width,
-    this.padding,
+    this.padding = defaultPadding,
     this.height,
     this.textStyle,
-    this.useContinuousBorder = false,
     this.imageProvider,
   }) : _style = null;
 
@@ -41,10 +44,9 @@ class TemboButtonStyle {
     this.elevation,
     this.width,
     this.height,
-    this.padding,
+    this.padding = defaultPadding,
     this.textStyle,
     this.imageProvider,
-    this.useContinuousBorder = false,
   })  : _style = _ButtonStyle.filled,
         borderColor = Colors.transparent,
         borderWidth = 0;
@@ -56,10 +58,9 @@ class TemboButtonStyle {
     this.borderRadius = kBorderRadius4,
     this.width,
     this.height,
-    this.padding,
+    this.padding = defaultPadding,
     this.textStyle,
   })  : _style = _ButtonStyle.outline,
-        useContinuousBorder = false,
         elevation = 0,
         backgroundColor = Colors.transparent,
         imageProvider = null;
@@ -68,11 +69,10 @@ class TemboButtonStyle {
     this.foregroundColor,
     this.width,
     this.height,
-    this.padding,
+    this.padding = defaultPadding,
     this.textStyle,
   })  : _style = _ButtonStyle.transparent,
         borderRadius = kBorderRadius4,
-        useContinuousBorder = false,
         elevation = 0,
         backgroundColor = Colors.transparent,
         borderColor = Colors.transparent,
@@ -119,73 +119,9 @@ class TemboButtonStyle {
       borderWidth: borderWidth ?? this.borderWidth,
       padding: padding ?? this.padding,
       textStyle: textStyle ?? this.textStyle,
-      useContinuousBorder: useContinuousBorder ?? this.useContinuousBorder,
       imageProvider: imageProvider,
     );
   }
-
-  TemboButtonStyle merge(TemboButtonStyle other) {
-    return TemboButtonStyle(
-      backgroundColor: other.backgroundColor ?? backgroundColor,
-      elevation: other.elevation ?? elevation,
-      width: other.width ?? width,
-      height: other.height ?? height,
-      borderRadius: other.borderRadius ?? borderRadius,
-      foregroundColor: other.foregroundColor ?? foregroundColor,
-      borderColor: other.borderColor ?? borderColor,
-      borderWidth: other.borderWidth ?? borderWidth,
-      padding: other.padding ?? padding,
-      // textStyle: other.textStyle ?? textStyle,
-      useContinuousBorder: other.useContinuousBorder ?? useContinuousBorder,
-      imageProvider: imageProvider,
-    );
-  }
-
-  TemboButtonStyle applyDefaultThemes(BuildContext context) {
-    final scheme = context.colorScheme;
-    return TemboButtonStyle(
-      backgroundColor: backgroundColor ??
-          (_style == _ButtonStyle.filled ? scheme.primary : null),
-      foregroundColor: foregroundColor ??
-          (_style == _ButtonStyle.filled ? scheme.onPrimary : scheme.primary),
-      borderColor: borderColor ??
-          (_style == _ButtonStyle.outline ? scheme.primary : null),
-      elevation: elevation,
-      width: width,
-      height: height,
-      borderRadius: borderRadius,
-      borderWidth: borderWidth,
-      padding: padding,
-      textStyle: textStyle,
-      useContinuousBorder: useContinuousBorder,
-      imageProvider: imageProvider,
-    );
-  }
-
-  TemboButtonStyle mergeWithColors({
-    Color? backgroundColor,
-    Color? borderColor,
-    Color? foregroundColor,
-  }) {
-    return TemboButtonStyle(
-      backgroundColor: this.backgroundColor ?? backgroundColor,
-      foregroundColor: this.foregroundColor ?? foregroundColor,
-      borderColor: this.borderColor ?? borderColor,
-
-      elevation: elevation,
-      width: width,
-      height: height,
-      borderRadius: borderRadius,
-      borderWidth: borderWidth,
-      padding: padding,
-      // textStyle: other.textStyle ?? textStyle,
-      useContinuousBorder: useContinuousBorder,
-      imageProvider: imageProvider,
-    );
-  }
-
-  bool get _usesContinuousBorder =>
-      useContinuousBorder == null || useContinuousBorder == true;
 
   ButtonStyle get buttonStyle {
     final ui = getUIConstants();
@@ -197,33 +133,21 @@ class TemboButtonStyle {
     return ElevatedButton.styleFrom(
       elevation: elevation?.toDouble() ?? 0,
       backgroundColor: backgroundColor,
-      shape: _usesContinuousBorder
-          ? ContinuousRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(borderRadius ?? defBorderRadius),
-              side: BorderSide(
-                color: borderColor ?? colors.onInverseSurface,
-                width: borderWidth ?? defBorderWidth,
-              ),
-            )
-          : RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(borderRadius ?? defBorderRadius),
-              side: BorderSide(
-                color: borderColor ?? colors.onInverseSurface,
-                width: borderWidth ?? defBorderRadius,
-              ),
-            ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderRadius ?? defBorderRadius),
+        side: BorderSide(
+          color: borderColor ?? colors.onInverseSurface,
+          width: borderWidth ?? defBorderWidth,
+        ),
+      ),
       textStyle: getTextStyle,
       fixedSize: _size,
-      padding: _size == null && padding == null
-          ? horizontal() + vertical(8)
-          : padding,
+      padding: _size == null ? horizontal() + vertical(8) : padding,
     );
   }
 
   @override
   String toString() {
-    return 'TemboButtonStyle(foregroundColor: $foregroundColor, backgroundColor: $backgroundColor, borderRadius: $borderRadius, padding: $padding, textStyle: $textStyle, useContinuousBorder: $useContinuousBorder, _style: $_style)';
+    return 'TemboButtonStyle(foregroundColor: $foregroundColor, backgroundColor: $backgroundColor, borderRadius: $borderRadius, padding: $padding, textStyle: $textStyle, _style: $_style)';
   }
 }

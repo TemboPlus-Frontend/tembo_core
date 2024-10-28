@@ -31,57 +31,95 @@ class TemboTextButton extends StatefulWidget {
 
 class _TemboTextButtonState extends State<TemboTextButton> {
   TemboButtonStyle get _style {
-    var style = widget.style ?? const TemboButtonStyle.filled();
-    style = style.applyDefaultThemes(context);
-    return style;
+    final cs = getColorScheme();
+    final consts = getUIConstants();
+
+    return widget.style ??
+        TemboButtonStyle.filled(
+          backgroundColor: cs.primary,
+          foregroundColor: cs.onPrimary,
+          borderRadius: consts.borderRadius,
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    final height = _style.height;
-    final width = _style.width;
+    // final height = _style.height;
+    // final width = _style.width;
 
-    if ((height != null && height <= 35) ||
-        (width != null && width <= 35) ||
-        _style.imageProvider != null) {
-      return MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: _onPressed,
-          onLongPress: _onLongPress,
-          child: Container(
-            padding: _style.padding ?? kHorPadding,
-            width: _style.width?.toDouble(),
-            height: _style.height?.toDouble(),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: _style.backgroundColor,
-              borderRadius: BorderRadius.circular(
-                _style.borderRadius?.toDouble() ?? kBorderRadius4,
-              ),
-              border: Border.all(
-                color: _style.borderColor ?? Colors.transparent,
-                width: _style.borderWidth?.toDouble() ?? 1,
-              ),
-              image: _style.imageProvider == null
-                  ? null
-                  : DecorationImage(
-                      image: _style.imageProvider!,
-                      fit: BoxFit.fill,
-                    ),
-            ),
-            child: getChild(context),
-          ),
-        ),
-      );
-    }
+    // if ((height != null && height <= 35) ||
+    //     (width != null && width <= 35) ||
+    //     _style.imageProvider != null) {
+    //   return MouseRegion(
+    //     cursor: SystemMouseCursors.click,
+    //     child: GestureDetector(
+    //       onTap: _onPressed,
+    //       onLongPress: _onLongPress,
+    //       child: Container(
+    //         padding: _style.padding ?? kHorPadding,
+    //         width: _style.width?.toDouble(),
+    //         height: _style.height?.toDouble(),
+    //         alignment: Alignment.center,
+    //         decoration: BoxDecoration(
+    //           color: _style.backgroundColor,
+    //           borderRadius: BorderRadius.circular(
+    //             _style.borderRadius?.toDouble() ?? kBorderRadius4,
+    //           ),
+    //           border: Border.all(
+    //             color: _style.borderColor ?? Colors.transparent,
+    //             width: _style.borderWidth?.toDouble() ?? 1,
+    //           ),
+    //           image: _style.imageProvider == null
+    //               ? null
+    //               : DecorationImage(
+    //                   image: _style.imageProvider!,
+    //                   fit: BoxFit.fill,
+    //                 ),
+    //         ),
+    //         child: getChild(context),
+    //       ),
+    //     ),
+    //   );
+    // }
 
-    return TextButton(
-      onPressed: _onPressed,
+    final consts = getUIConstants();
+    final cs = getColorScheme();
+
+    final borderColor =
+        _style.borderColor ?? (_style.isOutline ? cs.primary : null);
+
+    return InkWell(
+      onTap: _onPressed,
       onLongPress: _onLongPress,
-      style: _style.buttonStyle,
-      child: getChild(context),
+      child: Container(
+        width: _style.width,
+        height: _style.height,
+        padding: _style.padding,
+        alignment: _style.width != null || _style.width == double.maxFinite
+            ? Alignment.center
+            : null,
+        decoration: TemboBoxDecoration(
+          radius: _style.borderRadius ?? consts.borderRadius,
+          color: _style.backgroundColor ?? cs.primary,
+          borderWidth: _style.borderWidth ?? consts.borderWidth,
+          borderColor: borderColor,
+          image: _style.imageProvider == null
+              ? null
+              : DecorationImage(
+                  image: _style.imageProvider!,
+                  fit: BoxFit.fill,
+                ),
+        ),
+        child: getChild(context),
+      ),
     );
+
+    // return TextButton(
+    //   onPressed: _onPressed,
+    //   onLongPress: _onLongPress,
+    //   style: _style.buttonStyle,
+    //   child: getChild(context),
+    // );
   }
 
   void _onPressed() {
@@ -93,14 +131,15 @@ class _TemboTextButtonState extends State<TemboTextButton> {
   }
 
   Widget getChild(BuildContext context) {
+    final cs = getColorScheme();
+    final foregroundColor =
+        _style.foregroundColor ?? (_style.isFilled ? cs.onPrimary : cs.primary);
+
     return DefaultTextStyle(
-      style: _style.getTextStyle ??
-          TextStyle(
-            color: _style.foregroundColor,
-            fontWeight: FontWeight.w500,
-          ),
+      style: _style.getTextStyle?.copyWith(color: foregroundColor) ??
+          context.textTheme.bodyMedium.bold.withColor(foregroundColor),
       child: IconTheme(
-        data: IconThemeData(color: _style.foregroundColor),
+        data: IconThemeData(color: foregroundColor),
         child: widget.child,
       ),
     );

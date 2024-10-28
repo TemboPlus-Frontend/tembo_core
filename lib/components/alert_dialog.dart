@@ -63,6 +63,8 @@ class TemboAlertDialog extends StatelessWidget {
       actionText != null ? actionText!(AlertDialogAction.no) : "Hapana";
 
   List<Widget> buttons(BuildContext context) {
+    final padding = horizontal() + vertical(10);
+
     return [
       TemboTextButton(
         onPressed: () {
@@ -71,14 +73,12 @@ class TemboAlertDialog extends StatelessWidget {
         style: isAndroid
             ? activeAction.confirming
                 ? TemboButtonStyle.filled(
-                    height: 45,
-                    padding: kHorPadding * 2,
+                    padding: padding,
                     foregroundColor: context.colorScheme.onPrimary,
                     textStyle: context.textTheme.bodyMedium.bold,
                   )
                 : TemboButtonStyle.outline(
-                    height: 45,
-                    padding: kHorPadding * 2,
+                     padding: padding,
                     textStyle: context.textTheme.bodyMedium.bold,
                   )
             : TemboButtonStyle.transparent(
@@ -94,14 +94,12 @@ class TemboAlertDialog extends StatelessWidget {
           style: isAndroid
               ? activeAction.cancelling
                   ? TemboButtonStyle.filled(
-                      height: 45,
-                      padding: kHorPadding * 2,
+                      padding: padding,
                       foregroundColor: context.colorScheme.onPrimary,
                       textStyle: context.textTheme.bodyMedium.bold,
                     )
                   : TemboButtonStyle.outline(
-                      height: 45,
-                      padding: kHorPadding * 2,
+                       padding: padding,
                       textStyle: context.textTheme.bodyMedium.bold,
                     )
               : TemboButtonStyle.transparent(

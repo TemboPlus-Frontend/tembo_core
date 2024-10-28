@@ -20,16 +20,23 @@ class BottomButton extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: horizontal(10) + bottom(10),
-        child: TemboTextButton(
-          onPressed: onPressed,
-          style: style ?? TemboButtonStyle.filled(
-            height: 60,
-            textStyle: context.textTheme.titleMedium.bold,
-            borderRadius: kBorderRadius4,
-          ),
-          child: isLoading
-              ? TemboLoadingIndicator(color: context.colorScheme.onPrimary)
-              : TemboText(label ?? _next.text),
+        child: Column(
+          /// added here for buttons on the bottom nav bar occupying entire space without it
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TemboTextButton(
+              onPressed: onPressed,
+              style: style ??
+                  TemboButtonStyle.filled(
+                    width: double.maxFinite,
+                    padding: vertical(15) + horizontal(),
+                    textStyle: context.textTheme.titleLarge.bold,
+                  ),
+              child: isLoading
+                  ? TemboLoadingIndicator(color: context.colorScheme.onPrimary)
+                  : TemboText(label ?? _next.text),
+            ),
+          ],
         ),
       ),
     );

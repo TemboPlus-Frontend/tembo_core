@@ -295,7 +295,7 @@ class TemboTextFieldDecoration {
         color: scheme.onSurface,
       ),
       hint: "TZS 0",
-      borderColor: scheme.surface,
+      borderColor: scheme.onSurface,
       fillColor: Colors.transparent,
     );
   }
