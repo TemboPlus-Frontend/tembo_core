@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tembo_core/extensions/source.dart';
-
-import '../constants/constants.dart';
 import '../styles/button_styles.dart';
 import '../utils/source.dart';
 import 'text.dart';
 import 'text_button.dart';
+
+import '../extensions/source.dart';
 
 enum AlertDialogAction {
   yes,
@@ -60,54 +59,49 @@ class TemboAlertDialog extends StatelessWidget {
   String get confirmText =>
       actionText != null ? actionText!(AlertDialogAction.yes) : "Okay";
   String get cancelText =>
-      actionText != null ? actionText!(AlertDialogAction.no) : "Hapana";
+      actionText != null ? actionText!(AlertDialogAction.no) : "Cancel";
 
   List<Widget> buttons(BuildContext context) {
-    final padding = horizontal() + vertical(10);
-
+    if (isIOS) {
+      return [
+        TemboTextButton(
+          onPressed: () {
+            pop(context, AlertDialogAction.yes);
+          },
+          style: TemboButtonStyle.transparent(width: double.maxFinite),
+          child: TemboText(confirmText),
+        ),
+        if (showCancelingAction)
+          TemboTextButton(
+            onPressed: () {
+              pop(context, AlertDialogAction.no);
+            },
+            style: TemboButtonStyle.transparent(
+              foregroundColor: context.colorScheme.error,
+              width: double.maxFinite,
+            ),
+            child: TemboText(cancelText),
+          ),
+      ];
+    }
     return [
-      TemboTextButton(
-        onPressed: () {
-          pop(context, AlertDialogAction.yes);
-        },
-        style: isAndroid
-            ? activeAction.confirming
-                ? TemboButtonStyle.filled(
-                    padding: padding,
-                    foregroundColor: context.colorScheme.onPrimary,
-                    textStyle: context.textTheme.bodyMedium.bold,
-                  )
-                : TemboButtonStyle.outline(
-                     padding: padding,
-                    textStyle: context.textTheme.bodyMedium.bold,
-                  )
-            : TemboButtonStyle.transparent(
-                textStyle: context.textTheme.bodyMedium.bold,
-              ),
-        child: TemboText(confirmText),
-      ),
       if (showCancelingAction)
         TemboTextButton(
           onPressed: () {
             pop(context, AlertDialogAction.no);
           },
-          style: isAndroid
-              ? activeAction.cancelling
-                  ? TemboButtonStyle.filled(
-                      padding: padding,
-                      foregroundColor: context.colorScheme.onPrimary,
-                      textStyle: context.textTheme.bodyMedium.bold,
-                    )
-                  : TemboButtonStyle.outline(
-                       padding: padding,
-                      textStyle: context.textTheme.bodyMedium.bold,
-                    )
-              : TemboButtonStyle.transparent(
-                  foregroundColor: context.colorScheme.primary,
-                  textStyle: context.textTheme.bodyMedium.bold,
-                ),
+          style: TemboButtonStyle.transparent(
+            foregroundColor: context.colorScheme.error,
+          ),
           child: TemboText(cancelText),
         ),
+      TemboTextButton(
+        onPressed: () {
+          pop(context, AlertDialogAction.yes);
+        },
+        style: TemboButtonStyle.filled(),
+        child: TemboText(confirmText),
+      ),
     ];
   }
 
