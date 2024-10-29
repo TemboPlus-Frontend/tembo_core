@@ -31,7 +31,7 @@ class TemboTextButton extends StatefulWidget {
 
 class _TemboTextButtonState extends State<TemboTextButton> {
   TemboButtonStyle get _style {
-    final cs = getColorScheme();
+    final cs = getColorScheme(context);
     final consts = getUIConstants();
 
     return widget.style ??
@@ -39,78 +39,57 @@ class _TemboTextButtonState extends State<TemboTextButton> {
           backgroundColor: cs.primary,
           foregroundColor: cs.onPrimary,
           borderRadius: consts.borderRadius,
+          width: double.maxFinite,
         );
   }
 
   @override
   Widget build(BuildContext context) {
-    // final height = _style.height;
-    // final width = _style.width;
-
-    // if ((height != null && height <= 35) ||
-    //     (width != null && width <= 35) ||
-    //     _style.imageProvider != null) {
-    //   return MouseRegion(
-    //     cursor: SystemMouseCursors.click,
-    //     child: GestureDetector(
-    //       onTap: _onPressed,
-    //       onLongPress: _onLongPress,
-    //       child: Container(
-    //         padding: _style.padding ?? kHorPadding,
-    //         width: _style.width?.toDouble(),
-    //         height: _style.height?.toDouble(),
-    //         alignment: Alignment.center,
-    //         decoration: BoxDecoration(
-    //           color: _style.backgroundColor,
-    //           borderRadius: BorderRadius.circular(
-    //             _style.borderRadius?.toDouble() ?? kBorderRadius4,
-    //           ),
-    //           border: Border.all(
-    //             color: _style.borderColor ?? Colors.transparent,
-    //             width: _style.borderWidth?.toDouble() ?? 1,
-    //           ),
-    //           image: _style.imageProvider == null
-    //               ? null
-    //               : DecorationImage(
-    //                   image: _style.imageProvider!,
-    //                   fit: BoxFit.fill,
-    //                 ),
-    //         ),
-    //         child: getChild(context),
-    //       ),
-    //     ),
-    //   );
-    // }
+    final height = _style.height;
+    final width = _style.width;
 
     final consts = getUIConstants();
-    final cs = getColorScheme();
+    final cs = getColorScheme(context);
 
     final borderColor =
         _style.borderColor ?? (_style.isOutline ? cs.primary : null);
+    final backgroundColor =
+        _style.backgroundColor ?? (_style.isFilled ? cs.primary : null);
 
-    return InkWell(
-      onTap: _onPressed,
-      onLongPress: _onLongPress,
-      child: Container(
-        width: _style.width,
-        height: _style.height,
-        padding: _style.padding,
-        alignment: _style.width != null || _style.width == double.maxFinite
-            ? Alignment.center
-            : null,
-        decoration: TemboBoxDecoration(
-          radius: _style.borderRadius ?? consts.borderRadius,
-          color: _style.backgroundColor ?? cs.primary,
-          borderWidth: _style.borderWidth ?? consts.borderWidth,
-          borderColor: borderColor,
-          image: _style.imageProvider == null
-              ? null
-              : DecorationImage(
-                  image: _style.imageProvider!,
-                  fit: BoxFit.fill,
-                ),
+    final alignment =
+        width == double.maxFinite || width != null ? Alignment.center : null;
+
+    final radius = _style.borderRadius ?? consts.borderRadius;
+    final padding = _style.padding ?? defPadding;
+    final borderRadius = _style.borderRadius == null
+        ? defBorderRadius
+        : BorderRadius.circular(radius);
+    final borderWidth = _style.borderWidth ?? consts.borderWidth;
+
+    final decoImage = _style.imageProvider == null
+        ? null
+        : DecorationImage(image: _style.imageProvider!, fit: BoxFit.fill);
+
+    return Material(
+      color: backgroundColor,
+      borderRadius: borderRadius,
+      child: InkWell(
+        onTap: _onPressed,
+        onLongPress: _onLongPress,
+        borderRadius: borderRadius,
+        child: Container(
+          width: width,
+          height: height,
+          padding: padding,
+          alignment: alignment,
+          decoration: TemboBoxDecoration(
+            radius: radius,
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            image: decoImage,
+          ),
+          child: getChild(context),
         ),
-        child: getChild(context),
       ),
     );
 
@@ -131,7 +110,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
   }
 
   Widget getChild(BuildContext context) {
-    final cs = getColorScheme();
+    final cs = getColorScheme(context);
     final foregroundColor =
         _style.foregroundColor ?? (_style.isFilled ? cs.onPrimary : cs.primary);
 
@@ -173,7 +152,9 @@ class TemboPlainTextButton extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: text,
-          style: (style ?? context.textTheme.bodyMedium.bold.withPrimaryColor)
+          style: (style ??
+                  context.textTheme.bodyMedium.bold
+                      .withColor(context.colorScheme.primary))
               .copyWith(
             decoration: _decorated ? TextDecoration.underline : null,
             decorationColor: _decorated ? context.colorScheme.primary : null,

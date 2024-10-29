@@ -50,8 +50,6 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildField() {
-    final scheme = getColorScheme();
-
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -61,6 +59,8 @@ class TemboFVWidget extends StatelessWidget {
             child: icon!,
           ),
         Builder(builder: (context) {
+          final scheme = getColorScheme(context);
+
           return TemboText(
             field,
             style: fieldStyle ??
@@ -74,8 +74,9 @@ class TemboFVWidget extends StatelessWidget {
   }
 
   Widget buildValue() {
-    final scheme = getColorScheme();
     return Builder(builder: (context) {
+      final scheme = getColorScheme(context);
+
       return TemboText(
         value,
         maxLines: valueMaxLines,

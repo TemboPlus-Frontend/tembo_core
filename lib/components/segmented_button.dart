@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tembo_core/app/app.dart';
 import 'package:tembo_core/components/container/decoration.dart';
 import 'package:tembo_core/extensions/source.dart';
 
@@ -28,18 +29,20 @@ class TemboSegmentedButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final consts = getUIConstants();
+
     return BreakPointsBuilder.for1BreakPoint(
       b1: breakpoint,
       onB1: (context, __) {
         return Row(
           children: [
             PopupMenuButton<T>(
-              splashRadius: kBorderRadius5,
+              splashRadius: consts.borderRadius,
               child: TemboContainer(
                 padding: horizontal(15) + vertical(5),
-                decoration: const TemboBoxDecoration(
-                  borderWidth: 1.5,
-                  radius: kBorderRadius5,
+                decoration: TemboBoxDecoration(
+                  borderWidth: consts.borderWidth,
+                  radius: consts.borderRadius,
                 ),
                 child: Row(
                   children: [

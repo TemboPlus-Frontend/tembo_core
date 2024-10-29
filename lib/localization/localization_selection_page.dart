@@ -14,18 +14,17 @@ class LanguageSelectionPage extends ConsumerStatefulWidget {
 }
 
 class _LanguageSelectionState extends ConsumerState<LanguageSelectionPage> {
-  TemboButtonStyle get _buttonStyle {
+  TemboButtonStyle _buttonStyle(BuildContext context) {
     return TemboButtonStyle.filled(
-      backgroundColor: getColorScheme().surface,
-      foregroundColor: getColorScheme().onSurface,
+      backgroundColor: context.colorScheme.secondaryContainer,
+      foregroundColor: context.colorScheme.onSecondaryContainer,
       width: 250,
-      height: 60,
-      borderRadius: kBorderRadius3,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final buttonStyle = _buttonStyle(context);
     return Scaffold(
       backgroundColor: context.colorScheme.primary,
       body: Center(
@@ -34,19 +33,19 @@ class _LanguageSelectionState extends ConsumerState<LanguageSelectionPage> {
           children: [
             TemboText(
               "Pick a language | Chagua lugha",
-              style: context.textTheme.titleSmall.withOnPrimaryColor,
+              style: context.textTheme.titleSmall,
             ),
             const SizedBox(height: 20),
             LanguageButton.swahili(
               onTap: saveLocale,
-              unselectedStyle: _buttonStyle,
-              selectedStyle: _buttonStyle,
+              unselectedStyle: buttonStyle,
+              selectedStyle: buttonStyle,
             ),
             const SizedBox(height: 10),
             LanguageButton.english(
               onTap: saveLocale,
-              unselectedStyle: _buttonStyle,
-              selectedStyle: _buttonStyle,
+              unselectedStyle: buttonStyle,
+              selectedStyle: buttonStyle,
             ),
           ],
         ),

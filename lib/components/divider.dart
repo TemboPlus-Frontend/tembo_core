@@ -16,7 +16,7 @@ class TemboDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = getColorScheme();
+    final scheme = getColorScheme(context);
     return compact
         ? Divider(
             indent: 0,

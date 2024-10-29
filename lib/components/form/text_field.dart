@@ -107,7 +107,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
   }
 
   TemboTextFieldDecoration getDecoration() {
-    final dec = widget.decoration ?? TemboTextFieldDecoration();
+    final dec = widget.decoration ?? TemboTextFieldDecoration.filled();
     return dec.copyWith(hint: widget.hint);
   }
 
@@ -126,7 +126,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
           if (widget.label != null)
             TemboLabel(
               widget.label!,
-              style: decoration.getLabelStyle,
+              style: decoration.getLabelStyle(context),
             ),
           SizedBox(
             width: decoration.size?.width,
@@ -166,16 +166,16 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
         SizedBox(
           height: decoration.size?.height,
           child: TextFormField(
-            cursorColor: decoration.getValueStyle?.color,
-            style: decoration.getValueStyle,
+            cursorColor: decoration.getValueStyle(context)?.color,
+            style: decoration.getValueStyle(context),
             controller: widget.controller,
             focusNode: widget.focusNode,
             obscureText: widget.obscureText,
             decoration: hasError
                 ? decoration
                     .copyWith(borderColor: context.colorScheme.error)
-                    .getInputDecoration
-                : decoration.getInputDecoration.copyWith(
+                    .getInputDecoration(context)
+                : decoration.getInputDecoration(context).copyWith(
                     errorStyle: context.textTheme.bodySmall.withSize(0),
                   ),
             inputFormatters: widget.formatters,

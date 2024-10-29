@@ -5,12 +5,10 @@ import '../constants/constants.dart';
 
 enum _ButtonStyle { filled, outline, transparent }
 
-const defaultPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 10);
-
 class TemboButtonStyle {
   final Color? backgroundColor, borderColor, foregroundColor;
   final double? elevation, width, height, borderWidth, borderRadius;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
   final TextStyle? textStyle;
 
   final ImageProvider? imageProvider;
@@ -29,7 +27,7 @@ class TemboButtonStyle {
     this.borderRadius,
     this.elevation,
     this.width,
-    this.padding = defaultPadding,
+    this.padding,
     this.height,
     this.textStyle,
     this.imageProvider,
@@ -44,7 +42,7 @@ class TemboButtonStyle {
     this.elevation,
     this.width,
     this.height,
-    this.padding = defaultPadding,
+    this.padding,
     this.textStyle,
     this.imageProvider,
   })  : _style = _ButtonStyle.filled,
@@ -54,11 +52,11 @@ class TemboButtonStyle {
   const TemboButtonStyle.outline({
     this.foregroundColor,
     this.borderColor,
-    this.borderWidth = 1.5,
-    this.borderRadius = kBorderRadius4,
+    this.borderWidth,
+    this.borderRadius,
     this.width,
     this.height,
-    this.padding = defaultPadding,
+    this.padding,
     this.textStyle,
   })  : _style = _ButtonStyle.outline,
         elevation = 0,
@@ -69,10 +67,10 @@ class TemboButtonStyle {
     this.foregroundColor,
     this.width,
     this.height,
-    this.padding = defaultPadding,
+    this.padding,
     this.textStyle,
   })  : _style = _ButtonStyle.transparent,
-        borderRadius = kBorderRadius4,
+        borderRadius = null,
         elevation = 0,
         backgroundColor = Colors.transparent,
         borderColor = Colors.transparent,
@@ -123,12 +121,12 @@ class TemboButtonStyle {
     );
   }
 
-  ButtonStyle get buttonStyle {
+  ButtonStyle  buttonStyle(BuildContext context) {
     final ui = getUIConstants();
     final defBorderRadius = ui.borderRadius;
     final defBorderWidth = ui.borderWidth;
 
-    final colors = getColorScheme();
+    final colors = getColorScheme(context);
 
     return ElevatedButton.styleFrom(
       elevation: elevation?.toDouble() ?? 0,

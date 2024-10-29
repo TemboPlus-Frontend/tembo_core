@@ -83,31 +83,33 @@ Future<void> registerApp(Project project) =>
 Project getProject() => TemboPreferencesAPI.instance.getProject();
 
 /// Provide context if you want to turn all text-themes colors to black
-ThemeData getTheme([BuildContext? context]) {
-  var theme = getThemeData();
-  if (context != null) {
-    theme = theme.copyWith(
-        textTheme: TextTheme(
-      titleLarge: context.textTheme.titleLarge.black.defaultFF,
-      titleMedium: context.textTheme.titleMedium.black.defaultFF,
-      titleSmall: context.textTheme.titleSmall.black.defaultFF,
-      displayLarge: context.textTheme.displayLarge.black.defaultFF,
-      displayMedium: context.textTheme.displayMedium.black.defaultFF,
-      displaySmall: context.textTheme.displaySmall.black.defaultFF,
-      bodyMedium: context.textTheme.bodyMedium.black.defaultFF,
-      bodyLarge: context.textTheme.bodyLarge.black.defaultFF,
-      bodySmall: context.textTheme.bodySmall.black.defaultFF,
-      headlineMedium: context.textTheme.headlineMedium.black.defaultFF,
-      headlineLarge: context.textTheme.headlineLarge.black.defaultFF,
-      headlineSmall: context.textTheme.headlineSmall.black.defaultFF,
-    ));
-  }
+ThemeData getTheme(BuildContext context) {
+  var theme = getThemeData(context);
+  // if (context != null) {
+  //   theme = theme.copyWith(
+  //       textTheme: TextTheme(
+  //     titleLarge: context.textTheme.titleLarge.black.defaultFF,
+  //     titleMedium: context.textTheme.titleMedium.black.defaultFF,
+  //     titleSmall: context.textTheme.titleSmall.black.defaultFF,
+  //     displayLarge: context.textTheme.displayLarge.black.defaultFF,
+  //     displayMedium: context.textTheme.displayMedium.black.defaultFF,
+  //     displaySmall: context.textTheme.displaySmall.black.defaultFF,
+  //     bodyMedium: context.textTheme.bodyMedium.black.defaultFF,
+  //     bodyLarge: context.textTheme.bodyLarge.black.defaultFF,
+  //     bodySmall: context.textTheme.bodySmall.black.defaultFF,
+  //     headlineMedium: context.textTheme.headlineMedium.black.defaultFF,
+  //     headlineLarge: context.textTheme.headlineLarge.black.defaultFF,
+  //     headlineSmall: context.textTheme.headlineSmall.black.defaultFF,
+  //   ));
+  // }
 
   return theme;
 }
 
-ThemeData getThemeData() {
+ThemeData getThemeData(BuildContext context) {
   final project = getProject();
+  final isDarkMode = context.isDarkMode;
+
   switch (project) {
     case Project.dau:
       return dauTheme;
@@ -118,12 +120,14 @@ ThemeData getThemeData() {
     case Project.loopcard:
       return loopcardTheme;
     default:
-      return temboTheme;
+      return isDarkMode ? temboDarkTheme : temboTheme;
   }
 }
 
-ColorScheme getColorScheme() {
+ColorScheme getColorScheme(BuildContext context) {
   final project = getProject();
+  final isDarkMode = context.isDarkMode;
+
   switch (project) {
     case Project.dau:
       return dauColorScheme;
@@ -134,7 +138,7 @@ ColorScheme getColorScheme() {
     case Project.loopcard:
       return loopcardColorScheme;
     default:
-      return temboColorScheme;
+      return isDarkMode ? temboDarkColorScheme : temboLightColorScheme;
   }
 }
 

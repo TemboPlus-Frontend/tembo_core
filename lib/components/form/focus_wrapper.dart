@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../app/app.dart';
+import 'package:tembo_core/extensions/source.dart';
 
 class FocusWrapper extends StatelessWidget {
   final Widget child;
@@ -10,7 +9,7 @@ class FocusWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: getColorScheme().surface,
+      color: context.colorScheme.surface,
       child: SafeArea(
         child: GestureDetector(
           onTap: () {

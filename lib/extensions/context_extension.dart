@@ -12,4 +12,7 @@ extension BuildContextExtension on BuildContext {
   double get viewportHeight => MediaQuery.of(this).size.height;
 
   EdgeInsets get viewPadding => MediaQuery.of(this).viewPadding;
+
+  bool get isDarkMode =>
+      View.of(this).platformDispatcher.platformBrightness == Brightness.dark;
 }

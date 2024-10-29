@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tembo_core/app/app.dart';
 import 'package:tembo_core/extensions/context_extension.dart';
 
 import '../../components/text.dart';
@@ -10,12 +11,14 @@ import '../localization_manager.dart';
 import 'language_button.dart';
 
 void showLanguagePickDialog(BuildContext context) {
+  final consts = getUIConstants();
+
   showDialog(
       context: context,
       builder: (context) {
         return Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kBorderRadius3),
+            borderRadius: BorderRadius.circular(consts.borderRadius),
           ),
           child: const LanguageSelectionDialog(),
         );

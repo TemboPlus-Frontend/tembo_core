@@ -14,7 +14,7 @@ extension ProjectExt on Project {
       Project.ride => rideColorScheme,
       Project.loopcard => loopcardColorScheme,
       Project.fantuzzi => fantuzziColorScheme,
-      _ => temboColorScheme,
+      _ => temboLightColorScheme,
     };
   }
 

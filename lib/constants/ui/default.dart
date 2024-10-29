@@ -6,6 +6,4 @@ class TemboDefaultUIConstants implements TemboUIConstants {
 
   @override
   double get borderWidth => 1.5;
-
-  
 }

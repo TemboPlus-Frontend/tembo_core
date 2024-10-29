@@ -9,6 +9,8 @@ enum TemboBorderStyle { underline, outline }
 
 enum TemboTextFieldDecorationStyle { outline, filled }
 
+const _defPadding = EdgeInsets.fromLTRB(20, 0, 20, 0);
+
 class TemboTextFieldDecoration {
   final Color? fillColor;
   final TextStyle? hintStyle;
@@ -101,8 +103,8 @@ class TemboTextFieldDecoration {
     );
   }
 
-  InputBorder get border {
-    final scheme = getColorScheme();
+  InputBorder  border(BuildContext context) {
+    final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
     final defaultBorderWidth = consts.borderWidth;
@@ -142,11 +144,11 @@ class TemboTextFieldDecoration {
     );
   }
 
-  TextStyle? get getValueStyle {
+  TextStyle?  getValueStyle(BuildContext context) {
     if (valueStyle != null) return valueStyle;
 
-    final scheme = getColorScheme();
-    final textstyle = getThemeData().textTheme.bodyMedium.bold;
+    final scheme = getColorScheme(context);
+    final textstyle = getThemeData(context).textTheme.bodyMedium.bold;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
       return textstyle.copyWith(color: scheme.onSurfaceVariant);
@@ -155,19 +157,19 @@ class TemboTextFieldDecoration {
     return textstyle;
   }
 
-  TextStyle? get getLabelStyle {
+  TextStyle?  getLabelStyle(BuildContext context) {
     if (labelStyle != null) return labelStyle;
 
-    final scheme = getColorScheme();
-    final textstyle = getThemeData().textTheme.bodyLarge.withFW500;
+    final scheme = getColorScheme(context);
+    final textstyle = getThemeData(context).textTheme.bodyLarge.withFW500;
     return textstyle.copyWith(color: scheme.onSurface);
   }
 
-  TextStyle? get getHintStyle {
+  TextStyle?  getHintStyle(BuildContext context) {
     if (hintStyle != null) return hintStyle;
 
-    final scheme = getColorScheme();
-    final textstyle = getThemeData().textTheme.bodyMedium.withFW400;
+    final scheme = getColorScheme(context);
+    final textstyle = getThemeData(context).textTheme.bodyMedium.withFW400;
 
     if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
       return textstyle.copyWith(
@@ -177,15 +179,15 @@ class TemboTextFieldDecoration {
     return textstyle.copyWith(color: scheme.onSurfaceVariant);
   }
 
-  InputDecoration get getInputDecoration {
+  InputDecoration  getInputDecoration(BuildContext context) {
     if (_decorationStyle == TemboTextFieldDecorationStyle.outline) {
-      return getOutlineInputDecoration;
+      return getOutlineInputDecoration(context);
     }
-    return getFilledInputDecoration;
+    return getFilledInputDecoration(context);
   }
 
-  InputDecoration get getFilledInputDecoration {
-    final scheme = getColorScheme();
+  InputDecoration  getFilledInputDecoration(BuildContext context) {
+    final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
     final errorBorder = filledBorder.copyWith(
@@ -212,8 +214,8 @@ class TemboTextFieldDecoration {
       disabledBorder: disabledBorder,
       filled: true,
       fillColor: fillColor ?? scheme.surfaceContainer,
-      contentPadding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),
-      hintStyle: getHintStyle,
+      contentPadding: padding ?? _defPadding,
+      hintStyle: getHintStyle(context),
       hintText: hint,
     );
     if (prefixIcon != null) {
@@ -233,11 +235,11 @@ class TemboTextFieldDecoration {
     return decoration;
   }
 
-  InputDecoration get getOutlineInputDecoration {
-    final scheme = getColorScheme();
+  InputDecoration  getOutlineInputDecoration(BuildContext context) {
+    final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
-    final errorBorder = border.copyWith(
+    final errorBorder = border(context).copyWith(
       borderSide: BorderSide(
         color: scheme.error,
         width: consts.borderWidth,
@@ -254,16 +256,16 @@ class TemboTextFieldDecoration {
 
     final decoration = InputDecoration(
       isDense: false,
-      border: border,
-      enabledBorder: border,
-      focusedBorder: border,
+      border: border(context),
+      enabledBorder:  border(context),
+      focusedBorder:  border(context),
       focusedErrorBorder: errorBorder,
       errorBorder: errorBorder,
       disabledBorder: disabledBorder,
-      filled: fillColor != null,
-      fillColor: fillColor,
-      contentPadding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),
-      hintStyle: getHintStyle,
+      filled: false,
+      fillColor: null,
+      contentPadding: padding ?? _defPadding,
+      hintStyle: getHintStyle(context),
       hintText: hint,
     );
     if (prefixIcon != null) {
@@ -284,7 +286,7 @@ class TemboTextFieldDecoration {
   }
 
   static TemboTextFieldDecoration getDefaultAmountDeco(BuildContext context) {
-    final scheme = getColorScheme();
+    final scheme = getColorScheme(context);
     return TemboTextFieldDecoration(
       size: const Size.fromHeight(60),
       hasBorder: true,
@@ -301,16 +303,14 @@ class TemboTextFieldDecoration {
   }
 
   static TemboTextFieldDecoration getDefaultFilledDeco(BuildContext context) {
-    final scheme = getColorScheme();
+    final scheme = getColorScheme(context);
 
     final style = context.textTheme.bodyMedium;
 
-    return TemboTextFieldDecoration(
+    return TemboTextFieldDecoration.filled(
       labelStyle: style.bold.withColor(scheme.onSurface),
       hintStyle: style.withColor(scheme.onSurfaceVariant),
       valueStyle: style.withFW500.withColor(scheme.onSurfaceVariant),
-      fillColor: scheme.surfaceContainer,
-      borderWidth: 0,
     );
   }
 

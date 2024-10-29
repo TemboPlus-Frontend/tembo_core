@@ -59,7 +59,10 @@ void showSnackbar(
   if (state == null && context != null) state = ScaffoldMessenger.of(context);
   state ??= rootMessengerKey.currentState;
 
-  state?.showSnackBar(TemboSnackbar(
+  if (state == null) return;
+
+  state.showSnackBar(TemboSnackbar(
+    state.context,
     message,
     isError: isError,
     durationInSeconds: duration,

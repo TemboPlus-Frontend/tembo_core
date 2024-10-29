@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tembo_core/extensions/textstyle_extension.dart';
+import 'package:tembo_core/extensions/source.dart';
 
 import '../../api/user_prefs_apis/locale_api.dart';
-import '../../app/app.dart';
-import '../../components/text.dart';
-import '../../constants/constants.dart';
+import '../../components/source.dart';
 import '../../constants/locale.dart';
 import '../../styles/button_styles.dart';
 
@@ -29,24 +26,21 @@ class LanguageButton extends ConsumerWidget {
     this.unselectedStyle,
   }) : _locale = TemboLocale.en;
 
-  TemboButtonStyle get _unselectedStyle {
+  TemboButtonStyle _unselectedStyle(BuildContext context) {
     if (unselectedStyle != null) return unselectedStyle!;
     return TemboButtonStyle(
-      backgroundColor: getColorScheme().surface,
-      foregroundColor: getColorScheme().onSurface,
-      width: 250,
-      height: 60,
-      borderRadius: kBorderRadius3,
-      borderColor: getColorScheme().surface,
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      backgroundColor: context.colorScheme.surface,
+      foregroundColor: context.colorScheme.onSurface,
+       width: 250,
+      borderColor: context.colorScheme.outline,
     );
   }
 
-  TemboButtonStyle get _selectedStyle {
+  TemboButtonStyle  _selectedStyle(BuildContext context) {
     if (selectedStyle != null) return selectedStyle!;
-    return _unselectedStyle.copyWith(
+    return _unselectedStyle(context).copyWith(
       borderWidth: 1.5,
-      borderColor: getColorScheme().primary,
+      borderColor: context.colorScheme.primary,
     );
   }
 
@@ -54,12 +48,13 @@ class LanguageButton extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final currentLang = LocaleAPI.instance.getLocale();
     final selected = _locale == currentLang;
-    final style = selected ? _selectedStyle : _unselectedStyle;
+    final style = selected ? _selectedStyle(context) : _unselectedStyle(context);
 
-    return TextButton(
+    return TemboTextButton(
       onPressed: () => onTap(_locale),
-      style: style.buttonStyle,
+      style: style,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: Center(

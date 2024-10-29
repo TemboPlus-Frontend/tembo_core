@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/app/app.dart';
 
 const fonts = (markPro: "MarkPro", ibm: "IBMPlexSans");
 
@@ -6,11 +7,13 @@ const kFontFamily = "MarkPro";
 
 const kdx = 15.0;
 
-const kBorderRadius = 0.0;
-const kBorderRadius2 = 5.0;
-const kBorderRadius3 = 15.0;
-const kBorderRadius4 = 30.0;
-const kBorderRadius5 = 40.0;
+// const kBorderRadius = 0.0;
+// const kBorderRadius2 = 5.0;
+// const kBorderRadius3 = 15.0;
+// const kBorderRadius4 = 30.0;
+// const kBorderRadius5 = 40.0;
+final defBorderRadius = BorderRadius.circular(getUIConstants().borderRadius);
+const defPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 15);
 
 const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
 const kPagePadding = EdgeInsets.only(top: 20, left: 15, right: 15);

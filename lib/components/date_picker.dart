@@ -61,7 +61,7 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = getColorScheme();
+    final cs = getColorScheme(context);
     final child = widget.date == null && widget.placeholder != null
         ? Row(
             children: [
@@ -86,13 +86,13 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
               );
 
     final horPadding = EdgeInsets.only(
-      left: widget.style?.padding.left ?? 15,
-      right: widget.style?.padding.right ?? 15,
+      left: widget.style?.padding?.left ?? 15,
+      right: widget.style?.padding?.right ?? 15,
     );
 
     final verPadding = EdgeInsets.only(
-      top: widget.style?.padding.top ?? 12.5,
-      bottom: widget.style?.padding.bottom ?? 12.5,
+      top: widget.style?.padding?.top ?? 12.5,
+      bottom: widget.style?.padding?.bottom ?? 12.5,
     );
 
     return TemboTextButton(

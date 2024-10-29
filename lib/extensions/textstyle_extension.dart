@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tembo_core/app/app.dart';
 
 import '../constants/source.dart';
 
 extension TextStyleExtension on TextStyle? {
-  TextStyle get withPrimaryColor => this!.copyWith(
-        color: getColorScheme().primary,
-      );
-  TextStyle get withOnPrimaryColor => this!.copyWith(
-        color: getColorScheme().onPrimary,
-      );
+  // TextStyle get withPrimaryColor => this!.copyWith(
+  //       color: getColorScheme().primary,
+  //     );
+  // TextStyle get withOnPrimaryColor => this!.copyWith(
+  //       color: getColorScheme().onPrimary,
+  //     );
 
-  TextStyle get withOnBgColor => this!.copyWith(
-        color: getColorScheme().onSurface,
-      );
+  // TextStyle get withOnBgColor => this!.copyWith(
+  //       color: getColorScheme().onSurface,
+  //     );
 
   TextStyle get white => this!.copyWith(
         color: Colors.white,
@@ -46,7 +45,7 @@ extension TextStyleExtension on TextStyle? {
         color: canApply ? color : null,
       );
 
-  TextStyle withPrimaryColorIf(bool canApply) => this!.copyWith(
-        color: canApply ? getColorScheme().primary : null,
-      );
+  // TextStyle withPrimaryColorIf(bool canApply) => this!.copyWith(
+  //       color: canApply ? getColorScheme().primary : null,
+  //     );
 }
