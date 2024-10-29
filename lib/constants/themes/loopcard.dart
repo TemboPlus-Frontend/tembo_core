@@ -19,7 +19,7 @@ final loopcardColorScheme = ColorScheme(
 );
 
 final loopcardTheme = ThemeData(
-  colorScheme: loopcardColorScheme,
   useMaterial3: true,
   fontFamily: fonts.markPro,
+  colorScheme: loopcardColorScheme,
 );
