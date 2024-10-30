@@ -405,7 +405,7 @@ packages:
   tembo_core:
     dependency: "direct main"
     description:
-      path: "/Users/mac/Downloads/programs/temboplus/_tembo_core"
+      path: "/Users/mac/Downloads/programs/tembo_app_smile/_tembo_core"
       relative: false
     source: path
     version: "0.0.1"

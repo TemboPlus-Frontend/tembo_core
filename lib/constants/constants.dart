@@ -8,7 +8,6 @@ const kFontFamily = "MarkPro";
 const kdx = 15.0;
 
 final defBorderRadius = BorderRadius.circular(getUIConstants().borderRadius);
-const defPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 15);
 
 const kHorPadding = EdgeInsets.symmetric(horizontal: 15);
 const kPagePadding = EdgeInsets.only(top: 20, left: 15, right: 15);

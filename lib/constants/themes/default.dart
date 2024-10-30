@@ -89,14 +89,28 @@ const temboDarkColorScheme = ColorScheme(
   shadow: Color(0xff000000),
 );
 
+final _lightCardTheme = CardTheme(
+  elevation: 0,
+  color: temboLightColorScheme.surfaceContainerHigh,
+  shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
+);
+
+final _darkCardTheme = CardTheme(
+  elevation: 0,
+  color: temboDarkColorScheme.surfaceContainerHigh,
+  shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
+);
+
 final temboTheme = ThemeData(
   useMaterial3: true,
   fontFamily: fonts.markPro,
   colorScheme: temboLightColorScheme,
+  cardTheme: _lightCardTheme,
 );
 
 final temboDarkTheme = ThemeData(
   useMaterial3: true,
   fontFamily: fonts.markPro,
   colorScheme: temboDarkColorScheme,
+  cardTheme: _darkCardTheme,
 );

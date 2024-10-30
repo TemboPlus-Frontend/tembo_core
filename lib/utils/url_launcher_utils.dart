@@ -7,16 +7,18 @@ Future<bool> openLinkWithDeviceBrowser(String link) async {
   try {
     final url = Uri.parse(link);
     return await launchUrl(url, mode: LaunchMode.externalApplication);
-  } catch (_) {}
+  } catch (e) {
+    print(e);
+  }
 
   return false;
 }
 
-Future<void> openTemboPlusWebsite() {
+Future<bool> openTemboPlusWebsite() {
   return openLinkWithDeviceBrowser(TEMBO_WEBSITE);
 }
 
-Future<void> showTemboPlusPrivacyPolicy() {
+Future<bool> showTemboPlusPrivacyPolicy() {
   return openLinkWithDeviceBrowser(TEMBO_PRIVACY_POLICY_URL);
 }
 

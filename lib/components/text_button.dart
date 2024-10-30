@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tembo_core/tembo_core.dart';
 
+const _defPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 15);
+
 class TemboTextButton extends StatefulWidget {
   final VoidCallback onPressed;
   final VoidCallback? onLongPress;
@@ -39,7 +41,6 @@ class _TemboTextButtonState extends State<TemboTextButton> {
           backgroundColor: cs.primary,
           foregroundColor: cs.onPrimary,
           borderRadius: consts.borderRadius,
-          width: double.maxFinite,
         );
   }
 
@@ -60,7 +61,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
         width == double.maxFinite || width != null ? Alignment.center : null;
 
     final radius = _style.borderRadius ?? consts.borderRadius;
-    final padding = _style.padding ?? defPadding;
+    final padding = _style.padding ?? _defPadding;
     final borderRadius = _style.borderRadius == null
         ? defBorderRadius
         : BorderRadius.circular(radius);
@@ -115,6 +116,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
         _style.foregroundColor ?? (_style.isFilled ? cs.onPrimary : cs.primary);
 
     return DefaultTextStyle(
+      textAlign: TextAlign.center,
       style: _style.getTextStyle?.copyWith(color: foregroundColor) ??
           context.textTheme.bodyMedium.bold.withColor(foregroundColor),
       child: IconTheme(

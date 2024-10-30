@@ -166,7 +166,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
         SizedBox(
           height: decoration.size?.height,
           child: TextFormField(
-            cursorColor: decoration.getValueStyle(context)?.color,
+            // cursorColor: decoration.getValueStyle(context)?.color,
             style: decoration.getValueStyle(context),
             controller: widget.controller,
             focusNode: widget.focusNode,

@@ -64,13 +64,6 @@ class TemboAlertDialog extends StatelessWidget {
   List<Widget> buttons(BuildContext context) {
     if (isIOS) {
       return [
-        TemboTextButton(
-          onPressed: () {
-            pop(context, AlertDialogAction.yes);
-          },
-          style: TemboButtonStyle.transparent(width: double.maxFinite),
-          child: TemboText(confirmText),
-        ),
         if (showCancelingAction)
           TemboTextButton(
             onPressed: () {
@@ -78,10 +71,16 @@ class TemboAlertDialog extends StatelessWidget {
             },
             style: TemboButtonStyle.transparent(
               foregroundColor: context.colorScheme.error,
-              width: double.maxFinite,
             ),
             child: TemboText(cancelText),
           ),
+        TemboTextButton(
+          onPressed: () {
+            pop(context, AlertDialogAction.yes);
+          },
+          style: TemboButtonStyle.transparent(),
+          child: TemboText(confirmText),
+        ),
       ];
     }
     return [

@@ -103,7 +103,7 @@ class TemboTextFieldDecoration {
     );
   }
 
-  InputBorder  border(BuildContext context) {
+  InputBorder border(BuildContext context) {
     final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
@@ -116,7 +116,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? defaultBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? scheme.onInverseSurface,
+                  color: borderColor ?? scheme.outline,
                   width: borderWidth ?? defaultBorderWidth,
                 ),
               )
@@ -124,7 +124,7 @@ class TemboTextFieldDecoration {
                 borderRadius:
                     BorderRadius.circular(borderRadius ?? defaultBorderRadius),
                 borderSide: BorderSide(
-                  color: borderColor ?? scheme.onInverseSurface,
+                  color: borderColor ?? scheme.outline,
                   width: borderWidth ?? defaultBorderWidth,
                 ),
               )
@@ -144,49 +144,44 @@ class TemboTextFieldDecoration {
     );
   }
 
-  TextStyle?  getValueStyle(BuildContext context) {
+  TextStyle? getValueStyle(BuildContext context) {
     if (valueStyle != null) return valueStyle;
 
     final scheme = getColorScheme(context);
     final textstyle = getThemeData(context).textTheme.bodyMedium.bold;
-
-    if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
-      return textstyle.copyWith(color: scheme.onSurfaceVariant);
-    }
-
-    return textstyle;
+    return textstyle.copyWith(color: scheme.onSurface);
   }
 
-  TextStyle?  getLabelStyle(BuildContext context) {
+  TextStyle? getLabelStyle(BuildContext context) {
     if (labelStyle != null) return labelStyle;
 
     final scheme = getColorScheme(context);
     final textstyle = getThemeData(context).textTheme.bodyLarge.withFW500;
-    return textstyle.copyWith(color: scheme.onSurface);
+    return textstyle.copyWith(color: scheme.onSurfaceVariant);
   }
 
-  TextStyle?  getHintStyle(BuildContext context) {
+  TextStyle? getHintStyle(BuildContext context) {
     if (hintStyle != null) return hintStyle;
 
     final scheme = getColorScheme(context);
     final textstyle = getThemeData(context).textTheme.bodyMedium.withFW400;
 
-    if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
-      return textstyle.copyWith(
-          color: scheme.onSurfaceVariant.withOpacity(.75));
-    }
+    // if (_decorationStyle == TemboTextFieldDecorationStyle.filled) {
+    //   return textstyle.copyWith(
+    //       color: scheme.onSurface.withOpacity(.75));
+    // }
 
-    return textstyle.copyWith(color: scheme.onSurfaceVariant);
+    return textstyle.copyWith(color: scheme.onSurface.withOpacity(.75));
   }
 
-  InputDecoration  getInputDecoration(BuildContext context) {
+  InputDecoration getInputDecoration(BuildContext context) {
     if (_decorationStyle == TemboTextFieldDecorationStyle.outline) {
       return getOutlineInputDecoration(context);
     }
     return getFilledInputDecoration(context);
   }
 
-  InputDecoration  getFilledInputDecoration(BuildContext context) {
+  InputDecoration getFilledInputDecoration(BuildContext context) {
     final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
@@ -200,7 +195,7 @@ class TemboTextFieldDecoration {
     final disabledBorder = filledBorder.copyWith(
       borderSide: BorderSide(
         width: consts.borderWidth,
-        color: scheme.onInverseSurface.withOpacity(.7),
+        color: scheme.onInverseSurface,
       ),
     );
 
@@ -221,21 +216,21 @@ class TemboTextFieldDecoration {
     if (prefixIcon != null) {
       return decoration.copyWith(
           prefixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurface),
+        data: IconThemeData(color: scheme.onSurfaceVariant),
         child: prefixIcon!,
       ));
     }
     if (suffixIcon != null) {
       return decoration.copyWith(
           suffixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurface),
+        data: IconThemeData(color: scheme.onSurfaceVariant),
         child: suffixIcon!,
       ));
     }
     return decoration;
   }
 
-  InputDecoration  getOutlineInputDecoration(BuildContext context) {
+  InputDecoration getOutlineInputDecoration(BuildContext context) {
     final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
@@ -247,18 +242,18 @@ class TemboTextFieldDecoration {
     );
 
     final disabledBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(consts.borderRadius),
+      borderRadius: BorderRadius.circular(borderRadius ?? consts.borderRadius),
       borderSide: BorderSide(
         width: consts.borderWidth,
-        color: Colors.grey,
+        color: scheme.outline,
       ),
     );
 
     final decoration = InputDecoration(
       isDense: false,
       border: border(context),
-      enabledBorder:  border(context),
-      focusedBorder:  border(context),
+      enabledBorder: border(context),
+      focusedBorder: border(context),
       focusedErrorBorder: errorBorder,
       errorBorder: errorBorder,
       disabledBorder: disabledBorder,
@@ -271,14 +266,14 @@ class TemboTextFieldDecoration {
     if (prefixIcon != null) {
       return decoration.copyWith(
           prefixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurface),
+        data: IconThemeData(color: scheme.onSurfaceVariant),
         child: prefixIcon!,
       ));
     }
     if (suffixIcon != null) {
       return decoration.copyWith(
           suffixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurface),
+        data: IconThemeData(color: scheme.onSurfaceVariant),
         child: suffixIcon!,
       ));
     }
@@ -292,26 +287,14 @@ class TemboTextFieldDecoration {
       hasBorder: true,
       borderWidth: 2,
       borderStyle: TemboBorderStyle.underline,
-      hintStyle: context.textTheme.titleLarge.bold.withColor(scheme.onSurface),
-      valueStyle: context.textTheme.titleLarge.bold.copyWith(
-        color: scheme.onSurface,
-      ),
       hint: "TZS 0",
-      borderColor: scheme.onSurface,
+      borderColor: scheme.outline,
       fillColor: Colors.transparent,
     );
   }
 
   static TemboTextFieldDecoration getDefaultFilledDeco(BuildContext context) {
-    final scheme = getColorScheme(context);
-
-    final style = context.textTheme.bodyMedium;
-
-    return TemboTextFieldDecoration.filled(
-      labelStyle: style.bold.withColor(scheme.onSurface),
-      hintStyle: style.withColor(scheme.onSurfaceVariant),
-      valueStyle: style.withFW500.withColor(scheme.onSurfaceVariant),
-    );
+    return TemboTextFieldDecoration.filled();
   }
 
   @override

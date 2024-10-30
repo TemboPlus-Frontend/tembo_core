@@ -22,4 +22,7 @@ final loopcardTheme = ThemeData(
   useMaterial3: true,
   fontFamily: fonts.markPro,
   colorScheme: loopcardColorScheme,
+  cardTheme: CardTheme(
+    shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
+  ),
 );

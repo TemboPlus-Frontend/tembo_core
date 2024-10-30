@@ -30,6 +30,7 @@ class _ExampleFormState extends State<ExampleForm> {
             "Name (Outline)",
             controller: nameController,
             textInputType: TextInputType.name,
+            decoration: const TemboTextFieldDecoration(),
             validator: (s) => validateName(s, label: "Name"),
           ),
           vSpace(),
@@ -79,9 +80,19 @@ class _ExampleFormState extends State<ExampleForm> {
           ),
           vSpace(),
           TemboTextButton(
+            onPressed: () {
+              showAlertDialog(
+                context,
+                title: "Alert Dialog",
+                desc: "Alert dialog description",
+              );
+            },
+            style: const TemboButtonStyle.outline(),
+            child: const TemboText("Show Alert Dialog"),
+          ),
+          vSpace(),
+          TemboTextButton(
             onPressed: onPressed,
-            style: const TemboButtonStyle.filled(
-                width: double.maxFinite, height: 45),
             child: const TemboText("Save"),
           ),
         ],
