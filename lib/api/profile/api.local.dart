@@ -1,9 +1,9 @@
 import '../../models/profile.dart';
 import '../user_prefs_apis/user_prefs_api.dart';
 
-class ProfileAPI {
-  ProfileAPI._();
-  static final instance = ProfileAPI._();
+class ProfileLocalAPI {
+  ProfileLocalAPI._();
+  static final instance = ProfileLocalAPI._();
 
   final _api = UserPreferencesAPI.instance;
   static const eventKey = "profile";

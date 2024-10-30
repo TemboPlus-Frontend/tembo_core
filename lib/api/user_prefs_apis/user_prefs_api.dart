@@ -5,7 +5,7 @@ import '../base_local_api.dart';
 
 import 'locale_api.dart';
 import 'token_api.dart';
-import '../profile/local_api.dart';
+import '../profile/api.local.dart';
 
 /// Should be initiated with [UserPreferencesAPI.init] on the main function.
 ///
@@ -14,7 +14,7 @@ import '../profile/local_api.dart';
 /// instead of trying to remember all boxes whose data should be deleted and
 /// doing it manually
 ///
-/// Look at [LocaleAPI], [ProfileAPI] and [TokenAPI] for implementation details.
+/// Look at [LocaleAPI], [ProfileLocalAPI] and [TokenAPI] for implementation details.
 class UserPreferencesAPI extends BaseLocalAPI {
   static const _boxName = "preferences";
   static Future<void> init() async => await Hive.openBox(_boxName);
@@ -28,9 +28,10 @@ class UserPreferencesAPI extends BaseLocalAPI {
 
   @override
 
-  /// Clears [LocaleAPI], [TokenAPI], [ProfileAPI] along with other apis
+  /// Clears [LocaleAPI], [TokenAPI], [ProfileLocalAPI] along with other apis
   /// using [UserPreferencesAPI.instance] to store data
   Future<void> clear() async {
-    return super.clear().catchError((e) => debugPrint("Error on clearing user preferences: $e"));
+    return super.clear().catchError(
+        (e) => debugPrint("Error on clearing user preferences: $e"));
   }
 }

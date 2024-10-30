@@ -43,10 +43,6 @@ abstract class BaseHTTPAPI {
   /// that will handle authentication logic will need to extend [BaseHTTPAPI] to call
   /// [updateToken] method, which will store the token in the local storage. It will then
   /// be fetched from the local storage in all future requests.
-  ///
-  /// This token can be delete by a class that extends [BaseHTTPAPI] by calling [deleteToken] method.
-  /// That means all future requests will be sent without a token, which will result to
-  /// unsuccessful requests for authenticated endpoints.
   Map<String, String> get baseHeaders {
     final h = Map<String, String>.from(_constantHeaders);
 

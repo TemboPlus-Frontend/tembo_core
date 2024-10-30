@@ -1,12 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tembo_core/api/tembo_prefs_api.dart';
+import 'package:tembo_core/api/user_prefs_apis/user_prefs_api.dart';
 
 Future<void> initHive() async {
   if (!kIsWeb) {
     final dir = await getApplicationDocumentsDirectory();
     Hive.init(dir.path);
   }
+
+  await UserPreferencesAPI.init();
+  await TemboPreferencesAPI.init();
 }
 
 abstract class BaseLocalAPI {

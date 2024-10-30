@@ -7,7 +7,7 @@ import 'package:tembo_core/tembo_core.dart';
 /// Should be initiated with [TemboPreferencesAPI.init] on the main function.
 ///
 /// Used to store data that should not be deleted when the user logs out in the app.
-/// They should only be deleted when the user signs out the app or decides to clear cache & data
+/// They should only be deleted when a user decides to clear cache & data
 /// from phone settings
 class TemboPreferencesAPI extends BaseLocalAPI {
   static const _boxName = "tembo_preferences";

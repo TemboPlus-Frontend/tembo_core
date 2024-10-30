@@ -5,17 +5,19 @@ import 'package:tembo_core/api/source.dart';
 
 import '../../constants/typedefs.dart';
 import '../../models/profile.dart';
-import 'local_api.dart';
+import 'api.local.dart';
 
 /// Handles all profile operations.
 ///
 /// Get the current saved profile from anywhere with [ProfileManager.getCurrent]
 class ProfileManager {
   final _remoteApi = ProfileRemoteAPI("https://api.afloat.money/v1");
-  final _localAPI = ProfileAPI.instance;
+  final _localAPI = ProfileLocalAPI.instance;
 
   ProfileManager._() {
-    UserPreferencesAPI.instance.box.watch(key: ProfileAPI.eventKey).listen((e) {
+    UserPreferencesAPI.instance.box
+        .watch(key: ProfileLocalAPI.eventKey)
+        .listen((e) {
       _subject.add(_localAPI.getProfile());
     });
   }
@@ -52,7 +54,7 @@ class ProfileManager {
   }
 
   Future<void> _onProfileChange(Profile profile) async {
-     await _localAPI.saveProfile(profile);
+    await _localAPI.saveProfile(profile);
     _subject.sink.add(profile);
   }
 }

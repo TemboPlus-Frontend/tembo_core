@@ -1,6 +1,6 @@
 import 'package:tembo_core/tembo_core.dart';
 
-/// Tembo servers now suport 2 types of tokens, Bearer token mostly for Fantuzzi products and
+/// Tembo servers now support 2 types of tokens, Bearer token mostly for Fantuzzi products and
 /// just token passed as a header parameter for mostly TemboPlus products
 enum TokenType {
   token("api_token"),

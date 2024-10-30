@@ -31,12 +31,12 @@ class LanguageButton extends ConsumerWidget {
     return TemboButtonStyle(
       backgroundColor: context.colorScheme.surface,
       foregroundColor: context.colorScheme.onSurface,
-       width: 250,
+      width: 250,
       borderColor: context.colorScheme.outline,
     );
   }
 
-  TemboButtonStyle  _selectedStyle(BuildContext context) {
+  TemboButtonStyle _selectedStyle(BuildContext context) {
     if (selectedStyle != null) return selectedStyle!;
     return _unselectedStyle(context).copyWith(
       borderWidth: 1.5,
@@ -48,7 +48,8 @@ class LanguageButton extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final currentLang = LocaleAPI.instance.getLocale();
     final selected = _locale == currentLang;
-    final style = selected ? _selectedStyle(context) : _unselectedStyle(context);
+    final style =
+        selected ? _selectedStyle(context) : _unselectedStyle(context);
 
     return TemboTextButton(
       onPressed: () => onTap(_locale),
@@ -64,8 +65,8 @@ class LanguageButton extends ConsumerWidget {
                     padding: const EdgeInsets.only(right: 10),
                     child: Image.asset(
                       _locale.isSW
-                          ? "assets/images/tz_flag.png"
-                          : "assets/images/us_flag.png",
+                          ? "packages/tembo_core/assets/tz_flag.png"
+                          : "packages/tembo_core/assets/us_flag.png",
                       width: 50,
                       height: 30,
                     ),

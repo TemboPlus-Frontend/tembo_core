@@ -11,12 +11,15 @@ class TemboTextButton extends StatefulWidget {
   final Widget child;
   final TemboButtonStyle? style;
 
+  final bool? showLoading;
+
   const TemboTextButton({
     super.key,
     required this.onPressed,
     this.onLongPress,
     this.style,
     required this.child,
+    this.showLoading,
   });
 
   TemboTextButton.text({
@@ -25,6 +28,7 @@ class TemboTextButton extends StatefulWidget {
     required this.onPressed,
     this.onLongPress,
     this.style,
+    this.showLoading,
   }) : child = TemboText.w500(text);
 
   @override
@@ -114,6 +118,16 @@ class _TemboTextButtonState extends State<TemboTextButton> {
     final cs = getColorScheme(context);
     final foregroundColor =
         _style.foregroundColor ?? (_style.isFilled ? cs.onPrimary : cs.primary);
+
+    final showLoading = widget.showLoading ?? false;
+
+    if (showLoading) {
+      return Center(
+        child: CircularProgressIndicator.adaptive(
+          valueColor: AlwaysStoppedAnimation(foregroundColor),
+        ),
+      );
+    }
 
     return DefaultTextStyle(
       textAlign: TextAlign.center,
