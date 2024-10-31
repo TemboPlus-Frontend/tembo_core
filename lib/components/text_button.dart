@@ -123,9 +123,7 @@ class _TemboTextButtonState extends State<TemboTextButton> {
 
     if (showLoading) {
       return Center(
-        child: CircularProgressIndicator.adaptive(
-          valueColor: AlwaysStoppedAnimation(foregroundColor),
-        ),
+        child: TemboLoadingIndicator(color: foregroundColor)
       );
     }
 
