@@ -21,16 +21,13 @@ class TemboRadioButton<T> extends StatelessWidget {
     final selectedValue = selected(value);
     return TemboTextButton(
       onPressed: () => onPressed(value),
-      style: TemboButtonStyle(
-        height: 45,
-        backgroundColor: context.colorScheme.primaryContainer,
-        borderColor:
-            selectedValue ? context.colorScheme.primary : Colors.transparent,
-        borderWidth: selectedValue ? 2.0 : 0.0,
+      style: TemboButtonStyle.filled(
+        backgroundColor: selectedValue
+            ? context.colorScheme.secondaryContainer
+            : context.colorScheme.surfaceContainer,
         foregroundColor: selectedValue
-            ? context.colorScheme.primary
-            : context.colorScheme.onPrimaryContainer,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+            ? context.colorScheme.onSecondaryContainer
+            : context.colorScheme.onSurface,
         textStyle: context.textTheme.bodyMedium!.copyWith(
           fontWeight: selectedValue ? FontWeight.bold : FontWeight.normal,
         ),

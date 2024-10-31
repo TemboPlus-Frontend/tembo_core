@@ -63,7 +63,7 @@ class ProgressPainter extends CustomPainter {
     final rect2 = Rect.fromLTWH(0, 0, width, height);
     final rrect2 = RRect.fromRectAndRadius(rect2, radius);
 
-    final paint1 = Paint()..color = lineColor ?? getColorScheme(context).surface;
+    final paint1 = Paint()..color = lineColor ?? getColorScheme(context).outlineVariant;
     final paint2 = Paint()..color = getColorScheme(context).primary;
 
     if (paintText) {

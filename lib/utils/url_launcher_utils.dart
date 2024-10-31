@@ -6,6 +6,9 @@ import 'package:url_launcher/url_launcher.dart';
 Future<bool> openLinkWithDeviceBrowser(String link) async {
   try {
     final url = Uri.parse(link);
+    final canLaunch = await canLaunchUrl(url);
+    print("can launch $url: $canLaunch");
+
     return await launchUrl(url, mode: LaunchMode.externalApplication);
   } catch (e) {
     print(e);

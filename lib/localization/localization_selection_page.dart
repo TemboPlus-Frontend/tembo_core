@@ -25,8 +25,8 @@ class _LanguageSelectionState extends ConsumerState<LanguageSelectionPage> {
   @override
   Widget build(BuildContext context) {
     final buttonStyle = _buttonStyle(context);
+
     return Scaffold(
-      backgroundColor: context.colorScheme.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

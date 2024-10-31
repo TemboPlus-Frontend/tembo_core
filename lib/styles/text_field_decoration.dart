@@ -174,14 +174,20 @@ class TemboTextFieldDecoration {
     return textstyle.copyWith(color: scheme.onSurface.withOpacity(.75));
   }
 
-  InputDecoration getInputDecoration(BuildContext context) {
+  InputDecoration getInputDecoration(
+    BuildContext context, {
+    required bool enabled,
+  }) {
     if (_decorationStyle == TemboTextFieldDecorationStyle.outline) {
-      return getOutlineInputDecoration(context);
+      return getOutlineInputDecoration(context, enabled: enabled);
     }
-    return getFilledInputDecoration(context);
+    return getFilledInputDecoration(context, enabled: enabled);
   }
 
-  InputDecoration getFilledInputDecoration(BuildContext context) {
+  InputDecoration getFilledInputDecoration(
+    BuildContext context, {
+    required bool enabled,
+  }) {
     final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
@@ -195,18 +201,21 @@ class TemboTextFieldDecoration {
     final disabledBorder = filledBorder.copyWith(
       borderSide: BorderSide(
         width: consts.borderWidth,
-        color: scheme.onInverseSurface,
+        color: scheme.outlineVariant,
       ),
     );
 
+    final border = enabled ? filledBorder : disabledBorder;
+    final error_border = enabled ? errorBorder : disabledBorder;
+
     final decoration = InputDecoration(
       isDense: false,
-      border: filledBorder,
-      enabledBorder: filledBorder,
-      focusedBorder: filledBorder,
-      focusedErrorBorder: errorBorder,
-      errorBorder: errorBorder,
+      border: border,
+      enabledBorder: border,
+      focusedBorder: border,
       disabledBorder: disabledBorder,
+      focusedErrorBorder: error_border,
+      errorBorder: error_border,
       filled: true,
       fillColor: fillColor ?? scheme.surfaceContainer,
       contentPadding: padding ?? _defPadding,
@@ -230,7 +239,10 @@ class TemboTextFieldDecoration {
     return decoration;
   }
 
-  InputDecoration getOutlineInputDecoration(BuildContext context) {
+  InputDecoration getOutlineInputDecoration(
+    BuildContext context, {
+    required bool enabled,
+  }) {
     final scheme = getColorScheme(context);
     final consts = getUIConstants();
 
@@ -245,18 +257,21 @@ class TemboTextFieldDecoration {
       borderRadius: BorderRadius.circular(borderRadius ?? consts.borderRadius),
       borderSide: BorderSide(
         width: consts.borderWidth,
-        color: scheme.outline,
+        color: scheme.outlineVariant,
       ),
     );
 
+    final normal_border = enabled ? border(context) : disabledBorder;
+    final error_border = enabled ? errorBorder : disabledBorder;
+
     final decoration = InputDecoration(
       isDense: false,
-      border: border(context),
-      enabledBorder: border(context),
-      focusedBorder: border(context),
-      focusedErrorBorder: errorBorder,
-      errorBorder: errorBorder,
+      border: normal_border,
+      enabledBorder: normal_border,
+      focusedBorder: normal_border,
       disabledBorder: disabledBorder,
+      focusedErrorBorder: error_border,
+      errorBorder: error_border,
       filled: false,
       fillColor: null,
       contentPadding: padding ?? _defPadding,

@@ -161,6 +161,8 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
 
     final hasError = error != null;
 
+    final enabled = widget.enabled ?? true;
+
     return Column(
       children: [
         SizedBox(
@@ -174,10 +176,12 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
             decoration: hasError
                 ? decoration
                     .copyWith(borderColor: context.colorScheme.error)
-                    .getInputDecoration(context)
-                : decoration.getInputDecoration(context).copyWith(
-                    errorStyle: context.textTheme.bodySmall.withSize(0),
-                  ),
+                    .getInputDecoration(context, enabled: enabled)
+                : decoration
+                    .getInputDecoration(context, enabled: enabled)
+                    .copyWith(
+                      errorStyle: context.textTheme.bodySmall.withSize(0),
+                    ),
             inputFormatters: widget.formatters,
             validator: validate,
             textAlign: widget.textAlign ?? TextAlign.start,
@@ -191,7 +195,7 @@ class _TemboTextFieldState extends ConsumerState<TemboTextField> {
             textInputAction: TextInputAction.done,
             keyboardType: widget.textInputType,
             onChanged: widget.onChanged,
-            enabled: widget.enabled ?? true,
+            enabled: enabled,
             expands: canExpand,
             textAlignVertical: TextAlignVertical.center,
             maxLines: canExpand ? null : 1,
