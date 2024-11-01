@@ -66,9 +66,9 @@ class TemboOptionButton extends StatelessWidget {
     final ct = getUIConstants();
     
     return TemboButtonStyle(
-      backgroundColor: context.colorScheme.surface,
+      backgroundColor: context.colorScheme.surfaceContainer,
       foregroundColor: context.colorScheme.onSurface,
-      borderColor: cs.onSurface,
+      borderColor: cs.surfaceDim,
       textStyle: context.textTheme.bodyMedium.withFW400,
       borderWidth: ct.borderWidth,
       borderRadius: ct.borderRadius,

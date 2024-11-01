@@ -155,9 +155,10 @@ class TemboTextFieldDecoration {
   TextStyle? getLabelStyle(BuildContext context) {
     if (labelStyle != null) return labelStyle;
 
-    final scheme = getColorScheme(context);
-    final textstyle = getThemeData(context).textTheme.bodyLarge.withFW500;
-    return textstyle.copyWith(color: scheme.onSurfaceVariant);
+    // final scheme = getColorScheme(context);
+    // final textstyle = getThemeData(context).textTheme.bodyLarge.withFW500;
+    // return textstyle.copyWith(color: scheme.onSurfaceVariant);
+    return TemboLabel.getDefaultTextStyle(context);
   }
 
   TextStyle? getHintStyle(BuildContext context) {

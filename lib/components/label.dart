@@ -17,7 +17,7 @@ class TemboLabel extends StatelessWidget {
   });
 
   static TextStyle getDefaultTextStyle(BuildContext c) {
-    return c.textTheme.bodyMedium.withFW500.withColor(c.colorScheme.onSurface);
+    return c.textTheme.bodyMedium.withColor(c.colorScheme.onSurfaceVariant);
   }
 
   @override
@@ -26,10 +26,7 @@ class TemboLabel extends StatelessWidget {
       padding: bottom(bottomSpacing),
       child: TemboText(
         label,
-        style: style ??
-            context.textTheme.bodyMedium.withFW500.withColor(
-              context.colorScheme.onSurface,
-            ),
+        style: style ?? TemboLabel.getDefaultTextStyle(context),
         maxLines: 1,
       ),
     );

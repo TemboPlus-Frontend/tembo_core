@@ -98,10 +98,11 @@ class _TemboDatePickerState extends State<TemboDatePicker> {
     return TemboTextButton(
       onPressed: showPicker,
       style: widget.style ??
-          TemboButtonStyle.outline(
-            borderColor: cs.onSurface,
-            borderWidth: getUIConstants().borderWidth,
+          TemboButtonStyle.filled(
+          //  borderColor: cs.onSurface,
+            // borderWidth: getUIConstants().borderWidth,
             foregroundColor: cs.onSurface,
+            backgroundColor: cs.surfaceContainer,
             borderRadius: getUIConstants().borderRadius,
             textStyle: context.textTheme.bodyMedium.bold,
             padding: horPadding,
