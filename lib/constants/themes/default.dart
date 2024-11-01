@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tembo_core/constants/source.dart';
 
+import '_tembo_color_scheme.dart';
+
 const temboLightColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xff002067),
@@ -101,11 +103,26 @@ final _darkCardTheme = CardTheme(
   shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
 );
 
+final _lightTemboColorScheme = TemboColorScheme(
+  success: Color(0xff406836),
+  onSuccess: Color(0xffffffff),
+  successContainer: Color(0xffc0efb0),
+  onSuccessContainer: Color(0xff002200),
+);
+
+final _darkTemboColorScheme = TemboColorScheme(
+  success: Color(0xffa5d395),
+  onSuccess: Color(0xff11380b),
+  successContainer: Color(0xff285020),
+  onSuccessContainer: Color(0xffc0efb0),
+);
+
 final temboTheme = ThemeData(
   useMaterial3: true,
   fontFamily: fonts.markPro,
   colorScheme: temboLightColorScheme,
   cardTheme: _lightCardTheme,
+  extensions: {_lightTemboColorScheme},
 );
 
 final temboDarkTheme = ThemeData(
@@ -113,4 +130,5 @@ final temboDarkTheme = ThemeData(
   fontFamily: fonts.markPro,
   colorScheme: temboDarkColorScheme,
   cardTheme: _darkCardTheme,
+  extensions: {_darkTemboColorScheme},
 );

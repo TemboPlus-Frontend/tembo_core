@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/constants/themes/_tembo_color_scheme.dart';
 import 'package:tembo_core/tembo_core.dart';
 
 // final loopcardColorScheme = ColorScheme(
@@ -62,11 +63,18 @@ const loopcardColorScheme = ColorScheme(
   shadow: Color(0xff000000),
 );
 
+final _darkTemboColorScheme = TemboColorScheme(
+  success: Color(0xffa5d395),
+  onSuccess: Color(0xff11380b),
+  successContainer: Color(0xff285020),
+  onSuccessContainer: Color(0xffc0efb0),
+);
+
 final loopcardTheme = ThemeData(
   useMaterial3: true,
   fontFamily: fonts.markPro,
   colorScheme: loopcardColorScheme,
-  cardTheme: CardTheme(
-    shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
-  ),
+  cardTheme:
+      CardTheme(shape: RoundedRectangleBorder(borderRadius: defBorderRadius)),
+  extensions: {_darkTemboColorScheme},
 );

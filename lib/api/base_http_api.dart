@@ -101,6 +101,8 @@ abstract class BaseHTTPAPI {
       url = url.updateQueryParameters(params!);
     }
 
+    print(_handleHeaders(headers));
+
     final response = await http.post(
       url,
       body: body,
@@ -188,10 +190,11 @@ abstract class BaseHTTPAPI {
   }
 
   Map<String, String> mergeHeaders(Map<String, String> other) {
-    final h = Map<String, String>.from(baseHeaders);
-    final v = Map<String, String>.from(other);
-    final result = v..addAll(h);
-    return result;
+    final base = Map<String, String>.from(baseHeaders);
+    for (var e in other.entries) {
+      base[e.key] = e.value;
+    }
+    return base;
   }
 }
 

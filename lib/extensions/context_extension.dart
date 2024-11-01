@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tembo_core/constants/themes/_tembo_color_scheme.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -6,6 +7,9 @@ extension BuildContextExtension on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  TemboColorScheme get temboColorScheme =>
+      Theme.of(this).extension<TemboColorScheme>()!;
 
   double get viewportWidth => MediaQuery.of(this).size.width;
 

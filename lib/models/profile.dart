@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import '../utils/phone_utils/phone_number.dart';
@@ -113,11 +114,6 @@ class Profile {
       Profile.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() {
-    return 'Profile(id: $id, isKycCompleted: $isKycCompleted, firstName: $firstName, lastName: $lastName, displayName: $displayName, phone: $phone, email: $email, accountNo: $accountNo, isEmailVerified: $isEmailVerified, isPhoneVerified: $isPhoneVerified, nin: $nin, onboardId: $onboardId)';
-  }
-
-  @override
   bool operator ==(covariant Profile other) {
     if (identical(this, other)) return true;
 
@@ -143,6 +139,11 @@ class Profile {
         nin.hashCode ^
         onboardId.hashCode ^
         accountNo.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'Profile(id: $id, isKycCompleted: $isKycCompleted, isEmailVerified: $isEmailVerified, isPhoneVerified: $isPhoneVerified, firstName: $firstName, lastName: $lastName, displayName: $displayName, phone: $phone, email: $email, nin: $nin, onboardId: $onboardId, accountNo: $accountNo, cardExpiryDate: $cardExpiryDate, cardIssueDate: $cardIssueDate)';
   }
 }
 
