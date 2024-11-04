@@ -101,8 +101,6 @@ abstract class BaseHTTPAPI {
       url = url.updateQueryParameters(params!);
     }
 
-    print(_handleHeaders(headers));
-
     final response = await http.post(
       url,
       body: body,

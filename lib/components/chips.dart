@@ -8,8 +8,6 @@ import '../widgets/source.dart';
 import 'text.dart';
 import 'text_button.dart';
 
-import '../app/app.dart';
-
 class TemboChips<T> extends StatefulWidget {
   final List<T> options;
   final String Function(T option) name;
@@ -61,24 +59,16 @@ class TemboOptionButton extends StatelessWidget {
     required this.selected,
   });
 
-  TemboButtonStyle unselectedStyle(BuildContext context) {
-    final cs = getColorScheme(context);
-    final ct = getUIConstants();
-    
+  static TemboButtonStyle unselectedStyle(BuildContext context) {
     return TemboButtonStyle(
       backgroundColor: context.colorScheme.surfaceContainer,
       foregroundColor: context.colorScheme.onSurface,
-      borderColor: cs.surfaceDim,
+      borderColor: context.colorScheme.surfaceDim,
       textStyle: context.textTheme.bodyMedium.withFW400,
-      borderWidth: ct.borderWidth,
-      borderRadius: ct.borderRadius,
-      padding: horizontal() + vertical(),
-      height: null,
-      width: null,
     );
   }
 
-  TemboButtonStyle selectedStyle(BuildContext context) {
+  static TemboButtonStyle selectedStyle(BuildContext context) {
     return unselectedStyle(context).copyWith(
       backgroundColor: context.colorScheme.secondaryContainer,
       foregroundColor: context.colorScheme.onSecondaryContainer,
@@ -91,12 +81,6 @@ class TemboOptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = selected ? selectedStyle(context) : unselectedStyle(context);
-/*     final smallStyle = style.copyWith(
-      padding: horizontal(10) + vertical(3),
-      textStyle: selected
-          ? context.textTheme.bodySmall.bold
-          : context.textTheme.bodySmall.withFW400,
-    ); */
 
     return BreakPointsBuilder.for1BreakPoint(
       b1: 350,
