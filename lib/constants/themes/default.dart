@@ -93,13 +93,13 @@ const temboDarkColorScheme = ColorScheme(
 
 final _lightCardTheme = CardTheme(
   elevation: 0,
-  color: temboLightColorScheme.surfaceContainerHigh,
+  color: temboLightColorScheme.surfaceContainer,
   shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
 );
 
 final _darkCardTheme = CardTheme(
   elevation: 0,
-  color: temboDarkColorScheme.surfaceContainerHigh,
+  color: temboDarkColorScheme.surfaceContainer,
   shape: RoundedRectangleBorder(borderRadius: defBorderRadius),
 );
 
