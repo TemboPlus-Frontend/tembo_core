@@ -6,6 +6,6 @@ extension DateTimeExtension on DateTime {
 
 extension DateTimeStringExtension on String {
   DateTime fromISOString() {
-    return DateTime.parse(this);
+    return DateTime.parse(this).toLocal();
   }
 }

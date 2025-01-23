@@ -37,7 +37,7 @@ enum Project {
   ),
   fantuzzi(
     "Fantuzzi",
-    fcmTopicName: "",
+    fcmTopicName: "Fantuzzi",
     primaryColor: Colors.red,
     onPrimaryColor: Colors.white,
     androidPackageName: "",
@@ -46,7 +46,7 @@ enum Project {
   ),
   loopcard(
     "LoopCard",
-    fcmTopicName: "",
+    fcmTopicName: "Loopcard",
     primaryColor: Color(0xffF3F3E0),
     onPrimaryColor: Colors.black,
     androidPackageName: "com.temboplus.loopcard",
@@ -100,7 +100,8 @@ ThemeData getThemeData(BuildContext context) {
     case Project.loopcard:
       return loopcardTheme;
     default:
-      return isDarkMode ? temboDarkTheme : temboTheme;
+      // return isDarkMode ? temboDarkTheme : temboTheme;
+      return temboDarkTheme;
   }
 }
 
@@ -118,7 +119,8 @@ ColorScheme getColorScheme(BuildContext context) {
     case Project.loopcard:
       return loopcardColorScheme;
     default:
-      return isDarkMode ? temboDarkColorScheme : temboLightColorScheme;
+      // return isDarkMode ? temboDarkColorScheme : temboLightColorScheme;
+      return temboDarkColorScheme;
   }
 }
 
