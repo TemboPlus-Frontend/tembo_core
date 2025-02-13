@@ -13,19 +13,20 @@ Future<T?> showOptionsDialog<T>({
 }) async {
   return await showDialog<T>(
     context: context,
-    builder: (_) => Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-      ),
-      backgroundColor: Colors.white,
-      child: OptionsDialog(
-        options: options,
-        dropdownTitle: dropdownTitle,
-        currentValue: currentValue,
-        nameGetter: nameGetter,
-        canSearch: canSearch,
-      ),
-    ),
+    builder:
+        (_) => Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+          backgroundColor: Colors.white,
+          child: OptionsDialog(
+            options: options,
+            dropdownTitle: dropdownTitle,
+            currentValue: currentValue,
+            nameGetter: nameGetter,
+            canSearch: canSearch,
+          ),
+        ),
   );
 }
 
@@ -74,8 +75,8 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
       padding: horizontal() + vertical(30),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            maxHeight:
-                context.viewportHeight - context.viewPadding.vertical - 30),
+          maxHeight: context.viewportHeight - context.viewPadding.vertical - 30,
+        ),
         child: buildOnData(),
       ),
     );
@@ -86,10 +87,7 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          widget.dropdownTitle,
-          style: context.textTheme.titleLarge,
-        ),
+        Text(widget.dropdownTitle, style: context.textTheme.titleLarge),
         if (widget.canSearch)
           Padding(
             padding: const EdgeInsets.only(top: 10),
@@ -97,13 +95,16 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
               controller: controller,
               hint: "Search",
               onChanged: (value) {
-                options = widget.options
-                    .where((e) => widget
-                        .nameGetter(e)
-                        .toLowerCase()
-                        .contains(value.toLowerCase()))
-                    .whereType<T>()
-                    .toList();
+                options =
+                    widget.options
+                        .where(
+                          (e) => widget
+                              .nameGetter(e)
+                              .toLowerCase()
+                              .contains(value.toLowerCase()),
+                        )
+                        .whereType<T>()
+                        .toList();
                 setState(() {});
               },
             ),
@@ -120,7 +121,7 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
               itemCount: options.length,
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -143,26 +144,31 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
             margin: kHorPadding / 2,
             height: 40,
             decoration: BoxDecoration(
-                color: isSelected ? context.colorScheme.primary : null,
-                borderRadius: BorderRadius.circular(20)),
+              color: isSelected ? context.colorScheme.primary : null,
+              borderRadius: BorderRadius.circular(20),
+            ),
             duration: const Duration(milliseconds: 300),
             child: Row(
               children: [
                 const SizedBox(width: 20),
                 if (controller.text.isNotEmpty && !isSelected)
                   RichText(
-                      text: TextSpan(
-                    style: const TextStyle(fontSize: 20),
-                    children: getSpans(widget.nameGetter(option)),
-                  ))
+                    text: TextSpan(
+                      style: const TextStyle(fontSize: 20),
+                      children: getSpans(widget.nameGetter(option)),
+                    ),
+                  )
                 else
                   Expanded(
                     child: TemboText(
                       name,
                       style: TextStyle(
-                        color: isSelected
-                            ? context.colorScheme.onPrimary
-                            : context.colorScheme.onSurface.withOpacity(.87),
+                        color:
+                            isSelected
+                                ? context.colorScheme.onPrimary
+                                : context.colorScheme.onSurface.withValues(
+                                  alpha: .87,
+                                ),
                       ),
                     ),
                   ),
@@ -179,32 +185,22 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>>
     final matches = search.allMatches(option.toLowerCase()).toList();
     final spans = <TextSpan>[];
 
-    final style = context.textTheme.labelLarge
-        ?.copyWith(color: context.colorScheme.onSurface);
+    final style = context.textTheme.labelLarge?.copyWith(
+      color: context.colorScheme.onSurface,
+    );
 
     if (matches.isEmpty) {
-      spans.add(
-        TextSpan(text: option, style: style),
-      );
+      spans.add(TextSpan(text: option, style: style));
     } else {
       for (var i = 0; i < matches.length; i++) {
         final strStart = i == 0 ? 0 : matches[i - 1].end;
         final match = matches[i];
         spans.add(
-          TextSpan(
-            text: option.substring(
-              strStart,
-              match.start,
-            ),
-            style: style,
-          ),
+          TextSpan(text: option.substring(strStart, match.start), style: style),
         );
         spans.add(
           TextSpan(
-            text: option.substring(
-              match.start,
-              match.end,
-            ),
+            text: option.substring(match.start, match.end),
             style: style?.copyWith(color: Colors.blue),
           ),
         );

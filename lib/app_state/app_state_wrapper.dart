@@ -50,7 +50,7 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
     overlayEntry = OverlayEntry(
       builder: (context) {
         return Scaffold(
-          backgroundColor: Colors.black.withOpacity(.5),
+          backgroundColor: Colors.black.withValues(alpha: .5),
           body: Center(
             child: Container(
               decoration: BoxDecoration(
@@ -68,9 +68,7 @@ class _AppStateWrapperState extends ConsumerState<AppStateWrapper> {
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Text(message),
                     ),
-                  TemboLoadingIndicator(
-                    color: context.colorScheme.primary,
-                  ),
+                  TemboLoadingIndicator(color: context.colorScheme.primary),
                 ],
               ),
             ),

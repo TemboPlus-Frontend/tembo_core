@@ -61,11 +61,11 @@ class TemboTextFieldDecoration {
     this.prefixIcon,
     this.suffixIcon,
     this.padding,
-  })  : hasBorder = false,
-        borderWidth = 0,
-        borderColor = Colors.transparent,
-        borderStyle = TemboBorderStyle.outline,
-        _decorationStyle = TemboTextFieldDecorationStyle.filled;
+  }) : hasBorder = false,
+       borderWidth = 0,
+       borderColor = Colors.transparent,
+       borderStyle = TemboBorderStyle.outline,
+       _decorationStyle = TemboTextFieldDecorationStyle.filled;
 
   TemboTextFieldDecoration copyWith({
     Color? fillColor,
@@ -113,21 +113,23 @@ class TemboTextFieldDecoration {
     return hasBorder
         ? borderStyle == TemboBorderStyle.outline
             ? OutlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(borderRadius ?? defaultBorderRadius),
-                borderSide: BorderSide(
-                  color: borderColor ?? scheme.outline,
-                  width: borderWidth ?? defaultBorderWidth,
-                ),
-              )
+              borderRadius: BorderRadius.circular(
+                borderRadius ?? defaultBorderRadius,
+              ),
+              borderSide: BorderSide(
+                color: borderColor ?? scheme.outline,
+                width: borderWidth ?? defaultBorderWidth,
+              ),
+            )
             : UnderlineInputBorder(
-                borderRadius:
-                    BorderRadius.circular(borderRadius ?? defaultBorderRadius),
-                borderSide: BorderSide(
-                  color: borderColor ?? scheme.outline,
-                  width: borderWidth ?? defaultBorderWidth,
-                ),
-              )
+              borderRadius: BorderRadius.circular(
+                borderRadius ?? defaultBorderRadius,
+              ),
+              borderSide: BorderSide(
+                color: borderColor ?? scheme.outline,
+                width: borderWidth ?? defaultBorderWidth,
+              ),
+            )
         : InputBorder.none;
   }
 
@@ -137,10 +139,7 @@ class TemboTextFieldDecoration {
 
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius ?? defaultBorderRadius),
-      borderSide: BorderSide(
-        color: Colors.transparent,
-        width: 0,
-      ),
+      borderSide: BorderSide(color: Colors.transparent, width: 0),
     );
   }
 
@@ -172,7 +171,7 @@ class TemboTextFieldDecoration {
     //       color: scheme.onSurface.withOpacity(.75));
     // }
 
-    return textstyle.copyWith(color: scheme.onSurface.withOpacity(.75));
+    return textstyle.copyWith(color: scheme.onSurface.withValues(alpha: .75));
   }
 
   InputDecoration getInputDecoration(
@@ -193,10 +192,7 @@ class TemboTextFieldDecoration {
     final consts = getUIConstants();
 
     final errorBorder = filledBorder.copyWith(
-      borderSide: BorderSide(
-        color: scheme.error,
-        width: consts.borderWidth,
-      ),
+      borderSide: BorderSide(color: scheme.error, width: consts.borderWidth),
     );
 
     final disabledBorder = filledBorder.copyWith(
@@ -225,17 +221,19 @@ class TemboTextFieldDecoration {
     );
     if (prefixIcon != null) {
       return decoration.copyWith(
-          prefixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurfaceVariant),
-        child: prefixIcon!,
-      ));
+        prefixIcon: IconTheme(
+          data: IconThemeData(color: scheme.onSurfaceVariant),
+          child: prefixIcon!,
+        ),
+      );
     }
     if (suffixIcon != null) {
       return decoration.copyWith(
-          suffixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurfaceVariant),
-        child: suffixIcon!,
-      ));
+        suffixIcon: IconTheme(
+          data: IconThemeData(color: scheme.onSurfaceVariant),
+          child: suffixIcon!,
+        ),
+      );
     }
     return decoration;
   }
@@ -248,10 +246,7 @@ class TemboTextFieldDecoration {
     final consts = getUIConstants();
 
     final errorBorder = border(context).copyWith(
-      borderSide: BorderSide(
-        color: scheme.error,
-        width: consts.borderWidth,
-      ),
+      borderSide: BorderSide(color: scheme.error, width: consts.borderWidth),
     );
 
     final disabledBorder = OutlineInputBorder(
@@ -281,17 +276,19 @@ class TemboTextFieldDecoration {
     );
     if (prefixIcon != null) {
       return decoration.copyWith(
-          prefixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurfaceVariant),
-        child: prefixIcon!,
-      ));
+        prefixIcon: IconTheme(
+          data: IconThemeData(color: scheme.onSurfaceVariant),
+          child: prefixIcon!,
+        ),
+      );
     }
     if (suffixIcon != null) {
       return decoration.copyWith(
-          suffixIcon: IconTheme(
-        data: IconThemeData(color: scheme.onSurfaceVariant),
-        child: suffixIcon!,
-      ));
+        suffixIcon: IconTheme(
+          data: IconThemeData(color: scheme.onSurfaceVariant),
+          child: suffixIcon!,
+        ),
+      );
     }
     return decoration;
   }
