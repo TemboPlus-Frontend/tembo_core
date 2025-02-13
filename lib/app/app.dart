@@ -88,7 +88,7 @@ ThemeData getTheme(BuildContext context) {
 
 ThemeData getThemeData(BuildContext context) {
   final project = getProject();
-  final isDarkMode = context.isDarkMode;
+  //final isDarkMode = context.isDarkMode;
 
   switch (project) {
     case Project.dau:
@@ -107,7 +107,7 @@ ThemeData getThemeData(BuildContext context) {
 
 ColorScheme getColorScheme(BuildContext context) {
   final project = getProject();
-  final isDarkMode = context.isDarkMode;
+  // final isDarkMode = context.isDarkMode;
 
   switch (project) {
     case Project.dau:
