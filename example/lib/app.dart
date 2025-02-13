@@ -1,6 +1,6 @@
-import 'dart:async';
-
-import 'package:example/source.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tembo_core/tembo_core.dart';
 
 import './colors_cheme/colors_scheme.dart';
 import './components.dart';
@@ -23,8 +23,7 @@ class App extends ConsumerStatefulWidget {
   ConsumerState<App> createState() => _AppState();
 }
 
-class _AppState extends TemboConsumerState<App>
-    with SingleTickerProviderStateMixin {
+class _AppState extends ConsumerState<App> with SingleTickerProviderStateMixin {
   late final TabController tabController;
   late Project project;
 
@@ -35,9 +34,6 @@ class _AppState extends TemboConsumerState<App>
     tabController = TabController(length: 2, vsync: this);
     project = Project.temboPlus;
   }
-
-  @override
-  FutureOr<void> afterFirstLayout(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {

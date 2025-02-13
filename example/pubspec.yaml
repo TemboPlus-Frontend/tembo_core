@@ -14,7 +14,7 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.0.11
   tembo_core:
-    path: "/Users/mac/Downloads/programs/temboplus/_tembo_core"
+    path: "/Users/mac/Downloads/Programs/workspace.temboapp/package.tembo_core"
 
 dev_dependencies:
   flutter_test:
